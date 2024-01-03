@@ -113,7 +113,7 @@ a img.aligncenter {
 .wp-block-query-pagination {
 	margin-top: 10px;
 	> a {
-		color: #000000;
+		color: $black_color;
 		font-size: 15px;
 	}
 
@@ -132,8 +132,8 @@ a img.aligncenter {
 	}
 
 	.wp-block-query-pagination-numbers a:hover {
-		background-color: #565656;
-		color: #FFFFFF;
+		background-color: $meta_color;
+		color: $white_color;
 	}
 }
 
@@ -260,7 +260,7 @@ a img.aligncenter {
 	background-color: var(--rt-primary-color);
 	border-radius: 0;
 	padding: 6px 30px;
-	color: #ffffff;
+	color: $white_color;
 	transition: 0.4s;
 }
 

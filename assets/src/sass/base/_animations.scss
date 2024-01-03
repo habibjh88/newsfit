@@ -1,11 +1,87 @@
-@include keyframes(animationName) {
+@-webkit-keyframes upsdown {
 	0% {
-		// declaration
-
+		transform: translateY(-100px);
+		visibility: hidden;
+		opacity: 0;
 	}
 
 	100% {
-		// declaration
+		transform: translateY(0);
+		visibility: visible;
+		opacity: 1;
+	}
+}
 
+@keyframes upsdown {
+	0% {
+		transform: translateY(-100px);
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes toptobottom {
+	49% {
+		transform: translateY(100%);
+	}
+
+	50% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+
+	51% {
+		opacity: 1;
+	}
+}
+
+@keyframes toptobottom {
+	49% {
+		transform: translateY(100%);
+	}
+
+	50% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+
+	51% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes bottomtotop {
+	49% {
+		transform: translateY(-100%);
+	}
+
+	50% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+
+	51% {
+		opacity: 1;
+	}
+}
+
+@keyframes bottomtotop {
+	49% {
+		transform: translateY(-100%);
+	}
+
+	50% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+
+	51% {
+		opacity: 1;
 	}
 }

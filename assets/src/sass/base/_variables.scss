@@ -28,15 +28,15 @@ $breakpoints: ('sm': $sm, 'md': $md, 'lg': $lg);
 *  Colours
 *--------------------------*/
 
-$primary_color: var(--rt-primary-color, '#00c194');
-$primary_dark_color: var(--rt-primary-dark, '#091EF6');
-$primary_light_color: var(--rt-primary-light, '#4AA2FF');
-$secondary_color: var(--rt-secondary-color, '#131619');
-$body_color: var(--rt-body-color, '#3D3E41');
-$title_color: var(--rt-title-color, '#161D25');
-$meta_color: var(--rt-meta-color, '#808993');
-$gray1_color: var(--rt-gray1-color, '#D0D0D0');
-$gray2_color: var(--rt-gray2-color, '#E6E6E6');
+$primary_color: var(--rt-primary-color, #00c194);
+$primary_dark_color: var(--rt-primary-dark, #091EF6);
+$primary_light_color: var(--rt-primary-light, #4AA2FF);
+$secondary_color: var(--rt-secondary-color, #131619);
+$body_color: var(--rt-body-color, #3D3E41);
+$title_color: var(--rt-title-color, #161D25);
+$meta_color: var(--rt-meta-color, #808993);
+$gray1_color: var(--rt-gray1-color, #D0D0D0);
+$gray2_color: var(--rt-gray2-color, #E6E6E6);
 $white_color: #FFFFFF;
 $black_color: #000000;
 

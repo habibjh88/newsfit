@@ -3,6 +3,7 @@
 namespace RT\NewsFit\Custom;
 
 use RT\NewsFit\Traits\SingletonTraits;
+use RT\NewsFit\Options\Opt;
 
 /**
  * Extras.
@@ -35,6 +36,14 @@ class Extras {
 		// Adds a class of hfeed to non-singular pages.
 		if ( ! is_singular() ) {
 			$classes[] = 'hfeed';
+		}
+
+		if ( Opt::$has_tr_header ) {
+			$classes[] = 'has-transparent-header';
+		}
+
+		if ( newsfit_option( 'rt_sticy_header' ) ) {
+			$classes[] = 'has-sticky-header';
 		}
 
 		return $classes;

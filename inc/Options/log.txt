@@ -1,6 +1,0 @@
-Array
-(
-    [tr_header] => off
-)
-
-

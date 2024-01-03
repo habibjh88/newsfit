@@ -40,20 +40,17 @@ class Layouts {
 					$this->type = 'page';
 			}
 
-			Opt::$layout         = $this->get_meta_and_option_value( 'layout' );
-			Opt::$header_style   = $this->get_meta_and_option_value( 'header_style', false, true );
-			Opt::$sidebar        = $this->get_meta_and_option_value( 'sidebar' );
-			Opt::$header_width   = $this->get_meta_and_option_value( 'header_width' );
-			Opt::$menu_alignment = $this->get_meta_and_option_value( 'menu_alignment' );
-			Opt::$padding_top    = $this->get_meta_and_option_value( 'padding_top' );
-			Opt::$padding_bottom = $this->get_meta_and_option_value( 'padding_bottom' );
-			Opt::$footer_style   = $this->get_meta_and_option_value( 'footer_style', false, true );
-			Opt::$has_top_bar    = $this->get_meta_and_option_value( 'top_bar', true, true );
-			Opt::$has_tr_header  = $this->get_meta_and_option_value( 'tr_header', true, true );
-			Opt::$has_breadcrumb = $this->get_meta_and_option_value( 'breadcrumb', true, true );
-			var_dump( '11111' );
-
-
+			Opt::$layout         = $this->check_meta_and_option_value( 'layout' );
+			Opt::$header_style   = $this->check_meta_and_option_value( 'header_style', false, true );
+			Opt::$sidebar        = $this->check_meta_and_option_value( 'sidebar' );
+			Opt::$header_width   = $this->check_meta_and_option_value( 'header_width' );
+			Opt::$menu_alignment = $this->check_meta_and_option_value( 'menu_alignment' );
+			Opt::$padding_top    = $this->check_meta_and_option_value( 'padding_top' );
+			Opt::$padding_bottom = $this->check_meta_and_option_value( 'padding_bottom' );
+			Opt::$footer_style   = $this->check_meta_and_option_value( 'footer_style', false, true );
+			Opt::$has_top_bar    = $this->check_meta_and_option_value( 'top_bar', true, true );
+			Opt::$has_tr_header  = $this->check_meta_and_option_value( 'tr_header', true, true );
+			Opt::$has_breadcrumb = $this->check_meta_and_option_value( 'breadcrumb', true, true );
 		} // Blog and Archive
 		elseif ( is_home() || is_archive() || is_search() || is_404() ) {
 			if ( is_404() ) {
@@ -66,22 +63,18 @@ class Layouts {
 				$this->type = 'blog';
 			}
 
-			Opt::$layout         = $this->get_option_value( 'layout' );
-			Opt::$header_style   = $this->get_option_value( 'header_style', false, true );
-			Opt::$sidebar        = $this->get_option_value( 'sidebar' );
-			Opt::$header_width   = $this->get_option_value( 'header_width' );
-			Opt::$menu_alignment = $this->get_option_value( 'menu_alignment' );
-			Opt::$padding_top    = $this->get_option_value( 'padding_top' );
-			Opt::$padding_bottom = $this->get_option_value( 'padding_bottom' );
-			Opt::$footer_style   = $this->get_option_value( 'footer_style', false, true );
-			Opt::$has_top_bar    = $this->get_option_value( 'top_bar', true, true );
-			Opt::$has_tr_header  = $this->get_option_value( 'tr_header', true, true );
-			Opt::$has_breadcrumb = $this->get_option_value( 'breadcrumb', true, true );
-			var_dump( '2222' );
+			Opt::$layout         = $this->check_option_value( 'layout' );
+			Opt::$header_style   = $this->check_option_value( 'header_style', false, true );
+			Opt::$sidebar        = $this->check_option_value( 'sidebar' );
+			Opt::$header_width   = $this->check_option_value( 'header_width' );
+			Opt::$menu_alignment = $this->check_option_value( 'menu_alignment' );
+			Opt::$padding_top    = $this->check_option_value( 'padding_top' );
+			Opt::$padding_bottom = $this->check_option_value( 'padding_bottom' );
+			Opt::$footer_style   = $this->check_option_value( 'footer_style', false, true );
+			Opt::$has_top_bar    = $this->check_option_value( 'top_bar', true, true );
+			Opt::$has_tr_header  = $this->check_option_value( 'tr_header', true, true );
+			Opt::$has_breadcrumb = $this->check_option_value( 'breadcrumb', true, true );
 		}
-
-
-		var_dump( Opt::$has_tr_header );
 	}
 
 	/**
@@ -92,7 +85,7 @@ class Layouts {
 	 *
 	 * @return bool|mixed|string
 	 */
-	private function get_meta_and_option_value( $key, $is_bool = false, $check_layout = false ) {
+	private function check_meta_and_option_value( $key, $is_bool = false, $check_layout = false ) {
 		$option_key      = $this->type . '_' . $key;
 		$meta_value      = $this->meta_value[ $key ] ?? 'default';
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
@@ -121,7 +114,7 @@ class Layouts {
 	 *
 	 * @return bool|mixed|string
 	 */
-	private function get_option_value( $key, $is_bool = false, $check_layout = false ) {
+	private function check_option_value( $key, $is_bool = false, $check_layout = false ) {
 		$option_key = $this->type . '_' . $key;
 
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';

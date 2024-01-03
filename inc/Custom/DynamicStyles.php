@@ -28,7 +28,7 @@ class DynamicStyles {
 	}
 
 	private function inline_style() {
-
+		$logo_width          = '';
 		$primary_color       = newsfit_option( 'rt_primary_color' ) ?? '#00c194';
 		$primary_dark_color  = newsfit_option( 'rt_primary_dark_color' ) ?? '#091EF6';
 		$primary_light_color = newsfit_option( 'rt_primary_light_color' ) ?? '#4AA2FF';
@@ -38,7 +38,10 @@ class DynamicStyles {
 		$meta_color          = newsfit_option( 'rt_meta_color' ) ?? '#808993';
 		$gray1_color         = newsfit_option( 'rt_gray1_color' ) ?? '#D0D0D0';
 		$gray2_color         = newsfit_option( 'rt_gray2_color' ) ?? '#E6E6E6';
-
+		$logo_dimension      = newsfit_option( 'rt_logo_width_height' );
+		if ( strpos( $logo_dimension, ',' ) ) {
+			$logo_width = explode( ',', $logo_dimension );
+		}
 		ob_start(); ?>
 
 		:root {
@@ -59,6 +62,14 @@ class DynamicStyles {
 
 		<?php if ( newsfit_option( 'rt_header_width' ) && newsfit_option( 'rt_header_max_width' ) > 1400 ) : ?>
 			.header-container, .topbar-container {width: <?php echo newsfit_option( 'rt_header_max_width' ); ?>px;max-width: 100%;}
+		<?php endif; ?>
+
+		<?php if ( ! empty( $logo_width ) ) :?>
+			.site-header .site-branding img {
+			max-width: <?php echo esc_attr( $logo_width[0] ?? '100%' ) ?>;
+			max-height: <?php echo esc_attr( $logo_width[1] ?? 'auto' ) ?>;
+			object-fit: contain;
+			}
 		<?php endif; ?>
 
 		<?php

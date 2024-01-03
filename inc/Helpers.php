@@ -7,6 +7,7 @@
  */
 
 use RT\NewsFit\Options\Opt;
+use \RT\NewsFit\Core\Constants;
 
 if ( ! function_exists( 'dd' ) ) {
 	/**
@@ -413,16 +414,16 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 		$rt_logo_light   = newsfit_option( 'rt_logo_light' );
 		$rt_logo_mobile  = newsfit_option( 'rt_logo_mobile' );
 		$site_logo       = Opt::$has_tr_header ? $rt_logo_light : $rt_logo;
+		$mobile_logo     = $rt_logo_mobile ?? $site_logo;
 		$has_mobile_logo = ! empty( $rt_logo_mobile ) ? 'has-mobile-logo' : '';
 		ob_start();
 		?>
-
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="<?php echo esc_attr( $has_mobile_logo ) ?>">
 			<?php
 			if ( ! empty( $site_logo ) ) {
-				echo wp_get_attachment_image( $site_logo, 'full', null, [ 'class' => 'site-logo' ] );
-				if ( ! empty( $rt_logo_mobile ) ) {
-					echo wp_get_attachment_image( $rt_logo_mobile, 'full', null, [ 'class' => 'site-logo' ] );
+				echo wp_get_attachment_image( $site_logo, 'full', null, [ 'id' => 'rt-site-logo' ] );
+				if ( ! empty( $mobile_logo ) ) {
+					echo wp_get_attachment_image( $mobile_logo, 'full', null, [ 'id' => 'rt-mobile-logo' ] );
 				}
 			} else {
 				bloginfo( 'name' );
@@ -442,14 +443,9 @@ if ( ! function_exists( 'newsfit_sidebar_lists' ) ) {
 	function newsfit_sidebar_lists(): array {
 		$sidebar_fields            = [];
 		$sidebar_fields['sidebar'] = esc_html__( 'Sidebar', 'newsfit' );
-		if ( class_exists( 'WooCommerce' ) ) {
-			$sidebar_fields['woocommerce-archive-sidebar'] = esc_html__( 'WooCommerce Archive Sidebar', 'newsfit' );
-			$sidebar_fields['woocommerce-single-sidebar']  = esc_html__( 'WooCommerce Single Sidebar', 'newsfit' );
-		}
-		$sidebars = get_option( "newsfit_custom_sidebars", [] );
-		if ( $sidebars ) {
-			foreach ( $sidebars as $sidebar ) {
-				$sidebar_fields[ $sidebar['id'] ] = $sidebar['name'];
+		if ( ! empty( Constants::$sidebar ) ) {
+			foreach ( Constants::$sidebar as $id => $sidebar ) {
+				$sidebar_fields[ $id ] = $sidebar['name'];
 			}
 		}
 

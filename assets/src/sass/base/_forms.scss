@@ -7,7 +7,7 @@ input[type="reset"],
 input[type="submit"] {
 	background-color: var(--rt-primary-color);
 	border: medium none;
-	color: #fff;
+	color: $white_color;
 	padding: 5px 20px;
 	border-radius: 3px;
 }

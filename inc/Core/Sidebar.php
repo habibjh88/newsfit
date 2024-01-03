@@ -18,39 +18,41 @@ class Sidebar {
 		add_action( 'widgets_init', [ $this, 'widgets_init' ] );
 
 		//Add input fields(priority 5, 3 parameters)
-		add_action( 'in_widget_form', [ $this, 'kk_in_widget_form' ], 5, 3 );
+		add_action( 'in_widget_form', [ $this, 'newsfit_in_widget_form' ], 5, 3 );
 		//Callback function for options update (priorität 5, 3 parameters)
-		add_filter( 'widget_update_callback', [ $this, 'kk_in_widget_form_update' ], 5, 3 );
+		add_filter( 'widget_update_callback', [ $this, 'newsfit_in_widget_form_update' ], 5, 3 );
 		//add class names (default priority, one parameter)
-		add_filter( 'dynamic_sidebar_params', [ $this, 'kk_dynamic_sidebar_params' ] );
+		add_filter( 'dynamic_sidebar_params', [ $this, 'newsfit_dynamic_sidebar_params' ] );
 	}
 
 	/*
 		Define the sidebar
 	*/
 	public function widgets_init() {
-		register_sidebar( [
-			'name'          => esc_html__( 'Sidebar', 'newsfit' ),
-			'id'            => 'rdt-sidebar',
-			'description'   => esc_html__( 'Default sidebar to add all your widgets.', 'newsfit' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s p-2">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		] );
 
-		register_sidebar( [
-			'name'          => esc_html__( 'Footer Sidebar', 'newsfit' ),
-			'id'            => 'rdt-footer-sidebar',
-			'description'   => esc_html__( 'Footer sidebar to add all your widgets.', 'newsfit' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s p-2">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		] );
+		foreach ( Constants::$sidebar as $id => $sidebar ) {
+			$description = sprintf( esc_html_x( '%s to add all your widgets.', 'Widget Description', 'newsfit' ), $sidebar['name'] );
+			if ( ! empty( $sidebar['description'] ) ) {
+				$description = sprintf( esc_html_x( '%s', 'Widget Description', 'newsfit' ), $sidebar['description'] );
+			}
+			$classes = 'widget ';
+			if ( ! empty( $sidebar['class'] ) ) {
+				$classes .= $sidebar['class'];
+			}
+			register_sidebar( [
+				'id'            => $id,
+				'name'          => sprintf( esc_html_x( '%s', 'Widget Name', 'newsfit' ), $sidebar['name'] ),
+				'description'   => $description,
+				'before_widget' => '<section id="%1$s" class="' . $classes . ' %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			] );
+
+		}
 	}
 
-	function kk_in_widget_form( $t, $return, $instance ) {
+	function newsfit_in_widget_form( $t, $return, $instance ) {
 		$instance = wp_parse_args( (array) $instance, [ 'title' => '', 'text' => '', 'float' => 'none' ] );
 		if ( ! isset( $instance['float'] ) ) {
 			$instance['float'] = null;
@@ -78,7 +80,7 @@ class Sidebar {
 		return [ $t, $return, $instance ];
 	}
 
-	function kk_in_widget_form_update( $instance, $new_instance, $old_instance ) {
+	function newsfit_in_widget_form_update( $instance, $new_instance, $old_instance ) {
 		$instance['width']    = isset( $new_instance['width'] );
 		$instance['float']    = $new_instance['float'];
 		$instance['texttest'] = strip_tags( $new_instance['texttest'] );
@@ -86,7 +88,7 @@ class Sidebar {
 		return $instance;
 	}
 
-	function kk_dynamic_sidebar_params( $params ) {
+	function newsfit_dynamic_sidebar_params( $params ) {
 		global $wp_registered_widgets;
 		$widget_id  = $params[0]['widget_id'];
 		$widget_obj = $wp_registered_widgets[ $widget_id ];

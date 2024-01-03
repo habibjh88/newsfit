@@ -2,9 +2,31 @@
 #. Header Default
 ---------------------------------------*/
 /* #. Header Logo */
+
+
+@media (min-width: 768px) {
+	#rt-mobile-logo {
+		display: none;
+	}
+}
+
+@media (max-width: 767px) {
+	#rt-site-logo {
+		display: none;
+	}
+}
+
 .site-header {
-	border-bottom: 1px solid #ededed;
 	position: relative;
+}
+
+.main-header-section {
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.site-header .site-branding {
+	display: flex;
+	align-items: center;
 }
 
 .site-header .site-branding h1 {
@@ -12,11 +34,13 @@
 }
 
 .site-header .site-branding h1 a {
-	color: $black_color;
+	display: flex;
+	color: $primary_color;
+	padding: 10px 0;
 }
 
 .site-header .site-branding h1 a:hover {
-	color: $primary_color;
+	color: $primary_dark_color;
 }
 
 /* #. Main Navigation */
@@ -42,7 +66,7 @@
 	line-height: 22px;
 	font-weight: 500;
 	transition: all 0.3s ease-out 0s;
-	color: #4c4b4b;
+	color: $title_color;
 	padding: 25px 16px;
 	text-transform: capitalize;
 	font-family: "Roboto", sans-serif;
@@ -71,10 +95,6 @@
 	color: $primary_color;
 }
 
-.site-header .main-navigation ul li a.active {
-	/*	color: $primary_color !important;*/
-}
-
 .site-header .main-navigation ul.menu > li > a:hover {
 	color: $primary_color;
 }
@@ -91,18 +111,19 @@
 	visibility: hidden;
 	position: absolute;
 	top: 100%;
-	transition: visibility, opacity, left, top, box-shadow 0.3s ease-out 0s;
 	z-index: 10;
 	padding: 10px 20px 15px;
 	width: 240px;
 	text-align: left;
-	background-color: #ffffff;
+	background-color: $white_color;
 	box-shadow: 0 0 2.1875rem 0 rgba(0, 0, 0, 0.1);
+	@include transition(all $time $ease);
 }
 
 .site-header .main-navigation ul > li > ul {
 	visibility: hidden;
 	opacity: 0;
+	transition: all 0.3s ease-out 0s;
 }
 
 .site-header .main-navigation ul > li:hover > ul {
@@ -131,7 +152,7 @@
 .site-header .main-navigation ul li ul li a {
 	position: relative;
 	display: block;
-	color: #4c4b4b;
+	color: $body_color;
 	text-transform: inherit;
 	padding: 8px 0;
 	font-weight: 500;
@@ -227,7 +248,7 @@ Mega-menu CSS
 .site-header .main-navigation ul li.mega-menu > ul.dropdown-menu {
 	justify-content: flex-start;
 	display: flex;
-	background-color: #ffffff;
+	background-color: $white_color;
 	width: 100%;
 	position: absolute;
 	left: 0;
@@ -249,7 +270,7 @@ Mega-menu CSS
 }
 
 .site-header .main-navigation ul li.mega-menu.two-column > ul.dropdown-menu {
-	background-color: #fff !important;
+	background-color: $white_color !important;
 	width: 520px !important;
 }
 
@@ -259,7 +280,7 @@ Mega-menu CSS
 }
 
 .site-header .main-navigation ul li.mega-menu.three-column > ul.dropdown-menu {
-	background-color: #fff !important;
+	background-color: $white_color !important;
 	width: 780px !important;
 }
 
@@ -372,7 +393,7 @@ Off canvas drawer
 	position: fixed;
 	top: 0;
 	left: 0;
-	background: #fff;
+	background: $white_color;
 	z-index: 99999;
 	box-sizing: border-box;
 	transition: 0.4s ease-in-out;
@@ -441,7 +462,7 @@ Off canvas drawer
 		right: 0;
 		width: 300px;
 		padding: 15px;
-		background: #fff;
+		background: $white_color;
 		border: 1px solid #ddd;
 		display: none;
 		z-index: 9999;
@@ -503,7 +524,7 @@ Topbar Navigation
 
 	font-size: 14px;
 	line-height: 24px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid rgba(0, 0, 0, .2);
 	padding: 3px 0;
 
 	.social-icon {
@@ -517,7 +538,7 @@ Topbar Navigation
 			align-items: center;
 
 			&:hover svg {
-				--newsfit-icon-color: #F00;
+				--newsfit-icon-color: $primary_color;
 			}
 		}
 
@@ -538,9 +559,95 @@ Topbar Navigation
 			padding: 3px 0;
 		}
 
-		.caret svg {
-			@include transform(scale(0.9));
+		.newsfit-topbar-menu > li .dropdown-menu li a .caret svg {
+			transform: rotate(-90deg) scale(0.8);
+		}
+
+		.newsfit-topbar-menu > li > a .caret svg {
+			transform: scale(0.8)
 		}
 	}
+
+}
+
+//Sticky Menu CSS
+.rt-sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+	left: 0;
+	right: 0;
+	background-color: $white_color;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+	-webkit-animation: upsdown 1000ms;
+	animation: upsdown 1000ms;
+}
+
+
+.rt-sticky .navigation-area nav > ul > li > a {
+	padding: 30px 15px;
+}
+
+body.admin-bar .rt-sticky {
+	top: 32px;
+}
+
+@media (max-width: 782px) {
+	body.admin-bar .rt-sticky {
+		top: 46px;
+	}
+}
+
+@media (max-width: 600px) {
+	body.admin-bar .rt-sticky {
+		top: 0;
+	}
+}
+
+//Transparent Header
+
+.has-transparent-header {
+	.site-header {
+		position: absolute;
+		width: 100%;
+		z-index: 99999;
+		color: $white_color;
+
+		&::before {
+			content: "";
+			background: rgba(0, 0, 0, 0);
+			background: -webkit-linear-gradient(top, rgb(0 0 0 / 58%) 0%, rgba(0, 0, 0, 0) 100%);
+			background: linear-gradient(to bottom, rgb(0 0 0 / 68%) 0%, rgba(0, 0, 0, 0) 100%);
+			top: 0;
+			position: absolute;
+			width: 100%;
+			height: 220px;
+			z-index: -1;
+			pointer-events: none;
+		}
+
+
+		.main-navigation *,
+		.main-navigation ul li a {
+			color: $white_color;
+		}
+
+		.menu-bar span {
+			background-color: $white_color;
+		}
+
+		[class*=rticon] svg {
+			--newsfit-icon-color: #FFF;
+		}
+		.caret svg path {
+			fill: $white_color;
+		}
+
+		.main-navigation ul > li > ul {
+			background-color: $body_color;
+		}
+	}
+
 
 }

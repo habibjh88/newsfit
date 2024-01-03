@@ -1,0 +1,20 @@
+.container,
+.container-fluid,
+.container-narrow {
+	box-sizing: border-box;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: $gutter / 2;
+	padding-left: $gutter / 2;
+
+	@include clearfix;
+}
+
+.container {
+	max-width: $lg;
+}
+
+.container-fluid {
+	max-width: 100%;
+}

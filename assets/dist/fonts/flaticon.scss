@@ -1,0 +1,161 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?4c8541f813cac0753c62e0740c5ce069") format("truetype"),
+url("./flaticon.woff?4c8541f813cac0753c62e0740c5ce069") format("woff"),
+url("./flaticon.woff2?4c8541f813cac0753c62e0740c5ce069") format("woff2"),
+url("./flaticon.eot?4c8541f813cac0753c62e0740c5ce069#iefix") format("embedded-opentype"),
+url("./flaticon.svg?4c8541f813cac0753c62e0740c5ce069#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "user": "\f101",
+    "user-1": "\f102",
+    "speech-bubble": "\f103",
+    "next": "\f104",
+    "share": "\f105",
+    "share-1": "\f106",
+    "left-and-right-arrows": "\f107",
+    "heart": "\f108",
+    "camera": "\f109",
+    "video-player": "\f10a",
+    "maps-and-flags": "\f10b",
+    "check": "\f10c",
+    "envelope": "\f10d",
+    "phone-call": "\f10e",
+    "call": "\f10f",
+    "clock": "\f110",
+    "play": "\f111",
+    "loupe": "\f112",
+    "user-2": "\f113",
+    "bed": "\f114",
+    "shower": "\f115",
+    "pencil": "\f116",
+    "two-overlapping-square": "\f117",
+    "printer": "\f118",
+    "comment": "\f119",
+    "home": "\f11a",
+    "garage": "\f11b",
+    "full-size": "\f11c",
+    "tag": "\f11d",
+    "right-arrow": "\f11e",
+    "left-arrow": "\f11f",
+    "left-arrow-1": "\f120",
+    "left-arrow-2": "\f121",
+    "right-arrow-1": "\f122",
+);
+
+.flaticon-user:before {
+    content: map-get($flaticon-map, "user");
+}
+.flaticon-user-1:before {
+    content: map-get($flaticon-map, "user-1");
+}
+.flaticon-speech-bubble:before {
+    content: map-get($flaticon-map, "speech-bubble");
+}
+.flaticon-next:before {
+    content: map-get($flaticon-map, "next");
+}
+.flaticon-share:before {
+    content: map-get($flaticon-map, "share");
+}
+.flaticon-share-1:before {
+    content: map-get($flaticon-map, "share-1");
+}
+.flaticon-left-and-right-arrows:before {
+    content: map-get($flaticon-map, "left-and-right-arrows");
+}
+.flaticon-heart:before {
+    content: map-get($flaticon-map, "heart");
+}
+.flaticon-camera:before {
+    content: map-get($flaticon-map, "camera");
+}
+.flaticon-video-player:before {
+    content: map-get($flaticon-map, "video-player");
+}
+.flaticon-maps-and-flags:before {
+    content: map-get($flaticon-map, "maps-and-flags");
+}
+.flaticon-check:before {
+    content: map-get($flaticon-map, "check");
+}
+.flaticon-envelope:before {
+    content: map-get($flaticon-map, "envelope");
+}
+.flaticon-phone-call:before {
+    content: map-get($flaticon-map, "phone-call");
+}
+.flaticon-call:before {
+    content: map-get($flaticon-map, "call");
+}
+.flaticon-clock:before {
+    content: map-get($flaticon-map, "clock");
+}
+.flaticon-play:before {
+    content: map-get($flaticon-map, "play");
+}
+.flaticon-loupe:before {
+    content: map-get($flaticon-map, "loupe");
+}
+.flaticon-user-2:before {
+    content: map-get($flaticon-map, "user-2");
+}
+.flaticon-bed:before {
+    content: map-get($flaticon-map, "bed");
+}
+.flaticon-shower:before {
+    content: map-get($flaticon-map, "shower");
+}
+.flaticon-pencil:before {
+    content: map-get($flaticon-map, "pencil");
+}
+.flaticon-two-overlapping-square:before {
+    content: map-get($flaticon-map, "two-overlapping-square");
+}
+.flaticon-printer:before {
+    content: map-get($flaticon-map, "printer");
+}
+.flaticon-comment:before {
+    content: map-get($flaticon-map, "comment");
+}
+.flaticon-home:before {
+    content: map-get($flaticon-map, "home");
+}
+.flaticon-garage:before {
+    content: map-get($flaticon-map, "garage");
+}
+.flaticon-full-size:before {
+    content: map-get($flaticon-map, "full-size");
+}
+.flaticon-tag:before {
+    content: map-get($flaticon-map, "tag");
+}
+.flaticon-right-arrow:before {
+    content: map-get($flaticon-map, "right-arrow");
+}
+.flaticon-left-arrow:before {
+    content: map-get($flaticon-map, "left-arrow");
+}
+.flaticon-left-arrow-1:before {
+    content: map-get($flaticon-map, "left-arrow-1");
+}
+.flaticon-left-arrow-2:before {
+    content: map-get($flaticon-map, "left-arrow-2");
+}
+.flaticon-right-arrow-1:before {
+    content: map-get($flaticon-map, "right-arrow-1");
+}

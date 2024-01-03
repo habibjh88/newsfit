@@ -1,0 +1,15 @@
+footer {
+	position: relative;
+}
+
+.site-footer {
+	.footer-widgets {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		> .widget {
+			flex-grow: 25;
+		}
+	}
+}
+

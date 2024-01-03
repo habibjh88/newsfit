@@ -1,0 +1,40 @@
+
+.breadcrumb {
+	padding: 0;
+	margin-bottom: 0;
+	list-style: none;
+	background-color: transparent;
+	border-radius: 0;
+	color: #878c9f;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.breadcrumb li {
+	position: relative;
+}
+
+.breadcrumb li .raquo {
+	margin: 0 9px;
+	color: #878c9f;
+}
+
+.breadcrumb li::after {
+	content: "\f105";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	display: inline-block;
+	margin: 0 9px;
+}
+
+.breadcrumb li.active {
+	color: var(--rt-primary-color);
+}
+
+.breadcrumb li:last-child:after {
+	content: none;
+}
+
+.breadcrumb a {
+	color: #878c9f;
+}

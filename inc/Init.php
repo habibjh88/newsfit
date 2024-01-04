@@ -36,6 +36,8 @@ final class Init {
 		Setup\Setup::instance();
 		Setup\Menus::instance();
 		Setup\Enqueue::instance();
+		Custom\Fns::instance();
+		Custom\Hooks::instance();
 		Custom\PostTypes::instance();
 		Custom\Admin::instance();
 		Custom\Extras::instance();

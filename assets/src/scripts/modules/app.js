@@ -31,7 +31,7 @@ class App {
 		if ($('body').hasClass('has-sticky-header')) {
 
 			if (this.isSticky) {
-				$('body').prepend('<div id="rt-sticky-placeholder"></div>')
+				$('.site-header').prepend('<div id="rt-sticky-placeholder"></div>')
 			}
 			this.isSticky = false;
 			var stickyPlaceHolder = $("#rt-sticky-placeholder");

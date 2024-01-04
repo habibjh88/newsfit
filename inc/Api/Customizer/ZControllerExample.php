@@ -13,7 +13,7 @@ use RTFramework\Customize;
 /**
  * Customizer class
  */
-class ControllerExample extends Customizer {
+class ZControllerExample extends Customizer {
 
 	/**
 	 * Register controls

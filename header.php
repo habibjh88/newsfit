@@ -32,3 +32,4 @@
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
+		<?php do_action('newsfit_banner'); ?>

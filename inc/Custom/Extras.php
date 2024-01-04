@@ -42,6 +42,10 @@ class Extras {
 			$classes[] = 'has-transparent-header';
 		}
 
+		if ( Opt::$has_breadcrumb ) {
+			$classes[] = 'has-breadcrumb';
+		}
+
 		if ( newsfit_option( 'rt_sticy_header' ) ) {
 			$classes[] = 'has-sticky-header';
 		}

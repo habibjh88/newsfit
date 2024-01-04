@@ -14,56 +14,57 @@
 
 get_header(); ?>
 
-	<div class="container">
+	<div class="default-index-content pt-40 pb-40">
+		<div class="container">
 
-		<div class="row align-stretch">
+			<div class="row align-stretch">
 
-			<div class="col-sm-8">
+				<div class="col-sm-8">
 
-				<div id="primary" class="content-area">
-					<main id="main" class="site-main" role="main">
-
-						<?php
-						if ( have_posts() ) :
-
-							if ( is_home() && ! is_front_page() ) :
-								?>
-								<header>
-									<h1 class="page-title"><?php single_post_title(); ?></h1>
-								</header>
+					<div id="primary" class="content-area">
+						<main id="main" class="site-main" role="main">
 
 							<?php
+							if ( have_posts() ) :
+
+								if ( is_home() && ! is_front_page() ) :
+									?>
+									<header>
+										<h1 class="page-title"><?php single_post_title(); ?></h1>
+									</header>
+
+								<?php
+								endif;
+
+								/* Start the Loop */
+								while ( have_posts() ) :
+									the_post();
+
+									get_template_part( 'views/content', get_post_format() );
+
+								endwhile;
+
+								the_posts_navigation();
+
+							else :
+
+								get_template_part( 'views/content', 'none' );
+
 							endif;
+							?>
 
-							/* Start the Loop */
-							while ( have_posts() ) :
-								the_post();
+						</main><!-- #main -->
+					</div><!-- #primary -->
 
-								get_template_part( 'views/content', get_post_format() );
+				</div><!-- .col- -->
 
-							endwhile;
+				<div id="sidebar" class="col-sm-4">
+					<?php get_sidebar(); ?>
+				</div><!-- .col- -->
 
-							the_posts_navigation();
+			</div><!-- .row -->
 
-						else :
-
-							get_template_part( 'views/content', 'none' );
-
-						endif;
-						?>
-
-					</main><!-- #main -->
-				</div><!-- #primary -->
-
-			</div><!-- .col- -->
-
-			<div id="sidebar" class="col-sm-4">
-				<?php get_sidebar(); ?>
-			</div><!-- .col- -->
-
-		</div><!-- .row -->
-
-	</div><!-- .container -->
-
+		</div><!-- .container -->
+	</div>
 <?php
 get_footer();

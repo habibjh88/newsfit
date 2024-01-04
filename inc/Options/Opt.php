@@ -15,7 +15,10 @@ class Opt {
 	public static $sidebar = null;
 	public static $header_style = null;
 	public static $footer_style = null;
+	public static $has_banner = null;
 	public static $has_breadcrumb = null;
+	public static $banner_image = '';
+	public static $banner_height = '';
 	public static $header_width = null;
 	public static $menu_alignment = null;
 	public static $padding_top = null;

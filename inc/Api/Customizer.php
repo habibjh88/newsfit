@@ -58,7 +58,7 @@ class Customizer {
 	public function add_panels(): void {
 		Customize::add_panel( [
 			'id'          => 'rt_header_panel',
-			'title'       => esc_html__( 'Header', 'newsfit' ),
+			'title'       => esc_html__( 'Header - Topbar - Menu', 'newsfit' ),
 			'description' => esc_html__( 'NewsFit Header', 'newsfit' ),
 			'priority'    => 22,
 		] );
@@ -149,9 +149,9 @@ class Customizer {
 
 		Customize::add_section( [
 			'id'          => $this->section_breadcrumb,
-			'title'       => __( 'Breadcrumb', 'newsfit' ),
-			'description' => __( 'NewsFit Breadcrumb Section', 'newsfit' ),
-			'priority'    => 28
+			'title'       => __( 'Banner - Breadcrumb', 'newsfit' ),
+			'description' => __( 'NewsFit Banner Section', 'newsfit' ),
+			'priority'    => 23
 		] );
 
 		Customize::add_section( [
@@ -231,7 +231,7 @@ class Customizer {
 			Customizer\SiteIdentity::class,
 			Customizer\Header::class,
 			Customizer\HeaderTopbar::class,
-			Customizer\Breadcrumb::class,
+			Customizer\Banner::class,
 			Customizer\Contact::class,
 			Customizer\Socials::class,
 			Customizer\SiteColor::class,
@@ -242,7 +242,7 @@ class Customizer {
 			Customizer\LayoutsPage::class,
 			Customizer\LayoutsError::class,
 			Customizer\Footer::class,
-			Customizer\ControllerExample::class,
+			Customizer\ZControllerExample::class,
 		];
 
 		if ( class_exists( 'WooCommerce' ) ) {

@@ -47,10 +47,13 @@ class Layouts {
 			Opt::$menu_alignment = $this->check_meta_and_option_value( 'menu_alignment' );
 			Opt::$padding_top    = $this->check_meta_and_option_value( 'padding_top' );
 			Opt::$padding_bottom = $this->check_meta_and_option_value( 'padding_bottom' );
+			Opt::$banner_image   = $this->check_meta_and_option_value( 'banner_image', false, true );
+			Opt::$banner_height  = $this->check_meta_and_option_value( 'banner_height', false, true );
 			Opt::$footer_style   = $this->check_meta_and_option_value( 'footer_style', false, true );
 			Opt::$has_top_bar    = $this->check_meta_and_option_value( 'top_bar', true, true );
 			Opt::$has_tr_header  = $this->check_meta_and_option_value( 'tr_header', true, true );
 			Opt::$has_breadcrumb = $this->check_meta_and_option_value( 'breadcrumb', true, true );
+			Opt::$has_banner     = $this->check_meta_and_option_value( 'banner', true, true );
 		} // Blog and Archive
 		elseif ( is_home() || is_archive() || is_search() || is_404() ) {
 			if ( is_404() ) {
@@ -70,10 +73,13 @@ class Layouts {
 			Opt::$menu_alignment = $this->check_option_value( 'menu_alignment' );
 			Opt::$padding_top    = $this->check_option_value( 'padding_top' );
 			Opt::$padding_bottom = $this->check_option_value( 'padding_bottom' );
+			Opt::$banner_image   = $this->check_option_value( 'banner_image', false, true );
+			Opt::$banner_height  = $this->check_option_value( 'banner_height', false, true );
 			Opt::$footer_style   = $this->check_option_value( 'footer_style', false, true );
 			Opt::$has_top_bar    = $this->check_option_value( 'top_bar', true, true );
 			Opt::$has_tr_header  = $this->check_option_value( 'tr_header', true, true );
 			Opt::$has_breadcrumb = $this->check_option_value( 'breadcrumb', true, true );
+			Opt::$has_banner     = $this->check_option_value( 'banner', true, true );
 		}
 	}
 
@@ -91,9 +97,9 @@ class Layouts {
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
 		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
 
-		if ( $meta_value != 'default' ) { //Check from Meta
+		if ( ! empty( $meta_value ) && $meta_value != 'default' ) { //Check from Meta
 			$result = $meta_value;
-		} elseif ( $check_layout && $opt_from_layout != 'default' ) { //Check from Layout
+		} elseif ( $check_layout && ! empty( $opt_from_layout ) && $opt_from_layout != 'default' ) { //Check from Layout
 			$result = $opt_from_layout;
 		} else { //Set global option
 			$result = $opt_from_global;
@@ -120,8 +126,7 @@ class Layouts {
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
 		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
 
-
-		if ( $check_layout && $opt_from_layout != 'default' ) {
+		if ( $check_layout && ! empty( $opt_from_layout ) && $opt_from_layout != 'default' ) {
 			$result = $opt_from_layout;
 		} else {
 			$result = $opt_from_global;

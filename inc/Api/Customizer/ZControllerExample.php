@@ -134,12 +134,25 @@ class ZControllerExample extends Customizer {
 				'default' => '1',
 				'choices' => $this->get_header_presets()
 			],
+
 			'newsfit_image'          => [
 				'type'         => 'image',
 				'label'        => __( 'Choose Image', 'newsfit' ),
 				'button_label' => __( 'Logo', 'newsfit' ),
 			],
 
+			'newsfit_image_attr' => [
+				'type'      => 'bg_attribute',
+				'condition' => [ 'rt_banner' ],
+				'default'   => json_encode(
+					[
+						'position'   => 'center center',
+						'attachment' => 'scroll',
+						'repeat'     => 'no-repeat',
+						'size'       => 'auto',
+					]
+				)
+			],
 
 			'newsfit_number' => [
 				'type'        => 'number',
@@ -229,14 +242,4 @@ class ZControllerExample extends Customizer {
 		];
 	}
 
-	/**
-	 * Generate inline CSS for customizer async reload
-	 */
-	public function outputCss() {
-		echo '<style type="text/css">';
-		echo self::css( '.site-header', 'background-color', 'newsfit_header_background_color' );
-		echo self::css( '.site-header', 'color', 'newsfit_header_text_color' );
-		echo self::css( '.site-header a', 'color', 'newsfit_header_link_color' );
-		echo '</style>';
-	}
 }

@@ -20,11 +20,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open();
-//dd(newsfit_option('rt_topbar_visibility'));
-?>
+<?php wp_body_open(); ?>
 
-<div id="page" class="site" <?php echo ! is_customize_preview() ?: 'style="padding: 0 40px;"'; ?>>
+<div id="page" class="site">
 	<header id="masthead" class="site-header trheader" role="banner">
 		<?php get_template_part( 'views/header/header', 'topbar' ); ?>
 		<?php get_template_part( 'views/header/header', newsfit_option( 'rt_header_style' ) ); ?>

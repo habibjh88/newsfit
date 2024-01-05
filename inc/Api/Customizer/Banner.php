@@ -55,7 +55,15 @@ class Banner extends Customizer {
 
 			'rt_banner_image_attr' => [
 				'type'      => 'bg_attribute',
-				'condition' => [ 'rt_banner' ]
+				'condition' => [ 'rt_banner' ],
+				'default'   => json_encode(
+					[
+						'position'   => 'center center',
+						'attachment' => 'scroll',
+						'repeat'     => 'no-repeat',
+						'size'       => 'auto',
+					]
+				)
 			],
 
 			'rt_banner_height' => [

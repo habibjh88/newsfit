@@ -54,6 +54,8 @@ class DynamicStyles {
 		--rt-meta-color: <?php echo esc_html( $meta_color ); ?>;
 		--rt-gray1-color: <?php echo esc_html( $gray1_color ); ?>;
 		--rt-gray2-color: <?php echo esc_html( $gray2_color ); ?>;
+		--rt-primary-rgb: <?php echo esc_html( newsfit_hex2rgb($primary_color) ); ?>;
+		--rt-secondary-rgb: <?php echo esc_html( newsfit_hex2rgb($secondary_color) ); ?>;
 		}
 
 		body {

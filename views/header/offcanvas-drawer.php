@@ -23,7 +23,7 @@
 			);
 		endif;
 		?>
-	</nav><!-- .main-navigation -->
+	</nav><!-- .newsfit-navigation -->
 
 </div><!-- .container -->
 

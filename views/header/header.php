@@ -19,19 +19,19 @@
 				</h1>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation pl-15 pr-15" role="navigation">
+			<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15" role="navigation">
 				<?php
 				$menu_classes = newsfit_option( 'rt_menu_alignment' );
-				$menu_classes .= ' newsfit-navbar';
 				wp_nav_menu( [
 					'theme_location' => 'primary',
 					'menu_id'        => 'primary-menu',
+					'menu_class'     => 'newsfit-navbar',
 					'items_wrap'     => '<ul id="%1$s" class="%2$s ' . $menu_classes . '">%3$s</ul>',
 					'fallback_cb'    => 'newsfit_custom_menu_cb',
 					'walker'         => has_nav_menu( 'primary' ) ? new RT\NewsFit\Core\WalkerNav() : '',
 				] );
 				?>
-			</nav><!-- .main-navigation -->
+			</nav><!-- .newsfit-navigation -->
 
 			<div class="menu-icon-wrapper d-flex pl-15 ml-auto">
 				<ul class="d-flex gap-15 align-items-center">

@@ -1,0 +1,14 @@
+[class*='rticon'] {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+[class*='rticon'] svg {
+	fill: $body-color;
+	width: 16px;
+	height: 16px;
+}
+[class*='rticon'] svg,
+[class*='rticon'] svg * {
+	@include transition(all $time $ease);
+}

@@ -12,16 +12,17 @@
 <div class="newsfit-topbar">
 	<div class="topbar-container container<?php echo newsfit_option( 'rt_header_width' ) ?>">
 		<div class="row ml-0 mr-0">
-			<nav id="topbar-menu" class="main-navigation pr-10" role="navigation">
+			<nav id="topbar-menu" class="newsfit-navigation pr-10" role="navigation">
 				<?php
 				wp_nav_menu( [
 					'theme_location' => 'topbar',
+					'menu_class' => 'newsfit-navbar',
 					'items_wrap'     => '<ul id="%1$s" class="%2$s newsfit-topbar-menu">%3$s</ul>',
 					'fallback_cb'    => 'newsfit_custom_menu_cb',
 					'walker'         => has_nav_menu( 'topbar' ) ? new RT\NewsFit\Core\WalkerNav() : '',
 				] );
 				?>
-			</nav><!-- .main-navigation -->
+			</nav><!-- .topbar-navigation -->
 
 			<ul class="topbar-right d-flex gap-15 align-items-center">
 				<li class="social-icon">

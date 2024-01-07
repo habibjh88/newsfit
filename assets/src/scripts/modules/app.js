@@ -7,6 +7,7 @@ class App {
 			drawerClass: '.newsfit-offcanvas-drawer',
 			menuDropdown: $('.dropdown-menu.depth_0'),
 		};
+		this.searchTrigger = $('.newsfit-search-trigger');
 		this.isSticky = true;
 
 		$(document).ready(() => {
@@ -91,14 +92,14 @@ class App {
 	}
 
 	headerSearchOpen($) {
-		$('.newsfit-search-trigger').on('click', e => {
+		$('.newsfit-search-trigger').on('click', function (e) {
 			e.preventDefault();
-			$('.newsfit-search-form').fadeToggle();
+			$(this).parent().toggleClass('show');
 			e.stopPropagation()
 		})
-		$(document).on('click', e => {
+		$(document).on('click', function (e) {
 			if (!$(e.target).closest('.newsfit-search-form').length) {
-				$('.newsfit-search-form').fadeOut()
+				$('.newsfit-search-popup.show').removeClass('show')
 			}
 		});
 	}

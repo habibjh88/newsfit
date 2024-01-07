@@ -42,7 +42,7 @@
 							<span></span>
 						</a>
 					</li>
-					<li>
+					<li class="newsfit-search-popup">
 						<a class="menu-search-bar newsfit-search-trigger" href="#">
 							<?php echo newsfit_get_svg( 'search' ); ?>
 						</a>

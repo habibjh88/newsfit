@@ -16,6 +16,7 @@ $dropdown_top_bottom_margin: 10px;
 		display: none;
 	}
 }
+
 .main-header-section {
 	border-bottom: 1px solid rgba($black_color, 0.1);
 }
@@ -49,10 +50,12 @@ $dropdown_top_bottom_margin: 10px;
 	margin: 0;
 	padding: 0;
 }
+
 .site-header .newsfit-topbar .newsfit-navigation ul li.current-menu-item,
 .site-header .newsfit-topbar .newsfit-navigation ul li.current-menu-ancestor {
 	color: $white_color;
 }
+
 .newsfit-navigation {
 	flex: 1;
 	display: flex;
@@ -87,10 +90,12 @@ $dropdown_top_bottom_margin: 10px;
 .newsfit-navigation ul li.current-menu-ancestor > a svg {
 	fill: $primary_color;
 }
+
 .newsfit-navigation ul li.current-menu-item > a,
 .newsfit-navigation ul li.current-menu-ancestor > a {
 	color: $primary_color;
 }
+
 .newsfit-navigation > ul > li > a:before {
 	position: absolute;
 	z-index: 1;
@@ -227,7 +232,7 @@ $dropdown_top_bottom_margin: 10px;
 	border-left: none;
 	border-top: none;
 	margin-left: 8px;
-	transition: 0.4s;
+	@include transition(all $time $ease);
 }
 
 .newsfit-navigation .dropdown-menu .caret {
@@ -389,7 +394,7 @@ Menu icon style
 		flex-direction: column;
 		justify-content: space-between;
 		margin-top: -6px;
-		transition: all .3s ease-out;
+		@include transition(all $time $ease);
 	}
 
 	.menu-bar span {
@@ -397,8 +402,7 @@ Menu icon style
 		width: 100%;
 		background-color: $body_color;
 		border-radius: 12px;
-		transition: all .3s ease-out;
-		transition-delay: 0s;
+		@include transition(all $time $ease);
 		transform: translateX(0);
 
 		&:nth-child(2) {
@@ -414,17 +418,28 @@ Menu icon style
 		width: 22px;
 		height: 22px;
 	}
+}
 
+//Menu search
+.newsfit-search-popup {
+	&.show .newsfit-search-form {
+		visibility: visible;
+		opacity: 1;
+		top: 55px;
+		@include transition(all $time $ease);
+	}
 	.newsfit-search-form {
 		position: absolute;
-		top: 52px;
+		top: 100px;
 		right: 0;
 		width: 300px;
 		padding: 15px;
 		background: $white_color;
 		border: 1px solid #ddd;
-		display: none;
+		opacity: 0;
+		visibility: hidden;
 		z-index: 9999;
+
 
 		.search-box {
 			position: relative;
@@ -457,7 +472,6 @@ Menu icon style
 		}
 	}
 }
-
 
 
 /*********************

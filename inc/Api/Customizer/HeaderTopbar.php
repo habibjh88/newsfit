@@ -45,6 +45,12 @@ class HeaderTopbar extends Customizer {
 				'condition' => [ 'top_bar' ]
 			],
 
+			'rt_top_bar_border' => [
+				'type'    => 'switch',
+				'label'   => __( 'Topbar Border', 'newsfit' ),
+				'default' => 1
+			],
+
 		] );
 
 	}

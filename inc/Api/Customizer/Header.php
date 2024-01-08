@@ -77,6 +77,12 @@ class Header extends Customizer {
 				'label'   => __( 'Transparent Header', 'newsfit' ),
 			],
 
+			'rt_header_border' => [
+				'type'    => 'switch',
+				'label'   => __( 'Header Border', 'newsfit' ),
+				'default' => 1
+			],
+
 
 		] );
 

@@ -28,7 +28,9 @@ class Customizer {
 	protected string $section_socials = 'newsfit_socials_section';
 	protected string $section_labels = 'newsfit_labels_section';
 	protected string $section_site_color = 'newsfit_site_color_section';
+	protected string $section_banner_color = 'newsfit_banner_color_section';
 	protected string $section_header_color = 'newsfit_header_color_section';
+	protected string $section_topbar_color = 'newsfit_topbar_color_section';
 	protected string $section_blog_layout = 'newsfit_blog_layout_section';
 	protected string $section_single_layout = 'newsfit_single_layout_section';
 	protected string $section_page_layout = 'newsfit_page_layout_section';
@@ -140,11 +142,27 @@ class Customizer {
 		] );
 
 		Customize::add_section( [
+			'id'          => $this->section_topbar_color,
+			'panel'       => 'rt_color_panel',
+			'title'       => __( 'Topbar Colors', 'newsfit' ),
+			'description' => __( 'NewsFit Topbar Color Section', 'newsfit' ),
+			'priority'    => 3
+		] );
+
+		Customize::add_section( [
 			'id'          => $this->section_header_color,
 			'panel'       => 'rt_color_panel',
 			'title'       => __( 'Header Colors', 'newsfit' ),
 			'description' => __( 'NewsFit Header Color Section', 'newsfit' ),
 			'priority'    => 4
+		] );
+
+		Customize::add_section( [
+			'id'          => $this->section_banner_color,
+			'panel'       => 'rt_color_panel',
+			'title'       => __( 'Banner / Breadcrumb Colors', 'newsfit' ),
+			'description' => __( 'NewsFit Banner Color Section', 'newsfit' ),
+			'priority'    => 6
 		] );
 
 		Customize::add_section( [
@@ -234,8 +252,10 @@ class Customizer {
 			Customizer\Banner::class,
 			Customizer\Contact::class,
 			Customizer\Socials::class,
-			Customizer\SiteColor::class,
-			Customizer\HeaderColor::class,
+			Customizer\ColorSite::class,
+			Customizer\ColorTopbar::class,
+			Customizer\ColorHeader::class,
+			Customizer\ColorBanner::class,
 			Customizer\Labels::class,
 			Customizer\LayoutsBlogs::class,
 			Customizer\LayoutsSingle::class,

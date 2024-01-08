@@ -1,5 +1,5 @@
 a {
-	@include transition(all $time $ease);
+	@include transition_default();
 
 	&,
 	&:hover,

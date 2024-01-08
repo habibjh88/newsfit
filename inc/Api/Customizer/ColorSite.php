@@ -13,7 +13,7 @@ use RTFramework\Customize;
 /**
  * Customizer class
  */
-class SiteColor extends Customizer {
+class ColorSite extends Customizer {
 
 	/**
 	 * Register controls
@@ -31,6 +31,10 @@ class SiteColor extends Customizer {
 
 		return apply_filters( 'newsfit_site_color_controls', [
 
+			'rt_site_color1' => [
+				'type'    => 'heading',
+				'label'   => __( 'Site Ascent Color', 'newsfit' ),
+			],
 			'rt_primary_color' => [
 				'type'    => 'color',
 				'label'   => __( 'Primary Color', 'newsfit' ),
@@ -49,7 +53,7 @@ class SiteColor extends Customizer {
 				'default' => '#4AA2FF'
 			],
 
-			'rt_color_separator1' => [
+			'rt_color_separator2' => [
 				'type' => 'separator',
 			],
 
@@ -59,8 +63,9 @@ class SiteColor extends Customizer {
 				'default' => '#131619'
 			],
 
-			'rt_color_separator2' => [
-				'type' => 'separator',
+			'rt_site_color2' => [
+				'type'    => 'heading',
+				'label'   => __( 'Others Color', 'newsfit' ),
 			],
 
 			'rt_body_color' => [
@@ -84,13 +89,19 @@ class SiteColor extends Customizer {
 			'rt_gray1_color' => [
 				'type'    => 'color',
 				'label'   => __( 'Gray # 1', 'newsfit' ),
-				'default' => '#D0D0D0'
+				'default' => '#E6E6E6'
 			],
 
 			'rt_gray2_color' => [
 				'type'    => 'color',
 				'label'   => __( 'Gray # 2', 'newsfit' ),
-				'default' => '#E6E6E6'
+				'default' => '#D0D0D0'
+			],
+
+			'rt_gray3_color' => [
+				'type'    => 'color',
+				'label'   => __( 'Gray # 2', 'newsfit' ),
+				'default' => '#bfc7d7'
 			],
 
 

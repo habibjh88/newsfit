@@ -50,12 +50,6 @@ $dropdown_top_bottom_margin: 10px;
 	margin: 0;
 	padding: 0;
 }
-
-.site-header .newsfit-topbar .newsfit-navigation ul li.current-menu-item,
-.site-header .newsfit-topbar .newsfit-navigation ul li.current-menu-ancestor {
-	color: $white_color;
-}
-
 .newsfit-navigation {
 	flex: 1;
 	display: flex;
@@ -136,7 +130,7 @@ $dropdown_top_bottom_margin: 10px;
 	top: 100%;
 	z-index: 10;
 	padding: 0;
-	width: 240px;
+	width: $dropdown_width;
 	text-align: left;
 	background-color: $white_color;
 	box-shadow: 0 0 2.1875rem 0 rgba(0, 0, 0, 0.1);
@@ -150,13 +144,13 @@ $dropdown_top_bottom_margin: 10px;
 .newsfit-navigation ul > li:hover > ul {
 	opacity: 1;
 	visibility: visible;
-	@include transition(all $time $ease);
+	@include transition_default();
 }
 
 .newsfit-navigation ul li ul li ul {
 	left: 100%;
 	top: 0;
-	width: 240px;
+	width: $dropdown_width;
 }
 
 .newsfit-navigation ul li ul li {
@@ -177,8 +171,9 @@ $dropdown_top_bottom_margin: 10px;
 	text-transform: inherit;
 	padding: 4px 27px 4px 18px;
 	font-weight: 500;
-	font-size: 14px;
 	z-index: 2;
+	@include font_size(14px);
+	@include transition_default();
 }
 
 .newsfit-navigation ul li ul li:first-child {
@@ -232,7 +227,7 @@ $dropdown_top_bottom_margin: 10px;
 	border-left: none;
 	border-top: none;
 	margin-left: 8px;
-	@include transition(all $time $ease);
+	@include transition_default();
 }
 
 .newsfit-navigation .dropdown-menu .caret {
@@ -359,7 +354,7 @@ Mega-menu CSS
 
 .newsfit-navigation ul li.mega-menu > ul.dropdown-menu > li > a {
 	font-weight: 700;
-	font-size: 16px;
+	@include font_size(16px);
 	margin-bottom: 20px;
 }
 
@@ -394,7 +389,7 @@ Menu icon style
 		flex-direction: column;
 		justify-content: space-between;
 		margin-top: -6px;
-		@include transition(all $time $ease);
+		@include transition_default();
 	}
 
 	.menu-bar span {
@@ -402,7 +397,7 @@ Menu icon style
 		width: 100%;
 		background-color: $body_color;
 		border-radius: 12px;
-		@include transition(all $time $ease);
+		@include transition_default();
 		transform: translateX(0);
 
 		&:nth-child(2) {
@@ -414,7 +409,7 @@ Menu icon style
 		position: relative;
 	}
 
-	.rticon-search svg {
+	svg {
 		width: 22px;
 		height: 22px;
 	}
@@ -425,21 +420,23 @@ Menu icon style
 	&.show .newsfit-search-form {
 		visibility: visible;
 		opacity: 1;
-		top: 55px;
-		@include transition(all $time $ease);
+		top: 51px;
+		border: 1px solid rgba(255,255,255,.1);
+		@include transition_default();
 	}
+
 	.newsfit-search-form {
 		position: absolute;
-		top: 100px;
+		top: 70px;
 		right: 0;
 		width: 300px;
-		padding: 15px;
-		background: $white_color;
-		border: 1px solid #ddd;
+		padding: 5px 30px 6px;
+		background: rgba($title_rgb, 0.9);
 		opacity: 0;
 		visibility: hidden;
 		z-index: 9999;
-
+		border-radius: 30px;
+		font-size: $base_font - 1;
 
 		.search-box {
 			position: relative;
@@ -449,13 +446,14 @@ Menu icon style
 			width: 100%;
 			height: 40px;
 			padding: 5px;
-			border: 1px solid #ddd;
+			border: none;
+			background: none;
 			transition: 0.4s;
+			color: $meta_color;
 
 			&:hover,
 			&:focus {
 				outline: none;
-				border-color: $primary_color;
 			}
 		}
 
@@ -500,6 +498,14 @@ Off canvas drawer
 		padding: 8px 40px 8px 0;
 		display: block;
 		position: relative;
+		color: $title_color;
+		&:hover {
+			color: $primary_color;
+		}
+	}
+	ul li.current-menu-item > a,
+	ul li.current-menu-ancestor > a {
+		color: $primary_color;
 	}
 
 	.caret {
@@ -507,13 +513,17 @@ Off canvas drawer
 		top: 50%;
 		transform: translateY(-50%);
 		right: 0;
-		width: 30px;
-		height: 30px;
+		width: 32px;
+		height: 32px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border: 1px solid #ccccd5;
+		border: 1px solid $meta_color;
+		background-color: $meta_color;
 		border-radius: 50%;
+		svg {
+			fill: $white_color;
+		}
 	}
 
 	ul ul {
@@ -567,14 +577,10 @@ Topbar Navigation
 **********************/
 
 .newsfit-topbar {
-
-	font-size: 14px;
-	line-height: 24px;
+	@include font_size(13px);
 	border-bottom: 1px solid rgba($black_color, 0.1);
-	padding: 3px 0;
-	background: $topbar_bg;
-	color: $topbar_color;
-
+	background: rgba($title_rgb, 0.9);
+	color: $gray3_color;
 
 	.social-icon {
 		display: inline-flex;
@@ -595,21 +601,41 @@ Topbar Navigation
 		[class*=rticon] svg {
 			width: 15px;
 			height: 15px;
-			fill: $topbar_color;
+			fill: $gray3_color;
 		}
 	}
 
+
 	#topbar-menu {
-		ul li a {
-			padding: 4px 20px 4px 0;
-			color: inherit;
+		ul.newsfit-topbar-menu > li > a {
+			color: $gray3_color;
 		}
 
-		ul li ul li a {
+		ul li a {
+			padding: 5px 20px 5px 0;
+			color: inherit;
+			font-weight: normal;
+		}
+
+		ul ul li a {
 			font-size: 0.95em;
 			line-height: 1.6em;
 			padding: 3px 27px 3px 18px;
 			color: $body_color;
+		}
+
+		ul ul li a:hover {
+			color: $primary_color;
+		}
+
+		ul.newsfit-topbar-menu > li.current-menu-item > a,
+		ul.newsfit-topbar-menu > li.current-menu-ancestor > a {
+			color: $white_color !important;
+		}
+
+		ul ul li.current_page_item > a,
+		ul ul li.current-menu-ancestor > a {
+			color: $primary_color !important;
 		}
 
 		.newsfit-topbar-menu > li .dropdown-menu li a .caret svg {
@@ -618,15 +644,18 @@ Topbar Navigation
 
 		.newsfit-topbar-menu > li > a .caret svg {
 			transform: scale(0.8);
-			fill: $topbar_color;
+			fill: $gray3_color;
 		}
 	}
 
 }
 
 .has-transparent-header .site-header .newsfit-topbar * {
-	color: $topbar_color !important;
+	color: $gray3_color !important;
 }
+
+
+
 
 //Sticky Menu CSS
 .rt-sticky {
@@ -685,32 +714,53 @@ body.admin-bar .rt-sticky {
 			pointer-events: none;
 		}
 
+		.main-header-section:not(.rt-sticky) {
+			background: none !important;
+		}
+
 		.site-branding h1 a,
 		.newsfit-navigation *,
 		.newsfit-navigation ul li a {
-			color: $white_color;
+			color: $transparent_menu_color;
+		}
+
+
+		.newsfit-navigation ul li.current-menu-item > a,
+		.newsfit-navigation ul li.current-menu-ancestor > a {
+			color: #ffffff;
+		}
+
+
+		.newsfit-navigation ul li a svg {
+			opacity: 0.7;
 		}
 
 		.menu-bar span {
-			background-color: $white_color;
+			background-color: $transparent_menu_color !important;
 		}
 
 		.newsfit-topbar .caret svg,
 		.main-header-section .caret svg {
 			fill: $white_color;
+			width: 9px;
+			height: 9px;
 		}
 
 		.newsfit-navigation ul > li > ul {
-			background-color: $body_color;
+			background-color: rgba($title_rgb, 0.9);
 		}
 
-		.menu-icon-wrapper .rticon-search svg {
-			fill: $white-color;
+		.newsfit-navigation ul > li > ul li > a:hover {
+			background-color: rgba(255,255,255,.2);
+		}
+
+		.menu-icon-wrapper svg {
+			fill: $transparent_menu_color;
 		}
 	}
 
 	.rt-sticky {
-		background: $body_color;
+		background: rgba($title_rgb, 0.94);
 	}
 
 }

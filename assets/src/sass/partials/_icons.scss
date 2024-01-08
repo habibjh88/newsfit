@@ -10,5 +10,5 @@
 }
 [class*='rticon'] svg,
 [class*='rticon'] svg * {
-	@include transition(all $time $ease);
+	@include transition_default();
 }

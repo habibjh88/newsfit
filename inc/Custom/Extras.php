@@ -40,10 +40,14 @@ class Extras {
 
 		if ( Opt::$has_tr_header ) {
 			$classes[] = 'has-transparent-header';
+		} else {
+			$classes[] = 'no-transparent-header';
 		}
 
-		if ( Opt::$has_breadcrumb ) {
-			$classes[] = 'has-breadcrumb';
+		if ( Opt::$has_banner ) {
+			$classes[] = 'has-banner';
+		} else {
+			$classes[] = 'no-banner';
 		}
 
 		if ( newsfit_option( 'rt_sticy_header' ) ) {

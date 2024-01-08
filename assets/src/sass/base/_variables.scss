@@ -35,17 +35,23 @@ $secondary_color: var(--rt-secondary-color, #131619);
 $body_color: var(--rt-body-color, #3D3E41);
 $title_color: var(--rt-title-color, #161D25);
 $meta_color: var(--rt-meta-color, #808993);
-$gray1_color: var(--rt-gray1-color, #D0D0D0);
-$gray2_color: var(--rt-gray2-color, #E6E6E6);
-
-$topbar_bg: #283136;
-$topbar_color: #bcbec3;
-
-$primary_rgb: var(--rt-primary-rgb);
-$secondary_rgb: var(--rt-secondary-rgb);
+$gray1_color: var(--rt-gray1-color, #E6E6E6);
+$gray2_color: var(--rt-gray2-color, #D0D0D0);
+$gray3_color: var(--rt-gray3-color, #bfc7d7);
 
 $white_color: #FFFFFF;
 $black_color: #000000;
+
+$body_rgb: var(--rt-body-rgb);
+$title_rgb: var(--rt-title-rgb);
+$primary_rgb: var(--rt-primary-rgb);
+$secondary_rgb: var(--rt-secondary-rgb);
+
+/*-------------------------
+*  Headers
+*--------------------------*/
+$dropdown_width: 210px;
+$transparent_menu_color: rgba(255, 255, 255, 0.9);
 
 // custom colours
 
@@ -57,8 +63,8 @@ $colors: (
 	'body': $body_color,
 	'title': $title_color,
 	'meta': $meta_color,
-	'grey1': $gray1_color,
-	'grey2': $gray2_color,
+	'grey1': $gray2_color,
+	'grey2': $gray1_color,
 	'white': $white_color,
 	'black': $black_color,
 );
@@ -66,9 +72,10 @@ $colors: (
 /*-------------------------
 *  Typography
 *--------------------------*/
-$base-font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base_font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$heading_font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$base_fs: 17px;
+$base_fs: 16px;
 
 /*-------------------------
 *  Animations

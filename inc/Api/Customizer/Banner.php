@@ -34,7 +34,7 @@ class Banner extends Customizer {
 			'rt_banner' => [
 				'type'    => 'switch',
 				'label'   => __( 'Banner Visibility', 'newsfit' ),
-				'default' => 1
+				'default' => 0
 			],
 
 			'rt_banner_style' => [
@@ -78,11 +78,19 @@ class Banner extends Customizer {
 			'rt_banner1' => [
 				'type'  => 'heading',
 				'label' => __( 'Breadcrumb Settings', 'newsfit' ),
+				'condition'   => [ 'rt_banner' ]
 			],
 
 			'rt_breadcrumb' => [
 				'type'    => 'switch',
 				'label'   => __( 'Banner Content (Breadcrumb) Visibility', 'newsfit' ),
+				'default' => 1,
+				'condition'   => [ 'rt_banner' ]
+			],
+
+			'rt_breadcrumb_border' => [
+				'type'    => 'switch',
+				'label'   => __( 'Breadcrumb Border', 'newsfit' ),
 				'default' => 1
 			],
 

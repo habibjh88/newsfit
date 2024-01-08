@@ -9,13 +9,13 @@
 @import 'base/variables';
 @import 'base/mixins';
 @import 'base/animations';
-@import 'base/body';
 @import 'base/default';
 @import 'base/containers';
 @import 'base/grid';
 @import 'base/spacing';
 @import 'base/wordpress';
 @import 'base/forms';
+@import 'base/theme';
 
 /*--------------------------------------------------------------
 # Partials
@@ -27,13 +27,12 @@
 @import 'partials/helpers';
 @import 'partials/icons';
 @import 'partials/media';
-@import 'partials/breadcrumb';
-@import 'partials/newsfit';
 
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
 @import 'components/header';
+@import 'components/breadcrumb';
 @import 'components/sidebar';
 @import 'components/widgets';
 @import 'components/footer';

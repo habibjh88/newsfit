@@ -1,64 +1,71 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
 
 body {
-	font-family: $base-font;
+	font-family: $base_font;
 	font-weight: 400;
 
-	@include font-size($base_fs, $base_fs * 1.5, 0.5px);
+	@include font_size($base_fs);
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, h5, h6, {
+	font-family: $heading_font;
+	margin: 0 0 15px 0;
+	font-weight: 600;
+	color: $title_color;
+}
+
 // Headings
 h1,
 .h1 {
-	@include font-size(40px);
+	@include font_size(40px);
 
 	@media (max-width: #{$sm}) {
-		@include font-size(26px);
+		@include font_size(26px);
 	}
 }
 
 h2,
 .h2 {
-	@include font-size(26px, 32px, 0.36px);
+	@include font_size(26px);
 
 	@media (max-width: #{$sm}) {
-		@include font-size(20px, 24px, 0.36px);
+		@include font_size(20px);
 	}
 }
 
 h3,
 .h3 {
-	@include font-size(22px, 27px, 0.3px);
+	@include font_size(22px);
 
 	@media (max-width: #{$sm}) {
-		@include font-size(18px, 22px, 0.3px);
+		@include font_size(18px);
 	}
 }
 
 h4,
 .h4 {
-	@include font-size(20px, 26px);
+	@include font_size(20px);
 
 	@media (max-width: #{$sm}) {
-		@include font-size(15px, 20px);
+		@include font_size(15px);
 	}
 }
 
 h5,
 .h5 {
-	@include font-size(18px);
+	@include font_size(18px);
 
 	@media (max-width: #{$sm}) {
-		@include font-size(15px);
+		@include font_size(15px);
 	}
 }
 
 small,
 .small {
-	@include font-size(15px, 20px, 0.28px);
+	@include font_size(15px);
 }
 
 // alignments

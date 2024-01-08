@@ -3,7 +3,7 @@ $widget_li_space: 8px;
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-	font-size: 15px;
+	@include font_size(15px);
 	margin: 0 0 30px;
 	color: $body_color;
 }
@@ -136,7 +136,7 @@ $widget_li_space: 8px;
 }
 
 .wp-block-search .wp-block-search__input {
-	border-color: $gray1_color;
+	border-color: $gray2_color;
 }
 
 .widget_block .wp-block-group__inner-container > ul,
@@ -220,13 +220,13 @@ ol.wp-block-latest-comments li:last-child {
 	flex-grow: 1;
 	margin: 0 3px 6px;
 	line-height: 1.5;
-	background-color: $gray2_color;
+	background-color: $gray1_color;
 	color: $primary_color;
 	border-radius: 3px;
 	padding: 10px 13px;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
-	border: 1px solid $gray1_color;
+	border: 1px solid $gray2_color;
 	text-align: center;
 	text-transform: lowercase;
 	font-weight: 500;
@@ -245,7 +245,7 @@ ol.wp-block-latest-comments li:last-child {
 	width: 100%;
 	background-color: transparent;
 	outline: none;
-	border: 1px solid $gray1_color;
+	border: 1px solid $gray2_color;
 }
 
 /*------ Calender ----------*/

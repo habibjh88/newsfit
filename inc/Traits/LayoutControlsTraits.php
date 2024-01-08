@@ -147,17 +147,17 @@ trait LayoutControlsTraits {
 				'label' => esc_html__( 'Others Settings', 'homlisti' ),
 			],
 
-			$prefix . '_padding_top' => [
-				'type'    => 'number',
-				'label'   => esc_html__( 'Content Padding Top (px)', 'homlisti' ),
-				'default' => '100',
-			],
-
-			$prefix . '_padding_bottom' => [
-				'type'    => 'number',
-				'label'   => esc_html__( 'Content Bottom Top (px)', 'homlisti' ),
-				'default' => '100',
-			],
+//			$prefix . '_padding_top' => [
+//				'type'    => 'number',
+//				'label'   => esc_html__( 'Content Padding Top (px)', 'homlisti' ),
+//				'default' => '100',
+//			],
+//
+//			$prefix . '_padding_bottom' => [
+//				'type'    => 'number',
+//				'label'   => esc_html__( 'Content Bottom Top (px)', 'homlisti' ),
+//				'default' => '100',
+//			],
 
 			$prefix . '_footer_style' => [
 				'type'    => 'select',

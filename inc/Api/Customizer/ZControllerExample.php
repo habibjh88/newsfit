@@ -29,6 +29,12 @@ class ZControllerExample extends Customizer {
 	 */
 	public function get_controls(): array {
 		return apply_filters( 'newsfit_test_controls', [
+
+			'rt_reset_customize' => [
+				'type'    => 'heading',
+				'reset'    => '1',
+			],
+
 			'newsfit_heading1' => [
 				'type'        => 'heading',
 				'label'       => __( 'All controls', 'newsfit' ),

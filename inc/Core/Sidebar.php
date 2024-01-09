@@ -35,7 +35,7 @@ class Sidebar {
 			if ( ! empty( $sidebar['description'] ) ) {
 				$description = sprintf( esc_html_x( '%s', 'Widget Description', 'newsfit' ), $sidebar['description'] );
 			}
-			$classes = 'widget col-md-3 ';
+			$classes = 'widget col-lg-3 col-md-6 ';
 			if ( ! empty( $sidebar['class'] ) ) {
 				$classes .= $sidebar['class'];
 			}

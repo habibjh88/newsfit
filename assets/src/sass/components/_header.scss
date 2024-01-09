@@ -50,6 +50,7 @@ $dropdown_top_bottom_margin: 10px;
 	margin: 0;
 	padding: 0;
 }
+
 .newsfit-navigation {
 	flex: 1;
 	display: flex;
@@ -390,6 +391,13 @@ Menu icon style
 		justify-content: space-between;
 		margin-top: -6px;
 		@include transition_default();
+		&:hover span {
+			background: $primary_color;
+		}
+	}
+
+	a:hover svg {
+		fill: $primary_color;
 	}
 
 	.menu-bar span {
@@ -421,7 +429,7 @@ Menu icon style
 		visibility: visible;
 		opacity: 1;
 		top: 51px;
-		border: 1px solid rgba(255,255,255,.1);
+		border: 1px solid rgba(255, 255, 255, .1);
 		@include transition_default();
 	}
 
@@ -430,7 +438,7 @@ Menu icon style
 		top: 70px;
 		right: 0;
 		width: 300px;
-		padding: 5px 30px 6px;
+		padding: 5px 12px 6px 30px;
 		background: rgba($title_rgb, 0.9);
 		opacity: 0;
 		visibility: hidden;
@@ -440,6 +448,11 @@ Menu icon style
 
 		.search-box {
 			position: relative;
+			border: none;
+
+			svg {
+				fill: $meta_color;
+			}
 		}
 
 		input[type=text] {
@@ -457,16 +470,21 @@ Menu icon style
 			}
 		}
 
+		input[type=text]:focus + button {
+			opacity: 1;
+		}
+
 		button {
 			position: absolute;
-			top: 50%;
-			right: 0;
-			transform: translateY(-50%);
+			top: 50% !important;
+			right: 0 !important;
+			transform: translateY(-50%) !important;
 			background: none;
 			border: none;
 			outline: none;
 			height: 100%;
 			padding: 3px 8px 0;
+			opacity: 0;
 		}
 	}
 }
@@ -499,10 +517,12 @@ Off canvas drawer
 		display: block;
 		position: relative;
 		color: $title_color;
+
 		&:hover {
 			color: $primary_color;
 		}
 	}
+
 	ul li.current-menu-item > a,
 	ul li.current-menu-ancestor > a {
 		color: $primary_color;
@@ -521,6 +541,7 @@ Off canvas drawer
 		border: 1px solid $meta_color;
 		background-color: $meta_color;
 		border-radius: 50%;
+
 		svg {
 			fill: $white_color;
 		}
@@ -655,8 +676,6 @@ Topbar Navigation
 }
 
 
-
-
 //Sticky Menu CSS
 .rt-sticky {
 	position: fixed;
@@ -751,7 +770,7 @@ body.admin-bar .rt-sticky {
 		}
 
 		.newsfit-navigation ul > li > ul li > a:hover {
-			background-color: rgba(255,255,255,.2);
+			background-color: rgba(255, 255, 255, .2);
 		}
 
 		.menu-icon-wrapper svg {

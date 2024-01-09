@@ -61,6 +61,14 @@ class Footer extends Customizer {
 				'description' => __( 'Show footer at the top when scrolling down', 'newsfit' ),
 			],
 
+			'rt_footer_copyright' => [
+				'type'        => 'tinymce',
+				'label'       => __( 'Footer Copyright Text', 'newsfit' ),
+				'default'       => __( 'Copyright© [y] Newsfit by <a href="https://radiustheme.com/">RadiusTheme</a>', 'newsfit' ),
+				'description' => __( 'Add [y] flag anywhere for dynamic year.', 'newsfit' ),
+			],
+
+
 
 		] );
 

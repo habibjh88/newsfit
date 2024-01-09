@@ -1,11 +1,40 @@
 .site-footer {
 	position: relative;
+
+	.footer-widgets-wrapper {
+		padding-top: 100px;
+		padding-bottom: 50px;
+		@include font_size(15px)
+	}
+
 	.footer-widgets {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
+
+		.widget-title {
+			margin-bottom: 30px;
+		}
+
 		> .widget {
 			flex-grow: 25;
 		}
+	}
+
+}
+
+
+//Footer Copyright
+.site-footer .footer-copyright-wrapper {
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: $white_color;
+	@include font_size(14px);
+	background: rgba($title_rgb, 0.9);
+
+	a {
+		color: $gray3_color;
 	}
 }

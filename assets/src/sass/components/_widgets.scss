@@ -135,13 +135,9 @@ $widget_li_space: 8px;
 	margin-top: -15px;
 }
 
-.wp-block-search .wp-block-search__input {
-	border-color: $gray2_color;
-}
-
 .widget_block .wp-block-group__inner-container > ul,
 .widget > ul {
-	margin-top: -11px;
+	margin-top: 0;
 }
 
 .widget_block .wp-block-group__inner-container > ul > li:last-child a,
@@ -217,6 +213,9 @@ ol.wp-block-latest-comments li:last-child {
 }
 
 .widget_tag_cloud .tagcloud a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	flex-grow: 1;
 	margin: 0 3px 6px;
 	line-height: 1.5;
@@ -239,7 +238,6 @@ ol.wp-block-latest-comments li:last-child {
 }
 
 /*------ Select ----------*/
-.footer-box select,
 .widget select {
 	padding: 8px 10px;
 	width: 100%;

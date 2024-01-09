@@ -31,24 +31,20 @@ class ColorTopbar extends Customizer {
 
 		return apply_filters( 'newsfit_header_color_controls', [
 
-			'rt_topbar_heading1' => [
-				'type'    => 'heading',
-				'label'   => __( 'Topbar Menu', 'newsfit' ),
-			],
 
 			'rt_topbar_color' => [
 				'type'    => 'alfa_color',
-				'label'   => __( 'Menu Color', 'newsfit' ),
+				'label'   => __( 'Topbar Color', 'newsfit' ),
 			],
 
 			'rt_topbar_active_color' => [
 				'type'    => 'alfa_color',
-				'label'   => __( 'Menu Hover & Active Color', 'newsfit' ),
+				'label'   => __( 'Hover & Active Color', 'newsfit' ),
 			],
 
 			'rt_topbar_bg_color' => [
 				'type'    => 'alfa_color',
-				'label'   => __( 'Menu Background Color', 'newsfit' ),
+				'label'   => __( 'Topbar Background', 'newsfit' ),
 			],
 
 			/*

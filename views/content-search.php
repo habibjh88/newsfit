@@ -48,6 +48,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php newsfit\core\tags::entry_footer(); ?>
+		Footer Content
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

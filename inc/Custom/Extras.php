@@ -30,6 +30,9 @@ class Extras {
 
 		// Adds a class of group-blog to blogs with more than 1 published author.
 
+		$classes[] = 'newsfit-header-' . Opt::$header_style;
+		$classes[] = 'newsfit-footer-' . Opt::$footer_style;
+
 		if ( is_multi_author() ) {
 			$classes[] = 'group-blog';
 		}
@@ -174,7 +177,8 @@ class Extras {
             <div class="search-box">
 				<input type="text" class="form-control" placeholder="' . esc_attr__( 'Search here...', 'newsfit' ) . '" value="' . get_search_query() . '" name="s" />
 				<button class="item-btn" type="submit">
-					<span class="rticon-search"></span>
+					<span class="rticon-search">' . newsfit_get_svg( 'search' ) . '</span>
+					<span class="btn-label">'.esc_html__("Search", "newsfit").'</span>
 				</button>
             </div>
 		</form>

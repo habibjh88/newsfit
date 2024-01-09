@@ -26,7 +26,7 @@ class DynamicStyles {
 	function minify_css( $css ) {
 		$css = preg_replace( '/\/\*[^*]*\*+([^\/][^*]*\*+)*\//', '', $css ); // Remove comments
 		$css = preg_replace( '/\s+/', ' ', $css ); // Remove multiple spaces
-		$css = preg_replace( '/\s*([\{\};,:])\s*/', '$1', $css ); // Remove spaces around { } ; : ,
+		$css = preg_replace( '/\s*([\{\};])\s*/', '$1', $css ); // Remove spaces around { } ; : ,
 
 		return $css;
 	}
@@ -72,6 +72,7 @@ class DynamicStyles {
 		$this->header_css();
 		$this->breadcrumb_css();
 		$this->content_padding_css();
+		$this->footer_css();
 
 		return ob_get_clean();
 	}
@@ -87,14 +88,17 @@ class DynamicStyles {
 		?>
 
 		<?php if ( ! empty( $rt_topbar_color ) ) : ?>
-			body .has-transparent-header .site-header .newsfit-topbar *:not(.dropdown-menu *),
-			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li > *:not(.dropdown-menu *) {
+
+			body .site-header .newsfit-topbar .topbar-container *:not(.dropdown-menu *) {
 			color: <?php echo esc_attr( $rt_topbar_color ); ?>!important;
+			}
+			body .site-header .newsfit-topbar .topbar-container svg:not(.dropdown-menu svg) {
+			fill: <?php echo esc_attr( $rt_topbar_color ); ?>!important;
 			}
 		<?php endif; ?>
 
 		<?php if ( ! empty( $rt_topbar_active_color ) ) : ?>
-			body .newsfit-topbar a:hover,
+			body .site-header .newsfit-topbar .topbar-container a:hover:not(.dropdown-menu a:hover),
 			body .newsfit-topbar #topbar-menu ul ul li.current_page_item > a,
 			body .newsfit-topbar #topbar-menu ul ul li.current-menu-ancestor > a,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-item > a,
@@ -102,6 +106,8 @@ class DynamicStyles {
 			color: <?php echo esc_attr( $rt_topbar_active_color ); ?> !important;
 			}
 
+			body .site-header .newsfit-topbar .topbar-container a:hover:not(.dropdown-menu a:hover svg) svg,
+			body .newsfit-topbar #topbar-menu ul ul li.current-menu-ancestor > a svg,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-item > a svg,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-ancestor > a svg {
 			fill: <?php echo esc_attr( $rt_topbar_active_color ); ?> !important;
@@ -282,6 +288,54 @@ class DynamicStyles {
 		<?php endif; ?>
 		}
 		<?php
+	}
+
+	/**
+	 * Footer CSS
+	 * @return void
+	 */
+	protected function footer_css() {
+		$rt_footer_text          = newsfit_option( 'rt_footer_text' );
+		$rt_footer_link          = newsfit_option( 'rt_footer_link' );
+		$rt_footer_link_hover    = newsfit_option( 'rt_footer_link_hover' );
+		$rt_footer_input_border  = newsfit_option( 'rt_footer_input_border' );
+		$rt_footer_bg            = newsfit_option( 'rt_footer_bg' );
+		$rt_footer_widget_title  = newsfit_option( 'rt_footer_widget_title' );
+		$rt_copyright_text       = newsfit_option( 'rt_copyright_text' );
+		$rt_copyright_link       = newsfit_option( 'rt_copyright_link' );
+		$rt_copyright_link_hover = newsfit_option( 'rt_copyright_link_hover' );
+		$rt_copyright_bg         = newsfit_option( 'rt_copyright_bg' );
+		?>
+		<?php if ( ! empty( $rt_footer_text ) ) : ?>
+			body .site-footer *:not(a) {color: <?php echo esc_attr( $rt_footer_text ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_footer_link ) ) : ?>
+			body .site-footer a {color: <?php echo esc_attr( $rt_footer_link ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_footer_link_hover ) ) : ?>
+			body .site-footer a:hover {color: <?php echo esc_attr( $rt_footer_link_hover ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_footer_bg ) ) : ?>
+			body .site-footer, body .site-footer select option {background-color: <?php echo esc_attr( $rt_footer_bg ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_footer_input_border ) ) : ?>
+			.site-footer .widget :is(td, th, select, .search-box) {border-color: <?php echo esc_attr( $rt_footer_input_border ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_footer_widget_title ) ) : ?>
+			body .site-footer .widget-title {color: <?php echo esc_attr( $rt_footer_widget_title ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_copyright_text ) ) : ?>
+			body .site-footer .footer-copyright-wrapper {color: <?php echo esc_attr( $rt_copyright_text ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_copyright_link ) ) : ?>
+			body .site-footer .footer-copyright-wrapper a {color: <?php echo esc_attr( $rt_copyright_link ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_copyright_link_hover ) ) : ?>
+			body .site-footer .footer-copyright-wrapper a:hover {color: <?php echo esc_attr( $rt_copyright_link_hover ); ?>;}
+		<?php endif; ?>
+		<?php if ( ! empty( $rt_copyright_bg ) ) : ?>
+			body .site-footer .footer-copyright-wrapper {background-color: <?php echo esc_attr( $rt_copyright_bg ); ?>;}
+		<?php endif;
 	}
 
 }

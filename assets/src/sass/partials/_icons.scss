@@ -8,7 +8,6 @@
 	width: 16px;
 	height: 16px;
 }
-[class*='rticon'] svg,
-[class*='rticon'] svg * {
+[class*='rticon'] svg {
 	@include transition_default();
 }

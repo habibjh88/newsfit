@@ -31,16 +31,27 @@ class Footer extends Customizer {
 
 		return apply_filters( 'newsfit_footer_controls', [
 
-			'rt_footer_style' => [
+			'rt_footer_layout' => [
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',
 				'choices' => newsfit_header_presets()
 			],
 
+			/*'rt_footer_style' => [
+				'type'    => 'select',
+				'label'   => __( 'Footer Style', 'newsfit' ),
+				'default' => '',
+				'choices' => [
+					''      => __( 'Default', 'newsfit' ),
+					'footer-light' => __( 'Light Footer', 'newsfit' ),
+					'footer-dark'  => __( 'Dark Footer', 'newsfit' ),
+				]
+			],*/
+
 			'rt_footer_width' => [
 				'type'    => 'select',
-				'label'   => __( 'Header Width', 'newsfit' ),
+				'label'   => __( 'Footer Width', 'newsfit' ),
 				'default' => '',
 				'choices' => [
 					''       => __( 'Box Width', 'newsfit' ),
@@ -50,7 +61,7 @@ class Footer extends Customizer {
 
 			'rt_footer_max_width' => [
 				'type'        => 'number',
-				'label'       => __( 'Header Max Width (PX)', 'newsfit' ),
+				'label'       => __( 'Footer Max Width (PX)', 'newsfit' ),
 				'description' => __( 'Enter a number greater than 1440. Remove value for 100%', 'newsfit' ),
 				'condition'   => [ 'rt_footer_width', '==', '-fluid' ]
 			],
@@ -64,10 +75,9 @@ class Footer extends Customizer {
 			'rt_footer_copyright' => [
 				'type'        => 'tinymce',
 				'label'       => __( 'Footer Copyright Text', 'newsfit' ),
-				'default'       => __( 'Copyright© [y] Newsfit by <a href="https://radiustheme.com/">RadiusTheme</a>', 'newsfit' ),
+				'default'     => __( 'Copyright© [y] Newsfit by <a href="https://radiustheme.com/">RadiusTheme</a>', 'newsfit' ),
 				'description' => __( 'Add [y] flag anywhere for dynamic year.', 'newsfit' ),
 			],
-
 
 
 		] );

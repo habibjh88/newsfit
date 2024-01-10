@@ -17,9 +17,12 @@
 		height: 100%;
 		border: none;
 		border-radius: 0;
-		color: $white_color;
+		color: $meta_color;
+		background: transparent;
 		svg {
-			fill: $white_color;
+			fill: $meta_color;
+			width: 22px;
+			height: 22px;
 		}
 		.btn-label {
 			display: none;

@@ -10,7 +10,7 @@
 ?>
 
 <div class="newsfit-topbar">
-	<div class="topbar-container container<?php echo newsfit_option( 'rt_header_width' ) ?>">
+	<div class="topbar-container rt-container<?php echo newsfit_option( 'rt_header_width' ) ?>">
 		<div class="row ml-0 mr-0">
 			<nav id="topbar-menu" class="newsfit-navigation pr-10" role="navigation">
 				<?php

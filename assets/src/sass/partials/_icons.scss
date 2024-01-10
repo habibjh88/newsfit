@@ -3,11 +3,13 @@
 	justify-content: center;
 	align-items: center;
 }
+
 [class*='rticon'] svg {
 	fill: $body-color;
-	width: 16px;
-	height: 16px;
+	width: 18px;
+	height: 18px;
 }
+
 [class*='rticon'] svg {
 	@include transition_default();
 }

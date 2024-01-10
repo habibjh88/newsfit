@@ -169,7 +169,7 @@ class DynamicStyles {
 		<?php //Default Header ?>
 		<?php if ( ! empty( $rt_menu_color ) ) : ?>
 			body .main-header-section .newsfit-navigation ul li a {color: <?php echo esc_attr( $rt_menu_color ) ?>;}
-			body .main-header-section [class*=rticon] svg {fill: <?php echo esc_attr( $rt_menu_color ) ?>;}
+			body .main-header-section svg {fill: <?php echo esc_attr( $rt_menu_color ) ?>;}
 			body .main-header-section .menu-icon-wrapper .menu-bar span {background-color: <?php echo esc_attr( $rt_menu_color ) ?>;}
 		<?php endif; ?>
 
@@ -306,6 +306,11 @@ class DynamicStyles {
 		$rt_copyright_link_hover = newsfit_option( 'rt_copyright_link_hover' );
 		$rt_copyright_bg         = newsfit_option( 'rt_copyright_bg' );
 		?>
+
+		<?php if ( newsfit_option( 'rt_footer_width' ) && newsfit_option( 'rt_footer_max_width' ) > 1400 ) : ?>
+			.site-footer .footer-container {width: <?php echo newsfit_option( 'rt_footer_max_width' ); ?>px;max-width: 100%;}
+		<?php endif; ?>
+
 		<?php if ( ! empty( $rt_footer_text ) ) : ?>
 			body .site-footer *:not(a) {color: <?php echo esc_attr( $rt_footer_text ); ?>;}
 		<?php endif; ?>

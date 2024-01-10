@@ -51,6 +51,16 @@ class General extends Customizer {
 				'label' => __( 'Back to Top', 'newsfit' ),
 			],
 
+			'rt_social_icon_style' => [
+				'type'    => 'select',
+				'label'   => __( 'Social Icon Style', 'newsfit' ),
+				'default' => '',
+				'choices' => [
+					''       => __( 'Default Icon', 'newsfit' ),
+					'-square' => __( 'Square Icon', 'newsfit' ),
+				]
+			],
+
 		] );
 
 	}

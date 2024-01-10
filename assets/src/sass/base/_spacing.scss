@@ -1,4 +1,3 @@
-
 @each $space in $allSpacing {
 	.p-#{$space} {
 		padding: #{$space}px;

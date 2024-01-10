@@ -1,12 +1,17 @@
+/* Site Footer
+***************************/
 .site-footer {
 	position: relative;
+}
 
-	.footer-widgets-wrapper {
-		padding-top: 100px;
-		padding-bottom: 50px;
-		@include font_size(15px)
-	}
-
+/* Footer Widget wrapper
+***************************/
+.footer-widgets-wrapper {
+	padding-top: 100px;
+	padding-bottom: 50px;
+	@include font_size(15px);
+	border-top: 1px solid $gray1_color;
+	//Default widgets overwrite
 	.footer-widgets {
 		display: flex;
 		flex-wrap: wrap;
@@ -14,18 +19,33 @@
 
 		.widget-title {
 			margin-bottom: 30px;
+			font-weight: bold;
 		}
 
 		> .widget {
 			flex-grow: 25;
 		}
-	}
 
+		ul {
+			padding-left: 0;
+
+			ul {
+				padding-left: 20px;
+			}
+		}
+	}
 }
 
+/* Footer Menu Wrapper
+***************************/
+.footer-menu-wrapper {
+	border-top: 1px solid $gray1_color;
+}
 
-//Footer Copyright
-.site-footer .footer-copyright-wrapper {
+/* Footer Copyright
+***************************/
+
+.footer-copyright-wrapper {
 	height: 60px;
 	display: flex;
 	justify-content: center;

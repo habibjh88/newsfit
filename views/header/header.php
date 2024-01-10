@@ -9,7 +9,7 @@
 ?>
 
 <div class="main-header-section">
-	<div class="header-container container<?php echo newsfit_option( 'rt_header_width' ) ?>">
+	<div class="header-container rt-container<?php echo newsfit_option( 'rt_header_width' ) ?>">
 
 		<div class="row align-middle m-0">
 

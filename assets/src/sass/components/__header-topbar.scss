@@ -1,0 +1,80 @@
+/* Topbar Navigation
+***************************/
+
+.newsfit-topbar {
+	@include font_size(13px);
+	border-bottom: 1px solid rgba($black_color, 0.1);
+	background: rgba($title_rgb, 0.9);
+	color: $gray3_color;
+
+	.social-icon {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: inherit;
+
+			&:hover svg {
+				fill: $primary_color;
+			}
+		}
+
+		[class*=rticon] svg {
+			width: 15px;
+			height: 15px;
+			fill: $gray3_color;
+		}
+	}
+
+
+	#topbar-menu {
+		ul.newsfit-topbar-menu > li > a {
+			color: $gray3_color;
+		}
+
+		ul li a {
+			padding: 5px 20px 5px 0;
+			color: inherit;
+			font-weight: normal;
+		}
+
+		ul ul li a {
+			font-size: 0.95em;
+			line-height: 1.6em;
+			padding: 3px 27px 3px 18px;
+			color: $body_color;
+		}
+
+		ul ul li a:hover {
+			color: $primary_color;
+		}
+
+		ul.newsfit-topbar-menu > li.current-menu-item > a,
+		ul.newsfit-topbar-menu > li.current-menu-ancestor > a {
+			color: $white_color !important;
+		}
+
+		ul ul li.current_page_item > a,
+		ul ul li.current-menu-ancestor > a {
+			color: $primary_color !important;
+		}
+
+		.newsfit-topbar-menu > li .dropdown-menu li a .caret svg {
+			transform: rotate(-90deg) scale(0.8);
+		}
+
+		.newsfit-topbar-menu > li > a .caret svg {
+			transform: scale(0.8);
+			fill: $gray3_color;
+		}
+	}
+
+}
+
+.has-transparent-header .site-header .newsfit-topbar * {
+	color: $gray3_color !important;
+}

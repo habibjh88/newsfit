@@ -5,3 +5,9 @@
 		clear: both;
 	}
 }
+
+@mixin list_default {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}

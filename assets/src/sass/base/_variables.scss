@@ -4,6 +4,7 @@
 $columns: 12;
 $gutter: 30px;
 $spacing: 20;
+$container_width: 1240px;
 
 /*-------------------------
 *  Spacing
@@ -18,11 +19,12 @@ $mediaSpacing: 30, 50, 80, 100, 120, 150;
 *  Media Queries
 *--------------------------*/
 
-$sm: 768px;
-$md: 992px;
-$lg: 1240px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1140px;
 
-$breakpoints: ('sm': $sm, 'md': $md, 'lg': $lg);
+$breakpoints: ('sm': $sm, 'md': $md, 'lg': $lg, 'xl': $xl);
 
 /*-------------------------
 *  Colours

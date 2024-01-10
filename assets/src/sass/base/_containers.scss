@@ -1,5 +1,7 @@
 .container,
 .container-fluid,
+.rt-container,
+.rt-container-fluid,
 .container-narrow {
 	box-sizing: border-box;
 	width: 100%;
@@ -7,14 +9,25 @@
 	margin-left: auto;
 	padding-right: $gutter / 2;
 	padding-left: $gutter / 2;
-
 	@include clearfix;
 }
 
-.container {
-	max-width: $lg;
-}
-
+.rt-container-fluid,
 .container-fluid {
 	max-width: 100%;
+}
+
+@each $breakpoint, $val in $breakpoints {
+	@media (min-width: $val) {
+		.container {
+			max-width: $val;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.rt-container,
+	.container {
+		max-width: $container_width;
+	}
 }

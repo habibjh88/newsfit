@@ -53,27 +53,22 @@ class Sidebar {
 	}
 
 	function newsfit_in_widget_form( $t, $return, $instance ) {
-		$instance = wp_parse_args( (array) $instance, [ 'title' => '', 'text' => '', 'float' => 'none' ] );
-		if ( ! isset( $instance['float'] ) ) {
-			$instance['float'] = null;
-		}
-		if ( ! isset( $instance['texttest'] ) ) {
-			$instance['texttest'] = null;
+		$instance = wp_parse_args( (array) $instance, [ 'title' => '', 'text' => '', 'widget_cols' => 'none' ] );
+		if ( ! isset( $instance['widget_cols'] ) ) {
+			$instance['widget_cols'] = null;
 		}
 		?>
 		<p>
-			<input id="<?php echo $t->get_field_id( 'width' ); ?>" name="<?php echo $t->get_field_name( 'width' ); ?>" type="checkbox" <?php checked( isset( $instance['width'] ) ? $instance['width'] : 0 ); ?> />
-			<label for="<?php echo $t->get_field_id( 'width' ); ?>"><?php echo esc_html__( 'halbe Breite', 'newsfit' ); ?></label>
-		</p>
-		<p>
-			<label for="<?php echo $t->get_field_id( 'float' ); ?>">Float:</label>
-			<select id="<?php echo $t->get_field_id( 'float' ); ?>" name="<?php echo $t->get_field_name( 'float' ); ?>">
-				<option <?php selected( $instance['float'], 'auto' ); ?> value="auto">none</option>
-				<option <?php selected( $instance['float'], 'left' ); ?>value="left">left</option>
-				<option <?php selected( $instance['float'], 'right' ); ?> value="right">right</option>
+			<label for="<?php echo $t->get_field_id( 'widget_cols' ); ?>"><?php echo esc_html__( 'Column:', 'newsfit' ) ?></label>
+			<select id="<?php echo $t->get_field_id( 'widget_cols' ); ?>" name="<?php echo $t->get_field_name( 'widget_cols' ); ?>">
+				<option value=""><?php echo esc_html__( '--Select--', 'newsfit' ); ?></option>
+				<option <?php selected( $instance['widget_cols'], 'col-xl-6' ); ?> value="col-xl-6"><?php echo esc_html__( '2 Cols', 'newsfit' ); ?></option>
+				<option <?php selected( $instance['widget_cols'], 'col-xl-4' ); ?> value="col-xl-4"><?php echo esc_html__( '3 Cols', 'newsfit' ); ?></option>
+				<option <?php selected( $instance['widget_cols'], 'col-xl-3' ); ?> value="col-xl-3"><?php echo esc_html__( '4 Cols', 'newsfit' ); ?></option>
+				<option <?php selected( $instance['widget_cols'], 'col-xl-2' ); ?> value="col-xl-2"><?php echo esc_html__( '6 Cols', 'newsfit' ); ?></option>
 			</select>
+			<small><?php echo esc_html__( 'The specified column options are optimized for larger displays. When applying this class to a singular widget, it is imperative to extend its usage consistently across other widgets.', 'newsfit' ); ?></small>
 		</p>
-		<input type="text" name="<?php echo $t->get_field_name( 'texttest' ); ?>" id="<?php echo $t->get_field_id( 'texttest' ); ?>" value="<?php echo $instance['texttest']; ?>"/>
 		<?php
 		$retrun = null;
 
@@ -81,9 +76,7 @@ class Sidebar {
 	}
 
 	function newsfit_in_widget_form_update( $instance, $new_instance, $old_instance ) {
-		$instance['width']    = isset( $new_instance['width'] );
-		$instance['float']    = $new_instance['float'];
-		$instance['texttest'] = strip_tags( $new_instance['texttest'] );
+		$instance['widget_cols'] = $new_instance['widget_cols'];
 
 		return $instance;
 	}
@@ -94,14 +87,14 @@ class Sidebar {
 		$widget_obj = $wp_registered_widgets[ $widget_id ];
 		$widget_opt = get_option( $widget_obj['callback'][0]->option_name );
 		$widget_num = $widget_obj['params'][0]['number'];
-		if ( isset( $widget_opt[ $widget_num ]['width'] ) ) {
-			if ( isset( $widget_opt[ $widget_num ]['float'] ) ) {
-				$float = $widget_opt[ $widget_num ]['float'];
-			} else {
-				$float = '';
-			}
-			$params[0]['before_widget'] = preg_replace( '/class="/', 'class="' . $float . ' half ', $params[0]['before_widget'], 1 );
+
+		if ( isset( $widget_opt[ $widget_num ]['widget_cols'] ) ) {
+			$widget_cols = $widget_opt[ $widget_num ]['widget_cols'];
+		} else {
+			$widget_cols = '';
 		}
+		$params[0]['before_widget'] = preg_replace( '/class="/', 'class="' . $widget_cols . ' half ', $params[0]['before_widget'], 1 );
+
 
 		return $params;
 	}

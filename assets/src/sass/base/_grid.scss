@@ -49,6 +49,13 @@
 
 $breakpoint-counter: 0;
 
+@for $i from 1 through $columns {
+	.col-#{$i} {
+		max-width: percentage($i / $columns);
+		flex: 0 0 percentage($i / $columns);
+	}
+}
+
 @each $breakpoint, $val in $breakpoints {
 	$breakpoint-counter: $breakpoint-counter + 1;
 

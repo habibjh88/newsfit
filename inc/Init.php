@@ -39,7 +39,6 @@ final class Init {
 		Custom\Fns::instance();
 		Custom\Hooks::instance();
 		Custom\PostTypes::instance();
-		Custom\Admin::instance();
 		Custom\Extras::instance();
 		Custom\DynamicStyles::instance();
 		Api\Customizer::instance();

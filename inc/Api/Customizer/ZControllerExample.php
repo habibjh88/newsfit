@@ -30,10 +30,12 @@ class ZControllerExample extends Customizer {
 	public function get_controls(): array {
 		return apply_filters( 'newsfit_test_controls', [
 
+			//Reset button
 			'rt_reset_customize' => [
 				'type'    => 'heading',
 				'reset'    => '1',
 			],
+			//Reset button
 
 			'newsfit_heading1' => [
 				'type'        => 'heading',
@@ -134,7 +136,7 @@ class ZControllerExample extends Customizer {
 				'transport' => '',
 			],
 
-			'newsfit_header_presets' => [
+			'newsfit_image_placeholder' => [
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',

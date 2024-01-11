@@ -31,6 +31,18 @@ class Labels extends Customizer {
 
 		return apply_filters( 'newsfit_labels_controls', [
 
+			'rt_header_labels' => [
+				'type'        => 'heading',
+				'label'       => __( 'Header Labels', 'newsfit' ),
+			],
+
+			'rt_get_started_label' => [
+				'type'        => 'text',
+				'label'       => __( 'Get Started', 'newsfit' ),
+				'default'     => __( 'Get Started', 'newsfit' ),
+				'description' => __( 'Context: Menu Button', 'newsfit' ),
+			],
+
 			'rt_follow_us_label' => [
 				'type'        => 'text',
 				'label'       => __( 'Follow Us On:', 'newsfit' ),

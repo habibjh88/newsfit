@@ -4,11 +4,20 @@ button {
 }
 
 .btn {
-	padding: ($gutter * 1.5) ($gutter * 3);
-	border: none;
-	border-radius: 2px;
-
-	@extend .h3;
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: 0;
+	padding: ($base_fs - 2) ($base_fs + 6);
+	@include font_size($base_fs - 1, $base_fs - 1, 0.13px);
+	@include transition_default();
 
 	&:active {
 		box-shadow: none;
@@ -18,21 +27,42 @@ button {
 		outline: none;
 	}
 
-	&.btn-sm {
-		padding: ($gutter * 0.8) ($gutter * 1.8);
+	&.btn-xl {
+		$xl_size: $base_fs + 8;
+		padding: ($base_fs+8) ($base_fs + 16);
+		@include font_size($xl_size, $xl_size, 0.13px);
+	}
 
-		@extend .h5;
+	&.btn-lg {
+		$lg_size: $base_fs + 2;
+		padding: ($base_fs + 2) ($base_fs + 8);
+		@include font_size($lg_size, $lg_size, 0.13px);
+	}
+
+
+	&.btn-sm {
+		$lg_size: $base_fs - 3;
+		padding: ($base_fs - 4) ($base_fs + 4);
+		@include font_size($lg_size, $lg_size, 0.13px);
 	}
 
 	&.btn-xs {
-		padding: ($gutter * 0.8) ($gutter * 1.8);
-
-		@include font_size(13px, 13px, 0.4px);
+		$lg_size: $base_fs - 6;
+		padding: ($base_fs - 5) ($base_fs + 2);
+		@include font_size($lg_size, $lg_size, 0.13px);
 	}
 
-	&.btn-xxs {
-		padding: ($gutter * 0.6) $gutter;
+}
 
-		@include font_size(11px, 11px, 0.4px);
-	}
+//Button style
+.btn-primary {
+	@include button_style($white_color, $primary_color, $primary_dark_color);
+}
+
+.btn-secondary {
+	@include button_style($white_color, $secondary_color, rgba($secondary_rgb, 0.8));
+}
+
+.btn-gray {
+	@include button_style($white_color, $meta_color, $primary_color);
 }

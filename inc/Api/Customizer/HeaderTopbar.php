@@ -41,7 +41,7 @@ class HeaderTopbar extends Customizer {
 				'type'      => 'image_select',
 				'label'     => __( 'Topbar Style', 'newsfit' ),
 				'default'   => '1',
-				'choices'   => newsfit_header_presets(),
+				'choices'   => newsfit_image_placeholder('menu', 1),
 				'condition' => [ 'top_bar' ]
 			],
 

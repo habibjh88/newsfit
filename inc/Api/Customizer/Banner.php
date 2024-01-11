@@ -41,7 +41,7 @@ class Banner extends Customizer {
 				'type'      => 'image_select',
 				'label'     => __( 'Breadcrumb Style', 'newsfit' ),
 				'default'   => '1',
-				'choices'   => newsfit_header_presets(),
+				'choices'   => newsfit_image_placeholder('menu', 1),
 				'condition' => [ 'rt_banner' ]
 			],
 

@@ -35,7 +35,7 @@ class Header extends Customizer {
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',
-				'choices' => newsfit_header_presets()
+				'choices' => newsfit_image_placeholder('menu', 1)
 			],
 
 			'rt_menu_alignment' => [
@@ -50,10 +50,10 @@ class Header extends Customizer {
 			],
 
 			'rt_header_width' => [
-				'type'      => 'select',
-				'label'     => __( 'Header Width', 'newsfit' ),
-				'default'   => '',
-				'choices'   => [
+				'type'    => 'select',
+				'label'   => __( 'Header Width', 'newsfit' ),
+				'default' => '',
+				'choices' => [
 					''       => __( 'Box Width', 'newsfit' ),
 					'-fluid' => __( 'Full Width', 'newsfit' ),
 				]
@@ -73,13 +73,51 @@ class Header extends Customizer {
 			],
 
 			'rt_tr_header' => [
-				'type'    => 'switch',
-				'label'   => __( 'Transparent Header', 'newsfit' ),
+				'type'  => 'switch',
+				'label' => __( 'Transparent Header', 'newsfit' ),
 			],
 
 			'rt_header_border' => [
 				'type'    => 'switch',
 				'label'   => __( 'Header Border', 'newsfit' ),
+				'default' => 1
+			],
+			'rt_header_sep1'   => [
+				'type' => 'separator',
+			],
+
+			'rt_header_login_link' => [
+				'type'      => 'switch',
+				'label'     => __( 'User Login ?', 'newsfit' ),
+				'default'   => 1,
+			],
+
+			'rt_header_search' => [
+				'type'      => 'switch',
+				'label'     => __( 'Search Icon ?', 'newsfit' ),
+				'default'   => 1,
+			],
+
+			'rt_header_bar' => [
+				'type'      => 'switch',
+				'label'     => __( 'Header Bar ?', 'newsfit' ),
+				'description'     => __( 'It will be hide only for desktop.', 'newsfit' ),
+				'default'   => 1,
+			],
+
+			'rt_header_separator' => [
+				'type'      => 'switch',
+				'label'     => __( 'Icon Separator', 'newsfit' ),
+				'default'   => 1,
+			],
+
+			'rt_header_sep2' => [
+				'type' => 'separator',
+			],
+
+			'rt_get_started_button' => [
+				'type'    => 'switch',
+				'label'   => __( 'Get Started Button ?', 'newsfit' ),
 				'default' => 1
 			],
 

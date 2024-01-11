@@ -6,6 +6,9 @@
  *
  * @package newsfit
  */
+
+use RT\NewsFit\Custom\Fns;
+
 ?>
 
 <div class="main-header-section">
@@ -33,22 +36,16 @@
 				?>
 			</nav><!-- .newsfit-navigation -->
 
-			<div class="menu-icon-wrapper d-flex pl-15 ml-auto">
-				<ul class="d-flex gap-15 align-items-center">
-					<li>
-						<a class="menu-bar trigger-off-canvas" href="#">
-							<span></span>
-							<span></span>
-							<span></span>
+			<div class="menu-icon-wrapper d-flex pl-15 ml-auto align-items-center gap-15">
+				<?php Fns::get_menu_icons_group(); ?>
+
+				<?php if ( ! empty( newsfit_option( 'rt_get_started_label' ) ) && newsfit_option( 'rt_get_started_button' ) ) : ?>
+					<div class="newsfit-get-started-btn">
+						<a class="btn btn-primary" href="#">
+							<?php echo esc_html( newsfit_option( 'rt_get_started_label' ) ); ?>
 						</a>
-					</li>
-					<li class="newsfit-search-popup">
-						<a class="menu-search-bar newsfit-search-trigger" href="#">
-							<?php echo newsfit_get_svg( 'search' ); ?>
-						</a>
-						<?php get_search_form(); ?>
-					</li>
-				</ul>
+					</div>
+				<?php endif; ?>
 			</div>
 
 		</div><!-- .row -->

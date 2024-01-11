@@ -82,41 +82,41 @@ class DynamicStyles {
 	 * @return void
 	 */
 	protected function topbar_css() {
-		$rt_topbar_color        = newsfit_option( 'rt_topbar_color' );
-		$rt_topbar_active_color = newsfit_option( 'rt_topbar_active_color' );
-		$rt_topbar_bg_color     = newsfit_option( 'rt_topbar_bg_color' );
+		$_topbar_color        = newsfit_option( 'rt_topbar_color' );
+		$_topbar_active_color = newsfit_option( 'rt_topbar_active_color' );
+		$_topbar_bg_color     = newsfit_option( 'rt_topbar_bg_color' );
 		?>
 
-		<?php if ( ! empty( $rt_topbar_color ) ) : ?>
+		<?php if ( ! empty( $_topbar_color ) ) : ?>
 
 			body .site-header .newsfit-topbar .topbar-container *:not(.dropdown-menu *) {
-			color: <?php echo esc_attr( $rt_topbar_color ); ?>!important;
+			color: <?php echo esc_attr( $_topbar_color ); ?>!important;
 			}
 			body .site-header .newsfit-topbar .topbar-container svg:not(.dropdown-menu svg) {
-			fill: <?php echo esc_attr( $rt_topbar_color ); ?>!important;
+			fill: <?php echo esc_attr( $_topbar_color ); ?>!important;
 			}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $rt_topbar_active_color ) ) : ?>
+		<?php if ( ! empty( $_topbar_active_color ) ) : ?>
 			body .site-header .newsfit-topbar .topbar-container a:hover:not(.dropdown-menu a:hover),
 			body .newsfit-topbar #topbar-menu ul ul li.current_page_item > a,
 			body .newsfit-topbar #topbar-menu ul ul li.current-menu-ancestor > a,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-item > a,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-ancestor > a {
-			color: <?php echo esc_attr( $rt_topbar_active_color ); ?> !important;
+			color: <?php echo esc_attr( $_topbar_active_color ); ?> !important;
 			}
 
 			body .site-header .newsfit-topbar .topbar-container a:hover:not(.dropdown-menu a:hover svg) svg,
 			body .newsfit-topbar #topbar-menu ul ul li.current-menu-ancestor > a svg,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-item > a svg,
 			body .newsfit-topbar #topbar-menu ul.newsfit-topbar-menu > li.current-menu-ancestor > a svg {
-			fill: <?php echo esc_attr( $rt_topbar_active_color ); ?> !important;
+			fill: <?php echo esc_attr( $_topbar_active_color ); ?> !important;
 			}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $rt_topbar_bg_color ) ) : ?>
+		<?php if ( ! empty( $_topbar_bg_color ) ) : ?>
 			body .newsfit-topbar {
-			background-color: <?php echo esc_attr( $rt_topbar_bg_color ); ?>;
+			background-color: <?php echo esc_attr( $_topbar_bg_color ); ?>;
 			}
 		<?php endif; ?>
 
@@ -140,17 +140,17 @@ class DynamicStyles {
 		}
 
 		//Default Menu
-		$rt_menu_color        = newsfit_option( 'rt_menu_color' ) ?? '';
-		$rt_menu_active_color = newsfit_option( 'rt_menu_active_color' ) ?? '';
-		$rt_menu_bg_color     = newsfit_option( 'rt_menu_bg_color' ) ?? '';
+		$_menu_color        = newsfit_option( 'rt_menu_color' ) ?? '';
+		$_menu_active_color = newsfit_option( 'rt_menu_active_color' ) ?? '';
+		$_menu_bg_color     = newsfit_option( 'rt_menu_bg_color' ) ?? '';
 
 		//Transparent Menu
-		$rt_tr_menu_color        = newsfit_option( 'rt_tr_menu_color' ) ?? '';
-		$rt_tr_menu_active_color = newsfit_option( 'rt_tr_menu_active_color' ) ?? '';
+		$_tr_menu_color        = newsfit_option( 'rt_tr_menu_color' ) ?? '';
+		$_tr_menu_active_color = newsfit_option( 'rt_tr_menu_active_color' ) ?? '';
 
-		$rt_topbar_border     = newsfit_option( 'rt_topbar_border' );
-		$rt_header_border     = newsfit_option( 'rt_header_border' );
-		$rt_breadcrumb_border = newsfit_option( 'rt_breadcrumb_border' );
+		$_topbar_border     = newsfit_option( 'rt_topbar_border' );
+		$_header_border     = newsfit_option( 'rt_header_border' );
+		$_breadcrumb_border = newsfit_option( 'rt_breadcrumb_border' );
 		?>
 
 		<?php //Header Logo CSS ?>
@@ -167,56 +167,58 @@ class DynamicStyles {
 		<?php endif; ?>
 
 		<?php //Default Header ?>
-		<?php if ( ! empty( $rt_menu_color ) ) : ?>
-			body .main-header-section .newsfit-navigation ul li a {color: <?php echo esc_attr( $rt_menu_color ) ?>;}
-			body .main-header-section svg {fill: <?php echo esc_attr( $rt_menu_color ) ?>;}
-			body .main-header-section .menu-icon-wrapper .menu-bar span {background-color: <?php echo esc_attr( $rt_menu_color ) ?>;}
+		<?php if ( ! empty( $_menu_color ) ) : ?>
+			body .main-header-section .newsfit-navigation ul li a {color: <?php echo esc_attr( $_menu_color ) ?>;}
+			body .main-header-section svg {fill: <?php echo esc_attr( $_menu_color ) ?>;}
+			body .main-header-section .menu-icon-wrapper .menu-bar span,
+			body .menu-icon-wrapper .has-separator li:not(:last-child):after {background-color: <?php echo esc_attr( $_menu_color ) ?>;}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $rt_menu_active_color ) ) : ?>
+		<?php if ( ! empty( $_menu_active_color ) ) : ?>
 			body .main-header-section .newsfit-navigation ul li a:hover,
 			body .main-header-section .newsfit-navigation ul li.current-menu-item > a,
-			body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a {color: <?php echo esc_attr( $rt_menu_active_color ) ?>;}
-			body .main-header-section .newsfit-navigation ul li.current-menu-item > a svg,body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a svg {fill: <?php echo esc_attr( $rt_menu_active_color ) ?>;}
-			body .main-header-section .menu-icon-wrapper .menu-bar:hover span {background-color: <?php echo esc_attr( $rt_menu_active_color ) ?>;}
-			body .main-header-section a:hover [class*=rticon] svg {fill: <?php echo esc_attr( $rt_menu_active_color ) ?>;}
+			body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a {color: <?php echo esc_attr( $_menu_active_color ) ?>;}
+			body .main-header-section .newsfit-navigation ul li.current-menu-item > a svg,body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a svg {fill: <?php echo esc_attr( $_menu_active_color ) ?>;}
+			body .main-header-section .menu-icon-wrapper .menu-bar:hover span {background-color: <?php echo esc_attr( $_menu_active_color ) ?>;}
+			body .main-header-section a:hover [class*=rticon] svg {fill: <?php echo esc_attr( $_menu_active_color ) ?>;}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $rt_menu_bg_color ) ) : ?>
-			body .main-header-section {background-color: <?php echo esc_attr( $rt_menu_bg_color ) ?>;}
+		<?php if ( ! empty( $_menu_bg_color ) ) : ?>
+			body .main-header-section {background-color: <?php echo esc_attr( $_menu_bg_color ) ?>;}
 		<?php endif; ?>
 
 		<?php //Transparent Header ?>
-		<?php if ( ! empty( $rt_tr_menu_color ) ) : ?>
+		<?php if ( ! empty( $_tr_menu_color ) ) : ?>
 			body.has-transparent-header .site-header .site-branding h1 a,
 			body.has-transparent-header .site-header .newsfit-navigation *,
 			body.has-transparent-header .site-header .newsfit-navigation ul li a {
-			color: <?php echo esc_attr( $rt_tr_menu_color ); ?>;
+			color: <?php echo esc_attr( $_tr_menu_color ); ?>;
 			}
-			body.has-transparent-header .site-header .menu-bar span {
-			background-color: <?php echo esc_attr( $rt_tr_menu_color ); ?> !important;
+			body.has-transparent-header .site-header .menu-bar span,
+			body.has-transparent-header .menu-icon-wrapper .has-separator li:not(:last-child):after {
+			background-color: <?php echo esc_attr( $_tr_menu_color ); ?> !important;
 			}
 
 			body.has-transparent-header .site-header .menu-icon-wrapper svg,
 			body.has-transparent-header .site-header .newsfit-topbar .caret svg,
 			body.has-transparent-header .site-header .main-header-section .caret svg {
-			fill: <?php echo esc_attr( $rt_tr_menu_color ); ?>
+			fill: <?php echo esc_attr( $_tr_menu_color ); ?>
 			}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $rt_tr_menu_active_color ) ) : ?>
+		<?php if ( ! empty( $_tr_menu_active_color ) ) : ?>
 			body.has-transparent-header .site-header .newsfit-navigation ul li a:hover,
 			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-item > a,
 			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-ancestor > a {
-			color: <?php echo esc_attr( $rt_tr_menu_active_color ); ?>
+			color: <?php echo esc_attr( $_tr_menu_active_color ); ?>
 			}
 			body.has-transparent-header .main-header-section .menu-icon-wrapper .menu-bar:hover span {
-			background-color: <?php echo esc_attr( $rt_tr_menu_active_color ); ?> !important;
+			background-color: <?php echo esc_attr( $_tr_menu_active_color ); ?> !important;
 			}
 			body.has-transparent-header .main-header-section a:hover [class*=rticon] svg,
 			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-ancestor > a svg,
 			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-item > a svg {
-			fill: <?php echo esc_attr( $rt_tr_menu_active_color ); ?>
+			fill: <?php echo esc_attr( $_tr_menu_active_color ); ?>
 			}
 		<?php endif; ?>
 		<?php if ( ! empty( $menu_border_bottom ) ) : ?>
@@ -228,13 +230,13 @@ class DynamicStyles {
 		<?php endif; ?>
 
 
-		<?php if ( ! $rt_topbar_border ) : ?>
+		<?php if ( ! $_topbar_border ) : ?>
 			body .newsfit-topbar {border-bottom: none;}
 		<?php endif; ?>
-		<?php if ( ! $rt_header_border ) : ?>
+		<?php if ( ! $_header_border ) : ?>
 			body .main-header-section {border-bottom: none;}
 		<?php endif; ?>
-		<?php if ( ! $rt_breadcrumb_border ) : ?>
+		<?php if ( ! $_breadcrumb_border ) : ?>
 			body .newsfit-breadcrumb-wrapper {border-bottom: none;}
 		<?php endif; ?>
 
@@ -295,51 +297,51 @@ class DynamicStyles {
 	 * @return void
 	 */
 	protected function footer_css() {
-		$rt_footer_text          = newsfit_option( 'rt_footer_text' );
-		$rt_footer_link          = newsfit_option( 'rt_footer_link' );
-		$rt_footer_link_hover    = newsfit_option( 'rt_footer_link_hover' );
-		$rt_footer_input_border  = newsfit_option( 'rt_footer_input_border' );
-		$rt_footer_bg            = newsfit_option( 'rt_footer_bg' );
-		$rt_footer_widget_title  = newsfit_option( 'rt_footer_widget_title' );
-		$rt_copyright_text       = newsfit_option( 'rt_copyright_text' );
-		$rt_copyright_link       = newsfit_option( 'rt_copyright_link' );
-		$rt_copyright_link_hover = newsfit_option( 'rt_copyright_link_hover' );
-		$rt_copyright_bg         = newsfit_option( 'rt_copyright_bg' );
+		$_footer_text          = newsfit_option( 'rt_footer_text' );
+		$_footer_link          = newsfit_option( 'rt_footer_link' );
+		$_footer_link_hover    = newsfit_option( 'rt_footer_link_hover' );
+		$_footer_input_border  = newsfit_option( 'rt_footer_input_border' );
+		$_footer_bg            = newsfit_option( 'rt_footer_bg' );
+		$_footer_widget_title  = newsfit_option( 'rt_footer_widget_title' );
+		$_copyright_text       = newsfit_option( 'rt_copyright_text' );
+		$_copyright_link       = newsfit_option( 'rt_copyright_link' );
+		$_copyright_link_hover = newsfit_option( 'rt_copyright_link_hover' );
+		$_copyright_bg         = newsfit_option( 'rt_copyright_bg' );
 		?>
 
 		<?php if ( newsfit_option( 'rt_footer_width' ) && newsfit_option( 'rt_footer_max_width' ) > 1400 ) : ?>
 			.site-footer .footer-container {width: <?php echo newsfit_option( 'rt_footer_max_width' ); ?>px;max-width: 100%;}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $rt_footer_text ) ) : ?>
-			body .site-footer *:not(a) {color: <?php echo esc_attr( $rt_footer_text ); ?>;}
+		<?php if ( ! empty( $_footer_text ) ) : ?>
+			body .site-footer *:not(a) {color: <?php echo esc_attr( $_footer_text ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_footer_link ) ) : ?>
-			body .site-footer a {color: <?php echo esc_attr( $rt_footer_link ); ?>;}
+		<?php if ( ! empty( $_footer_link ) ) : ?>
+			body .site-footer a {color: <?php echo esc_attr( $_footer_link ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_footer_link_hover ) ) : ?>
-			body .site-footer a:hover {color: <?php echo esc_attr( $rt_footer_link_hover ); ?>;}
+		<?php if ( ! empty( $_footer_link_hover ) ) : ?>
+			body .site-footer a:hover {color: <?php echo esc_attr( $_footer_link_hover ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_footer_bg ) ) : ?>
-			body .site-footer, body .site-footer select option {background-color: <?php echo esc_attr( $rt_footer_bg ); ?>;}
+		<?php if ( ! empty( $_footer_bg ) ) : ?>
+			body .site-footer, body .site-footer select option {background-color: <?php echo esc_attr( $_footer_bg ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_footer_input_border ) ) : ?>
-			.site-footer .widget :is(td, th, select, .search-box) {border-color: <?php echo esc_attr( $rt_footer_input_border ); ?>;}
+		<?php if ( ! empty( $_footer_input_border ) ) : ?>
+			.site-footer .widget :is(td, th, select, .search-box) {border-color: <?php echo esc_attr( $_footer_input_border ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_footer_widget_title ) ) : ?>
-			body .site-footer .widget-title {color: <?php echo esc_attr( $rt_footer_widget_title ); ?>;}
+		<?php if ( ! empty( $_footer_widget_title ) ) : ?>
+			body .site-footer .widget-title {color: <?php echo esc_attr( $_footer_widget_title ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_copyright_text ) ) : ?>
-			body .site-footer .footer-copyright-wrapper {color: <?php echo esc_attr( $rt_copyright_text ); ?>;}
+		<?php if ( ! empty( $_copyright_text ) ) : ?>
+			body .site-footer .footer-copyright-wrapper {color: <?php echo esc_attr( $_copyright_text ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_copyright_link ) ) : ?>
-			body .site-footer .footer-copyright-wrapper a {color: <?php echo esc_attr( $rt_copyright_link ); ?>;}
+		<?php if ( ! empty( $_copyright_link ) ) : ?>
+			body .site-footer .footer-copyright-wrapper a {color: <?php echo esc_attr( $_copyright_link ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_copyright_link_hover ) ) : ?>
-			body .site-footer .footer-copyright-wrapper a:hover {color: <?php echo esc_attr( $rt_copyright_link_hover ); ?>;}
+		<?php if ( ! empty( $_copyright_link_hover ) ) : ?>
+			body .site-footer .footer-copyright-wrapper a:hover {color: <?php echo esc_attr( $_copyright_link_hover ); ?>;}
 		<?php endif; ?>
-		<?php if ( ! empty( $rt_copyright_bg ) ) : ?>
-			body .site-footer .footer-copyright-wrapper {background-color: <?php echo esc_attr( $rt_copyright_bg ); ?>;}
+		<?php if ( ! empty( $_copyright_bg ) ) : ?>
+			body .site-footer .footer-copyright-wrapper {background-color: <?php echo esc_attr( $_copyright_bg ); ?>;}
 		<?php endif;
 	}
 

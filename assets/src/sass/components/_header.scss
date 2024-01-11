@@ -63,12 +63,16 @@ $dropdown_top_bottom_margin: 10px;
 		overflow: hidden;
 		flex-direction: column;
 		justify-content: space-between;
-		margin-top: -6px;
 		@include transition_default();
 
 		&:hover span {
 			background: $primary_color;
 		}
+	}
+
+	a {
+		display: flex;
+		justify-content: center;
 	}
 
 	a:hover svg {
@@ -95,6 +99,25 @@ $dropdown_top_bottom_margin: 10px;
 	svg {
 		width: 22px;
 		height: 22px;
+	}
+
+	ul.has-separator {
+		gap: 13px;
+	}
+	.has-separator li:not(:last-child){
+		padding-right: 14px;
+
+		&:after {
+			content: "";
+			position: absolute;
+			right: 0;
+			width: 1px;
+			height: 23px;
+			background: $meta_color;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
 	}
 }
 

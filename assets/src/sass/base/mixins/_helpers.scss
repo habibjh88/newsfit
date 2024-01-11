@@ -11,3 +11,14 @@
 	padding: 0;
 	margin: 0;
 }
+
+@mixin button_style($color, $bg, $bg_hover) {
+	color: $color;
+	background-color: $bg;
+	border-color: $bg;
+	&:hover {
+		color: $color;
+		background-color: $bg_hover;
+		border-color: $bg_hover;
+	}
+}

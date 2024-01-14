@@ -1,0 +1,127 @@
+
+/*===============================
+Section Title
+================================*/
+.elementor-section-wrap {
+	overflow: hidden;
+}
+
+.section-title-wrapper {
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.section-title-wrapper .title-inner-wrapper {
+	position: relative;
+	z-index: 2;
+}
+
+.section-title-wrapper .bg-title-wrap {
+	position: absolute;
+	top: -7px;
+	left: 0;
+	width: 100%;
+	display: none;
+}
+
+.section-title-wrapper .background-title {
+	display: inline-block;
+	font-family: "quentinregular", sans-serif;
+	font-size: 100px;
+	line-height: 130px;
+	color: var(--rt-primary-light2);
+	pointer-events: none;
+	word-break: break-all;
+}
+
+@media (max-width: 767px) {
+	.section-title-wrapper .background-title {
+		font-size: 80px;
+	}
+}
+
+.section-title-wrapper .background-title.outline {
+	-webkit-text-stroke-color: #e5e8f0;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 1px;
+}
+
+.section-title-wrapper .top-sub-title-wrap {
+	display: inline-block;
+}
+
+.section-title-wrapper .top-sub-title {
+	font-size: 15px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	font-family: var(--rt-heading-font);
+	text-transform: uppercase;
+	color: var(--rt-primary-color);
+	font-weight: 500;
+	letter-spacing: 1.1px;
+}
+
+.section-title-wrapper .top-sub-title i {
+	font-size: 7px;
+	margin-right: 5px;
+}
+
+.section-title-wrapper .main-title {
+	font-size: 28px;
+	color: #212121;
+	font-weight: 600;
+	line-height: 1.2;
+	font-family: var(--rt-heading-font);
+}
+
+.section-title-wrapper .description {
+	font-size: 16px;
+	color: #70778a;
+	line-height: 1.5;
+	font-family: var(--rt-body-font);
+}
+
+.section-title-wrapper .description p {
+	margin-bottom: 0;
+}
+
+.section-title-wrapper .description ul {
+	padding-top: 15px;
+}
+
+.section-title-wrapper .description ul li {
+	margin-bottom: 10px;
+}
+
+.section-title-wrapper .description ul li {
+	color: #212121;
+}
+
+.section-title-wrapper .description ul li::before {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	color: var(--rt-primary-color);
+	font-size: 66%;
+	margin-right: 8px;
+	display: inline-block;
+}
+
+.section-title-wrapper a.title-link-button {
+	z-index: 11;
+	position: absolute;
+}
+
+@media (max-width: 574px) {
+	.section-title-wrapper .description br,
+	.section-title-wrapper .main-title br {
+		display: none;
+	}
+
+	.section-title-wrapper .description p {
+		display: inline;
+	}
+}
+
+/* End Section Title */

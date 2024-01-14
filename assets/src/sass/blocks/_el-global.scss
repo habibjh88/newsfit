@@ -1,0 +1,176 @@
+
+/*Default El Counter Button
+===============================*/
+.elementor-counter-circle-style {
+	position: relative;
+	z-index: 1;
+}
+
+.elementor-counter-circle-style .elementor-counter {
+	position: relative;
+}
+
+.elementor-counter-circle-style .elementor-widget-container::before,
+.elementor-counter-circle-style .elementor-counter::before,
+.elementor-counter-circle-style .elementor-counter::after {
+	content: "";
+	position: absolute;
+	top: 36%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #ddd;
+	border-radius: 50%;
+	z-index: -1;
+	transition: 0.4s ease-in-out;
+}
+
+.elementor-counter-circle-style:hover .elementor-widget-container::before,
+.elementor-counter-circle-style:hover .elementor-counter::before,
+.elementor-counter-circle-style:hover .elementor-counter::after {
+	transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.elementor-counter-circle-style .elementor-widget-container::before {
+	transition-delay: .4s;
+}
+
+.elementor-counter-circle-style .elementor-counter::before {
+	transition-delay: .2s;
+}
+
+
+.elementor-counter-circle-style .elementor-widget-container::before {
+	width: 270px;
+	height: 270px;
+	background-image: -moz-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	background-image: -webkit-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	opacity: .1;
+}
+
+.elementor-counter-circle-style .elementor-counter::before {
+	width: 220px;
+	height: 220px;
+	background-image: -moz-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	background-image: -webkit-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	opacity: .4;
+}
+
+.elementor-counter-circle-style .elementor-counter::after {
+	width: 170px;
+	height: 170px;
+	background-image: -moz-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	background-image: -webkit-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+	background-image: -ms-linear-gradient(90deg, rgb(50, 112, 252) 0%, rgb(98, 146, 255) 100%);
+}
+
+/*Elementor Global*/
+.rt-client-logo-2 img,
+.img-grayscale img,
+.box-shadow img,
+.box-shadow-hover img {
+	transition: 0.5s ease-in-out;
+}
+
+.box-shadow img {
+	box-shadow: 0 9px 59px 0 rgba(169, 176, 192, 0.27);
+}
+
+.box-shadow-hover img:hover {
+	box-shadow: 0 9px 59px 0 rgba(169, 176, 192, 0.27);
+}
+
+.img-grayscale img {
+	filter: grayscale(100%);
+}
+
+.img-grayscale img:hover {
+	filter: grayscale(0);
+}
+
+.rt-client-logo-2 img,
+.rt-client-logo img {
+	filter: grayscale(100%);
+	opacity: 0.7;
+}
+
+.rt-client-logo img:hover {
+	filter: none;
+	opacity: 1;
+	box-shadow: 0 9px 59px 0 rgba(var(--rt-primary-rgb), 0.2);
+}
+
+.rt-client-logo-2 img:hover {
+	filter: none;
+	opacity: 1;
+}
+
+
+//Elementor Button
+
+.button-el .button-text {
+	background-color: var(--rt-primary-light2, #dfefeb);
+	color: #70778b;
+	padding: 10px 23px;
+	border-radius: 30px;
+	position: relative;
+	z-index: 1;
+	transition: 0.3s linear;
+	overflow: hidden;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.button-el .button-text i {
+	color: var(--rt-primary-color);
+}
+
+.button-el .button-text::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 100%;
+	right: 0;
+	background: rgba(0, 0, 0, .15);
+	z-index: -1;
+	transition: 0.3s ease-in-out;
+
+}
+
+.button-el .button-text i {
+	display: inline-block;
+	transition: 0.3s;
+}
+
+.button-el .button-text:hover::before {
+	left: 0;
+	width: 100%;
+}
+
+.button-el .button-text span {
+	margin-bottom: 0 !important;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.button-el:hover .button-text {
+	background-color: #dce0ea;
+}
+
+/* Animation image  */
+.elementor-section.has-placeholder .elementor-column,
+.elementor-section.has-placeholder .elementor-column-wrap,
+.elementor-section.has-placeholder .elementor-container,
+.elementor-section.has-placeholder .elementor-widget-wrap {
+	position: static;
+}
+
+/* End Animation image  */
+
+[class*=" rtcl-icon-"]:before, [class^=rtcl-icon-]:before {
+	margin-left: 0;
+	margin-right: 0;
+}
+

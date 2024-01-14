@@ -2,8 +2,8 @@
 	display: flex;
 	flex-direction: row;
 	box-sizing: border-box;
-	margin-right: - $gutter / 2;
-	margin-left: - $gutter / 2;
+	margin-right: - calc($gutter / 2);
+	margin-left: - calc($gutter / 2);
 	flex: 0 1 auto;
 	flex-wrap: wrap;
 
@@ -36,14 +36,14 @@
 	box-sizing: border-box;
 	width: 100%;
 	min-height: 1px;
-	padding-right: $gutter / 2;
-	padding-left: $gutter / 2;
+	padding-right: calc($gutter / 2);
+	padding-left: calc($gutter / 2);
 	flex: 0 0 auto;
 }
 
 @for $i from 1 through $columns {
 	.col-xs-#{$i} {
-		width: percentage($i / $columns);
+		width: percentage(calc(calc($i / $columns)));
 	}
 }
 
@@ -51,8 +51,8 @@ $breakpoint-counter: 0;
 
 @for $i from 1 through $columns {
 	.col-#{$i} {
-		max-width: percentage($i / $columns);
-		flex: 0 0 percentage($i / $columns);
+		max-width: percentage(calc(calc($i / $columns)));
+		flex: 0 0 percentage(calc($i / $columns));
 	}
 }
 
@@ -62,8 +62,8 @@ $breakpoint-counter: 0;
 	@media (min-width: $val) {
 		@for $i from 1 through $columns {
 			.col-#{$breakpoint}-#{$i} {
-				max-width: percentage($i / $columns);
-				flex: 0 0 percentage($i / $columns);
+				max-width: percentage(calc($i / $columns));
+				flex: 0 0 percentage(calc($i / $columns));
 			}
 		}
 

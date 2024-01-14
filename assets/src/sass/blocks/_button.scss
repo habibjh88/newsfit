@@ -1,0 +1,14 @@
+.newsfit-btn .item-btn {
+	font-weight: 500;
+	color: #111111;
+	background-color: #ffffff;
+	border: none;
+	border-radius: 4px;
+	padding: 12px 28px;
+	z-index: 1;
+}
+
+.newsfit-btn .item-btn:hover {
+	background-color: #ffffff;
+	color: var(--rt-primary-color);
+}

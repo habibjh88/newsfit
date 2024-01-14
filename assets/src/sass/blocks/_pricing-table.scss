@@ -1,0 +1,156 @@
+
+/* Start Pricing Table */
+
+.rt-pricing-box-wrapper {
+	border: 1px solid #e5e5e5;
+	padding: 40px;
+	overflow: hidden;
+	border-radius: 10px;
+	transition: 0.3s ease-in-out;
+	z-index: 1;
+	position: relative;
+}
+
+.rt-pricing-box-wrapper::before,
+.rt-pricing-box-wrapper::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	z-index: -1;
+	border-radius: 10px;
+	transition: 0.4s ease-in-out;
+}
+
+.rt-pricing-box-wrapper::before {
+	background-color: #fff;
+}
+
+.rt-pricing-box-wrapper::after {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.rt-pricing-box-wrapper:hover::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+.rt-pricing-box-wrapper hr {
+	border-bottom: 1px solid #e5e5e5;
+	margin: 30px -100px;
+}
+
+.rt-pricing-box-wrapper .plan-name-wrap {
+	margin-bottom: 10px;
+}
+
+.rt-pricing-box-wrapper .plan-name-wrap .plan-name {
+	color: #212121;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-family: var(--rt-heading-font);
+	font-weight: 700;
+	letter-spacing: 1.2px;
+	margin: 0;
+}
+
+.rt-pricing-box-wrapper .price-wrap .price {
+	font-weight: 700;
+	color: #000000;
+	font-size: 32px;
+	line-height: 1.2;
+	font-family: var(--rt-heading-font);
+}
+
+.rt-pricing-box-wrapper .price-wrap .seperator,
+.rt-pricing-box-wrapper .price-wrap .period {
+	font-size: 16px;
+	color: #b2bbc5;
+}
+
+.rt-pricing-box-wrapper .subtitle {
+	font-size: 15px;
+	line-height: 24px;
+	color: #788593;
+	padding-top: 15px;
+}
+
+.rt-pricing-box-wrapper .feature-lists {
+	font-size: 15px;
+	color: #646464;
+}
+
+.rt-pricing-box-wrapper .feature-lists ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.rt-pricing-box-wrapper .feature-lists ul li {
+	line-height: 1.4;
+	margin-bottom: 14px;
+}
+
+.rt-pricing-box-wrapper .feature-lists ul li i {
+	margin-right: 10px;
+}
+
+.rt-pricing-box-wrapper .feature-lists ul li svg {
+	width: 14px;
+	height: 14px;
+	margin-right: 10px;
+}
+
+.rt-pricing-box-wrapper footer {
+	padding-top: 10px;
+}
+
+.rt-pricing-box-wrapper footer .btn {
+	display: block;
+	border-radius: 3px;
+	background-color: rgb(49, 111, 251);
+	box-shadow: 0 14px 18px 0 rgba(0, 0, 0, 0.15);
+	padding: 17px;
+	position: relative;
+	font-size: 14px;
+	font-weight: bold;
+	transition: 0.4s ease-in-out;
+	border: none;
+}
+
+.rt-pricing-box-wrapper footer .btn:after {
+	background-color: var(--rt-primary-color);
+}
+
+.rt-pricing-box-wrapper .icon-holder {
+	position: absolute;
+	top: 66px;
+	right: 63px;
+	font-size: 50px;
+}
+
+.rt-pricing-box-wrapper * {
+	transition: 0.4s ease-in-out;
+}
+
+.rt-pricing-box-wrapper .is-featured {
+	background: var(--rt-primary-color);
+	position: absolute;
+	width: 200px;
+	text-align: center;
+	transform: rotate(41deg);
+	right: -58px;
+	height: 43px;
+	line-height: 43px;
+	top: 16px;
+	font-size: 12px;
+	color: #ffff;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+/* End Pricing Table */

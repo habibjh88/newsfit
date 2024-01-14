@@ -124,7 +124,7 @@ $widget_li_space: 8px;
 }
 
 .widget ul li ul li:first-child {
-	padding-top: $widget_li_space / 2;
+	padding-top: calc($widget_li_space / 2);
 }
 
 .widget ul li a {

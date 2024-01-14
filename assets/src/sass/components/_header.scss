@@ -122,22 +122,22 @@ $dropdown_top_bottom_margin: 10px;
 }
 
 //Main Navigation
-@import "_navigation";
+@import "navigation";
 
 //Mega-menu CSS
-@import "_header-megamenu";
+@import "parts/_header-megamenu";
 
 //Header search
-@import "_header-search";
+@import "parts/_header-search";
 
 // Off canvas drawer
-@import "_header-offcanvas";
+@import "parts/_header-offcanvas";
 
 //Topbar Navigation
-@import "_header-topbar";
+@import "parts/_header-topbar";
 
 // Sticky Menu CSS
-@import "_header-sticky";
+@import "parts/_header-sticky";
 
 //Transparent Header
-@import "_header-transparent";
+@import "parts/_header-transparent";

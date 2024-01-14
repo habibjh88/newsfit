@@ -72,6 +72,7 @@
 
 	ul li a:hover {
 		color: $primary_color;
+
 		svg {
 			fill: $primary_color;
 		}
@@ -206,5 +207,26 @@
 		transform: rotate(-90deg) scale(.9);
 	}
 }
+
+//Navigation offset change if it try to cross the body width
+.newsfit-navbar li > .dropdown-menu li {
+	&.dropdown-inverse .dropdown-menu {
+		left: auto;
+		right: 100%;
+		min-width: 195px;
+		-webkit-transition: all .2s;
+		transition: all .2s;
+	}
+
+	&.dropdown-inverse:hover .dropdown-menu {
+		margin-right: -5px;
+	}
+
+	&.dropdown-inverse-left .dropdown-menu {
+		right: auto;
+		left: 100%;
+	}
+}
+
 
 @import 'parts/_footer-menu';

@@ -31,23 +31,23 @@ class Footer extends Customizer {
 
 		return apply_filters( 'newsfit_footer_controls', [
 
-			'rt_footer_layout' => [
+			'rt_footer_style' => [
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',
-				'choices' => newsfit_image_placeholder('menu', 1)
+				'choices' => newsfit_image_placeholder( 'footer', 2 )
 			],
 
-			/*'rt_footer_style' => [
+			'rt_footer_schema' => [
 				'type'    => 'select',
-				'label'   => __( 'Footer Style', 'newsfit' ),
-				'default' => '',
+				'label'   => __( 'Footer Schema', 'newsfit' ),
+				'default' => 'schema-default',
 				'choices' => [
-					''      => __( 'Default', 'newsfit' ),
-					'footer-light' => __( 'Light Footer', 'newsfit' ),
-					'footer-dark'  => __( 'Dark Footer', 'newsfit' ),
+					'schema-default' => __( 'Default', 'newsfit' ),
+					'footer-light'   => __( 'Light Footer', 'newsfit' ),
+					'footer-dark'    => __( 'Dark Footer', 'newsfit' ),
 				]
-			],*/
+			],
 
 			'rt_footer_width' => [
 				'type'    => 'select',
@@ -79,6 +79,22 @@ class Footer extends Customizer {
 				'description' => __( 'Add [y] flag anywhere for dynamic year.', 'newsfit' ),
 			],
 
+			'rt_footer_heading1' => [
+				'type'  => 'heading',
+				'label' => __( 'Footer Menu Section', 'newsfit' ),
+			],
+
+			'rt_footer_menu_alignment' => [
+				'type'    => 'select',
+				'label'   => __( 'Footer Menu Alignment', 'newsfit' ),
+				'default' => 'align-default',
+				'choices' => [
+					'align-default'          => __( 'Default from style', 'newsfit' ),
+					'justify-content-start'  => __( 'Left', 'newsfit' ),
+					'justify-content-center' => __( 'Center', 'newsfit' ),
+					'justify-content-end'    => __( 'Right', 'newsfit' ),
+				]
+			],
 
 		] );
 

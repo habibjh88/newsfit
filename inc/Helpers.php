@@ -547,3 +547,15 @@ if ( ! function_exists( 'newsfit_modify_color' ) ) :
 	}
 
 endif;
+
+if ( ! function_exists( 'newsfit_classes' ) ) {
+	/**
+	 * Merge all classes
+	 * @param $clsses
+	 *
+	 * @return string
+	 */
+	function newsfit_classes( $clsses ): string {
+		return implode( ' ', $clsses );
+	}
+}

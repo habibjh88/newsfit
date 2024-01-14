@@ -73,10 +73,6 @@ sub {
 	bottom: -0.25em;
 }
 
-img {
-	border: 0;
-}
-
 svg:not(:root) {
 	overflow: hidden;
 }
@@ -85,24 +81,48 @@ figure {
 	margin: 1em 40px;
 }
 
-hr {
-	-webkit-box-sizing: content-box;
-	box-sizing: content-box;
-	height: 0;
-}
-
 pre {
 	overflow: auto;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 }
 
+//Table CSS
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	margin: 15px 0;
+	width: 100%;
 }
+
+table th,
+table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
 
 td,
 th {
 	padding: 0;
+}
+
+//Scrollbar CSS
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: $gray1_color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: $meta_color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: $primary_light_color;
 }

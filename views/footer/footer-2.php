@@ -10,16 +10,6 @@
 $footer_width = 'container'.newsfit_option('rt_footer_width');
 ?>
 
-<?php if ( is_active_sidebar( 'rt-footer-sidebar' ) ) : ?>
-	<div class="footer-widgets-wrapper">
-		<div class="footer-container <?php echo esc_attr($footer_width) ?>">
-			<div class="footer-widgets row">
-				<?php dynamic_sidebar( 'rt-footer-sidebar' ); ?>
-			</div>
-		</div>
-	</div><!-- .site-info -->
-<?php endif; ?>
-
 <?php if ( has_nav_menu( 'footer' ) ) : ?>
 	<div class="footer-menu-wrapper">
 		<div class="footer-container <?php echo esc_attr($footer_width) ?>">

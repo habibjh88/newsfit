@@ -50,6 +50,7 @@ class Layouts {
 			Opt::$banner_image   = $this->check_meta_and_option_value( 'banner_image', false, true );
 			Opt::$banner_height  = $this->check_meta_and_option_value( 'banner_height', false, true );
 			Opt::$footer_style   = $this->check_meta_and_option_value( 'footer_style', false, true );
+			Opt::$footer_schema  = $this->check_meta_and_option_value( 'footer_schema', false, true );
 			Opt::$has_top_bar    = $this->check_meta_and_option_value( 'top_bar', true, true );
 			Opt::$has_tr_header  = $this->check_meta_and_option_value( 'tr_header', true, true );
 			Opt::$has_breadcrumb = $this->check_meta_and_option_value( 'breadcrumb', true, true );
@@ -76,6 +77,7 @@ class Layouts {
 			Opt::$banner_image   = $this->check_option_value( 'banner_image', false, true );
 			Opt::$banner_height  = $this->check_option_value( 'banner_height', false, true );
 			Opt::$footer_style   = $this->check_option_value( 'footer_style', false, true );
+			Opt::$footer_schema  = $this->check_option_value( 'footer_schema', false, true );
 			Opt::$has_top_bar    = $this->check_option_value( 'top_bar', true, true );
 			Opt::$has_tr_header  = $this->check_option_value( 'tr_header', true, true );
 			Opt::$has_breadcrumb = $this->check_option_value( 'breadcrumb', true, true );
@@ -96,6 +98,7 @@ class Layouts {
 		$meta_value      = $this->meta_value[ $key ] ?? 'default';
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
 		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
+
 
 		if ( ! empty( $meta_value ) && $meta_value != 'default' ) { //Check from Meta
 			$result = $meta_value;

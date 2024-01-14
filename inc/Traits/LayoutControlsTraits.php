@@ -44,18 +44,18 @@ trait LayoutControlsTraits {
 
 			$prefix . '_header_heading' => [
 				'type'  => 'heading',
-				'label' => esc_html__( 'Header Settings', 'homlisti' ),
+				'label' => __( 'Header Settings', 'homlisti' ),
 			],
 
 			$prefix . '_header_style' => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => esc_html__( 'Header Layout', 'homlisti' ),
+				'label'   => __( 'Header Layout', 'homlisti' ),
 				'choices' => [
-					'default' => esc_html__( '--Default--', 'homlisti' ),
-					'1'       => esc_html__( 'Layout 1', 'homlisti' ),
-					'2'       => esc_html__( 'Layout 2', 'homlisti' ),
-					'3'       => esc_html__( 'Layout 3', 'homlisti' ),
+					'default' => __( '--Default--', 'homlisti' ),
+					'1'       => __( 'Layout 1', 'homlisti' ),
+					'2'       => __( 'Layout 2', 'homlisti' ),
+					'3'       => __( 'Layout 3', 'homlisti' ),
 				],
 			],
 
@@ -64,9 +64,9 @@ trait LayoutControlsTraits {
 				'label'   => __( 'Top Bar', 'newsfit' ),
 				'default' => 'default',
 				'choices' => [
-					'default' => esc_html__( '--Default--', 'homlisti' ),
-					'on'      => esc_html__( 'On', 'homlisti' ),
-					'off'     => esc_html__( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'homlisti' ),
+					'on'      => __( 'On', 'homlisti' ),
+					'off'     => __( 'Off', 'homlisti' ),
 				]
 			],
 
@@ -96,43 +96,43 @@ trait LayoutControlsTraits {
 			$prefix . '_tr_header'      => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => esc_html__( 'Transparent Header', 'homlisti' ),
+				'label'   => __( 'Transparent Header', 'homlisti' ),
 				'choices' => [
-					'default' => esc_html__( '--Default--', 'homlisti' ),
-					'on'      => esc_html__( 'On', 'homlisti' ),
-					'off'     => esc_html__( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'homlisti' ),
+					'on'      => __( 'On', 'homlisti' ),
+					'off'     => __( 'Off', 'homlisti' ),
 				],
 			],
 			$prefix . '_banner_heading' => [
 				'type'  => 'heading',
-				'label' => esc_html__( 'Banner Settings', 'homlisti' ),
+				'label' => __( 'Banner Settings', 'homlisti' ),
 			],
 
 			$prefix . '_banner' => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => esc_html__( 'Banner Visibility', 'homlisti' ),
+				'label'   => __( 'Banner Visibility', 'homlisti' ),
 				'choices' => [
-					'default' => esc_html__( '--Default--', 'homlisti' ),
-					'on'      => esc_html__( 'On', 'homlisti' ),
-					'off'     => esc_html__( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'homlisti' ),
+					'on'      => __( 'On', 'homlisti' ),
+					'off'     => __( 'Off', 'homlisti' ),
 				],
 			],
 
 			$prefix . '_breadcrumb' => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => esc_html__( 'Banner Content (Breadcrumb) Visibility', 'homlisti' ),
+				'label'   => __( 'Banner Content (Breadcrumb) Visibility', 'homlisti' ),
 				'choices' => [
-					'default' => esc_html__( '--Default--', 'homlisti' ),
-					'on'      => esc_html__( 'On', 'homlisti' ),
-					'off'     => esc_html__( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'homlisti' ),
+					'on'      => __( 'On', 'homlisti' ),
+					'off'     => __( 'Off', 'homlisti' ),
 				],
 			],
 
 			$prefix . '_banner_height' => [
-				'type'    => 'number',
-				'label'   => esc_html__( 'Banner Height (px)', 'homlisti' ),
+				'type'  => 'number',
+				'label' => __( 'Banner Height (px)', 'homlisti' ),
 			],
 
 			$prefix . '_banner_image' => [
@@ -144,30 +144,40 @@ trait LayoutControlsTraits {
 
 			$prefix . '_others_heading' => [
 				'type'  => 'heading',
-				'label' => esc_html__( 'Others Settings', 'homlisti' ),
+				'label' => __( 'Others Settings', 'homlisti' ),
 			],
 
 //			$prefix . '_padding_top' => [
 //				'type'    => 'number',
-//				'label'   => esc_html__( 'Content Padding Top (px)', 'homlisti' ),
+//				'label'   => __( 'Content Padding Top (px)', 'homlisti' ),
 //				'default' => '100',
 //			],
 //
 //			$prefix . '_padding_bottom' => [
 //				'type'    => 'number',
-//				'label'   => esc_html__( 'Content Bottom Top (px)', 'homlisti' ),
+//				'label'   => __( 'Content Bottom Top (px)', 'homlisti' ),
 //				'default' => '100',
 //			],
 
-			$prefix . '_footer_style' => [
+			$prefix . '_footer_style'  => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => esc_html__( 'Footer Layout', 'homlisti' ),
+				'label'   => __( 'Footer Layout', 'homlisti' ),
 				'choices' => [
-					'default' => esc_html__( '--Default--', 'homlisti' ),
-					'1'       => esc_html__( 'Layout 1', 'homlisti' ),
-					'2'       => esc_html__( 'Layout 2', 'homlisti' ),
+					'default' => __( '--Default--', 'homlisti' ),
+					'1'       => __( 'Layout 1', 'homlisti' ),
+					'2'       => __( 'Layout 2', 'homlisti' ),
 				],
+			],
+			$prefix . '_footer_schema' => [
+				'type'    => 'select',
+				'default' => 'default',
+				'label'   => __( 'Footer Schema', 'homlisti' ),
+				'choices' => [
+					'default'        => __( '--Default--', 'homlisti' ),
+					'footer-light'   => __( 'Light Footer', 'newsfit' ),
+					'footer-dark'    => __( 'Dark Footer', 'newsfit' ),
+				]
 			],
 
 

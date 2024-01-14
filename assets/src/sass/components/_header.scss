@@ -82,7 +82,7 @@ $dropdown_top_bottom_margin: 10px;
 	.menu-bar span {
 		height: 2px;
 		width: 100%;
-		background-color: $body_color;
+		background-color: $meta_color;
 		border-radius: 12px;
 		@include transition_default();
 		transform: translateX(0);

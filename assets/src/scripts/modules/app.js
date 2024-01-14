@@ -24,7 +24,28 @@ class App {
 			this.headerSticky($, event);
 		});
 
+		$(window).on('load resize', () => {
+			this.menuOffset($);
+		});
 	}
+
+	menuOffset($) {
+		$(".dropdown-menu > li > ul > li").each(function () {
+			var $this = $(this),
+				$win = $(window);
+
+			console.log($win.scrollLeft())
+
+			if ($this.offset().left + $this.width() > $win.width() + $win.scrollLeft() - $this.width()) {
+				$this.addClass("dropdown-inverse");
+			} else if ($this.offset().left < 250) {
+				$this.addClass("dropdown-inverse-left");
+			} else {
+				$this.removeClass("dropdown-inverse");
+			}
+		});
+	}
+
 
 	headerSticky($, event) {
 

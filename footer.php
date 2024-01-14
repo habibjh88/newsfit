@@ -10,10 +10,14 @@
  */
 
 use RT\NewsFit\Options\Opt;
+$classes = newsfit_classes([
+	'site-footer',
+	Opt::$footer_schema
+]);
 ?>
 </div><!-- #content -->
 
-<footer class="site-footer" role="contentinfo">
+<footer class="<?php echo esc_attr($classes); ?>" role="contentinfo">
 	<?php get_template_part( 'views/footer/footer', Opt::$footer_style ); ?>
 </footer><!-- #colophon -->
 

@@ -41,7 +41,7 @@ class Banner extends Customizer {
 				'type'      => 'image_select',
 				'label'     => __( 'Breadcrumb Style', 'newsfit' ),
 				'default'   => '1',
-				'choices'   => newsfit_image_placeholder('menu', 1),
+				'choices'   => newsfit_image_placeholder( 'menu', 1 ),
 				'condition' => [ 'rt_banner' ]
 			],
 
@@ -74,24 +74,24 @@ class Banner extends Customizer {
 				'condition'   => [ 'rt_banner' ]
 			],
 
-
 			'rt_banner1' => [
-				'type'  => 'heading',
-				'label' => __( 'Breadcrumb Settings', 'newsfit' ),
-				'condition'   => [ 'rt_banner' ]
+				'type'      => 'heading',
+				'label'     => __( 'Breadcrumb Settings', 'newsfit' ),
+				'condition' => [ 'rt_banner' ]
 			],
 
 			'rt_breadcrumb' => [
-				'type'    => 'switch',
-				'label'   => __( 'Banner Content (Breadcrumb) Visibility', 'newsfit' ),
-				'default' => 1,
-				'condition'   => [ 'rt_banner' ]
+				'type'      => 'switch',
+				'label'     => __( 'Banner Content (Breadcrumb) Visibility', 'newsfit' ),
+				'default'   => 1,
+				'condition' => [ 'rt_banner' ]
 			],
 
 			'rt_breadcrumb_border' => [
-				'type'    => 'switch',
-				'label'   => __( 'Breadcrumb Border', 'newsfit' ),
-				'default' => 1
+				'type'      => 'switch',
+				'label'     => __( 'Breadcrumb Border', 'newsfit' ),
+				'default'   => 1,
+				'condition' => [ 'rt_banner' ]
 			],
 
 		] );

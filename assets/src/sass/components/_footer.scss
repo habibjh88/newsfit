@@ -2,6 +2,20 @@
 ***************************/
 .site-footer {
 	position: relative;
+	background: $footer_bg;
+
+	.newsfit-footer-2 & {
+		&.schema-default {
+			background-color: $title_color;
+		}
+		.newsfit-footer-menu > li > a {
+			color: $gray2_color;
+			svg {
+				fill: $gray2_color;
+			}
+		}
+
+	}
 }
 
 /* Footer Widget wrapper
@@ -10,7 +24,7 @@
 	padding-top: 100px;
 	padding-bottom: 50px;
 	@include font_size(15px);
-	border-top: 1px solid $gray1_color;
+
 	//Default widgets overwrite
 	.footer-widgets {
 		display: flex;
@@ -40,6 +54,21 @@
 ***************************/
 .footer-menu-wrapper {
 	border-top: 1px solid $gray1_color;
+
+	.newsfit-footer-1 & {
+		.align-default {
+			justify-content: center;
+		}
+	}
+
+	.newsfit-footer-2 & {
+		padding: 16px 0;
+		border-top: none;
+		border-bottom: 1px solid rgba(255, 255, 255, .1);
+		.align-default {
+			justify-content: end;
+		}
+	}
 }
 
 /* Footer Copyright
@@ -50,7 +79,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: $white_color;
+	color: $gray2_color;
 	@include font_size(14px);
 	background: rgba($title_rgb, 0.9);
 

@@ -49,3 +49,5 @@ $footer_width = 'container'.newsfit_option('rt_footer_width');
 		</div>
 	</div>
 <?php endif; ?>
+
+<?php newsfit_scroll_top(); ?>

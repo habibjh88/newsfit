@@ -1,0 +1,30 @@
+/* Footer Menu Wrapper
+***************************/
+
+.site-footer {
+	.footer-menu-wrapper {
+		border-top: 1px solid $gray20;
+
+		.newsfit-footer-1 & {
+			.align-default {
+				justify-content: center;
+			}
+		}
+	}
+
+	.newsfit-navigation ul > li > ul.depth_0 {
+		bottom: 100%;
+		top: auto;
+	}
+
+	.newsfit-navigation ul li ul li ul {
+		left: 100%;
+		top: auto;
+		bottom: 100%;
+	}
+
+	.newsfit-navigation ul > li:first-child:hover > ul.dropdown-menu {
+		top: auto !important;
+		bottom: -10px !important;
+	}
+}

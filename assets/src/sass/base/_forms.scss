@@ -129,11 +129,11 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
 	color: $body_color;
-	border: 1px solid $gray1_color;
+	border: 1px solid $gray20;
 }
 
 select {
-	border: 1px solid $gray1_color;
+	border: 1px solid $gray20;
 }
 
 input[type="text"]:focus,

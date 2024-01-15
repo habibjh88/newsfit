@@ -86,24 +86,17 @@ class ColorSite extends Customizer {
 				'default' => '#808993'
 			],
 
-			'rt_gray1_color' => [
+			'rt_gray20_color' => [
 				'type'    => 'color',
 				'label'   => __( 'Gray # 1', 'newsfit' ),
 				'default' => '#E6E6E6'
 			],
 
-			'rt_gray2_color' => [
+			'rt_gray40_color' => [
 				'type'    => 'color',
 				'label'   => __( 'Gray # 2', 'newsfit' ),
 				'default' => '#D0D0D0'
 			],
-
-			'rt_gray3_color' => [
-				'type'    => 'color',
-				'label'   => __( 'Gray # 2', 'newsfit' ),
-				'default' => '#bfc7d7'
-			],
-
 
 		] );
 

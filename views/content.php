@@ -7,58 +7,37 @@
  * @package newsfit
  */
 
-$newsfit_textarea = \RT\NewsFit\Options\Opt::$options['newsfit_textarea'];
-var_dump($newsfit_textarea);
+
+$length         = 30;
+$has_entry_meta = true;
 ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'newsfit-post-card' ); ?>>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_single() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+	<?php if ( has_post_thumbnail() ): ?>
+		<div class="post-img">
+			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+			<?php edit_post_link( 'Edit' ); ?>
+		</div>
+	<?php endif; ?>
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				RT\NewsFit\Core\Tags::posted_on();
-				?>
-			</div><!-- .entry-meta -->
+	<div class="post-content">
+
 		<?php
-		endif;
+		if ( $has_entry_meta ) {
+			echo newsfit_post_meta( true, [ 'tag', 'date', 'author' ] );
+		}
 		?>
-	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-				/* translators: %s: Name of current post. */
-					__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'newsfit' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			)
-		);
+		<?php if ( ! empty( get_the_title() ) ): ?>
+			<h2 class="post-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+		<?php endif; ?>
 
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'newsfit' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
+		<div class="post-excerprt-wrap">
+			<?php echo wp_trim_words( get_the_excerpt(), $length ); ?>
+		</div>
+		<a href="<?php the_permalink(); ?>" class="item-btn">
+			<?php esc_html_e( 'Read More', 'homlisti' ); ?>
+		</a>
+	</div>
 
-	<footer class="entry-footer">
-		<?php RT\NewsFit\Core\Tags::entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+</article>

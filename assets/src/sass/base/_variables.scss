@@ -37,9 +37,8 @@ $secondary_color: var(--rt-secondary-color, #131619);
 $body_color: var(--rt-body-color, #3D3E41);
 $title_color: var(--rt-title-color, #161D25);
 $meta_color: var(--rt-meta-color, #808993);
-$gray1_color: var(--rt-gray1-color, #E6E6E6);
-$gray2_color: var(--rt-gray2-color, #D0D0D0);
-$gray3_color: var(--rt-gray3-color, #bfc7d7);
+$gray20: var(--rt-gray20, #E6E6E6);
+$gray40: var(--rt-gray40, #D0D0D0);
 $footer_bg: #F7F7F7;
 
 $white_color: #FFFFFF;
@@ -66,8 +65,8 @@ $colors: (
 	'body': $body_color,
 	'title': $title_color,
 	'meta': $meta_color,
-	'grey1': $gray2_color,
-	'grey2': $gray1_color,
+	'grey1': $gray40,
+	'grey2': $gray20,
 	'white': $white_color,
 	'black': $black_color,
 );

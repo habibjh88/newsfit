@@ -23,7 +23,25 @@ $classes = newsfit_classes([
 
 </div><!-- #page -->
 
-<?php wp_footer(); ?>
+<?php wp_footer();
+
+
+
+$all_post = get_posts(
+	[
+		'post_type'=>'post',
+		'posts_per_page' =>-1
+	]
+);
+foreach($all_post as $item){
+//	update_post_meta( $item->ID, '_thumbnail_id', 2299 );
+}
+
+
+
+
+
+?>
 
 </body>
 </html>

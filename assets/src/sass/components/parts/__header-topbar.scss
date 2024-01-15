@@ -5,7 +5,16 @@
 	@include font_size(13px);
 	border-bottom: 1px solid rgba($black_color, 0.1);
 	background: rgba($title_rgb, 0.9);
-	color: $gray3_color;
+	color: $gray40;
+
+	@media(max-width: 650px) {
+		#topbar-menu > div{
+			display: none;
+		}
+		.topbar-right {
+			padding: 5px 0;
+		}
+	}
 
 	.social-icon {
 		display: inline-flex;
@@ -26,14 +35,14 @@
 		[class*=rticon] svg {
 			width: 15px;
 			height: 15px;
-			fill: $gray3_color;
+			fill: $gray40;
 		}
 	}
 
 
 	#topbar-menu {
 		ul.newsfit-topbar-menu > li > a {
-			color: $gray3_color;
+			color: $gray40;
 		}
 
 		ul li a {
@@ -69,12 +78,11 @@
 
 		.newsfit-topbar-menu > li > a .caret svg {
 			transform: scale(0.8);
-			fill: $gray3_color;
+			fill: $gray40;
 		}
 	}
-
 }
 
 .has-transparent-header .site-header .newsfit-topbar * {
-	color: $gray3_color !important;
+	color: $gray40 !important;
 }

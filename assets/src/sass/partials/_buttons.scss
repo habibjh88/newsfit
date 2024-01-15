@@ -15,8 +15,9 @@ button {
 	user-select: none;
 	border: 1px solid transparent;
 	border-radius: 0;
+	letter-spacing: 0.13px;
 	padding: ($base_fs - 2) ($base_fs + 6);
-	@include font_size($base_fs - 1, $base_fs - 1, 0.13px);
+	@include font_size($base_fs - 1, $base_fs - 1);
 	@include transition_default();
 
 	&:active {
@@ -30,26 +31,26 @@ button {
 	&.btn-xl {
 		$xl_size: $base_fs + 8;
 		padding: ($base_fs+8) ($base_fs + 16);
-		@include font_size($xl_size, $xl_size, 0.13px);
+		@include font_size($xl_size, $xl_size);
 	}
 
 	&.btn-lg {
 		$lg_size: $base_fs + 2;
 		padding: ($base_fs + 2) ($base_fs + 8);
-		@include font_size($lg_size, $lg_size, 0.13px);
+		@include font_size($lg_size, $lg_size);
 	}
 
 
 	&.btn-sm {
 		$lg_size: $base_fs - 3;
 		padding: ($base_fs - 4) ($base_fs + 4);
-		@include font_size($lg_size, $lg_size, 0.13px);
+		@include font_size($lg_size, $lg_size);
 	}
 
 	&.btn-xs {
 		$lg_size: $base_fs - 6;
 		padding: ($base_fs - 5) ($base_fs + 2);
-		@include font_size($lg_size, $lg_size, 0.13px);
+		@include font_size($lg_size, $lg_size);
 	}
 
 }

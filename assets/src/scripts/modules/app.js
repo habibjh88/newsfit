@@ -14,6 +14,7 @@ class App {
 			this.menuDrawerOpen($);
 			this.offcanvasMenuToggle($);
 			this.headerSearchOpen($);
+			this.backToTop($);
 		})
 
 		// $(document).load(() => {
@@ -22,6 +23,7 @@ class App {
 
 		$(window).on('scroll', (event) => {
 			this.headerSticky($, event);
+			this.backTopTopScroll($, event);
 		});
 
 		$(window).on('load resize', () => {
@@ -30,15 +32,12 @@ class App {
 	}
 
 	menuOffset($) {
-		$(".dropdown-menu > li > ul > li").each(function () {
+		$(".dropdown-menu > li").each(function () {
 			var $this = $(this),
 				$win = $(window);
-
-			console.log($win.scrollLeft())
-
 			if ($this.offset().left + $this.width() > $win.width() + $win.scrollLeft() - $this.width()) {
 				$this.addClass("dropdown-inverse");
-			} else if ($this.offset().left < 250) {
+			} else if ($this.offset().left < $this.width()) {
 				$this.addClass("dropdown-inverse-left");
 			} else {
 				$this.removeClass("dropdown-inverse");
@@ -48,7 +47,6 @@ class App {
 
 
 	headerSticky($, event) {
-
 
 		if ($('body').hasClass('has-sticky-header')) {
 
@@ -123,6 +121,22 @@ class App {
 				$('.newsfit-search-popup.show').removeClass('show')
 			}
 		});
+	}
+
+	backToTop($) {
+		/* Scroll to top */
+		$('.scrollToTop').on('click', function () {
+			$('html, body').animate({scrollTop: 0}, 800);
+			return false;
+		});
+	}
+
+	backTopTopScroll($, event) {
+		if ($(window).scrollTop() > 100) {
+			$('.scrollToTop').addClass('show');
+		} else {
+			$('.scrollToTop').removeClass('show');
+		}
 	}
 
 }

@@ -40,9 +40,8 @@ class DynamicStyles {
 		$body_color          = newsfit_option( 'rt_body_color' ) ?? '#3D3E41';
 		$title_color         = newsfit_option( 'rt_title_color' ) ?? '#161D25';
 		$meta_color          = newsfit_option( 'rt_meta_color' ) ?? '#808993';
-		$gray1_color         = newsfit_option( 'rt_gray1_color' ) ?? '#E6E6E6';
-		$gray2_color         = newsfit_option( 'rt_gray2_color' ) ?? '#D0D0D0';
-		$gray3_color         = newsfit_option( 'rt_gray3_color' ) ?? '#bfc7d7';
+		$gray20              = newsfit_option( 'rt_gray20_color' ) ?? '#E6E6E6';
+		$gray40              = newsfit_option( 'rt_gray40_color' ) ?? '#D0D0D0';
 
 		ob_start(); ?>
 
@@ -54,9 +53,8 @@ class DynamicStyles {
 		--rt-body-color: <?php echo esc_html( $body_color ); ?>;
 		--rt-title-color: <?php echo esc_html( $title_color ); ?>;
 		--rt-meta-color: <?php echo esc_html( $meta_color ); ?>;
-		--rt-gray1-color: <?php echo esc_html( $gray1_color ); ?>;
-		--rt-gray2-color: <?php echo esc_html( $gray2_color ); ?>;
-		--rt-gray3-color: <?php echo esc_html( $gray3_color ); ?>;
+		--rt-gray20: <?php echo esc_html( $gray20 ); ?>;
+		--rt-gray40: <?php echo esc_html( $gray40 ); ?>;
 		--rt-body-rgb: <?php echo esc_html( newsfit_hex2rgb( $body_color ) ); ?>;
 		--rt-title-rgb: <?php echo esc_html( newsfit_hex2rgb( $title_color ) ); ?>;
 		--rt-primary-rgb: <?php echo esc_html( newsfit_hex2rgb( $primary_color ) ); ?>;

@@ -39,6 +39,8 @@ class Customizer {
 	protected string $section_woocommerce_archive_layout = 'newsfit_woocommerce_archive_layout_section';
 	protected string $section_woocommerce_single_layout = 'newsfit_woocommerce_single_layout_section';
 
+	protected string $section_blog = 'newsfit_blog_section';
+
 	protected string $section_test = 'newsfit_test_section';
 
 	/**
@@ -182,6 +184,13 @@ class Customizer {
 		] );
 
 		Customize::add_section( [
+			'id'          => $this->section_blog,
+			'title'       => __( 'Blog Settings', 'newsfit' ),
+			'description' => __( 'NewsFit Blog Section', 'newsfit' ),
+			'priority'    => 25
+		] );
+
+		Customize::add_section( [
 			'id'          => $this->section_footer,
 			'title'       => __( 'Footer', 'newsfit' ),
 			'description' => __( 'NewsFit Footer Section', 'newsfit' ),
@@ -259,6 +268,7 @@ class Customizer {
 			Customizer\Header::class,
 			Customizer\HeaderTopbar::class,
 			Customizer\Banner::class,
+			Customizer\Blog::class,
 			Customizer\Contact::class,
 			Customizer\Socials::class,
 			Customizer\ColorSite::class,

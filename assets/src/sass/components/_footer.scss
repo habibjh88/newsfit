@@ -4,86 +4,14 @@
 	position: relative;
 	background: $footer_bg;
 
-	.newsfit-footer-2 & {
-		&.schema-default {
-			background-color: $title_color;
-		}
-		.newsfit-footer-menu > li > a {
-			color: $gray2_color;
-			svg {
-				fill: $gray2_color;
-			}
-		}
-
+	.footer-container {
+		position: relative;
 	}
 }
 
-/* Footer Widget wrapper
-***************************/
-.footer-widgets-wrapper {
-	padding-top: 100px;
-	padding-bottom: 50px;
-	@include font_size(15px);
+@import 'parts/_footer-nav';
+@import 'parts/_footer-widgets';
+@import "parts/_footer-copyright";
 
-	//Default widgets overwrite
-	.footer-widgets {
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: row;
-
-		.widget-title {
-			margin-bottom: 30px;
-			font-weight: bold;
-		}
-
-		> .widget {
-			flex-grow: 25;
-		}
-
-		ul {
-			padding-left: 0;
-
-			ul {
-				padding-left: 20px;
-			}
-		}
-	}
-}
-
-/* Footer Menu Wrapper
-***************************/
-.footer-menu-wrapper {
-	border-top: 1px solid $gray1_color;
-
-	.newsfit-footer-1 & {
-		.align-default {
-			justify-content: center;
-		}
-	}
-
-	.newsfit-footer-2 & {
-		padding: 16px 0;
-		border-top: none;
-		border-bottom: 1px solid rgba(255, 255, 255, .1);
-		.align-default {
-			justify-content: end;
-		}
-	}
-}
-
-/* Footer Copyright
-***************************/
-
-.footer-copyright-wrapper {
-	height: 60px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: $gray2_color;
-	@include font_size(14px);
-	background: rgba($title_rgb, 0.9);
-
-	a {
-		color: $gray3_color;
-	}
-}
+//Footer layout
+@import "parts/_footer-2";

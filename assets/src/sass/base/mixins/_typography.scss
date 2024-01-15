@@ -1,5 +1,4 @@
-@mixin font_size($size, $line: $size * 1.68, $space: 0) {
+@mixin font_size($size, $line: $size * 1.68) {
 	font-size: $size;
 	line-height: $line;
-	letter-spacing: $space;
 }

@@ -240,6 +240,7 @@ if ( ! function_exists( 'newsfit_get_svg' ) ) {
 			'globe'            => '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M266.3 48.3L232.5 73.6c-5.4 4-8.5 10.4-8.5 17.1v9.1c0 6.8 5.5 12.3 12.3 12.3c2.4 0 4.8-.7 6.8-2.1l41.8-27.9c2-1.3 4.4-2.1 6.8-2.1h1c6.2 0 11.3 5.1 11.3 11.3c0 3-1.2 5.9-3.3 8l-19.9 19.9c-5.8 5.8-12.9 10.2-20.7 12.8l-26.5 8.8c-5.8 1.9-9.6 7.3-9.6 13.4c0 3.7-1.5 7.3-4.1 10l-17.9 17.9c-6.4 6.4-9.9 15-9.9 24v4.3c0 16.4 13.6 29.7 29.9 29.7c11 0 21.2-6.2 26.1-16l4-8.1c2.4-4.8 7.4-7.9 12.8-7.9c4.5 0 8.7 2.1 11.4 5.7l16.3 21.7c2.1 2.9 5.5 4.5 9.1 4.5c8.4 0 13.9-8.9 10.1-16.4l-1.1-2.3c-3.5-7 0-15.5 7.5-18l21.2-7.1c7.6-2.5 12.7-9.6 12.7-17.6c0-10.3 8.3-18.6 18.6-18.6H400c8.8 0 16 7.2 16 16s-7.2 16-16 16H379.3c-7.2 0-14.2 2.9-19.3 8l-4.7 4.7c-2.1 2.1-3.3 5-3.3 8c0 6.2 5.1 11.3 11.3 11.3h11.3c6 0 11.8 2.4 16 6.6l6.5 6.5c1.8 1.8 2.8 4.3 2.8 6.8s-1 5-2.8 6.8l-7.5 7.5C386 262 384 266.9 384 272s2 10 5.7 13.7L408 304c10.2 10.2 24.1 16 38.6 16H454c6.5-20.2 10-41.7 10-64c0-111.4-87.6-202.4-197.7-207.7zm172 307.9c-3.7-2.6-8.2-4.1-13-4.1c-6 0-11.8-2.4-16-6.6L396 332c-7.7-7.7-18-12-28.9-12c-9.7 0-19.2-3.5-26.6-9.8L314 287.4c-11.6-9.9-26.4-15.4-41.7-15.4H251.4c-12.6 0-25 3.7-35.5 10.7L188.5 301c-17.8 11.9-28.5 31.9-28.5 53.3v3.2c0 17 6.7 33.3 18.7 45.3l16 16c8.5 8.5 20 13.3 32 13.3H248c13.3 0 24 10.7 24 24c0 2.5 .4 5 1.1 7.3c71.3-5.8 132.5-47.6 165.2-107.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM187.3 100.7c-6.2-6.2-16.4-6.2-22.6 0l-32 32c-6.2 6.2-6.2 16.4 0 22.6s16.4 6.2 22.6 0l32-32c6.2-6.2 6.2-16.4 0-22.6z"/></svg>',
 			'phone'            => '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>',
 			'email'            => '<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>',
+			'scroll-top'       => '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17"><path d="M0.493164 9.71216V5.21216L7.49316 0.212158L14.4932 5.21216V9.71216L7.49316 4.71216L0.493164 9.71216Z"/><path d="M0.493164 16.7122V12.2122L7.49316 7.21216L14.4932 12.2122V16.7122L7.49316 11.7122L0.493164 16.7122Z"/></svg>',
 		] );
 
 		if ( isset( $svg_list[ $name ] ) ) {
@@ -427,12 +428,12 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 	 *
 	 */
 	function newsfit_site_logo() {
-		$rt_logo         = newsfit_option( 'rt_logo' );
-		$rt_logo_light   = newsfit_option( 'rt_logo_light' );
-		$rt_logo_mobile  = newsfit_option( 'rt_logo_mobile' );
-		$site_logo       = Opt::$has_tr_header ? $rt_logo_light : $rt_logo;
-		$mobile_logo     = $rt_logo_mobile ?? $site_logo;
-		$has_mobile_logo = ! empty( $rt_logo_mobile ) ? 'has-mobile-logo' : '';
+		$main_logo       = newsfit_option( 'rt_logo' );
+		$logo_light      = newsfit_option( 'rt_logo_light' );
+		$logo_mobile     = newsfit_option( 'rt_logo_mobile' );
+		$site_logo       = Opt::$has_tr_header ? $logo_light : $main_logo;
+		$mobile_logo     = $logo_mobile ?? $site_logo;
+		$has_mobile_logo = ! empty( $logo_mobile ) ? 'has-mobile-logo' : '';
 		ob_start();
 		?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="<?php echo esc_attr( $has_mobile_logo ) ?>">
@@ -442,6 +443,40 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 				if ( ! empty( $mobile_logo ) ) {
 					echo wp_get_attachment_image( $mobile_logo, 'full', null, [ 'id' => 'rt-mobile-logo' ] );
 				}
+			} else {
+				bloginfo( 'name' );
+			}
+			?>
+		</a>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+if ( ! function_exists( 'newsfit_footer_logo' ) ) {
+	/**
+	 * Newfit Site Logo
+	 *
+	 */
+	function newsfit_footer_logo() {
+		$main_logo  = newsfit_option( 'rt_logo' );
+		$logo_light = newsfit_option( 'rt_logo_light' );
+		$site_logo  = $main_logo;
+
+		if ( 'footer-dark' === Opt::$footer_schema ) {
+			$site_logo = $logo_light;
+		}
+
+		if ( '2' == Opt::$footer_style && 'schema-default' === Opt::$footer_schema ) {
+			$site_logo = $logo_light;
+		}
+
+		ob_start();
+		?>
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			<?php
+			if ( ! empty( $site_logo ) ) {
+				echo wp_get_attachment_image( $site_logo, 'full', null, [ 'class' => 'footer-logo' ] );
 			} else {
 				bloginfo( 'name' );
 			}
@@ -551,11 +586,138 @@ endif;
 if ( ! function_exists( 'newsfit_classes' ) ) {
 	/**
 	 * Merge all classes
+	 *
 	 * @param $clsses
 	 *
 	 * @return string
 	 */
 	function newsfit_classes( $clsses ): string {
 		return implode( ' ', $clsses );
+	}
+}
+
+if ( ! function_exists( 'newsfit_scroll_top' ) ) {
+	/**
+	 * Back-to-top button
+	 * @return void
+	 */
+	function newsfit_scroll_top( $class = '', $icon = 'scroll-top' ): void {
+		if ( newsfit_option( 'rt_back_to_top' ) ) {
+			?>
+			<a href="#" class="scrollToTop <?php echo esc_attr( $class ) ?>">
+				<?php echo newsfit_get_svg( $icon ); ?>
+			</a>
+			<?php
+		}
+	}
+}
+
+if ( ! function_exists( 'newsfit_list_item_separator' ) ) :
+	/**
+	 * Retrieves the list item separator based on the locale.
+	 *
+	 * Added for backward compatibility to support pre-6.0.0 WordPress versions.
+	 *
+	 * @since 6.0.0
+	 */
+	function newsfit_list_item_separator() {
+		/* translators: Used between list items, there is a space after the comma. */
+		return sprintf(
+			"<span>%s</span>",
+			__( ', ', 'newsfit' )
+		);
+	}
+endif;
+
+if ( ! function_exists( 'newsfit_posted_on' ) ) {
+	/**
+	 * Prints HTML with meta information for the current post-date/time.
+	 * @return string
+	 */
+	function newsfit_posted_on() {
+		$time_string = sprintf(
+			'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
+			esc_attr( get_the_date( DATE_W3C ) ),
+			esc_html( get_the_date() )
+		);
+
+		return sprintf( '<span class="posted-on">%s</span>', $time_string );
+	}
+}
+
+if ( ! function_exists( 'newsfit_posted_by' ) ) {
+	/**
+	 * Prints HTML with meta information about theme author.
+	 * @return string
+	 */
+	function newsfit_posted_by() {
+		return sprintf(
+			esc_html__( 'By %s', 'newsfit' ),
+			'<span class="byline"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( get_the_author() ) . '</a></span>'
+		);
+	}
+}
+
+if ( ! function_exists( 'newsfit_posted_in' ) ) {
+	/**
+	 * Prints HTML with category list information about theme categories.
+	 * @return string
+	 */
+	function newsfit_posted_in( $type = 'category' ) {
+		$categories_list = get_the_category_list( newsfit_list_item_separator() );
+		if ( 'tag' === $type ) {
+			$categories_list = get_the_tag_list( '', newsfit_list_item_separator() );
+		}
+		if ( $categories_list ) {
+			return sprintf(
+				'<span class="%s-links">%s</span>',
+				$type,
+				$categories_list
+			);
+		}
+
+		return '';
+	}
+}
+
+if ( ! function_exists( 'newsfit_post_meta' ) ) {
+	/**
+	 * Back-to-top button
+	 * @return string
+	 */
+	function newsfit_post_meta( $with_list = true, $include = [], $exclude = [] ) {
+
+		$comments_number = get_comments_number();
+		$comments_text   = sprintf( '(%s)', number_format_i18n( $comments_number ) );
+		$_meta_data      = [];
+		$output          = '';
+
+		$_meta_data['author']   = newsfit_posted_by();
+		$_meta_data['date']     = newsfit_posted_on();
+		$_meta_data['category'] = newsfit_posted_in();
+		$_meta_data['tag']      = newsfit_posted_in( 'tag' );
+		$_meta_data['comment']  = esc_html( $comments_text );
+
+		if ( empty( $include ) ) {
+			$include = array_keys( $_meta_data );
+		}
+
+		if ( $with_list ) {
+			$output .= '<div class="post-meta newsfit-post-meta"><ul class="entry-meta">';
+		}
+		foreach ( $include as $key ) {
+			$meta = $_meta_data[$key];
+			if ( ! $meta ) {
+				continue;
+			}
+			$output .= ( $with_list ) ? '<li class="' . $key . '">' : '';
+			$output .= $meta;
+			$output .= ( $with_list ) ? '</li>' : '';
+		}
+		if ( $with_list ) {
+			$output .= '</ul></div>';
+		}
+
+		return $output;
 	}
 }

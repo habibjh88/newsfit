@@ -2,49 +2,27 @@
 # Import Modules
 --------------------------------------------------------------*/
 
-/*--------------------------------------------------------------
+/*---------------------------
 # Base
---------------------------------------------------------------*/
-@import 'base/variables';
-@import 'base/normalize';
-@import 'base/mixins';
-@import 'base/animations';
-@import 'base/default';
-@import 'base/containers';
-@import 'base/grid';
-@import 'base/spacing';
-@import 'base/wordpress';
-@import 'base/forms';
-@import 'base/theme';
+---------------------------*/
+@import 'base/base';
 
-/*--------------------------------------------------------------
+/*---------------------------
 # Partials
---------------------------------------------------------------*/
-@import 'partials/typography';
-@import 'partials/buttons';
-@import 'partials/links';
-@import 'partials/colours';
-@import 'partials/helpers';
-@import 'partials/icons';
-@import 'partials/media';
-@import 'partials/review-schema';
+---------------------------*/
+@import 'partials/partials';
 
-/*--------------------------------------------------------------
+/*---------------------------
 # Components
---------------------------------------------------------------*/
-@import 'components/header';
-@import 'components/breadcrumb';
-@import 'components/sidebar';
-@import 'components/widgets';
-@import 'components/footer';
-@import 'components/searchbar';
+---------------------------*/
+@import 'components/components';
 
-/*--------------------------------------------------------------
+/*---------------------------
 # Pages
---------------------------------------------------------------*/
-@import 'pages/home';
+---------------------------*/
+@import 'pages/pages';
 
-/*--------------------------------------------------------------
+/*---------------------------
 # Blocks
---------------------------------------------------------------*/
+---------------------------*/
 @import "blocks/blocks";

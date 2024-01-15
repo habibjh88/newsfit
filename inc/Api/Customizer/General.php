@@ -47,8 +47,9 @@ class General extends Customizer {
 			],
 
 			'rt_remove_admin_bar' => [
-				'type'  => 'switch',
-				'label' => __( 'Back to Top', 'newsfit' ),
+				'type'        => 'switch',
+				'label'       => __( 'Remove Admin Bar', 'newsfit' ),
+				'description' => __( 'This option not work for administrator role.', 'homlisti' ),
 			],
 
 			'rt_social_icon_style' => [
@@ -56,7 +57,7 @@ class General extends Customizer {
 				'label'   => __( 'Social Icon Style', 'newsfit' ),
 				'default' => '',
 				'choices' => [
-					''       => __( 'Default Icon', 'newsfit' ),
+					''        => __( 'Default Icon', 'newsfit' ),
 					'-square' => __( 'Square Icon', 'newsfit' ),
 				]
 			],

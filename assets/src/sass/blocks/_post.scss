@@ -1,7 +1,65 @@
-
 /*Post Block
 ===================================*/
 
 .newsfit-post-card {
 
+	//Post Title
+	.post-title {
+		@include font_size(24px);
+		font-weight: 600;
+
+		a {
+			color: $title_color;
+
+			&:hover {
+				color: $primary_color;
+				text-decoration: underline;
+			}
+		}
+	}
+
+	//Meta Above Title
+	.title-above-meta {
+		.category-links a {
+			font-style: normal;
+			font-weight: 500;
+			background: $meta_light;
+			color: $primary_color;
+			@include font_size(14px);
+			height: 30px;
+			padding: 0 10px;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			margin: 0 4px 4px 0;
+
+			&:hover {
+				background: $primary_color;
+				color: $white_color;
+			}
+
+			&::before {
+				content: "";
+				width: 10px;
+				height: 1px;
+				background: $primary_color;
+				margin-right: 4px;
+				@include transition_default();
+			}
+
+			&:hover::before {
+				background: $white_color;
+			}
+
+		}
+
+		.sp {
+			display: none;
+		}
+	}
+
+
 }
+
+@import "parts/_meta";

@@ -35,9 +35,9 @@ class App {
 		$(".dropdown-menu > li").each(function () {
 			var $this = $(this),
 				$win = $(window);
-			if ($this.offset().left + $this.width() > $win.width() + $win.scrollLeft() - $this.width()) {
+			if ($this.offset().left + ($this.width()+30) > $win.width() + $win.scrollLeft() - $this.width()) {
 				$this.addClass("dropdown-inverse");
-			} else if ($this.offset().left < $this.width()) {
+			} else if ($this.offset().left < ($this.width()+30)) {
 				$this.addClass("dropdown-inverse-left");
 			} else {
 				$this.removeClass("dropdown-inverse");

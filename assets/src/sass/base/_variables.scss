@@ -37,6 +37,7 @@ $secondary_color: var(--rt-secondary-color, #131619);
 $body_color: var(--rt-body-color, #3D3E41);
 $title_color: var(--rt-title-color, #161D25);
 $meta_color: var(--rt-meta-color, #808993);
+$meta_light: var(--rt-meta-light, #F2F8FF);
 $gray20: var(--rt-gray20, #E6E6E6);
 $gray40: var(--rt-gray40, #D0D0D0);
 $footer_bg: #F7F7F7;
@@ -74,8 +75,8 @@ $colors: (
 /*-------------------------
 *  Typography
 *--------------------------*/
-$base_font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$heading_font: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$base_font: 'IBM Plex Sans', sans-serif;
+$heading_font: 'IBM Plex Sans', sans-serif;
 
 $base_fs: 16px;
 

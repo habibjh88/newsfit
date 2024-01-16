@@ -86,6 +86,12 @@ class ColorSite extends Customizer {
 				'default' => '#808993'
 			],
 
+			'rt_meta_light' => [
+				'type'    => 'color',
+				'label'   => __( 'Meta Light', 'newsfit' ),
+				'default' => '#F2F8FF'
+			],
+
 			'rt_gray20_color' => [
 				'type'    => 'color',
 				'label'   => __( 'Gray # 1', 'newsfit' ),

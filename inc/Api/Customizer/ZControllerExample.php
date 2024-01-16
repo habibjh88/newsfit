@@ -187,14 +187,39 @@ class ZControllerExample extends Customizer {
 				'type'  => 'datetime',
 				'label' => __( 'Choose datetime', 'newsfit' ),
 			],
+
+
 			'newsfit_select2'    => [
 				'type'  => 'select2',
-				'label' => __( 'Choose select2', 'newsfit' ),
+				'label' => __( 'Choose Meta', 'newsfit' ),
+				'placeholder' => __( 'Choose Meta', 'newsfit' ),
+				'multiselect' => true,
+				'choices'     => [
+					'author'   => __( 'Author', 'skyrocket' ),
+					'date'     => __( 'Date', 'skyrocket' ),
+					'category' => __( 'Category', 'skyrocket' ),
+					'tag'      => __( 'Tag', 'skyrocket' ),
+					'comment'  => __( 'Comment', 'skyrocket' ),
+				],
 			],
 
 			'newsfit_repeater' => [
 				'type'  => 'repeater',
 				'label' => __( 'Choose repeater', 'newsfit' ),
+			],
+
+			'newsfit_blog_meta_order1' => [
+				'type'    => 'repeater',
+				'label'   => __( 'Meta Order', 'newsfit' ),
+				'default' => 'one, two, three, four',
+				'use_as'  => 'sort', //'sort','repeater'
+			],
+
+			'newsfit_blog_meta_order2' => [
+				'type'    => 'repeater',
+				'label'   => __( 'Meta Order', 'newsfit' ),
+				'default' => 'one, two, three, four',
+//				'use_as'  => 'repeater', //'sort','repeater'
 			],
 
 			'newsfit_typography2' => [

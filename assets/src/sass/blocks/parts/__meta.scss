@@ -1,0 +1,41 @@
+.newsfit-post-meta {
+	color: $meta_color;
+	margin-bottom: 15px;
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		row-gap: 2px;
+		column-gap: 10px;
+	}
+
+	ul li {
+		position: relative;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 5px;
+	}
+
+	ul li a {
+		color: $meta_color;
+
+		&:hover {
+			color: $title_color
+		}
+	}
+
+	&.style-line-before {
+		li::before {
+			content: "";
+			width: 10px;
+			height: 1px;
+			background: $meta_color;
+			margin-top: 1px;
+			@include transition_default();
+		}
+	}
+}

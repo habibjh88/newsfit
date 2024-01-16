@@ -342,12 +342,17 @@ if ( ! function_exists( 'newsfit_option' ) ) {
 	 *
 	 * @return mixed
 	 */
-	function newsfit_option( $key, $echo = false ): mixed {
+	function newsfit_option( $key, $echo = false, $return_array = false ): mixed {
 		if ( isset( Opt::$options[ $key ] ) ) {
 			if ( $echo ) {
 				echo newsfit_html( Opt::$options[ $key ] );
 			} else {
-				return Opt::$options[ $key ];
+				$opt_val = Opt::$options[ $key ];
+				if ( $return_array && $opt_val ) {
+					$opt_val = explode( ',', trim( $opt_val, ', ' ) );
+				}
+
+				return $opt_val;
 			}
 		}
 
@@ -623,7 +628,8 @@ if ( ! function_exists( 'newsfit_list_item_separator' ) ) :
 	function newsfit_list_item_separator() {
 		/* translators: Used between list items, there is a space after the comma. */
 		return sprintf(
-			"<span>%s</span>",
+			"<span class='%s'>%s</span>",
+			'sp',
 			__( ', ', 'newsfit' )
 		);
 	}
@@ -650,9 +656,10 @@ if ( ! function_exists( 'newsfit_posted_by' ) ) {
 	 * Prints HTML with meta information about theme author.
 	 * @return string
 	 */
-	function newsfit_posted_by() {
+	function newsfit_posted_by( $prefix ) {
 		return sprintf(
-			esc_html__( 'By %s', 'newsfit' ),
+			esc_html__( '%s %s', 'newsfit' ),
+			$prefix,
 			'<span class="byline"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 	}
@@ -682,42 +689,71 @@ if ( ! function_exists( 'newsfit_posted_in' ) ) {
 
 if ( ! function_exists( 'newsfit_post_meta' ) ) {
 	/**
-	 * Back-to-top button
+	 * Get post meta
+	 *
 	 * @return string
 	 */
-	function newsfit_post_meta( $with_list = true, $include = [], $exclude = [] ) {
+	function newsfit_post_meta( $args ) {
+		$default_args = [
+			'with_list'     => true,
+			'include'       => [],
+			'edit_link'     => false,
+			'class'         => '',
+			'author_prefix' => __( 'By', 'newsfit' )
+		];
+
+		$args = wp_parse_args( $args, $default_args );
 
 		$comments_number = get_comments_number();
-		$comments_text   = sprintf( '(%s)', number_format_i18n( $comments_number ) );
+		$comments_text = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'newsfit' ), number_format_i18n( $comments_number ) );
+
 		$_meta_data      = [];
 		$output          = '';
 
-		$_meta_data['author']   = newsfit_posted_by();
+		$_meta_data['author']   = newsfit_posted_by( $args['author_prefix'] );
 		$_meta_data['date']     = newsfit_posted_on();
 		$_meta_data['category'] = newsfit_posted_in();
 		$_meta_data['tag']      = newsfit_posted_in( 'tag' );
 		$_meta_data['comment']  = esc_html( $comments_text );
 
-		if ( empty( $include ) ) {
-			$include = array_keys( $_meta_data );
-		}
+		$meta_list = $args['include'] ?? array_keys( $_meta_data );
 
-		if ( $with_list ) {
-			$output .= '<div class="post-meta newsfit-post-meta"><ul class="entry-meta">';
+		ob_start();
+		edit_post_link( 'Edit' );
+		$edit_markup = ob_get_clean();
+
+		if ( $args['with_list'] ) {
+			$output .= '<div class="newsfit-post-meta ' . $args['class'] . '"><ul class="entry-meta">';
 		}
-		foreach ( $include as $key ) {
-			$meta = $_meta_data[$key];
+		foreach ( $meta_list as $key ) {
+			$meta = $_meta_data[ $key ];
 			if ( ! $meta ) {
 				continue;
 			}
-			$output .= ( $with_list ) ? '<li class="' . $key . '">' : '';
+			$output .= ( $args['with_list'] ) ? '<li class="' . $key . '">' : '';
 			$output .= $meta;
-			$output .= ( $with_list ) ? '</li>' : '';
+			$output .= ( $args['with_list'] ) ? '</li>' : '';
 		}
-		if ( $with_list ) {
+
+		if ( $args['edit_link'] && is_user_logged_in() && $edit_markup ) {
+			$output .= '<li class="edit-link">' . $edit_markup . '</li>';
+		}
+
+		if ( $args['with_list'] ) {
 			$output .= '</ul></div>';
 		}
 
 		return $output;
+	}
+}
+
+if ( ! function_exists( 'newsfit_blog_column' ) ) {
+	function newsfit_blog_column( $blog_col = 'col-lg-6' ) {
+		$colum_from_customize = newsfit_option( 'newsfit_blog_column' );
+		if ( 'default' !== $colum_from_customize ) {
+			$blog_col = $colum_from_customize;
+		}
+
+		return $blog_col;
 	}
 }

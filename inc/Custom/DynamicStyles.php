@@ -40,6 +40,7 @@ class DynamicStyles {
 		$body_color          = newsfit_option( 'rt_body_color' ) ?? '#3D3E41';
 		$title_color         = newsfit_option( 'rt_title_color' ) ?? '#161D25';
 		$meta_color          = newsfit_option( 'rt_meta_color' ) ?? '#808993';
+		$meta_light          = newsfit_option( 'rt_meta_light' ) ?? '#F2F8FF';
 		$gray20              = newsfit_option( 'rt_gray20_color' ) ?? '#E6E6E6';
 		$gray40              = newsfit_option( 'rt_gray40_color' ) ?? '#D0D0D0';
 
@@ -53,6 +54,7 @@ class DynamicStyles {
 		--rt-body-color: <?php echo esc_html( $body_color ); ?>;
 		--rt-title-color: <?php echo esc_html( $title_color ); ?>;
 		--rt-meta-color: <?php echo esc_html( $meta_color ); ?>;
+		--rt-meta-light: <?php echo esc_html( $meta_light ); ?>;
 		--rt-gray20: <?php echo esc_html( $gray20 ); ?>;
 		--rt-gray40: <?php echo esc_html( $gray40 ); ?>;
 		--rt-body-rgb: <?php echo esc_html( newsfit_hex2rgb( $body_color ) ); ?>;

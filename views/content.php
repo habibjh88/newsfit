@@ -6,57 +6,57 @@
  *
  * @package newsfit
  */
+$meta_list  = newsfit_option( 'newsfit_blog_meta', false, true );
+$meta_style = newsfit_option( 'newsfit_blog_meta_style' );
 
-
-$length       = 30;
-$newsfit_meta = newsfit_option( 'newsfit_blog_meta', false, true );
-$post_column  =
-$post_classes = newsfit_classes( [
-	'newsfit-post-card',
-	newsfit_blog_column()
-] );
+if ( is_single() ) {
+	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style ] );
+} else {
+	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, newsfit_blog_column() ] );
+}
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( $post_classes ); ?>>
+	<div class="article-inner-wrapper">
+		<header class="entry-header">
+			<?php newsfit_post_thumbnail(); ?>
 
-	<?php if ( has_post_thumbnail() ): ?>
-		<div class="post-img">
-			<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
-		</div>
-	<?php endif; ?>
+			<?php if ( ! is_single() && newsfit_option( 'newsfit_meta_above_visibility' ) ) : ?>
+				<div class="title-above-meta">
+					<?php echo newsfit_post_meta( [
+						'with_list' => false,
+						'include'   => [ 'category' ],
+					] ); ?>
+				</div>
+			<?php endif; ?>
 
-	<div class="post-content">
-
-		<div class="title-above-meta">
 			<?php
-			echo newsfit_post_meta( [
-				'with_list' => false,
-				'include'   => [ 'category' ],
-			] );
-			?>
-		</div>
+			if ( ! is_single() ) {
+				the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
+			} else {
+				the_title( '<h2 class="entry-title default-max-width">', '</h2>' );
+			}
 
-		<?php if ( ! empty( get_the_title() ) ): ?>
-			<h2 class="post-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			if ( ! empty( $meta_list ) && newsfit_option( 'newsfit_meta_visibility' ) ) {
+				echo newsfit_post_meta( [
+					'with_list'     => true,
+					'include'       => $meta_list,
+					'edit_link'     => true,
+					'author_prefix' => newsfit_option( 'newsfit_author_prefix' ),
+				] );
+			}
+			?>
+		</header>
+
+		<?php if ( newsfit_option( 'newsfit_blog_content_visibility' ) ) : ?>
+			<div class="entry-content">
+				<?php newsfit_entry_content() ?>
+			</div>
 		<?php endif; ?>
 
-		<?php
-		if ( ! empty( $newsfit_meta ) ) {
-			echo newsfit_post_meta( [
-				'with_list' => true,
-				'include'   => $newsfit_meta,
-				'edit_link' => true,
-				'class'     => 'style-line-before'
-			] );
-		}
-		?>
-
-		<div class="post-excerprt-wrap">
-			<?php echo wp_trim_words( get_the_excerpt(), $length ); ?>
-		</div>
-
-		<a href="<?php the_permalink(); ?>" class="item-btn">
-			<?php esc_html_e( 'Read More', 'homlisti' ); ?>
-		</a>
+		<?php if ( newsfit_option( 'newsfit_blog_footer_visibility' ) ) : ?>
+			<footer class="entry-footer">
+				<?php newsfit_entry_footer(); ?>
+			</footer><!-- .entry-footer -->
+		<?php endif; ?>
 	</div>
-
 </article>

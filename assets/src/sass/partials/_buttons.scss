@@ -64,6 +64,10 @@ button {
 	@include button_style($white_color, $secondary_color, rgba($secondary_rgb, 0.8));
 }
 
+.btn-light {
+	@include button_style($white_color, $meta_color, $primary_color);
+}
+
 .btn-gray {
 	@include button_style($white_color, $meta_color, $primary_color);
 }

@@ -12,44 +12,51 @@
  * @package newsfit
  */
 
-get_header(); ?>
+use RT\NewsFit\Options\Opt;
 
-	<div class="default-index-content pt-40 pb-40">
-		<div class="container">
+get_header();
+$content_columns = newsfit_content_columns();
+?>
 
-			<div class="row align-stretch">
+	<div class="container">
 
-				<div class="col-sm-8">
+		<div class="row align-stretch">
 
-					<div id="primary" class="content-area">
-						<main id="main" class="site-main" role="main">
-							<div class="row">
-								<?php
-								if ( have_posts() ) :
-									/* Start the Loop */
-									while ( have_posts() ) :
-										the_post();
-										get_template_part( 'views/content', get_post_format() );
-									endwhile;
-									the_posts_navigation();
-								else :
-									get_template_part( 'views/content', 'none' );
-								endif;
-								?>
-							</div>
+			<div class="<?php echo esc_attr( $content_columns ); ?>">
 
-						</main><!-- #main -->
-					</div><!-- #primary -->
+				<div id="primary" class="content-area">
+					<main id="main" class="site-main" role="main">
+						<div class="row">
+							<?php
+							if ( have_posts() ) :
+								/* Start the Loop */
+								while ( have_posts() ) :
+									the_post();
+									get_template_part( 'views/content', get_post_format() );
+								endwhile;
+							else :
+								get_template_part( 'views/content', 'none' );
+							endif;
+							?>
+						</div>
 
-				</div><!-- .col- -->
+						<div class="row post-pagination">
+							<?php the_posts_navigation(); ?>
+						</div>
 
-				<div id="sidebar" class="col-sm-4">
-					<?php get_sidebar(); ?>
-				</div><!-- .col- -->
+					</main><!-- #main -->
+				</div><!-- #primary -->
 
-			</div><!-- .row -->
+			</div><!-- .col- -->
 
-		</div><!-- .container -->
-	</div>
+
+			<?php get_sidebar(); ?>
+
+		</div><!-- .row -->
+
+	</div><!-- .container -->
+
 <?php
+
+
 get_footer();

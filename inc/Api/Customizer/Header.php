@@ -8,6 +8,7 @@
 namespace RT\NewsFit\Api\Customizer;
 
 use RT\NewsFit\Api\Customizer;
+use RT\NewsFit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -35,7 +36,7 @@ class Header extends Customizer {
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',
-				'choices' => newsfit_image_placeholder('menu', 1)
+				'choices' => Fns::image_placeholder('menu', 1)
 			],
 
 			'rt_menu_alignment' => [

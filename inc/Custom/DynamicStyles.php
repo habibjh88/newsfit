@@ -2,6 +2,7 @@
 
 namespace RT\NewsFit\Custom;
 
+use RT\NewsFit\Helpers\Fns;
 use RT\NewsFit\Options\Opt;
 use RT\NewsFit\Traits\SingletonTraits;
 
@@ -57,10 +58,10 @@ class DynamicStyles {
 		--rt-meta-light: <?php echo esc_html( $meta_light ); ?>;
 		--rt-gray20: <?php echo esc_html( $gray20 ); ?>;
 		--rt-gray40: <?php echo esc_html( $gray40 ); ?>;
-		--rt-body-rgb: <?php echo esc_html( newsfit_hex2rgb( $body_color ) ); ?>;
-		--rt-title-rgb: <?php echo esc_html( newsfit_hex2rgb( $title_color ) ); ?>;
-		--rt-primary-rgb: <?php echo esc_html( newsfit_hex2rgb( $primary_color ) ); ?>;
-		--rt-secondary-rgb: <?php echo esc_html( newsfit_hex2rgb( $secondary_color ) ); ?>;
+		--rt-body-rgb: <?php echo esc_html( Fns::hex2rgb( $body_color ) ); ?>;
+		--rt-title-rgb: <?php echo esc_html( Fns::hex2rgb( $title_color ) ); ?>;
+		--rt-primary-rgb: <?php echo esc_html( Fns::hex2rgb( $primary_color ) ); ?>;
+		--rt-secondary-rgb: <?php echo esc_html( Fns::hex2rgb( $secondary_color ) ); ?>;
 		}
 
 		body {

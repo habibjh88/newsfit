@@ -16,8 +16,10 @@
 		position: relative;
 		display: inline-flex;
 		justify-content: center;
-		align-items: center;
-		column-gap: 5px;
+		align-items: flex-start;
+		.prefix {
+			margin-right: 4px;
+		}
 	}
 
 	ul li a {
@@ -28,14 +30,25 @@
 		}
 	}
 
-	&.style-line-before {
-		li::before {
-			content: "";
-			width: 10px;
-			height: 1px;
-			background: $meta_color;
-			margin-top: 1px;
-			@include transition_default();
+	//Default meta style
+	.meta-style-default & {
+		ul {
+			column-gap: 20px;
 		}
 	}
+
+	.meta-style-pipe & {
+		li:not(:last-child)::after {
+			content: " | ";
+			transform: scaleY(.9);
+			margin: 0 1px 0 3px;
+		}
+	}
+
+	//Dashed meta style
+	.meta-style-dash & li::before {
+		@extend .metaStyleDash;
+	}
+
+
 }

@@ -1,0 +1,6 @@
+.metaStyleDash {
+	content: "—";
+	color: $meta_color;
+	margin-right: 5px;
+	@include transition_default();
+}

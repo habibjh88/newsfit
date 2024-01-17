@@ -8,6 +8,7 @@
 namespace RT\NewsFit\Api\Customizer;
 
 use RT\NewsFit\Api\Customizer;
+use RT\NewsFit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -41,7 +42,7 @@ class HeaderTopbar extends Customizer {
 				'type'      => 'image_select',
 				'label'     => __( 'Topbar Style', 'newsfit' ),
 				'default'   => '1',
-				'choices'   => newsfit_image_placeholder('menu', 1),
+				'choices'   => Fns::image_placeholder('menu', 1),
 				'condition' => [ 'top_bar' ]
 			],
 

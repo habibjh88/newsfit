@@ -22,7 +22,7 @@
 			"RT\\NewsFit\\": "./inc"
 		},
 		"files": [
-			"./inc/Helpers.php"
+			"./inc/template-tags.php"
 		]
 	},
 	"config": {

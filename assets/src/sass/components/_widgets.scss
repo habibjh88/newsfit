@@ -16,8 +16,13 @@ $widget_li_space: 8px;
 	color: $primary_color;
 }
 
-.widget > ul {
-	padding-left: 0;
+.widget {
+	ul, ol {
+		padding-left: 0;
+		ul, ol {
+			padding-left: 20px;
+		}
+	}
 }
 
 @media (min-width: 767px) {
@@ -219,13 +224,13 @@ ol.wp-block-latest-comments li:last-child {
 	flex-grow: 1;
 	margin: 0 3px 6px;
 	line-height: 1.5;
-	background-color: $gray20;
+	background-color: $meta_light;
 	color: $primary_color;
 	border-radius: 3px;
 	padding: 10px 13px;
 	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
-	border: 1px solid $gray40;
+	border: 1px solid $meta_light;
 	text-align: center;
 	text-transform: lowercase;
 	font-weight: 500;

@@ -8,6 +8,7 @@
 namespace RT\NewsFit\Api\Customizer;
 
 use RT\NewsFit\Api\Customizer;
+use RT\NewsFit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -28,7 +29,7 @@ class Socials extends Customizer {
 	 * @return array
 	 */
 	public function get_controls(): array {
-		$social_list      = newsfit_get_socials();
+		$social_list      = Fns::get_socials();
 		$social_icon_list = [];
 		foreach ( $social_list as $id => $social ) {
 			$social_icon_list[ $id ] = [

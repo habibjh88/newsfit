@@ -40,9 +40,9 @@ class Layouts {
 					$this->type = 'page';
 			}
 
-			Opt::$layout         = $this->check_meta_and_option_value( 'layout' );
+			Opt::$layout         = $this->check_meta_and_option_value( 'layout', false, true );
 			Opt::$header_style   = $this->check_meta_and_option_value( 'header_style', false, true );
-			Opt::$sidebar        = $this->check_meta_and_option_value( 'sidebar' );
+			Opt::$sidebar        = $this->check_meta_and_option_value( 'sidebar', false, true );
 			Opt::$header_width   = $this->check_meta_and_option_value( 'header_width' );
 			Opt::$menu_alignment = $this->check_meta_and_option_value( 'menu_alignment' );
 			Opt::$padding_top    = $this->check_meta_and_option_value( 'padding_top' );
@@ -67,9 +67,9 @@ class Layouts {
 				$this->type = 'blog';
 			}
 
-			Opt::$layout         = $this->check_option_value( 'layout' );
+			Opt::$layout         = $this->check_option_value( 'layout', false, true );
 			Opt::$header_style   = $this->check_option_value( 'header_style', false, true );
-			Opt::$sidebar        = $this->check_option_value( 'sidebar' );
+			Opt::$sidebar        = $this->check_option_value( 'sidebar', false, true );
 			Opt::$header_width   = $this->check_option_value( 'header_width' );
 			Opt::$menu_alignment = $this->check_option_value( 'menu_alignment' );
 			Opt::$padding_top    = $this->check_option_value( 'padding_top' );

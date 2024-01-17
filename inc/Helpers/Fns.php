@@ -1,216 +1,35 @@
 <?php
+
+namespace RT\NewsFit\Helpers;
+
+use RT\NewsFit\Core\Sidebar;
+
 /**
- * Helpers methods
- * List all your static functions you wish to use globally on your theme
- *
- * @package newsfit
+ * Extras.
  */
+class Fns {
 
-use RT\NewsFit\Options\Opt;
-use \RT\NewsFit\Core\Constants;
-
-if ( ! function_exists( 'dd' ) ) {
 	/**
-	 * Var_dump and die method
+	 * Filters whether post thumbnail can be displayed.
 	 *
-	 * @return void
+	 * @param bool $show_post_thumbnail Whether to show post thumbnail.
+	 *
 	 */
-	function dd() {
-		echo '<pre>';
-		array_map( function ( $x ) {
-			var_dump( $x );
-		}, func_get_args() );
-		echo '</pre>';
-		die;
+	public static function can_show_post_thumbnail() {
+		return apply_filters(
+			'newsfit_can_show_post_thumbnail',
+			! post_password_required() && ! is_attachment() && has_post_thumbnail()
+		);
 	}
-}
 
-if ( ! function_exists( 'starts_with' ) ) {
 	/**
-	 * Determine if a given string starts with a given substring.
-	 *
-	 * @param string $haystack
-	 * @param string|array $needles
-	 *
-	 * @return bool
-	 */
-	function starts_with( $haystack, $needles ) {
-		foreach ( (array) $needles as $needle ) {
-			if ( $needle != '' && substr( $haystack, 0, strlen( $needle ) ) === (string) $needle ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-}
-
-if ( ! function_exists( 'mix' ) ) {
-	/**
-	 * Get the path to a versioned Mix file.
-	 *
-	 * @param string $path
-	 * @param string $manifestDirectory
-	 *
-	 * @return string
-	 *
-	 * @throws \Exception
-	 */
-	function mix( $path, $manifestDirectory = '' ): string {
-		if ( ! $manifestDirectory ) {
-			//Setup path for standard AWPS-Folder-Structure
-			$manifestDirectory = "assets/dist/";
-		}
-		static $manifest;
-		if ( ! starts_with( $path, '/' ) ) {
-			$path = "/{$path}";
-		}
-		if ( $manifestDirectory && ! starts_with( $manifestDirectory, '/' ) ) {
-			$manifestDirectory = "/{$manifestDirectory}";
-		}
-		$rootDir = dirname( __FILE__, 2 );
-		if ( file_exists( $rootDir . '/' . $manifestDirectory . '/hot' ) ) {
-			return getenv( 'WP_SITEURL' ) . ":8080" . $path;
-		}
-		if ( ! $manifest ) {
-			$manifestPath = $rootDir . $manifestDirectory . 'mix-manifest.json';
-			if ( ! file_exists( $manifestPath ) ) {
-				throw new Exception( 'The Mix manifest does not exist.' );
-			}
-			$manifest = json_decode( file_get_contents( $manifestPath ), true );
-		}
-
-		if ( starts_with( $manifest[ $path ], '/' ) ) {
-			$manifest[ $path ] = ltrim( $manifest[ $path ], '/' );
-		}
-
-		$path = $manifestDirectory . $manifest[ $path ];
-
-		return get_template_directory_uri() . $path;
-	}
-}
-
-function newsfit_html( $html, $checked = true ) {
-	$allowed_html = [
-		'a'      => [
-			'href'   => [],
-			'title'  => [],
-			'class'  => [],
-			'target' => [],
-		],
-		'br'     => [],
-		'span'   => [
-			'class' => [],
-			'id'    => [],
-		],
-		'em'     => [],
-		'strong' => [],
-		'i'      => [
-			'class' => []
-		],
-		'iframe' => [
-			'class'                 => [],
-			'id'                    => [],
-			'name'                  => [],
-			'src'                   => [],
-			'title'                 => [],
-			'frameBorder'           => [],
-			'width'                 => [],
-			'height'                => [],
-			'scrolling'             => [],
-			'allowvr'               => [],
-			'allow'                 => [],
-			'allowFullScreen'       => [],
-			'webkitallowfullscreen' => [],
-			'mozallowfullscreen'    => [],
-			'loading'               => [],
-		],
-	];
-
-	if ( $checked ) {
-		return wp_kses( $html, $allowed_html );
-	} else {
-		return $html;
-	}
-}
-
-if ( ! function_exists( 'newsfit_custom_menu_cb' ) ) {
-	/**
-	 * Callback function for the main menu
-	 *
-	 * @param $args
-	 *
-	 * @return string|void
-	 */
-	function newsfit_custom_menu_cb( $args ) {
-		extract( $args );
-		$add_menu_link = admin_url( 'nav-menus.php' );
-		$menu_text     = sprintf( __( "Add %s Menu", "newsfit" ), $theme_location );
-		__( 'Add a menu', 'newsfit' );
-		if ( ! current_user_can( 'manage_options' ) ) {
-			$add_menu_link = home_url();
-			$menu_text     = __( 'Home', 'newsfit' );
-		}
-
-		// see wp-includes/nav-menu-template.php for available arguments
-
-		$link = $link_before . '<a href="' . $add_menu_link . '">' . $before . $menu_text . $after . '</a>' . $link_after;
-
-		// We have a list
-		if ( false !== stripos( $items_wrap, '<ul' ) || false !== stripos( $items_wrap, '<ol' ) ) {
-			$link = "<li>$link</li>";
-		}
-
-		$output = sprintf( $items_wrap, $menu_id, $menu_class, $link );
-		if ( ! empty ( $container ) ) {
-			$output = "<$container class='$container_class' id='$container_id'>$output</$container>";
-		}
-
-		if ( $echo ) {
-			echo $output;
-		}
-
-		return $output;
-	}
-}
-
-if ( ! function_exists( 'newsfit_require' ) ) {
-	/**
-	 * Require any file. If the file will available in the child theme, the file will load from the child theme
-	 *
-	 * @param $filename
-	 * @param string $dir
-	 *
-	 * @return false|void
-	 */
-	function newsfit_require( $filename, string $dir = 'inc' ) {
-
-		$dir        = trailingslashit( $dir );
-		$child_file = get_stylesheet_directory() . DIRECTORY_SEPARATOR . $dir . $filename;
-
-		if ( file_exists( $child_file ) ) {
-			$file = $child_file;
-		} else {
-			$file = get_template_directory() . DIRECTORY_SEPARATOR . $dir . $filename;
-		}
-
-		if ( file_exists( $file ) ) {
-			require_once $file;
-		} else {
-			return false;
-		}
-	}
-}
-
-if ( ! function_exists( 'newsfit_get_svg' ) ) {
-	/**
-	 * Get svg icon
+	 * All SVG icon list
 	 *
 	 * @param $name
 	 *
-	 * @return string|void
+	 * @return string
 	 */
-	function newsfit_get_svg( $name ) {
+	public static function get_svg( $name ) {
 
 		$svg_list = apply_filters( 'newsfit_svg_icon_list', [
 			'search'           => '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.06714 1.61988C7.23998 1.13407 8.49703 0.884033 9.7665 0.884033C11.036 0.884033 12.293 1.13407 13.4659 1.61988C14.6387 2.10569 15.7044 2.81775 16.602 3.7154C17.4997 4.61305 18.2117 5.67872 18.6975 6.85156C19.1833 8.02441 19.4334 9.28145 19.4334 10.5509C19.4334 11.8204 19.1833 13.0774 18.6975 14.2503C18.3398 15.114 17.8594 15.9195 17.2725 16.6427L21.3069 20.6771C21.6975 21.0677 21.6975 21.7008 21.3069 22.0914C20.9164 22.4819 20.2833 22.4819 19.8927 22.0914L15.8583 18.0569C14.1437 19.4485 11.9948 20.2178 9.7665 20.2178C7.20268 20.2178 4.74387 19.1993 2.93098 17.3864C1.11808 15.5736 0.0996094 13.1147 0.0996094 10.5509C0.0996094 7.9871 1.11808 5.52829 2.93098 3.7154C3.82863 2.81775 4.8943 2.10569 6.06714 1.61988ZM9.7665 2.88403C8.75967 2.88403 7.7627 3.08234 6.83251 3.46764C5.90232 3.85294 5.05713 4.41768 4.34519 5.12961C2.90737 6.56743 2.09961 8.51754 2.09961 10.5509C2.09961 12.5843 2.90737 14.5344 4.34519 15.9722C5.78301 17.4101 7.73311 18.2178 9.7665 18.2178C11.7999 18.2178 13.75 17.4101 15.1878 15.9722C15.8997 15.2603 16.4645 14.4151 16.8498 13.4849C17.2351 12.5547 17.4334 11.5578 17.4334 10.5509C17.4334 9.54409 17.2351 8.54712 16.8498 7.61693C16.4645 6.68674 15.8997 5.84155 15.1878 5.12961C14.4759 4.41768 13.6307 3.85294 12.7005 3.46764C11.7703 3.08234 10.7733 2.88403 9.7665 2.88403Z"/></svg>',
@@ -249,123 +68,12 @@ if ( ! function_exists( 'newsfit_get_svg' ) ) {
 
 		return '';
 	}
-}
 
-if ( ! function_exists( 'newsfit_get_file' ) ) {
 	/**
-	 * Get File Path
-	 *
-	 * @param $path
-	 *
-	 * @return string
-	 */
-	function newsfit_get_file( $path ): string {
-		$file = get_stylesheet_directory_uri() . $path;
-		if ( ! file_exists( $file ) ) {
-			$file = get_template_directory_uri() . $path;
-		}
-
-		return $file;
-	}
-}
-
-if ( ! function_exists( 'newsfit_get_img' ) ) {
-	/**
-	 * Get Image Path
-	 *
-	 * @param $filename
-	 *
-	 * @return string
-	 */
-	function newsfit_get_img( $filename ): string {
-		$path = '/assets/dist/images/' . $filename;
-
-		return newsfit_get_file( $path );
-	}
-}
-
-if ( ! function_exists( 'newsfit_get_css' ) ) {
-	/**
-	 * Get CSS Path
-	 *
-	 * @param $filename
-	 *
-	 * @return string
-	 */
-	function newsfit_get_css( $filename ) {
-		$path = '/assets/dist/css/' . $filename . '.css';
-
-		return newsfit_get_file( $path );
-	}
-}
-
-if ( ! function_exists( 'newsfit_get_js' ) ) {
-	/**
-	 * Get JS Path
-	 *
-	 * @param $filename
-	 *
-	 * @return string
-	 */
-	function newsfit_get_js( $filename ) {
-		$path = '/assets/dist/js/' . $filename . '.js';
-
-		return newsfit_get_file( $path );
-	}
-}
-
-if ( ! function_exists( 'newsfit_maybe_rtl' ) ) {
-	/**
-	 * Get css path conditionally by RTL
-	 *
-	 * @param $filename
-	 *
-	 * @return string
-	 */
-	function newsfit_maybe_rtl( $filename ) {
-		if ( is_rtl() ) {
-			$path = '/assets/dist/css-rtl/' . $filename . '.css';
-
-			return newsfit_get_file( $path );
-		} else {
-			return newsfit_get_file( $filename );
-		}
-	}
-}
-
-
-if ( ! function_exists( 'newsfit_option' ) ) {
-	/**
-	 * Get Customize Options value by key
-	 *
-	 * @param $key
-	 *
-	 * @return mixed
-	 */
-	function newsfit_option( $key, $echo = false, $return_array = false ): mixed {
-		if ( isset( Opt::$options[ $key ] ) ) {
-			if ( $echo ) {
-				echo newsfit_html( Opt::$options[ $key ] );
-			} else {
-				$opt_val = Opt::$options[ $key ];
-				if ( $return_array && $opt_val ) {
-					$opt_val = explode( ',', trim( $opt_val, ', ' ) );
-				}
-
-				return $opt_val;
-			}
-		}
-
-		return false;
-	}
-}
-
-if ( ! function_exists( 'newsfit_get_socials' ) ) {
-	/**
-	 * Get Social icon list
+	 * Social icon for the site
 	 * @return mixed|null
 	 */
-	function newsfit_get_socials(): mixed {
+	public static function get_socials() {
 		return apply_filters( 'newsfit_socials_icon', [
 			'facebook'  => [
 				'title' => __( 'Facebook', 'newsfit' ),
@@ -398,125 +106,35 @@ if ( ! function_exists( 'newsfit_get_socials' ) ) {
 		] );
 
 	}
-}
 
-if ( ! function_exists( 'newsfit_get_social_html' ) ) {
-	/**
-	 * Get Social markup
-	 *
-	 * @param $color
-	 *
-	 * @return void
-	 */
 
-	function newsfit_get_social_html( $color = '' ): void {
-		ob_start();
-		$icon_style = newsfit_option( 'rt_social_icon_style' ) ?? '';
-		foreach ( newsfit_get_socials() as $id => $item ) {
-			if ( empty( $item['url'] ) ) {
-				continue;
-			}
-			?>
-			<a target="_blank" href="<?php echo esc_url( $item['url'] ) ?>">
-				<?php echo newsfit_get_svg( $id . $icon_style ); ?>
-			</a>
-			<?php
-		}
-
-		echo ob_get_clean();
-	}
-}
-
-if ( ! function_exists( 'newsfit_site_logo' ) ) {
-	/**
-	 * Newfit Site Logo
-	 *
-	 */
-	function newsfit_site_logo() {
-		$main_logo       = newsfit_option( 'rt_logo' );
-		$logo_light      = newsfit_option( 'rt_logo_light' );
-		$logo_mobile     = newsfit_option( 'rt_logo_mobile' );
-		$site_logo       = Opt::$has_tr_header ? $logo_light : $main_logo;
-		$mobile_logo     = $logo_mobile ?? $site_logo;
-		$has_mobile_logo = ! empty( $logo_mobile ) ? 'has-mobile-logo' : '';
-		ob_start();
-		?>
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="<?php echo esc_attr( $has_mobile_logo ) ?>">
-			<?php
-			if ( ! empty( $site_logo ) ) {
-				echo wp_get_attachment_image( $site_logo, 'full', null, [ 'id' => 'rt-site-logo' ] );
-				if ( ! empty( $mobile_logo ) ) {
-					echo wp_get_attachment_image( $mobile_logo, 'full', null, [ 'id' => 'rt-mobile-logo' ] );
-				}
-			} else {
-				bloginfo( 'name' );
-			}
-			?>
-		</a>
-		<?php
-		return ob_get_clean();
-	}
-}
-
-if ( ! function_exists( 'newsfit_footer_logo' ) ) {
-	/**
-	 * Newfit Site Logo
-	 *
-	 */
-	function newsfit_footer_logo() {
-		$main_logo  = newsfit_option( 'rt_logo' );
-		$logo_light = newsfit_option( 'rt_logo_light' );
-		$site_logo  = $main_logo;
-
-		if ( 'footer-dark' === Opt::$footer_schema ) {
-			$site_logo = $logo_light;
-		}
-
-		if ( '2' == Opt::$footer_style && 'schema-default' === Opt::$footer_schema ) {
-			$site_logo = $logo_light;
-		}
-
-		ob_start();
-		?>
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<?php
-			if ( ! empty( $site_logo ) ) {
-				echo wp_get_attachment_image( $site_logo, 'full', null, [ 'class' => 'footer-logo' ] );
-			} else {
-				bloginfo( 'name' );
-			}
-			?>
-		</a>
-		<?php
-		return ob_get_clean();
-	}
-}
-
-if ( ! function_exists( 'newsfit_sidebar_lists' ) ) {
 	/**
 	 * Get Sidebar lists
 	 * @return array
 	 */
-	function newsfit_sidebar_lists(): array {
+	public static function sidebar_lists() {
 		$sidebar_fields            = [];
 		$sidebar_fields['sidebar'] = esc_html__( 'Sidebar', 'newsfit' );
-		if ( ! empty( Constants::$sidebar ) ) {
-			foreach ( Constants::$sidebar as $id => $sidebar ) {
+		if ( ! empty( Sidebar::sidebar_lists() ) ) {
+			foreach ( Sidebar::sidebar_lists() as $id => $sidebar ) {
 				$sidebar_fields[ $id ] = $sidebar['name'];
 			}
 		}
 
 		return $sidebar_fields;
 	}
-}
 
 
-if ( ! function_exists( 'newsfit_image_placeholder' ) ) {
 	/**
-	 * Get header presets
+	 * Get image presets
+	 *
+	 * @param $name
+	 * @param int $total
+	 * @param string $type
+	 *
 	 * @return array
 	 */
-	function newsfit_image_placeholder( $name, $total = 1, $type = 'svg' ): array {
+	public static function image_placeholder( $name, $total = 1, $type = 'svg' ): array {
 		$presets = [];
 		for ( $i = 1; $i <= $total; $i ++ ) {
 			$image_name    = $name . '-' . $i . '.' . $type;
@@ -528,9 +146,8 @@ if ( ! function_exists( 'newsfit_image_placeholder' ) ) {
 
 		return apply_filters( 'newsfit_image_placeholder', $presets );
 	}
-}
 
-if ( ! function_exists( 'newsfit_hex2rgb' ) ) {
+
 	/**
 	 * Convert HEX to RGB color
 	 *
@@ -538,7 +155,7 @@ if ( ! function_exists( 'newsfit_hex2rgb' ) ) {
 	 *
 	 * @return string
 	 */
-	function newsfit_hex2rgb( $hex ) {
+	public static function hex2rgb( $hex ) {
 		$hex = str_replace( "#", "", $hex );
 		if ( strlen( $hex ) == 3 ) {
 			$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
@@ -553,18 +170,17 @@ if ( ! function_exists( 'newsfit_hex2rgb' ) ) {
 
 		return $rgb;
 	}
-}
-if ( ! function_exists( 'newsfit_modify_color' ) ) :
 
 	/**
 	 * Modify Color
 	 * Add positive or negative $steps. Ex: 30, -50 etc
 	 *
 	 * @param $hex
+	 * @param $steps
 	 *
 	 * @return string
 	 */
-	function newsfit_modify_color( $hex, $steps ) {
+	public static function modify_color( $hex, $steps ) {
 		$steps = max( - 255, min( 255, $steps ) );
 		// Format the hex color string
 		$hex = str_replace( '#', '', $hex );
@@ -586,38 +202,7 @@ if ( ! function_exists( 'newsfit_modify_color' ) ) :
 		return '#' . $r_hex . $g_hex . $b_hex;
 	}
 
-endif;
 
-if ( ! function_exists( 'newsfit_classes' ) ) {
-	/**
-	 * Merge all classes
-	 *
-	 * @param $clsses
-	 *
-	 * @return string
-	 */
-	function newsfit_classes( $clsses ): string {
-		return implode( ' ', $clsses );
-	}
-}
-
-if ( ! function_exists( 'newsfit_scroll_top' ) ) {
-	/**
-	 * Back-to-top button
-	 * @return void
-	 */
-	function newsfit_scroll_top( $class = '', $icon = 'scroll-top' ): void {
-		if ( newsfit_option( 'rt_back_to_top' ) ) {
-			?>
-			<a href="#" class="scrollToTop <?php echo esc_attr( $class ) ?>">
-				<?php echo newsfit_get_svg( $icon ); ?>
-			</a>
-			<?php
-		}
-	}
-}
-
-if ( ! function_exists( 'newsfit_list_item_separator' ) ) :
 	/**
 	 * Retrieves the list item separator based on the locale.
 	 *
@@ -625,7 +210,7 @@ if ( ! function_exists( 'newsfit_list_item_separator' ) ) :
 	 *
 	 * @since 6.0.0
 	 */
-	function newsfit_list_item_separator() {
+	public static function list_item_separator() {
 		/* translators: Used between list items, there is a space after the comma. */
 		return sprintf(
 			"<span class='%s'>%s</span>",
@@ -633,47 +218,16 @@ if ( ! function_exists( 'newsfit_list_item_separator' ) ) :
 			__( ', ', 'newsfit' )
 		);
 	}
-endif;
 
-if ( ! function_exists( 'newsfit_posted_on' ) ) {
-	/**
-	 * Prints HTML with meta information for the current post-date/time.
-	 * @return string
-	 */
-	function newsfit_posted_on() {
-		$time_string = sprintf(
-			'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
-			esc_attr( get_the_date( DATE_W3C ) ),
-			esc_html( get_the_date() )
-		);
 
-		return sprintf( '<span class="posted-on">%s</span>', $time_string );
-	}
-}
-
-if ( ! function_exists( 'newsfit_posted_by' ) ) {
-	/**
-	 * Prints HTML with meta information about theme author.
-	 * @return string
-	 */
-	function newsfit_posted_by( $prefix ) {
-		return sprintf(
-			esc_html__( '%s %s', 'newsfit' ),
-			$prefix,
-			'<span class="byline"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( get_the_author() ) . '</a></span>'
-		);
-	}
-}
-
-if ( ! function_exists( 'newsfit_posted_in' ) ) {
 	/**
 	 * Prints HTML with category list information about theme categories.
 	 * @return string
 	 */
-	function newsfit_posted_in( $type = 'category' ) {
-		$categories_list = get_the_category_list( newsfit_list_item_separator() );
+	public static function posted_in( $type = 'category' ) {
+		$categories_list = get_the_category_list( Fns::list_item_separator() );
 		if ( 'tag' === $type ) {
-			$categories_list = get_the_tag_list( '', newsfit_list_item_separator() );
+			$categories_list = get_the_tag_list( '', Fns::list_item_separator() );
 		}
 		if ( $categories_list ) {
 			return sprintf(
@@ -685,75 +239,44 @@ if ( ! function_exists( 'newsfit_posted_in' ) ) {
 
 		return '';
 	}
-}
 
-if ( ! function_exists( 'newsfit_post_meta' ) ) {
+
 	/**
-	 * Get post meta
-	 *
+	 * Prints HTML with meta information for the current post-date/time.
 	 * @return string
 	 */
-	function newsfit_post_meta( $args ) {
-		$default_args = [
-			'with_list'     => true,
-			'include'       => [],
-			'edit_link'     => false,
-			'class'         => '',
-			'author_prefix' => __( 'By', 'newsfit' )
-		];
+	public static function posted_on() {
+		$time_string = sprintf(
+			'<time class="entry-date published updated" datetime="%1$s">%2$s</time>',
+			esc_attr( get_the_date( DATE_W3C ) ),
+			esc_html( get_the_date() )
+		);
 
-		$args = wp_parse_args( $args, $default_args );
-
-		$comments_number = get_comments_number();
-		$comments_text = sprintf( _n( '%s Comment', '%s Comments', $comments_number, 'newsfit' ), number_format_i18n( $comments_number ) );
-
-		$_meta_data      = [];
-		$output          = '';
-
-		$_meta_data['author']   = newsfit_posted_by( $args['author_prefix'] );
-		$_meta_data['date']     = newsfit_posted_on();
-		$_meta_data['category'] = newsfit_posted_in();
-		$_meta_data['tag']      = newsfit_posted_in( 'tag' );
-		$_meta_data['comment']  = esc_html( $comments_text );
-
-		$meta_list = $args['include'] ?? array_keys( $_meta_data );
-
-		ob_start();
-		edit_post_link( 'Edit' );
-		$edit_markup = ob_get_clean();
-
-		if ( $args['with_list'] ) {
-			$output .= '<div class="newsfit-post-meta ' . $args['class'] . '"><ul class="entry-meta">';
-		}
-		foreach ( $meta_list as $key ) {
-			$meta = $_meta_data[ $key ];
-			if ( ! $meta ) {
-				continue;
-			}
-			$output .= ( $args['with_list'] ) ? '<li class="' . $key . '">' : '';
-			$output .= $meta;
-			$output .= ( $args['with_list'] ) ? '</li>' : '';
-		}
-
-		if ( $args['edit_link'] && is_user_logged_in() && $edit_markup ) {
-			$output .= '<li class="edit-link">' . $edit_markup . '</li>';
-		}
-
-		if ( $args['with_list'] ) {
-			$output .= '</ul></div>';
-		}
-
-		return $output;
+		return sprintf( '<span class="posted-on">%s</span>', $time_string );
 	}
-}
 
-if ( ! function_exists( 'newsfit_blog_column' ) ) {
-	function newsfit_blog_column( $blog_col = 'col-lg-6' ) {
-		$colum_from_customize = newsfit_option( 'newsfit_blog_column' );
-		if ( 'default' !== $colum_from_customize ) {
-			$blog_col = $colum_from_customize;
-		}
-
-		return $blog_col;
+	/**
+	 * Prints HTML with meta information about theme author.
+	 * @return string
+	 */
+	public static function posted_by( $prefix ) {
+		return sprintf(
+			esc_html__( '%s %s', 'newsfit' ),
+			$prefix ? '<span class="prefix">' . $prefix . '</span>' : '',
+			'<span class="byline"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( get_the_author() ) . '</a></span>'
+		);
 	}
-}
+
+	/**
+	 * Creates continue reading text.
+	 * @return string
+	 */
+	public static function continue_reading_text() {
+		return sprintf(
+			esc_html__( 'Continue reading %s', 'newsfit' ),
+			the_title( '<span class="screen-reader-text">', '</span>', false )
+		);
+	}
+
+
+}//End the Class

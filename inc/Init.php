@@ -28,7 +28,7 @@ final class Init {
 	 * @return void
 	 */
 	public function register() {
-		Core\Constants::instance();
+		Helpers\Constants::instance();
 		Core\Tags::instance();
 		Core\Sidebar::instance();
 		Options\Opt::instance();
@@ -36,7 +36,6 @@ final class Init {
 		Setup\Setup::instance();
 		Setup\Menus::instance();
 		Setup\Enqueue::instance();
-		Custom\Fns::instance();
 		Custom\Hooks::instance();
 		Custom\PostTypes::instance();
 		Custom\Extras::instance();

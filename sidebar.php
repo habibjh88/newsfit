@@ -7,19 +7,9 @@
  * @package newsfit
  */
 
-if ( ! is_active_sidebar( 'rdt-sidebar' ) ) :
-	return;
-endif;
-?>
 
-<?php
-if ( is_customize_preview() ) {
-	echo '<div id="newsfit-sidebar-control"></div>';
+if ( is_singular() && is_active_sidebar( 'rt-single-sidebar' ) ) {
+	newsfit_sidebar( 'rt-single-sidebar' );
+} else {
+	newsfit_sidebar( 'rt-sidebar' );
 }
-?>
-
-<aside id="secondary" class="widget-area" role="complementary">
-	<?php
-	dynamic_sidebar( 'rdt-sidebar' );
-	?>
-</aside><!-- #secondary -->

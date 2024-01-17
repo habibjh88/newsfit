@@ -59,6 +59,57 @@ class Blog extends Customizer {
 				]
 			],
 
+			'newsfit_blog_meta_style' => [
+				'type'    => 'select',
+				'label'   => __( 'Meta Style', 'newsfit' ),
+				'default' => 'meta-style-default',
+				'choices' => [
+					'meta-style-default' => __( 'Default From Theme', 'newsfit' ),
+					'meta-style-dash'    => __( 'Before Dash ( — )', 'newsfit' ),
+					'meta-style-pipe'    => __( 'After Pipe ( | )', 'newsfit' ),
+				]
+			],
+
+			'newsfit_excerpt_limit' => [
+				'type'    => 'text',
+				'label'   => __( 'Content Limit', 'newsfit' ),
+				'default' => '30',
+			],
+
+			'newsfit_author_prefix' => [
+				'type'    => 'text',
+				'label'   => __( 'Author Prefix', 'newsfit' ),
+				'default' => 'by',
+			],
+
+
+			'newsfit_visibility' => [
+				'type'  => 'heading',
+				'label' => __( 'Visibility Section', 'newsfit' ),
+			],
+
+			'newsfit_meta_visibility' => [
+				'type'    => 'switch',
+				'label'   => __( 'Meta Visibility', 'newsfit' ),
+				'default' => 1
+			],
+
+			'newsfit_meta_above_visibility' => [
+				'type'  => 'switch',
+				'label' => __( 'Title Above Category Visibility', 'newsfit' ),
+			],
+
+			'newsfit_blog_content_visibility' => [
+				'type'    => 'switch',
+				'label'   => __( 'Entry Content Visibility', 'newsfit' ),
+				'default' => 1
+			],
+
+			'newsfit_blog_footer_visibility' => [
+				'type'    => 'switch',
+				'label'   => __( 'Entry Footer Visibility', 'newsfit' ),
+				'default' => 1
+			],
 
 		] );
 	}

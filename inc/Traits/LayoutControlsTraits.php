@@ -6,6 +6,8 @@
 namespace RT\NewsFit\Traits;
 
 // Do not allow directly accessing this file.
+use RT\NewsFit\Helpers\Fns;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
@@ -13,24 +15,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 trait LayoutControlsTraits {
 	public function get_layout_controls( $prefix = '' ): array {
 
+		$_left_text  = __( 'Left Sidebar', 'newsfit' );
+		$_right_text = __( 'Right Sidebar', 'newsfit' );
+		$left_text   = $_left_text;
+		$right_text  = $_right_text;
+		$image_left  = 'sidebar-left.png';
+		$image_right = 'sidebar-right.png';
+
+		if ( is_rtl() ) {
+			$left_text   = $_right_text;
+			$right_text  = $_left_text;
+			$image_left  = 'sidebar-right.png';
+			$image_right = 'sidebar-left.png';
+		}
+
 		return apply_filters( "newsfit_{$prefix}_layout_controls", [
 
 			$prefix . '_layout' => [
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
-				'default' => 'left-sidebar',
+				'default' => 'right-sidebar',
 				'choices' => [
 					'left-sidebar'  => [
-						'image' => newsfit_get_img( 'sidebar-left.png' ),
-						'name'  => __( 'Left Sidebar', 'newsfit' ),
+						'image' => newsfit_get_img( $image_left ),
+						'name'  => $left_text,
 					],
 					'full-width'    => [
 						'image' => newsfit_get_img( 'sidebar-full.png' ),
 						'name'  => __( 'Full Width', 'newsfit' ),
 					],
 					'right-sidebar' => [
-						'image' => newsfit_get_img( 'sidebar-right.png' ),
-						'name'  => __( 'Right Sidebar', 'newsfit' ),
+						'image' => newsfit_get_img( $image_right ),
+						'name'  => $right_text,
 					],
 				]
 			],
@@ -39,7 +55,7 @@ trait LayoutControlsTraits {
 				'type'    => 'select',
 				'label'   => __( 'Choose a Sidebar', 'newsfit' ),
 				'default' => 'sidebar',
-				'choices' => newsfit_sidebar_lists()
+				'choices' => Fns::sidebar_lists()
 			],
 
 			$prefix . '_header_heading' => [
@@ -174,9 +190,9 @@ trait LayoutControlsTraits {
 				'default' => 'default',
 				'label'   => __( 'Footer Schema', 'homlisti' ),
 				'choices' => [
-					'default'        => __( '--Default--', 'homlisti' ),
-					'footer-light'   => __( 'Light Footer', 'newsfit' ),
-					'footer-dark'    => __( 'Dark Footer', 'newsfit' ),
+					'default'      => __( '--Default--', 'homlisti' ),
+					'footer-light' => __( 'Light Footer', 'newsfit' ),
+					'footer-dark'  => __( 'Dark Footer', 'newsfit' ),
 				]
 			],
 

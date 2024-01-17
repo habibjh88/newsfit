@@ -53,6 +53,10 @@ class Extras {
 			$classes[] = 'no-banner';
 		}
 
+		if ( Opt::$layout ) {
+			$classes[] = 'layout-' . Opt::$layout;
+		}
+
 		if ( newsfit_option( 'rt_sticy_header' ) ) {
 			$classes[] = 'has-sticky-header';
 		}
@@ -177,8 +181,8 @@ class Extras {
             <div class="search-box">
 				<input type="text" class="form-control" placeholder="' . esc_attr__( 'Search here...', 'newsfit' ) . '" value="' . get_search_query() . '" name="s" />
 				<button class="item-btn" type="submit">
-					<span class="rticon-search">' . newsfit_get_svg( 'search' ) . '</span>
-					<span class="btn-label">'.esc_html__("Search", "newsfit").'</span>
+					' . newsfit_get_svg( 'search' ) . '
+					<span class="btn-label">' . esc_html__( "Search", "newsfit" ) . '</span>
 				</button>
             </div>
 		</form>

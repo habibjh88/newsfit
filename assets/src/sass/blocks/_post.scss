@@ -3,10 +3,22 @@
 
 .newsfit-post-card {
 
+	margin-bottom: 30px;
+
+	//Post Thumbnail
+	.post-thumbnail {
+		margin-bottom: 20px;
+
+		a, img {
+			display: block;
+		}
+	}
+
 	//Post Title
-	.post-title {
+	.entry-title {
 		@include font_size(24px);
 		font-weight: 600;
+		margin-bottom: 8px;
 
 		a {
 			color: $title_color;
@@ -18,8 +30,21 @@
 		}
 	}
 
+	&.meta-style-dash .title-above-meta a {
+		&::before {
+			color: $primary_color;
+			@extend .metaStyleDash;
+		}
+
+		&:hover::before {
+			color: $white_color;
+		}
+	}
+
 	//Meta Above Title
 	.title-above-meta {
+		margin-bottom: 5px;
+
 		.category-links a {
 			font-style: normal;
 			font-weight: 500;
@@ -39,19 +64,6 @@
 				color: $white_color;
 			}
 
-			&::before {
-				content: "";
-				width: 10px;
-				height: 1px;
-				background: $primary_color;
-				margin-right: 4px;
-				@include transition_default();
-			}
-
-			&:hover::before {
-				background: $white_color;
-			}
-
 		}
 
 		.sp {
@@ -59,6 +71,24 @@
 		}
 	}
 
+	.entry-content {
+		margin-bottom: 20px;
+	}
+
+	.read-more {
+		@extend .btn, .btn-light;
+		padding: 11px 14px;
+		position: relative;
+
+		&:hover {
+			background: $primary_color;
+			color: $white_color;
+		}
+	}
+	&.meta-style-dash .read-more::before {
+		@extend .metaStyleDash;
+		color: $white_color;
+	}
 
 }
 

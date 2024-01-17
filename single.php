@@ -7,13 +7,15 @@
  * @package newsfit
  */
 
-get_header(); ?>
+get_header();
+$content_columns = newsfit_content_columns();
+?>
 
 	<div class="container">
 
 		<div class="row">
 
-			<div class="col-sm-8">
+			<div class="<?php echo esc_attr( $content_columns ); ?>">
 
 				<div id="primary" class="content-area">
 					<main id="main" class="site-main" role="main">
@@ -42,9 +44,7 @@ get_header(); ?>
 
 			</div><!-- .col- -->
 
-			<div class="col-sm-4">
-				<?php get_sidebar(); ?>
-			</div><!-- .col- -->
+			<?php get_sidebar(); ?>
 
 		</div><!-- .row -->
 

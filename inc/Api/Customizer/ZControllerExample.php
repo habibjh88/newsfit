@@ -136,7 +136,7 @@ class ZControllerExample extends Customizer {
 				'transport' => '',
 			],
 
-			'newsfit_image_placeholder' => [
+			'newsfit_image_choose' => [
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',

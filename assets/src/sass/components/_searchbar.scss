@@ -19,10 +19,13 @@
 		border-radius: 0;
 		color: $meta_color;
 		background: transparent;
+		padding: 0 12px;
+
 		svg {
 			fill: $meta_color;
 			width: 22px;
 			height: 22px;
+			margin-top: 1.5px;
 		}
 		.btn-label {
 			display: none;

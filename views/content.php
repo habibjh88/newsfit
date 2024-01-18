@@ -6,13 +6,17 @@
  *
  * @package newsfit
  */
-$meta_list  = newsfit_option( 'newsfit_blog_meta', false, true );
+
+use RT\NewsFit\Helpers\Fns;
+
+$meta_key   = is_single() ? 'newsfit_single_meta' : 'newsfit_blog_meta';
+$meta_list  = newsfit_option( $meta_key, false, true );
 $meta_style = newsfit_option( 'newsfit_blog_meta_style' );
 
 if ( is_single() ) {
 	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style ] );
 } else {
-	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, newsfit_blog_column() ] );
+	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, Fns::newsfit_blog_column() ] );
 }
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( $post_classes ); ?>>
@@ -53,10 +57,7 @@ if ( is_single() ) {
 			</div>
 		<?php endif; ?>
 
-		<?php if ( newsfit_option( 'newsfit_blog_footer_visibility' ) ) : ?>
-			<footer class="entry-footer">
-				<?php newsfit_entry_footer(); ?>
-			</footer><!-- .entry-footer -->
-		<?php endif; ?>
+
+		<?php newsfit_entry_footer(); ?>
 	</div>
 </article>

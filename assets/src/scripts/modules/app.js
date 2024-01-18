@@ -15,6 +15,7 @@ class App {
 			this.offcanvasMenuToggle($);
 			this.headerSearchOpen($);
 			this.backToTop($);
+			this.menuOffset($);
 		})
 
 		// $(document).load(() => {
@@ -26,7 +27,7 @@ class App {
 			this.backTopTopScroll($, event);
 		});
 
-		$(window).on('load resize', () => {
+		$(window).on('resize', () => {
 			this.menuOffset($);
 		});
 	}

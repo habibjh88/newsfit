@@ -16,7 +16,8 @@
 		position: relative;
 		display: inline-flex;
 		justify-content: center;
-		align-items: flex-start;
+		align-items: center;
+
 		.prefix {
 			margin-right: 4px;
 		}
@@ -33,7 +34,13 @@
 	//Default meta style
 	.meta-style-default & {
 		ul {
-			column-gap: 20px;
+			column-gap: 10px;
+		}
+
+		ul li:not(:first-child)::before {
+			content: "/";
+			margin-right: 10px;
+			font-size: 15px;
 		}
 	}
 
@@ -49,6 +56,4 @@
 	.meta-style-dash & li::before {
 		@extend .metaStyleDash;
 	}
-
-
 }

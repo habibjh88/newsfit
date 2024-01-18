@@ -40,6 +40,7 @@ class Customizer {
 	protected string $section_woocommerce_single_layout = 'newsfit_woocommerce_single_layout_section';
 
 	protected string $section_blog = 'newsfit_blog_section';
+	protected string $section_blog_single = 'newsfit_blog_single_section';
 
 	protected string $section_test = 'newsfit_test_section';
 
@@ -79,7 +80,7 @@ class Customizer {
 			'id'          => 'rt_color_panel',
 			'title'       => esc_html__( 'Colors', 'newsfit' ),
 			'description' => esc_html__( 'NewsFit Color Settings', 'newsfit' ),
-			'priority'    => 26,
+			'priority'    => 28,
 		] );
 
 		Customize::add_panel( [
@@ -88,7 +89,6 @@ class Customizer {
 			'description' => esc_html__( 'NewsFit Layout Settings', 'newsfit' ),
 			'priority'    => 34,
 		] );
-
 	}
 
 	/**
@@ -189,6 +189,12 @@ class Customizer {
 			'description' => __( 'NewsFit Blog Section', 'newsfit' ),
 			'priority'    => 25
 		] );
+		Customize::add_section( [
+			'id'          => $this->section_blog_single,
+			'title'       => __( 'Blog Single', 'newsfit' ),
+			'description' => __( 'NewsFit Blog Single Section', 'newsfit' ),
+			'priority'    => 26
+		] );
 
 		Customize::add_section( [
 			'id'          => $this->section_footer,
@@ -269,6 +275,7 @@ class Customizer {
 			Customizer\HeaderTopbar::class,
 			Customizer\Banner::class,
 			Customizer\Blog::class,
+			Customizer\BlogSingle::class,
 			Customizer\Contact::class,
 			Customizer\Socials::class,
 			Customizer\ColorSite::class,

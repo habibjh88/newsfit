@@ -1,0 +1,26 @@
+.single-content {
+	font-size: 17px;
+	.entry-title {
+		@include font_size(40px)
+	}
+	.entry-content {
+		margin-bottom: 40px;
+	}
+	.entry-footer {
+		margin-bottom: 30px;
+		.tag-links a {
+			color: $meta_color;
+		}
+	}
+
+	.newsfit-post-meta {
+		color: var(--rt-meta-color, #808993);
+		margin-bottom: 20px;
+	}
+
+	.meta-style-default .newsfit-post-meta {
+
+	}
+}
+
+@import "parts/_thumbnail-pagination";

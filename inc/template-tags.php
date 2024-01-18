@@ -239,8 +239,8 @@ if ( ! function_exists( 'newsfit_get_svg' ) ) {
 	 *
 	 * @return string|void
 	 */
-	function newsfit_get_svg( $name ) {
-		return Fns::get_svg( $name );
+	function newsfit_get_svg( $name, $rotate = '' ) {
+		return Fns::get_svg( $name, $rotate );
 	}
 }
 
@@ -535,20 +535,6 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 	}
 }
 
-if ( ! function_exists( 'newsfit_blog_column' ) ) {
-	function newsfit_blog_column( $blog_col = 'col-lg-6' ) {
-		$colum_from_customize = newsfit_option( 'newsfit_blog_column' );
-
-		if ( 'default' == $colum_from_customize && 'full-width' === Opt::$layout ) {
-			$blog_col = 'col-lg-4';
-		} elseif ( 'default' !== $colum_from_customize ) {
-			$blog_col = $colum_from_customize;
-		}
-
-		return $blog_col;
-	}
-}
-
 
 if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 	/**
@@ -602,12 +588,19 @@ if ( ! function_exists( 'newsfit_entry_footer' ) ) {
 	 */
 	function newsfit_entry_footer() {
 		if ( ! is_single() ) {
-			echo '<a class="read-more" href="' . esc_url( get_permalink() ) . '">' . Fns::continue_reading_text() . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
+			if ( newsfit_option( 'newsfit_blog_footer_visibility' ) ) {
+				echo '<footer class="entry-footer">';
+				echo '<a class="read-more" href="' . esc_url( get_permalink() ) . '">' . Fns::continue_reading_text() . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
+				echo '</footer>';
+			}
 		} else {
-			if ( 'post' !== get_post_type() && has_tag() ) {
+			if ( 'post' === get_post_type() && has_tag() ) {
+				echo '<footer class="entry-footer">';
 				echo '<div class="post-tags">';
+				echo "<span>" . esc_html__( 'Tags: ', 'newsfit' ) . "</span>";
 				echo Fns::posted_in( 'tag' );
 				echo '</div>';
+				echo '</footer>';
 			}
 		}
 	}
@@ -625,46 +618,6 @@ if ( ! function_exists( 'newsfit_entry_content' ) ) {
 		} else {
 			the_content();
 		}
-	}
-}
-
-
-function newsfit_layout() {
-	return Opt::$layout;
-}
-
-function newsfit_content_columns() {
-
-	$columns = "col-md-8";
-
-	if ( is_singular() ) {
-		if ( is_active_sidebar( 'rt-single-sidebar' ) ) {
-			$columns = "col-md-8";
-		} else {
-			$columns = "col-md-10 col-md-offset-1";
-		}
-	} else {
-		if ( ! is_active_sidebar( 'rt-sidebar' ) ) {
-			$columns = "col-md-12";
-		}
-	}
-
-	if ( Opt::$layout === 'full-width' ) {
-		$columns = is_singular() ? "col-md-10 col-md-offset-1" : "col-md-12";
-	}
-
-	return $columns;
-}
-
-if ( ! function_exists( 'newsfit_sidebar_columns' ) ) {
-	/**
-	 * Get sidebar column conditionally
-	 * @return string
-	 */
-	function newsfit_sidebar_columns() {
-		$columns = "col-md-4";
-
-		return $columns;
 	}
 }
 
@@ -690,7 +643,7 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 			return false;
 		}
 
-		$sidebar_cols = newsfit_sidebar_columns();
+		$sidebar_cols = Fns::sidebar_columns();
 		?>
 		<aside id="sidebar" class="newsfit-widget-area <?php echo esc_attr( $sidebar_cols ) ?>" role="complementary">
 			<?php dynamic_sidebar( $sidebar_id ); ?>

@@ -7,8 +7,10 @@
  * @package newsfit
  */
 
+use RT\NewsFit\Helpers\Fns;
+
 get_header();
-$content_columns = newsfit_content_columns();
+$content_columns = Fns::content_columns();
 ?>
 
 	<div class="container">
@@ -17,7 +19,7 @@ $content_columns = newsfit_content_columns();
 
 			<div class="<?php echo esc_attr( $content_columns ); ?>">
 
-				<div id="primary" class="content-area">
+				<div id="primary" class="content-area single-content">
 					<main id="main" class="site-main" role="main">
 
 						<?php
@@ -28,7 +30,8 @@ $content_columns = newsfit_content_columns();
 
 							get_template_part( 'views/content', get_post_format() );
 
-							the_post_navigation();
+							//the_post_navigation();
+							get_template_part( 'views/custom/single', 'pagination' );
 
 							// If comments are open or we have at least one comment, load up the comment template.
 							if ( comments_open() || get_comments_number() ) :

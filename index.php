@@ -13,9 +13,10 @@
  */
 
 use RT\NewsFit\Options\Opt;
+use RT\NewsFit\Helpers\Fns;
 
 get_header();
-$content_columns = newsfit_content_columns();
+$content_columns = Fns::content_columns();
 ?>
 
 	<div class="container">

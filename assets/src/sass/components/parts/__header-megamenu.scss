@@ -85,7 +85,7 @@
 		position: absolute;
 		z-index: 1;
 		content: "";
-		background-color: $primary_color;
+		@extend .primaryBG;
 		height: 0.0625rem;
 		width: 0;
 		right: 0;

@@ -18,9 +18,9 @@ class App {
 			this.menuOffset($);
 		})
 
-		// $(document).load(() => {
-		//
-		// })
+		$(document).on('load',() => {
+			this.menuOffset($);
+		})
 
 		$(window).on('scroll', (event) => {
 			this.headerSticky($, event);
@@ -36,6 +36,7 @@ class App {
 		$(".dropdown-menu > li").each(function () {
 			var $this = $(this),
 				$win = $(window);
+
 			if ($this.offset().left + ($this.width()+30) > $win.width() + $win.scrollLeft() - $this.width()) {
 				$this.addClass("dropdown-inverse");
 			} else if ($this.offset().left < ($this.width()+30)) {

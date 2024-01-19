@@ -632,6 +632,7 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 	function newsfit_sidebar( $sidebar_id ) {
 		$sidebar_from_layout = Opt::$sidebar;
 
+
 		if ( 'default' !== $sidebar_from_layout && is_active_sidebar( $sidebar_from_layout ) ) {
 			$sidebar_id = $sidebar_from_layout;
 		}

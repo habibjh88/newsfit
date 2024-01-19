@@ -32,7 +32,7 @@ $dropdown_top_bottom_margin: 10px;
 
 		h1 a {
 			display: flex;
-			color: $primary_color;
+			@extend .primaryColor;
 			padding: 10px 0;
 		}
 

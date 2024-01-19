@@ -1,8 +1,20 @@
 .newsfit-widget-area {
 	position: relative;
+
 	.widget {
 		width: 100%;
 		max-width: 100%;
 		flex: 0 0 100%
 	}
+
+	@media (min-width: 768px) {
+		.layout-right-sidebar & {
+			padding-left: 30px;
+		}
+		.layout-left-sidebar & {
+			padding-right: 30px;
+		}
+	}
 }
+
+

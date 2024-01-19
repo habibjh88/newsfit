@@ -7,10 +7,13 @@ body {
 	margin: 0;
 }
 
+html, body {
+	overflow-x: hidden;
+}
+
 *, *::before, *::after {
 	box-sizing: border-box;
 }
-
 
 main {
 	display: block;
@@ -28,7 +31,7 @@ object {
 }
 
 /* Text-level semantics
-   ========================================================================== */
+======================== */
 
 a {
 	background-color: transparent;

@@ -59,7 +59,7 @@
 		}
 
 		ul ul li a:hover {
-			color: $primary_color;
+			@extend .primaryColor;
 		}
 
 		ul.newsfit-topbar-menu > li.current-menu-item > a,

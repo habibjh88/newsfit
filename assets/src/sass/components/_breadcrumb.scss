@@ -44,7 +44,7 @@
 		}
 
 		li.active {
-			color: $primary_color;
+			@extend .primaryColor;
 		}
 
 		li:last-child:after {

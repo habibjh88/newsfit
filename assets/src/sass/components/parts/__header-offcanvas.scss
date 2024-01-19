@@ -27,13 +27,13 @@
 		color: $title_color;
 
 		&:hover {
-			color: $primary_color;
+			@extend .primaryColor;
 		}
 	}
 
 	ul li.current-menu-item > a,
 	ul li.current-menu-ancestor > a {
-		color: $primary_color;
+		@extend .primaryColor;
 	}
 
 	.caret {

@@ -24,7 +24,7 @@
 			color: $title_color;
 
 			&:hover {
-				color: $primary_color;
+				@extend .primaryColor;
 				text-decoration: underline;
 			}
 		}
@@ -32,7 +32,7 @@
 
 	&.meta-style-dash .title-above-meta a {
 		&::before {
-			color: $primary_color;
+			@extend .primaryColor;
 			@extend .metaStyleDash;
 		}
 
@@ -49,7 +49,7 @@
 			font-style: normal;
 			font-weight: 500;
 			background: $meta_light;
-			color: $primary_color;
+			@extend .primaryColor;
 			@include font_size(14px);
 			height: 30px;
 			padding: 0 10px;
@@ -84,9 +84,36 @@
 			color: $white_color;
 		}
 	}
+
 	&.meta-style-dash .read-more::before {
 		@extend .metaStyleDash;
 		color: $white_color;
 	}
 
+}
+
+
+//List Style
+.blog-list-style .newsfit-post-card {
+	.article-inner-wrapper {
+		display: flex;
+		gap: 15px;
+	}
+	.post-thumbnail {
+		flex: 0 0 80px;
+		max-width: 80px;
+		height: 80px;
+		a, img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	.entry-title {
+		@include font-size(20px, 26px);
+		margin-bottom: 6px;
+	}
+	p {
+		margin: 0;
+	}
 }

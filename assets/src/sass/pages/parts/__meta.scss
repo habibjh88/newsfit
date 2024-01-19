@@ -37,9 +37,9 @@
 			column-gap: 10px;
 		}
 
-		ul li:not(:first-child)::before {
+		ul li:not(:last-child)::after {
 			content: "/";
-			margin-right: 10px;
+			margin-left: 10px;
 			font-size: 15px;
 		}
 	}
@@ -48,7 +48,7 @@
 		li:not(:last-child)::after {
 			content: " | ";
 			transform: scaleY(.9);
-			margin: 0 1px 0 3px;
+			margin: 0 1px 0 10px;
 		}
 	}
 
@@ -56,4 +56,42 @@
 	.meta-style-dash & li::before {
 		@extend .metaStyleDash;
 	}
+
+	.meta-style-dash-bg & {
+		ul {
+			gap: 6px;
+		}
+
+		li {
+			background: $meta_light;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			padding: 3px 10px;
+			margin: 0;
+			@include transition_default();
+			@extend .primaryColor;
+
+			&:before {
+				@extend .primaryColor;
+			}
+
+			a {
+				@extend .primaryColor;
+			}
+
+			a:hover {
+				color: $title_color;
+			}
+		}
+
+		li::before {
+			@extend .metaStyleDash;
+		}
+	}
+}
+
+
+.widget .newsfit-post-meta {
+	margin-bottom: 6px;
 }

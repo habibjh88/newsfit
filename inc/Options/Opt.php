@@ -38,6 +38,7 @@ class Opt {
 		foreach ( $defaults as $key => $dValue ) {
 			if ( isset( $_GET['reset_theme_mod'] ) && $_GET['reset_theme_mod'] == 1 ) {
 				remove_theme_mod( $key );
+				wp_redirect('customize.php');
 			}
 			$value           = get_theme_mod( $key, $dValue );
 			$newData[ $key ] = $value;

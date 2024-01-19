@@ -6,6 +6,11 @@
 	border: 1px dashed $gray40;
 	padding: 36px 40px;
 	position: relative;
+	align-items: start;
+
+	p {
+		margin: 0;
+	}
 
 	@media (min-width: 800px) {
 		&:after {
@@ -49,9 +54,6 @@
 		flex: 0 0 50px;
 	}
 
-	.nav-title {
-		flex: 0 0 100%;
-	}
 
 	.nav-title,
 	.link {
@@ -64,11 +66,12 @@
 		color: $title_color;
 
 		&:hover {
-			color: $primary_color;
+			@extend .primaryColor;
 		}
 	}
 
 	.nav-title {
+		flex: 0 0 100%;
 		font-weight: normal;
 		margin-bottom: 12px;
 

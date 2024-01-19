@@ -4,3 +4,27 @@
 	margin-right: 5px;
 	@include transition_default();
 }
+
+.primaryColor {
+	color: $primary_color;
+}
+
+.primaryBG {
+	background-color: $primary_color;
+}
+
+.whiteColor {
+	color: $white_color;
+}
+
+.whiteBG {
+	background-color: $white_color;
+}
+
+.blackColor {
+	color: $black_color;
+}
+
+.blackBG {
+	background-color: $black_color;
+}

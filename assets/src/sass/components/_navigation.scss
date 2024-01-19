@@ -52,7 +52,7 @@
 
 	ul li.current-menu-item > a,
 	ul li.current-menu-ancestor > a {
-		color: $primary_color;
+		@extend .primaryColor;
 	}
 
 	> ul > li > a:before {
@@ -60,7 +60,7 @@
 		z-index: 1;
 		content: "";
 		height: 2px;
-		background-color: $primary_color;
+		@extend .primaryBG;
 		bottom: 26px;
 		width: 0;
 		left: 0;
@@ -74,7 +74,7 @@
 	}
 
 	ul li a:hover {
-		color: $primary_color;
+		@extend .primaryColor;
 
 		svg {
 			fill: $primary_color;
@@ -82,12 +82,12 @@
 	}
 
 	ul.menu > li > a:hover {
-		color: $primary_color;
+		@extend .primaryColor;
 	}
 
 	ul.menu li.current-menu-item > a,
 	ul.menu li.current > a {
-		color: $primary_color;
+		@extend .primaryColor;
 	}
 
 	/* #. Submenu */
@@ -154,7 +154,7 @@
 	}
 
 	ul li ul li:hover > a {
-		color: $primary_color;
+		@extend .primaryColor;
 	}
 
 	/*Menu hover effect*/
@@ -163,14 +163,14 @@
 	}
 
 	ul.menu li ul.dropdown-menu li a:hover {
-		color: $primary_color;
+		@extend .primaryColor;
 	}
 
 	ul.menu li ul.dropdown-menu li a:before {
 		position: absolute;
 		z-index: 1;
 		content: "";
-		background-color: $primary_color;
+		@extend .primaryBG;
 		height: 0.0625rem;
 		width: 0;
 		right: 0;

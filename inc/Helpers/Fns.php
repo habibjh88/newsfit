@@ -65,7 +65,7 @@ class Fns {
 		] );
 		$rotate_style = '';
 		if ( $rotate ) {
-			$rotate_style = "style=transform:rotate(".$rotate."deg);";
+			$rotate_style = "style=transform:rotate(" . $rotate . "deg);";
 		}
 
 		if ( isset( $svg_list[ $name ] ) ) {
@@ -120,7 +120,7 @@ class Fns {
 	 */
 	public static function sidebar_lists() {
 		$sidebar_fields            = [];
-		$sidebar_fields['sidebar'] = esc_html__( 'Sidebar', 'newsfit' );
+		$sidebar_fields['default'] = esc_html__( 'Choose Sidebar', 'newsfit' );
 		if ( ! empty( Sidebar::sidebar_lists() ) ) {
 			foreach ( Sidebar::sidebar_lists() as $id => $sidebar ) {
 				$sidebar_fields[ $id ] = $sidebar['name'];
@@ -284,28 +284,6 @@ class Fns {
 		);
 	}
 
-
-	/**
-	 * Return content columns
-	 * @return string
-	 */
-	public static function content_columns() {
-		$columns = "col-md-8";
-
-		if ( is_singular() ) {
-			$columns = is_active_sidebar( 'rt-single-sidebar' ) ? "col-md-8" : "col-md-10 col-md-offset-1";
-		} else {
-			$columns = ! is_active_sidebar( 'rt-sidebar' ) ? "col-md-12" : $columns;
-		}
-
-		if ( Opt::$layout === 'full-width' ) {
-			$columns = is_singular() ? "col-md-10 col-md-offset-1" : "col-md-12";
-		}
-
-		return $columns;
-	}
-
-
 	/**
 	 * Return Sidebar Column
 	 * @return string
@@ -317,22 +295,98 @@ class Fns {
 	}
 
 	/**
+	 * Return content columns
+	 * @return string
+	 */
+	public static function content_columns() {
+		$_columns = "col-md-8";
+		if ( is_singular() ) {
+			$sidebar = Opt::$sidebar === 'default' ? 'rt-single-sidebar' : Opt::$sidebar;
+			$columns = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
+		} else {
+			$sidebar = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
+			$columns = ! is_active_sidebar( $sidebar ) ? "col-md-12" : $_columns;
+		}
+
+		if ( Opt::$layout === 'full-width' ) {
+			$columns = is_singular() ? "col-md-10 col-md-offset-1" : "col-md-12";
+		}
+
+		return $columns;
+	}
+
+
+	/**
 	 * Get blog colum
 	 *
 	 * @param $blog_col
 	 *
 	 * @return mixed|string
 	 */
-	public static function newsfit_blog_column( $blog_col = 'col-lg-6' ) {
-		$colum_from_customize = newsfit_option( 'newsfit_blog_column' );
+	public static function blog_column( $column = 'col-lg-6' ) {
+		$blog_colum_opt = newsfit_option( 'newsfit_blog_column' ) !== 'default' ? newsfit_option( 'newsfit_blog_column' ) : '';
+		$blog_sidebar   = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
+		$blog_layout    = Opt::$layout ?? 'right-sidebar';
 
-		if ( 'default' == $colum_from_customize && 'full-width' === Opt::$layout ) {
-			$blog_col = 'col-lg-4';
-		} elseif ( 'default' !== $colum_from_customize ) {
-			$blog_col = $colum_from_customize;
+		if ( ! $blog_colum_opt && 'full-width' === $blog_layout ) {
+			$default_blog_col = 'col-lg-4';
+		} elseif ( is_active_sidebar( $blog_sidebar ) && ! $blog_colum_opt ) {
+			$default_blog_col = $column;
+		} elseif ( $blog_colum_opt ) {
+			$default_blog_col = $blog_colum_opt;
 		}
 
-		return $blog_col;
+		return $default_blog_col;
+	}
+
+	/**
+	 * Get all post type
+	 * @return array
+	 */
+	public static function get_post_types() {
+		$post_types = get_post_types(
+			[
+				'public'            => true,
+				'show_in_nav_menus' => true,
+			],
+			'objects'
+		);
+		$post_types = wp_list_pluck( $post_types, 'label', 'name' );
+
+		$exclude = apply_filters( 'newsfit_exclude_post_type', [ 'attachment', 'revision', 'nav_menu_item', 'elementor_library', 'tpg_builder', 'e-landing-page' ] );
+
+		foreach ( $exclude as $ex ) {
+			unset( $post_types[ $ex ] );
+		}
+
+		return $post_types;
+	}
+
+	/**
+	 * Meta Style
+	 * @return array
+	 */
+	public static function meta_style() {
+		return [
+			'meta-style-default' => __( 'Default From Theme', 'newsfit' ),
+			'meta-style-dash'    => __( 'Before Dash ( — )', 'newsfit' ),
+			'meta-style-dash-bg' => __( 'Before Dash BG ( — )', 'newsfit' ),
+			'meta-style-pipe'    => __( 'After Pipe ( | )', 'newsfit' ),
+		];
+	}
+
+	/**
+	 * Blog Meta Style
+	 * @return array
+	 */
+	public static function blog_meta_list() {
+		return [
+			'author'   => __( 'Author', 'skyrocket' ),
+			'date'     => __( 'Date', 'skyrocket' ),
+			'category' => __( 'Category', 'skyrocket' ),
+			'tag'      => __( 'Tag', 'skyrocket' ),
+			'comment'  => __( 'Comment', 'skyrocket' ),
+		];
 	}
 
 

@@ -9,14 +9,16 @@
 
 use RT\NewsFit\Helpers\Fns;
 
-$meta_key   = is_single() ? 'newsfit_single_meta' : 'newsfit_blog_meta';
-$meta_list  = newsfit_option( $meta_key, false, true );
-$meta_style = newsfit_option( 'newsfit_blog_meta_style' );
+$meta_key  = is_single() ? 'newsfit_single_meta' : 'newsfit_blog_meta';
+$meta_list = newsfit_option( $meta_key, false, true );
+
 
 if ( is_single() ) {
+	$meta_style   = newsfit_option( 'newsfit_single_meta_style' );
 	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style ] );
 } else {
-	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, Fns::newsfit_blog_column() ] );
+	$meta_style   = newsfit_option( 'newsfit_blog_meta_style' );
+	$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, Fns::blog_column() ] );
 }
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( $post_classes ); ?>>

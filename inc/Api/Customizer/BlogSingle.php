@@ -8,6 +8,7 @@
 namespace RT\NewsFit\Api\Customizer;
 
 use RT\NewsFit\Api\Customizer;
+use RT\NewsFit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -36,25 +37,15 @@ class BlogSingle extends Customizer {
 				'placeholder' => __( 'Choose Meta', 'newsfit' ),
 				'multiselect' => true,
 				'default'     => 'author,date,category,tag,comment',
-				'choices'     => [
-					'author'   => __( 'Author', 'skyrocket' ),
-					'date'     => __( 'Date', 'skyrocket' ),
-					'category' => __( 'Category', 'skyrocket' ),
-					'comment'  => __( 'Comment', 'skyrocket' ),
-				],
+				'choices'     => Fns::blog_meta_list(),
 			],
 
 			'newsfit_single_meta_style' => [
 				'type'    => 'select',
 				'label'   => __( 'Meta Style', 'newsfit' ),
 				'default' => 'meta-style-default',
-				'choices' => [
-					'meta-style-default' => __( 'Default From Theme', 'newsfit' ),
-					'meta-style-dash'    => __( 'Before Dash ( — )', 'newsfit' ),
-					'meta-style-pipe'    => __( 'After Pipe ( | )', 'newsfit' ),
-				]
+				'choices' => Fns::meta_style()
 			],
-
 
 			'newsfit_single_author_prefix' => [
 				'type'    => 'text',
@@ -77,7 +68,6 @@ class BlogSingle extends Customizer {
 				'type'  => 'switch',
 				'label' => __( 'Title Above Category Visibility', 'newsfit' ),
 			],
-
 
 		] );
 	}

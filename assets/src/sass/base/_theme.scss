@@ -22,3 +22,31 @@
 		padding-bottom: 30px;
 	}
 }
+
+.post-edit-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 13px;
+	color: $white_color !important;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 5px 10px;
+	line-height: 1;
+	max-width: 44px;
+	max-height: 24px;
+	opacity: 0;
+	visibility: hidden;
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+
+	&:hover {
+		background: $black_color;
+	}
+
+	article:hover & {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+

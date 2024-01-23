@@ -6,14 +6,10 @@
 	border: 1px dashed $gray40;
 	padding: 36px 40px;
 	position: relative;
-	align-items: start;
-
-	p {
-		margin: 0;
-	}
+	align-items: flex-start;
 
 	@media (min-width: 800px) {
-		&:after {
+		&::after {
 			content: "";
 			width: 1px;
 			height: 70px;
@@ -23,6 +19,10 @@
 			transform: translate(-50%, -50%);
 			background-color: $gray40;
 		}
+	}
+
+	p {
+		margin: 0;
 	}
 
 	.post-navigation {

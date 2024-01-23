@@ -4,17 +4,17 @@
 	.widget {
 		width: 100%;
 		max-width: 100%;
-		flex: 0 0 100%
+		flex: 0 0 100%;
+		background: $white_color;
+		box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
 	}
 
-	@media (min-width: 768px) {
+	/*@media (min-width: 768px) {
 		.layout-right-sidebar & {
 			padding-left: 30px;
 		}
 		.layout-left-sidebar & {
 			padding-right: 30px;
 		}
-	}
+	}*/
 }
-
-

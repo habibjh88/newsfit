@@ -485,7 +485,6 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 		$default_args = [
 			'with_list'     => true,
 			'include'       => [],
-			'edit_link'     => false,
 			'class'         => '',
 			'author_prefix' => __( 'By', 'newsfit' )
 		];
@@ -506,10 +505,6 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 
 		$meta_list = $args['include'] ?? array_keys( $_meta_data );
 
-		ob_start();
-		edit_post_link( 'Edit' );
-		$edit_markup = ob_get_clean();
-
 		if ( $args['with_list'] ) {
 			$output .= '<div class="newsfit-post-meta ' . $args['class'] . '"><ul class="entry-meta">';
 		}
@@ -521,10 +516,6 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 			$output .= ( $args['with_list'] ) ? '<li class="' . $key . '">' : '';
 			$output .= $meta;
 			$output .= ( $args['with_list'] ) ? '</li>' : '';
-		}
-
-		if ( $args['edit_link'] && is_user_logged_in() && $edit_markup ) {
-			$output .= '<li class="edit-link">' . $edit_markup . '</li>';
 		}
 
 		if ( $args['with_list'] ) {
@@ -543,7 +534,7 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 *
-	 * @return html
+	 * @return void
 	 */
 	function newsfit_post_thumbnail() {
 		if ( ! Fns::can_show_post_thumbnail() ) {
@@ -551,30 +542,19 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 		}
 		?>
 
-		<?php if ( is_singular() ) : ?>
-
-			<figure class="post-thumbnail">
-				<?php
-				// Lazy-loading attributes should be skipped for thumbnails since they are immediately in the viewport.
+		<figure class="post-thumbnail">
+			<?php if ( is_singular() ) {
 				the_post_thumbnail( 'post-thumbnail', [ 'loading' => false ] );
-				?>
-				<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
-					<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
-				<?php endif; ?>
-			</figure><!-- .post-thumbnail -->
-
-		<?php else : ?>
-
-			<figure class="post-thumbnail">
-				<a class="post-thumbnail-inner alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			} else { ?>
+				<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 					<?php the_post_thumbnail( 'post-thumbnail' ); ?>
 				</a>
-				<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
-					<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
-				<?php endif; ?>
-			</figure><!-- .post-thumbnail -->
-
-		<?php endif; ?>
+			<?php } ?>
+			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
+				<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
+			<?php endif; ?>
+			<?php edit_post_link( 'Edit' ); ?>
+		</figure><!-- .post-thumbnail -->
 		<?php
 	}
 }
@@ -650,5 +630,42 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 			<?php dynamic_sidebar( $sidebar_id ); ?>
 		</aside><!-- #sidebar -->
 		<?php
+	}
+}
+
+if ( ! function_exists( 'newsfit_article_classes' ) ) {
+	/**
+	 * Get dynamic article classes
+	 * @return string
+	 */
+	function newsfit_article_classes() {
+		$above_meta_style = 'above-' . newsfit_option( 'newsfit_single_above_meta_style' );
+
+		if ( is_single() ) {
+			$meta_style   = newsfit_option( 'newsfit_single_meta_style' );
+			$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, $above_meta_style ] );
+		} else {
+			$meta_style   = newsfit_option( 'newsfit_blog_meta_style' );
+			$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, $above_meta_style, Fns::blog_column() ] );
+		}
+
+		return $post_classes;
+	}
+}
+
+if ( ! function_exists( 'newsfit_above_title_meta' ) ) {
+	/**
+	 * Get above title meta
+	 * @return string
+	 */
+	function newsfit_above_title_meta() {
+		if ( ( ! is_single() && newsfit_option( 'newsfit_blog_above_meta_visibility' ) ) || ( is_single() && newsfit_option( 'newsfit_single_above_meta_style' ) ) ) : ?>
+			<div class="title-above-meta">
+				<?php echo newsfit_post_meta( [
+					'with_list' => false,
+					'include'   => [ 'category' ],
+				] ); ?>
+			</div> <?php
+		endif;
 	}
 }

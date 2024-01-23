@@ -366,13 +366,22 @@ class Fns {
 	 * Meta Style
 	 * @return array
 	 */
-	public static function meta_style() {
-		return [
+	public static function meta_style( $exclude = [] ) {
+		$meta_style = [
 			'meta-style-default' => __( 'Default From Theme', 'newsfit' ),
+			'meta-style-border'  => __( 'Border Style', 'newsfit' ),
 			'meta-style-dash'    => __( 'Before Dash ( — )', 'newsfit' ),
-			'meta-style-dash-bg' => __( 'Before Dash BG ( — )', 'newsfit' ),
+			'meta-style-dash-bg' => __( 'Before Dash with BG ( — )', 'newsfit' ),
 			'meta-style-pipe'    => __( 'After Pipe ( | )', 'newsfit' ),
 		];
+
+		if ( ! empty( $exclude ) && is_array( $exclude ) ) {
+			foreach ( $exclude as $item ) {
+				unset( $meta_style[ $item ] );
+			}
+		}
+
+		return $meta_style;
 	}
 
 	/**

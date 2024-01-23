@@ -1,6 +1,7 @@
 .newsfit-post-meta {
 	color: $meta_color;
 	margin-bottom: 15px;
+	font-size: $base_fs - 1;
 
 	ul {
 		list-style: none;
@@ -17,14 +18,26 @@
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
+		line-height: 1.5;
 
 		.prefix {
 			margin-right: 4px;
 		}
+
+		&.edit-link {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	article:hover & ul li.edit-link {
+		opacity: 1;
+		visibility: visible;
 	}
 
 	ul li a {
 		color: $meta_color;
+		padding-bottom: 0;
 
 		&:hover {
 			color: $title_color
@@ -33,6 +46,8 @@
 
 	//Default meta style
 	.meta-style-default & {
+		font-size: $base_fs;
+
 		ul {
 			column-gap: 10px;
 		}
@@ -41,6 +56,55 @@
 			content: "/";
 			margin-left: 10px;
 			font-size: 15px;
+		}
+	}
+
+	.meta-style-border & {
+		ul {
+			gap: 5px;
+		}
+
+		ul li:not(.category, .tag) {
+			border: 1px solid $primary_color;
+			padding: 0 10px;
+			@extend .primaryColor;
+
+			a {
+				@extend .primaryColor;
+
+				&:hover {
+					@extend .secondaryColor;
+				}
+			}
+		}
+
+		ul li:is(.category, .tag) {
+			padding: 0;
+
+			.tag-links,
+			.category-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 5px;
+			}
+
+			.sp {
+				display: none;
+			}
+
+			a {
+				display: inline-block;
+				height: 100%;
+				border: 1px solid $primary_color;
+				padding: 4px 10px;
+				line-height: 1.2;
+				@extend .primaryColor;
+
+				&:hover {
+					@extend .primaryBG;
+					@extend .whiteColor;
+				}
+			}
 		}
 	}
 
@@ -57,12 +121,28 @@
 		@extend .metaStyleDash;
 	}
 
+	//Dash and BG Style
 	.meta-style-dash-bg & {
 		ul {
 			gap: 6px;
 		}
 
 		li {
+			padding: 0;
+		}
+
+		li::before {
+			@extend .metaStyleDash;
+		}
+
+		.tag-links,
+		.category-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+		}
+
+		li:not(.category, .tag) {
 			background: $meta_light;
 			display: inline-flex;
 			justify-content: center;
@@ -85,9 +165,37 @@
 			}
 		}
 
-		li::before {
-			@extend .metaStyleDash;
+		li:is(.category, .tag) {
+			.sp {
+				display: none;
+			}
+
+			a {
+				display: inline-block;
+				height: 100%;
+				padding: 4px 10px;
+				line-height: 1.2;
+				position: relative;
+				background-color: $meta_light;
+				@extend .primaryColor;
+
+				&:hover {
+					@extend .primaryBG;
+					@extend .whiteColor;
+				}
+
+				&::before {
+					content: "—";
+					margin-right: 5px;
+				}
+			}
+
+			&::before {
+				content: none;
+			}
 		}
+
+
 	}
 }
 

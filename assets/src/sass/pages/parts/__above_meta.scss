@@ -1,0 +1,53 @@
+//Meta Above Title
+.title-above-meta {
+	margin-bottom: 5px;
+
+	.category-links a {
+		font-style: normal;
+		font-weight: 500;
+		background: $meta_light;
+		@extend .primaryColor;
+		@include font_size(14px);
+		height: 30px;
+		padding: 0 10px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		margin: 0 4px 4px 0;
+
+		&:hover {
+			background: $primary_color;
+			color: $white_color;
+		}
+	}
+
+	.sp {
+		display: none;
+	}
+
+	.above-meta-style-border & {
+		.category-links a {
+			display: inline-block;
+			height: 100%;
+			border: 1px solid $primary_color;
+			padding: 4px 10px;
+			line-height: 1.2;
+			background: $white_color;
+			@extend .primaryColor;
+			&:hover {
+				@extend .primaryBG;
+				@extend .whiteColor;
+			}
+		}
+	}
+
+	.above-meta-style-dash & {
+		.category-links a {
+			&::before {
+				content: "—";
+				margin-right: 5px;
+			}
+		}
+	}
+}

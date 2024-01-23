@@ -6,6 +6,7 @@ $widget_li_space: 8px;
 	@include font_size(15px);
 	margin: 0 0 30px;
 	color: $body_color;
+	padding: 24px 30px;
 }
 
 .widget a {
@@ -134,10 +135,6 @@ $widget_li_space: 8px;
 
 .widget ul li a {
 	line-height: 1;
-}
-
-.widget.widget_nav_menu > div {
-	margin-top: -15px;
 }
 
 .widget_block .wp-block-group__inner-container > ul,

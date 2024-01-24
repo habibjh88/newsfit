@@ -35,10 +35,8 @@ class Setup {
 	 */
 	private function add_image_size() {
 		$sizes = [
-			'rdtheme-size1'  => [ 1200, 650, true ],
-			'rdtheme-size2'  => [ 370, 245, true ],
-			'rdtheme-size3'  => [ 350, 420, true ],
-			'rdtheme-square' => [ 500, 500, true ],
+			'rdtheme-1200-650' => [ 1200, 650, true ],
+			'newsfit-500-500'  => [ 500, 500, true ],
 		];
 
 		$sizes = apply_filters( 'newsfit_image_size', $sizes );

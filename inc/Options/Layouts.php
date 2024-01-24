@@ -40,21 +40,25 @@ class Layouts {
 					$this->type = 'page';
 			}
 
-			Opt::$layout         = $this->check_meta_and_option_value( 'layout', false, true );
-			Opt::$header_style   = $this->check_meta_and_option_value( 'header_style', false, true );
-			Opt::$sidebar        = $this->check_meta_and_option_value( 'sidebar', false, true );
-			Opt::$header_width   = $this->check_meta_and_option_value( 'header_width' );
-			Opt::$menu_alignment = $this->check_meta_and_option_value( 'menu_alignment' );
-			Opt::$padding_top    = $this->check_meta_and_option_value( 'padding_top' );
-			Opt::$padding_bottom = $this->check_meta_and_option_value( 'padding_bottom' );
-			Opt::$banner_image   = $this->check_meta_and_option_value( 'banner_image', false, true );
-			Opt::$banner_height  = $this->check_meta_and_option_value( 'banner_height', false, true );
-			Opt::$footer_style   = $this->check_meta_and_option_value( 'footer_style', false, true );
-			Opt::$footer_schema  = $this->check_meta_and_option_value( 'footer_schema', false, true );
-			Opt::$has_top_bar    = $this->check_meta_and_option_value( 'top_bar', true, true );
-			Opt::$has_tr_header  = $this->check_meta_and_option_value( 'tr_header', true, true );
-			Opt::$has_breadcrumb = $this->check_meta_and_option_value( 'breadcrumb', true, true );
-			Opt::$has_banner     = $this->check_meta_and_option_value( 'banner', true, true );
+			Opt::$layout         = $this->check_meta_and_layout_value( 'layout', false, true );
+			Opt::$header_style   = $this->check_meta_and_layout_value( 'header_style', false, true );
+			Opt::$sidebar        = $this->check_meta_and_layout_value( 'sidebar', false, true );
+			Opt::$header_width   = $this->check_meta_and_layout_value( 'header_width' );
+			Opt::$menu_alignment = $this->check_meta_and_layout_value( 'menu_alignment' );
+			Opt::$padding_top    = $this->check_meta_and_layout_value( 'padding_top' );
+			Opt::$padding_bottom = $this->check_meta_and_layout_value( 'padding_bottom' );
+			Opt::$banner_image   = $this->check_meta_and_layout_value( 'banner_image', false, true );
+			Opt::$banner_height  = $this->check_meta_and_layout_value( 'banner_height', false, true );
+			Opt::$footer_style   = $this->check_meta_and_layout_value( 'footer_style', false, true );
+			Opt::$footer_schema  = $this->check_meta_and_layout_value( 'footer_schema', false, true );
+			Opt::$has_top_bar    = $this->check_meta_and_layout_value( 'top_bar', true, true );
+			Opt::$has_tr_header  = $this->check_meta_and_layout_value( 'tr_header', true, true );
+			Opt::$has_breadcrumb = $this->check_meta_and_layout_value( 'breadcrumb', true, true );
+			Opt::$has_banner     = $this->check_meta_and_layout_value( 'banner', true, true );
+
+
+			Opt::$single_style = $this->check_meta_option_value( 'single_post_style' );
+
 		} // Blog and Archive
 		elseif ( is_home() || is_archive() || is_search() || is_404() ) {
 			if ( is_404() ) {
@@ -93,7 +97,7 @@ class Layouts {
 	 *
 	 * @return bool|mixed|string
 	 */
-	private function check_meta_and_option_value( $key, $is_bool = false, $check_layout = false ) {
+	private function check_meta_and_layout_value( $key, $is_bool = false, $check_layout = false ) {
 		$option_key      = $this->type . '_' . $key;
 		$meta_value      = $this->meta_value[ $key ] ?? 'default';
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
@@ -137,6 +141,19 @@ class Layouts {
 
 		if ( $is_bool ) {
 			return $result == 1 || $result == 'on';
+		}
+
+		return $result;
+	}
+
+	private function check_meta_option_value( $key ) {
+		$meta_value      = $this->meta_value[ $key ] ?? 'default';
+		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
+
+		if ( ! empty( $meta_value ) && $meta_value != 'default' ) { //Check from Meta
+			$result = $meta_value;
+		} else {
+			$result = $opt_from_global;
 		}
 
 		return $result;

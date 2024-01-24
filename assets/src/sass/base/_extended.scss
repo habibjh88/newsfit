@@ -1,5 +1,5 @@
 .metaStyleDash {
-	content: "—";
+	content: "\2014";
 	color: $meta_color;
 	margin-right: 5px;
 	@include transition_default();

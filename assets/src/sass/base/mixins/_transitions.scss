@@ -1,9 +1,9 @@
-@mixin transition_default() {
-	-webkit-transition: all $time $ease;
-	-moz-transition: all $time $ease;
-	-ms-transition: all $time $ease;
-	-o-transition: all $time $ease;
-	transition: all $time $ease;
+@mixin transition_default($allowItem : all) {
+	-webkit-transition: $allowItem $time $ease;
+	-moz-transition: $allowItem $time $ease;
+	-ms-transition: $allowItem $time $ease;
+	-o-transition: $allowItem $time $ease;
+	transition: $allowItem $time $ease;
 }
 
 @mixin transition($val...) {

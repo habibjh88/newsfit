@@ -38,10 +38,12 @@
 
 	ul li > ul.dropdown-menu {
 		transform: translateY(15px);
+		pointer-events: none;
 	}
 
 	ul > li:hover > ul.dropdown-menu {
 		transform: translateY(0);
+		pointer-events: all;
 	}
 
 	ul > li:first-child:hover > ul.dropdown-menu {

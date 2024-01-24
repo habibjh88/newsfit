@@ -45,7 +45,7 @@
 	.above-meta-style-dash & {
 		.category-links a {
 			&::before {
-				content: "—";
+				content: "\2014";
 				margin-right: 5px;
 			}
 		}

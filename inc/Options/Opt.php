@@ -26,6 +26,8 @@ class Opt {
 	public static $padding_bottom = null;
 	public static $has_tr_header;
 	public static $has_top_bar;
+	public static $single_style;
+
 
 	public function __construct() {
 		add_action( 'after_setup_theme', [ $this, 'set_options' ], 99 );

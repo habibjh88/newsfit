@@ -385,7 +385,7 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 	 * Newfit Site Logo
 	 *
 	 */
-	function newsfit_site_logo() {
+	function newsfit_site_logo( $with_h1 = false ) {
 		$main_logo       = newsfit_option( 'rt_logo' );
 		$logo_light      = newsfit_option( 'rt_logo_light' );
 		$logo_mobile     = newsfit_option( 'rt_logo_mobile' );
@@ -393,6 +393,10 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 		$mobile_logo     = $logo_mobile ?? $site_logo;
 		$has_mobile_logo = ! empty( $logo_mobile ) ? 'has-mobile-logo' : '';
 		ob_start();
+
+		if ( $with_h1 ) {
+			echo '<h1 class="site-title">';
+		}
 		?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="<?php echo esc_attr( $has_mobile_logo ) ?>">
 			<?php
@@ -407,6 +411,10 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 			?>
 		</a>
 		<?php
+		if ( $with_h1 ) {
+			echo '</h1>';
+		}
+
 		return ob_get_clean();
 	}
 }
@@ -544,10 +552,10 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 
 		<figure class="post-thumbnail">
 			<?php if ( is_singular() ) {
-				the_post_thumbnail( 'post-thumbnail', [ 'loading' => false ] );
+				the_post_thumbnail( 'full', [ 'loading' => true ] );
 			} else { ?>
 				<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-					<?php the_post_thumbnail( 'post-thumbnail' ); ?>
+					<?php the_post_thumbnail( 'newsfit-500-500', [ 'loading' => 'lazy' ] ); ?>
 				</a>
 			<?php } ?>
 			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
@@ -568,7 +576,7 @@ if ( ! function_exists( 'newsfit_entry_footer' ) ) {
 	 */
 	function newsfit_entry_footer() {
 		if ( ! is_single() ) {
-			if ( newsfit_option( 'newsfit_blog_footer_visibility' ) ) {
+			if ( newsfit_option( 'rt_blog_footer_visibility' ) ) {
 				echo '<footer class="entry-footer">';
 				echo '<a class="read-more" href="' . esc_url( get_permalink() ) . '">' . Fns::continue_reading_text() . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 				echo '</footer>';
@@ -593,7 +601,7 @@ if ( ! function_exists( 'newsfit_entry_content' ) ) {
 	 */
 	function newsfit_entry_content() {
 		if ( ! is_single() ) {
-			$length = newsfit_option( 'newsfit_excerpt_limit' );
+			$length = newsfit_option( 'rt_excerpt_limit' );
 			echo wp_trim_words( get_the_excerpt(), $length );
 		} else {
 			the_content();
@@ -639,13 +647,13 @@ if ( ! function_exists( 'newsfit_article_classes' ) ) {
 	 * @return string
 	 */
 	function newsfit_article_classes() {
-		$above_meta_style = 'above-' . newsfit_option( 'newsfit_single_above_meta_style' );
+		$above_meta_style = 'above-' . newsfit_option( 'rt_single_above_meta_style' );
 
 		if ( is_single() ) {
-			$meta_style   = newsfit_option( 'newsfit_single_meta_style' );
+			$meta_style   = newsfit_option( 'rt_single_meta_style' );
 			$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, $above_meta_style ] );
 		} else {
-			$meta_style   = newsfit_option( 'newsfit_blog_meta_style' );
+			$meta_style   = newsfit_option( 'rt_blog_meta_style' );
 			$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, $above_meta_style, Fns::blog_column() ] );
 		}
 
@@ -659,13 +667,13 @@ if ( ! function_exists( 'newsfit_above_title_meta' ) ) {
 	 * @return string
 	 */
 	function newsfit_above_title_meta() {
-		if ( ( ! is_single() && newsfit_option( 'newsfit_blog_above_meta_visibility' ) ) || ( is_single() && newsfit_option( 'newsfit_single_above_meta_style' ) ) ) : ?>
+		if ( ( ! is_single() && newsfit_option( 'rt_blog_above_meta_visibility' ) ) || ( is_single() && newsfit_option( 'rt_single_above_meta_style' ) ) ) : ?>
 			<div class="title-above-meta">
-				<?php echo newsfit_post_meta( [
-					'with_list' => false,
-					'include'   => [ 'category' ],
-				] ); ?>
-			</div> <?php
+			<?php echo newsfit_post_meta( [
+				'with_list' => false,
+				'include'   => [ 'category' ],
+			] ); ?>
+			</div><?php
 		endif;
 	}
 }

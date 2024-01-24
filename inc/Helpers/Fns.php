@@ -324,7 +324,7 @@ class Fns {
 	 * @return mixed|string
 	 */
 	public static function blog_column( $column = 'col-lg-6' ) {
-		$blog_colum_opt = newsfit_option( 'newsfit_blog_column' ) !== 'default' ? newsfit_option( 'newsfit_blog_column' ) : '';
+		$blog_colum_opt = newsfit_option( 'rt_blog_column' ) !== 'default' ? newsfit_option( 'rt_blog_column' ) : '';
 		$blog_sidebar   = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
 		$blog_layout    = Opt::$layout ?? 'right-sidebar';
 
@@ -385,6 +385,27 @@ class Fns {
 	}
 
 	/**
+	 * Single Style
+	 * @return array
+	 */
+	public static function single_post_style( $exclude = [] ): array {
+		$meta_style = [
+			'1' => __( 'Style 1 (Default From Theme)', 'newsfit' ),
+			'2' => __( 'Style 2 (Full-width Thumbnail)', 'newsfit' ),
+			'3' => __( 'Style 3 (Transparent Menu)', 'newsfit' ),
+			'4' => __( 'Style 4 (Content over on Thumb)', 'newsfit' ),
+		];
+
+		if ( ! empty( $exclude ) && is_array( $exclude ) ) {
+			foreach ( $exclude as $item ) {
+				unset( $meta_style[ $item ] );
+			}
+		}
+
+		return $meta_style;
+	}
+
+	/**
 	 * Blog Meta Style
 	 * @return array
 	 */
@@ -396,6 +417,14 @@ class Fns {
 			'tag'      => __( 'Tag', 'skyrocket' ),
 			'comment'  => __( 'Comment', 'skyrocket' ),
 		];
+	}
+
+	public static function is_single_fullwidth() {
+		if ( in_array( Opt::$single_style, [ 'rt-single-top-thumb', 'rt-single-transparent', 'rt-single-content-on-thumb' ] ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 

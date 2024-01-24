@@ -13,17 +13,16 @@ class Hooks {
 
 	/**
 	 * register default hooks and actions for WordPress
-	 * @return
 	 */
 	public function __construct() {
-
 		add_action( 'newsfit_banner', [ __CLASS__, 'banner' ] );
-
+		add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'meta_css' ] );
+		add_action( 'newsfit_before_single_content', [ __CLASS__, 'before_single_content' ] );
 	}
 
 	/**
 	 * Site Breadcrumb
-	 * @return void
 	 */
 	public static function banner() {
 		if ( ! Opt::$has_banner ) {
@@ -131,6 +130,41 @@ class Hooks {
 			<?php endif; ?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Single post meta visibility
+	 *
+	 * @param $screen
+	 *
+	 * @return void
+	 */
+	public static function meta_css( $screen ) {
+		if ( 'post.php' !== $screen ) {
+			return;
+		}
+		global $typenow;
+		$display = 'post' === $typenow ? 'table-row' : 'none';
+		?>
+		<style>
+			.single_post_style {
+				display: <?php echo esc_attr($display) ?>;
+			}
+		</style>
+		<?php
+	}
+
+	public static function before_single_content() {
+		$style = Opt::$single_style;
+
+		if ( in_array( $style, [ '2', '3', '4' ] ) ) {
+			?>
+			<div class="container">
+				<?php newsfit_post_thumbnail(); ?>
+			</div>
+			<?php
+		}
+
 	}
 
 }

@@ -9,6 +9,7 @@
 
 use RT\NewsFit\Helpers\Fns;
 
+$logo_h1 = ! is_singular( [ 'post' ] );
 ?>
 
 <div class="main-header-section">
@@ -17,9 +18,7 @@ use RT\NewsFit\Helpers\Fns;
 		<div class="row align-middle m-0">
 
 			<div class="site-branding pr-15">
-				<h1 class="site-title">
-					<?php echo newsfit_site_logo(); ?>
-				</h1>
+				<?php echo newsfit_site_logo( $logo_h1 ); ?>
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15" role="navigation">

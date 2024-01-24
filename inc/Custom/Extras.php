@@ -61,6 +61,10 @@ class Extras {
 			$classes[] = 'has-sticky-header';
 		}
 
+		if ( is_single() && Opt::$single_style ) {
+			$classes[] = 'newsfit-single-' . Opt::$single_style;
+		}
+
 		return $classes;
 	}
 

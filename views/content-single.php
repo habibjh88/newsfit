@@ -9,7 +9,7 @@
 
 use RT\NewsFit\Options\Opt;
 
-$meta_key = is_single() ? 'newsfit_single_meta' : 'newsfit_blog_meta';
+$meta_key  = is_single() ? 'newsfit_single_meta' : 'newsfit_blog_meta';
 $meta_list = newsfit_option( $meta_key, false, true );
 
 $meta = newsfit_option( 'newsfit_blog_above_meta_visibility' );
@@ -18,7 +18,11 @@ $meta = newsfit_option( 'newsfit_single_above_meta_style' );
 <article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_article_classes() ); ?>>
 	<div class="article-inner-wrapper">
 
-		<?php newsfit_post_thumbnail(); ?>
+		<?php
+		if ( ! in_array( Opt::$single_style, [ '2', '3', '4' ] ) ) {
+			newsfit_post_thumbnail();
+		}
+		?>
 
 		<div class="entry-wrapper">
 			<header class="entry-header">
@@ -26,11 +30,7 @@ $meta = newsfit_option( 'newsfit_single_above_meta_style' );
 
 				newsfit_above_title_meta();
 
-				if ( ! is_single() ) {
-					the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
-				} else {
-					the_title( '<h2 class="entry-title default-max-width">', '</h2>' );
-				}
+				the_title( '<h1 class="entry-title default-max-width">', '</h1>' );
 
 				if ( ! empty( $meta_list ) && newsfit_option( 'rt_meta_visibility' ) ) {
 					echo newsfit_post_meta( [
@@ -41,6 +41,7 @@ $meta = newsfit_option( 'newsfit_single_above_meta_style' );
 				}
 				?>
 			</header>
+
 			<?php if ( newsfit_option( 'rt_blog_content_visibility' ) ) : ?>
 				<div class="entry-content">
 					<?php newsfit_entry_content() ?>

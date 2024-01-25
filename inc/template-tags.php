@@ -335,13 +335,13 @@ if ( ! function_exists( 'newsfit_option' ) ) {
 	 *
 	 * @return mixed
 	 */
-	function newsfit_option( $key, $echo = false, $return_type = false ): mixed {
+	function newsfit_option( $key, $echo = false, $return_array = false ): mixed {
 		if ( isset( Opt::$options[ $key ] ) ) {
 			if ( $echo ) {
 				echo newsfit_html( Opt::$options[ $key ] );
 			} else {
 				$opt_val = Opt::$options[ $key ];
-				if ( $return_type && $opt_val ) {
+				if ( $return_array && $opt_val ) {
 					$opt_val = explode( ',', trim( $opt_val, ', ' ) );
 				}
 
@@ -537,11 +537,7 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 
 if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 	/**
-	 * Displays an optional post thumbnail.
-	 *
-	 * Wraps the post thumbnail in an anchor element on index views, or a div
-	 * element when on single views.
-	 *
+	 * Displays post thumbnail.
 	 * @return void
 	 */
 	function newsfit_post_thumbnail() {
@@ -549,20 +545,37 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 			return;
 		}
 		?>
-
 		<figure class="post-thumbnail">
-			<?php if ( is_singular() ) {
-				the_post_thumbnail( 'full', [ 'loading' => true ] );
-			} else { ?>
-				<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-					<?php the_post_thumbnail( 'newsfit-500-500', [ 'loading' => 'lazy' ] ); ?>
-				</a>
-			<?php } ?>
-			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
-				<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></figcaption>
-			<?php endif; ?>
+			<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<?php the_post_thumbnail( 'newsfit-500-500', [ 'loading' => 'lazy' ] ); ?>
+			</a>
 			<?php edit_post_link( 'Edit' ); ?>
 		</figure><!-- .post-thumbnail -->
+		<?php
+	}
+}
+
+if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
+	/**
+	 * Display post details thumbnail
+	 * @return void
+	 */
+	function newsfit_post_single_thumbnail() {
+		if ( ! Fns::can_show_post_thumbnail() ) {
+			return;
+		}
+		?>
+		<div class="post-thumbnail-wrap">
+			<figure class="post-thumbnail">
+				<?php the_post_thumbnail( 'full', [ 'loading' => true ] ); ?>
+				<?php edit_post_link( 'Edit' ); ?>
+			</figure><!-- .post-thumbnail -->
+			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
+				<figcaption class="wp-caption-text">
+					<span><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
+				</figcaption>
+			<?php endif; ?>
+		</div>
 		<?php
 	}
 }
@@ -575,22 +588,27 @@ if ( ! function_exists( 'newsfit_entry_footer' ) ) {
 	 *
 	 */
 	function newsfit_entry_footer() {
+
 		if ( ! is_single() ) {
-			if ( newsfit_option( 'rt_blog_footer_visibility' ) ) {
-				echo '<footer class="entry-footer">';
-				echo '<a class="read-more" href="' . esc_url( get_permalink() ) . '">' . Fns::continue_reading_text() . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
-				echo '</footer>';
+			if ( newsfit_option( 'rt_blog_footer_visibility' ) ) { ?>
+				<footer class="entry-footer">
+				<a class="read-more" href="<?php echo esc_url( get_permalink() ) ?>"><?php echo Fns::continue_reading_text() ?></a>
+				</footer><?php
 			}
 		} else {
-			if ( 'post' === get_post_type() && has_tag() ) {
-				echo '<footer class="entry-footer">';
-				echo '<div class="post-tags">';
-				echo "<span>" . esc_html__( 'Tags: ', 'newsfit' ) . "</span>";
-				echo Fns::posted_in( 'tag' );
-				echo '</div>';
-				echo '</footer>';
+			if ( 'post' === get_post_type() && has_tag() ) { ?>
+				<footer class="entry-footer">
+					<div class="post-tags">
+						<?php if ( $tags_label = newsfit_option( 'rt_tags' ) ) {
+							printf( "<span>%s</span>", esc_html( $tags_label ) );
+						} ?>
+						<?php newsfit_separate_meta( 'content-below-meta', [ 'tag' ] ); ?>
+					</div>
+				</footer>
+				<?php
 			}
 		}
+
 	}
 }
 
@@ -628,7 +646,7 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 			return false;
 		}
 
-		if ( Opt::$layout == 'full-width' ) {
+		if ( Opt::$layout == 'full-width' || Opt::$single_style == '4' ) {
 			return false;
 		}
 
@@ -641,39 +659,168 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 	}
 }
 
-if ( ! function_exists( 'newsfit_article_classes' ) ) {
+if ( ! function_exists( 'newsfit_post_class' ) ) {
 	/**
 	 * Get dynamic article classes
 	 * @return string
 	 */
-	function newsfit_article_classes() {
+	function newsfit_post_class( $default_class = 'newsfit-post-card' ) {
 		$above_meta_style = 'above-' . newsfit_option( 'rt_single_above_meta_style' );
 
 		if ( is_single() ) {
 			$meta_style   = newsfit_option( 'rt_single_meta_style' );
-			$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, $above_meta_style ] );
+			$post_classes = newsfit_classes( [ $meta_style, $above_meta_style ] );
 		} else {
 			$meta_style   = newsfit_option( 'rt_blog_meta_style' );
-			$post_classes = newsfit_classes( [ 'newsfit-post-card', $meta_style, $above_meta_style, Fns::blog_column() ] );
+			$post_classes = newsfit_classes( [ $meta_style, $above_meta_style, Fns::blog_column() ] );
+		}
+
+		if ( $default_class ) {
+			return $post_classes . ' ' . $default_class;
 		}
 
 		return $post_classes;
 	}
 }
 
-if ( ! function_exists( 'newsfit_above_title_meta' ) ) {
+if ( ! function_exists( 'newsfit_separate_meta' ) ) {
 	/**
 	 * Get above title meta
 	 * @return string
 	 */
-	function newsfit_above_title_meta() {
-		if ( ( ! is_single() && newsfit_option( 'rt_blog_above_meta_visibility' ) ) || ( is_single() && newsfit_option( 'rt_single_above_meta_style' ) ) ) : ?>
-			<div class="title-above-meta">
+	function newsfit_separate_meta( $class = '', $includes = [ 'category' ] ) {
+		if ( ( ! is_single() && newsfit_option( 'rt_blog_above_cat_visibility' ) ) || ( is_single() && newsfit_option( 'rt_single_above_cat_visibility' ) ) ) : ?>
+		<div class="separate-meta <?php echo esc_attr( $class ) ?>">
 			<?php echo newsfit_post_meta( [
 				'with_list' => false,
-				'include'   => [ 'category' ],
+				'include'   => $includes,
 			] ); ?>
 			</div><?php
 		endif;
 	}
 }
+
+if ( ! function_exists( 'newsfit_single_entry_header' ) ) {
+	/**
+	 * Get above title meta
+	 * @return string
+	 */
+	function newsfit_single_entry_header() {
+		?>
+		<header class="entry-header">
+			<?php
+			newsfit_separate_meta( 'title-above-meta' );
+
+			the_title( '<h1 class="entry-title default-max-width">', '</h1>' );
+
+			if ( ! empty( Fns::single_meta_lists() ) && newsfit_option( 'rt_single_meta_visibility' ) ) {
+				echo newsfit_post_meta( [
+					'with_list'     => true,
+					'include'       => Fns::single_meta_lists(),
+					'author_prefix' => newsfit_option( 'rt_author_prefix' ),
+				] );
+			}
+			?>
+		</header>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'newsfit_breadcrumb' ) ) {
+	/**
+	 * Newsfit breadcrumb
+	 * @return void
+	 */
+	function newsfit_breadcrumb() {
+		?>
+		<nav aria-label="breadcrumb">
+			<ul class="breadcrumb">
+				<li class="breadcrumb-item">
+					<?php echo newsfit_get_svg( 'home' ); ?>
+					<a href="<?php echo esc_url( site_url() ); ?>"><?php esc_html_e( 'Home', 'newsfit' ) ?></a>
+					<span class="raquo">/</span>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">
+					<?php
+					if ( is_tag() ) {
+						esc_html_e( 'Posts Tagged ', 'newsfit' );
+						?><span class="raquo">/</span>
+						<span class="title"><?php single_tag_title(); ?></span>
+						<?php
+
+					} elseif ( is_day() || is_month() || is_year() ) {
+						echo '<span class="title">';
+						esc_html_e( 'Posts made in', 'newsfit' );
+						echo esc_html( get_the_time( is_year() ? 'Y' : ( is_month() ? 'F, Y' : 'F jS, Y' ) ) );
+						echo '</span>';
+					} elseif ( is_search() ) {
+						echo '<span class="title">';
+						esc_html_e( 'Search results for', 'newsfit' );
+						the_search_query();
+						echo '</span>';
+					} elseif ( is_404() ) {
+						echo '<span class="title">';
+						esc_html_e( '404', 'newsfit' );
+						echo '</span>';
+					} elseif ( is_single() ) {
+						$category = get_the_category();
+						if ( $category ) {
+							$catlink = get_category_link( $category[0]->cat_ID );
+							echo '<a href="' . esc_url( $catlink ) . '">' . esc_html( $category[0]->cat_name ) . '</a> <span class="raquo"> /</span> ';
+						}
+						echo '<span class="title">';
+						echo get_the_title();
+						echo '</span>';
+					} elseif ( is_category() ) {
+						echo '<span class="title">';
+						single_cat_title();
+						echo '</span>';
+					} elseif ( is_tax() ) {
+						$tt_taxonomy_links = [];
+						$tt_term           = get_queried_object();
+						$tt_term_parent_id = $tt_term->parent;
+						$tt_term_taxonomy  = $tt_term->taxonomy;
+
+						while ( $tt_term_parent_id ) {
+							$tt_current_term     = get_term( $tt_term_parent_id, $tt_term_taxonomy );
+							$tt_taxonomy_links[] = '<a href="' . esc_url( get_term_link( $tt_current_term, $tt_term_taxonomy ) ) . '" title="' . esc_attr( $tt_current_term->name ) . '">' . esc_html( $tt_current_term->name ) . '</a>';
+							$tt_term_parent_id   = $tt_current_term->parent;
+						}
+
+						if ( ! empty( $tt_taxonomy_links ) ) {
+							echo implode( ' <span class="raquo">/</span> ', array_reverse( $tt_taxonomy_links ) ) . ' <span class="raquo">/</span> ';
+						}
+
+						echo '<span class="title">';
+						echo esc_html( $tt_term->name );
+						echo '</span>';
+					} elseif ( is_author() ) {
+						global $wp_query;
+						$current_author = $wp_query->get_queried_object();
+
+						echo '<span class="title">';
+						esc_html_e( 'Posts by: ', 'newsfit' );
+						echo ' ', esc_html( $current_author->nickname );
+						echo '</span>';
+					} elseif ( is_page() ) {
+						echo '<span class="title">';
+						echo get_the_title();
+						echo '</span>';
+					} elseif ( is_home() ) {
+						echo '<span class="title">';
+						esc_html_e( 'Blog', 'newsfit' );
+						echo '</span>';
+					} elseif ( class_exists( 'WooCommerce' ) and is_shop() ) {
+						echo '<span class="title">';
+						esc_html_e( 'Shop', 'newsfit' );
+						echo '</span>';
+					}
+					?>
+				</li>
+			</ul>
+		</nav>
+		<?php
+	}
+}
+
+

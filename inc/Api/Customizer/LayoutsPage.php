@@ -18,11 +18,20 @@ class LayoutsPage extends Customizer {
 
 	use LayoutControlsTraits;
 
+	protected string $section_page_layout = 'newsfit_page_layout_section';
+
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'    => $this->section_page_layout,
+			'title' => __( 'Page Layout', 'newsfit' ),
+			'panel' => 'rt_layouts_panel',
+		] );
+
 		Customize::add_controls( $this->section_page_layout, $this->get_controls() );
 	}
 

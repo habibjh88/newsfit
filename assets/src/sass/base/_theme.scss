@@ -44,7 +44,7 @@
 		background: $black_color;
 	}
 
-	article:hover & {
+	.post-thumbnail:hover & {
 		opacity: 1;
 		visibility: visible;
 	}

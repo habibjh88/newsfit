@@ -16,11 +16,20 @@ use RTFramework\Customize;
  */
 class Banner extends Customizer {
 
+	protected string $section_breadcrumb = 'newsfit_breadcrumb_section';
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_breadcrumb,
+			'title'       => __( 'Banner - Breadcrumb', 'newsfit' ),
+			'description' => __( 'NewsFit Banner Section', 'newsfit' ),
+			'priority'    => 23
+		] );
+
 		Customize::add_controls( $this->section_breadcrumb, $this->get_controls() );
 	}
 
@@ -62,7 +71,7 @@ class Banner extends Customizer {
 						'position'   => 'center center',
 						'attachment' => 'scroll',
 						'repeat'     => 'no-repeat',
-						'size'       => 'auto',
+						'size'       => 'cover',
 					]
 				)
 			],

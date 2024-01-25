@@ -15,12 +15,20 @@ use RTFramework\Customize;
  * Customizer class
  */
 class BlogSingle extends Customizer {
+	protected string $section_blog_single = 'newsfit_blog_single_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_blog_single,
+			'title'       => __( 'Single Blog', 'newsfit' ),
+			'description' => __( 'NewsFit Blog Single Section', 'newsfit' ),
+			'priority'    => 26
+		] );
+
 		Customize::add_controls( $this->section_blog_single, $this->get_controls() );
 	}
 
@@ -44,7 +52,7 @@ class BlogSingle extends Customizer {
 				'description' => __( 'You can sort meta by drag and drop', 'newsfit' ),
 				'placeholder' => __( 'Choose Meta', 'newsfit' ),
 				'multiselect' => true,
-				'default'     => 'author,date,category,tag,comment',
+				'default'     => 'author,date,category,comment',
 				'choices'     => Fns::blog_meta_list(),
 			],
 
@@ -55,13 +63,7 @@ class BlogSingle extends Customizer {
 				'choices' => Fns::meta_style()
 			],
 
-			'rt_single_author_prefix' => [
-				'type'    => 'text',
-				'label'   => __( 'Meta Author Prefix', 'newsfit' ),
-				'default' => 'by',
-			],
-
-			'rt_single_visibility' => [
+			'rt_single_visibility_heading' => [
 				'type'  => 'heading',
 				'label' => __( 'Visibility Section', 'newsfit' ),
 			],
@@ -72,7 +74,7 @@ class BlogSingle extends Customizer {
 				'default' => 1
 			],
 
-			'rt_single_meta_above_visibility' => [
+			'rt_single_above_cat_visibility' => [
 				'type'  => 'switch',
 				'label' => __( 'Title Above Category Visibility', 'newsfit' ),
 			],

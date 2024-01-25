@@ -15,12 +15,20 @@ use RTFramework\Customize;
  * Customizer class
  */
 class Header extends Customizer {
+	protected string $section_header = 'newsfit_header_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_header,
+			'panel'       => 'rt_header_panel',
+			'title'       => __( 'Header Menu', 'newsfit' ),
+			'description' => __( 'NewsFit Header Section', 'newsfit' ),
+			'priority'    => 2
+		] );
 		Customize::add_controls( $this->section_header, $this->get_controls() );
 	}
 
@@ -36,7 +44,7 @@ class Header extends Customizer {
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',
-				'choices' => Fns::image_placeholder('menu', 1)
+				'choices' => Fns::image_placeholder( 'menu', 1 )
 			],
 
 			'rt_menu_alignment' => [
@@ -78,6 +86,11 @@ class Header extends Customizer {
 				'label' => __( 'Transparent Header', 'newsfit' ),
 			],
 
+			'rt_tr_header_shadow' => [
+				'type'      => 'switch',
+				'label'     => __( 'Header Dark Shadow', 'newsfit' ),
+			],
+
 			'rt_header_border' => [
 				'type'    => 'switch',
 				'label'   => __( 'Header Border', 'newsfit' ),
@@ -88,28 +101,28 @@ class Header extends Customizer {
 			],
 
 			'rt_header_login_link' => [
-				'type'      => 'switch',
-				'label'     => __( 'User Login ?', 'newsfit' ),
-				'default'   => 1,
+				'type'    => 'switch',
+				'label'   => __( 'User Login ?', 'newsfit' ),
+				'default' => 1,
 			],
 
 			'rt_header_search' => [
-				'type'      => 'switch',
-				'label'     => __( 'Search Icon ?', 'newsfit' ),
-				'default'   => 1,
+				'type'    => 'switch',
+				'label'   => __( 'Search Icon ?', 'newsfit' ),
+				'default' => 1,
 			],
 
 			'rt_header_bar' => [
-				'type'      => 'switch',
-				'label'     => __( 'Header Bar ?', 'newsfit' ),
-				'description'     => __( 'It will be hide only for desktop.', 'newsfit' ),
-				'default'   => 1,
+				'type'        => 'switch',
+				'label'       => __( 'Header Bar ?', 'newsfit' ),
+				'description' => __( 'It will be hide only for desktop.', 'newsfit' ),
+				'default'     => 1,
 			],
 
 			'rt_header_separator' => [
-				'type'      => 'switch',
-				'label'     => __( 'Icon Separator', 'newsfit' ),
-				'default'   => 1,
+				'type'    => 'switch',
+				'label'   => __( 'Icon Separator', 'newsfit' ),
+				'default' => 1,
 			],
 
 			'rt_header_sep2' => [

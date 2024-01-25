@@ -7,9 +7,10 @@
 	padding: 36px 40px;
 	position: relative;
 	align-items: flex-start;
+	margin-bottom: 30px;
 
 	@media (min-width: 800px) {
-		&::after {
+		&.two-cols::after {
 			content: "";
 			width: 1px;
 			height: 70px;
@@ -61,7 +62,7 @@
 		display: flex;
 		align-items: center;
 		gap: 15px;
-		@include font_size(15px);
+		font-size: 15px;
 		font-weight: 600;
 		color: $title_color;
 

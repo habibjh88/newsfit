@@ -73,7 +73,7 @@ a img.aligncenter {
 }
 
 .wp-caption p.wp-caption-text {
-	@include font_size(11px);
+	font-size: 11px;
 	margin: 0;
 	padding: 0 4px 5px;
 }
@@ -92,7 +92,7 @@ a img.aligncenter {
 	margin-top: 10px;
 	> a {
 		color: $black_color;
-		@include font_size(15px);
+		font-size: 15px;
 	}
 
 	.wp-block-query-pagination-numbers > *:not(.dots) {
@@ -118,8 +118,8 @@ a img.aligncenter {
 /* Gutenberg Style */
 
 .blocks-gallery-grid, .wp-block-gallery {
-	margin-bottom: 5px;
-	margin-top: 10px;
+	margin-bottom: 25px;
+	margin-top: 25px;
 }
 
 .wp-block-latest-posts.wp-block-latest-posts__list li {
@@ -128,13 +128,8 @@ a img.aligncenter {
 
 .gallery-caption {
 	display: block;
-	@include font_size(15px);
+	font-size: $base_fs - 1;
 	margin-top: 5px;
-}
-
-.blocks-gallery-caption,
-.wp-block-latest-comments__comment-excerpt p {
-	@include font_size(15px);
 }
 
 .wp-block-latest-comments__comment-date,
@@ -144,7 +139,7 @@ a img.aligncenter {
 .blocks-gallery-grid .blocks-gallery-item figcaption,
 .wp-block-gallery .blocks-gallery-image figcaption,
 .wp-block-gallery .blocks-gallery-item figcaption {
-	@include font_size(14px);
+	font-size: $base_fs - 2;
 }
 
 .wp-block-image figcaption {
@@ -200,7 +195,7 @@ a img.aligncenter {
 .columns-7 .blocks-gallery-item figcaption,
 .columns-8 .blocks-gallery-image figcaption,
 .columns-8 .blocks-gallery-item figcaption {
-	@include font_size(14px);
+	font-size: 14px;
 }
 
 

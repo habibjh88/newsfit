@@ -42,7 +42,6 @@ final class Init {
 		Custom\DynamicStyles::instance();
 		Api\Customizer::instance();
 		Api\Gutenberg::instance();
-		Api\Widgets\TextWidget::instance();
 		Plugins\ThemeJetpack::instance();
 	}
 

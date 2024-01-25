@@ -1,14 +1,14 @@
 //Meta Above Title
-.title-above-meta {
+.separate-meta {
 	margin-bottom: 5px;
 
-	.category-links a {
+	a {
 		font-style: normal;
 		font-weight: 500;
 		background: $meta_light;
 		@extend .primaryColor;
-		@include font_size(14px);
-		height: 30px;
+		font-size: 14px;
+		min-height: 30px;
 		padding: 0 10px;
 		display: inline-flex;
 		justify-content: center;
@@ -27,8 +27,7 @@
 	}
 
 	.above-meta-style-border & {
-		.category-links a {
-			display: inline-block;
+		a {
 			height: 100%;
 			border: 1px solid $primary_color;
 			padding: 4px 10px;
@@ -42,11 +41,25 @@
 		}
 	}
 
+	.meta-style-dash & a {
+		&::before {
+			@extend .primaryColor;
+			@extend .metaStyleDash;
+		}
+
+		&:hover::before {
+			color: $white_color;
+		}
+	}
+
 	.above-meta-style-dash & {
-		.category-links a {
+		a {
 			&::before {
-				content: "\2014";
-				margin-right: 5px;
+				@extend .metaStyleDash;
+				//content: "---";
+				//letter-spacing: -3.8px;
+				//transform: scaleY(-8);
+				//margin-right: 7px;
 			}
 		}
 	}

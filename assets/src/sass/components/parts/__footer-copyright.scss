@@ -7,7 +7,7 @@
 	justify-content: center;
 	align-items: center;
 	color: $gray40;
-	@include font_size(14px);
+	font-size: 14px;
 	background: rgba($title_rgb, 0.9);
 
 	.copyright-text {

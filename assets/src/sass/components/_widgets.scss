@@ -4,6 +4,7 @@ $widget_li_space: 8px;
 --------------------------------------------------------------*/
 .widget {
 	@include font_size(15px);
+	font-size: 15px;
 	margin: 0 0 30px;
 	color: $body_color;
 	padding: 24px 30px;
@@ -331,7 +332,7 @@ ol.wp-block-latest-comments li:last-child {
 //About Widget
 .widget_newsfit_about {
 	.about-logo a {
-		@include font_size(36px);
+		font-size: 36px;
 		font-weight: 600;
 	}
 }

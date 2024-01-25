@@ -2,7 +2,7 @@
 ***************************/
 
 .newsfit-topbar {
-	@include font_size(13px);
+	font-size: 13px;
 	border-bottom: 1px solid rgba($black_color, 0.1);
 	background: rgba($title_rgb, 0.9);
 	color: $gray40;

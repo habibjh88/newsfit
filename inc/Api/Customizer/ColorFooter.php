@@ -14,12 +14,21 @@ use RTFramework\Customize;
  * Customizer class
  */
 class ColorFooter extends Customizer {
+	protected string $section_footer_color = 'newsfit_footer_color_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_footer_color,
+			'panel'       => 'rt_color_panel',
+			'title'       => __( 'Footer Colors', 'newsfit' ),
+			'description' => __( 'NewsFit Footer Color Section', 'newsfit' ),
+			'priority'    => 8
+		] );
+
 		Customize::add_controls( $this->section_footer_color, $this->get_controls() );
 	}
 

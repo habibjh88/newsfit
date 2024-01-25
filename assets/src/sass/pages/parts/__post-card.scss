@@ -9,27 +9,6 @@
 		position: relative;
 	}
 
-	//Post Thumbnail
-	.post-thumbnail {
-		margin-bottom: 10px;
-		position: relative;
-
-		.post-thumb-link {
-			position: relative;
-			padding-top: 68%;
-			display: block;
-
-			img {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				object-position: center;
-			}
-		}
-	}
 
 	//Post Title
 	.entry-title {
@@ -44,17 +23,6 @@
 				@extend .primaryColor;
 				text-decoration: underline;
 			}
-		}
-	}
-
-	&.meta-style-dash .title-above-meta a {
-		&::before {
-			@extend .primaryColor;
-			@extend .metaStyleDash;
-		}
-
-		&:hover::before {
-			color: $white_color;
 		}
 	}
 
@@ -78,6 +46,32 @@
 		color: $white_color;
 	}
 
+}
+
+//Post Thumbnail
+.post-thumbnail-wrap {
+	position: relative;
+	margin-bottom: 20px;
+
+	.post-thumbnail {
+		margin-bottom: 0;
+	}
+
+	.post-thumb-link {
+		position: relative;
+		padding-top: 68%;
+		display: block;
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
 }
 
 

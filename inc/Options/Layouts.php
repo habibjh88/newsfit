@@ -14,6 +14,7 @@ class Layouts {
 
 	public function __construct() {
 		add_action( 'template_redirect', [ $this, 'set_options_value' ] );
+		add_action( 'template_redirect', [ $this, 'overwrite_options_value' ] );
 	}
 
 	/**
@@ -159,4 +160,10 @@ class Layouts {
 		return $result;
 	}
 
+	public function overwrite_options_value() {
+		if ( Opt::$single_style == '3' ) {
+			Opt::$has_tr_header = '1';
+		}
+
+	}
 }

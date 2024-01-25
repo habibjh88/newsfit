@@ -14,12 +14,19 @@ use RTFramework\Customize;
  * Customizer class
  */
 class General extends Customizer {
+	protected string $section_general = 'newsfit_general_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_general,
+			'title'       => __( 'General', 'newsfit' ),
+			'description' => __( 'NewsFit General Section', 'newsfit' ),
+			'priority'    => 20
+		] );
 		Customize::add_controls( $this->section_general, $this->get_controls() );
 	}
 

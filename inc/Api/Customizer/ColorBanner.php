@@ -15,11 +15,21 @@ use RTFramework\Customize;
  */
 class ColorBanner extends Customizer {
 
+	protected string $section_banner_color = 'newsfit_banner_color_section';
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_banner_color,
+			'panel'       => 'rt_color_panel',
+			'title'       => __( 'Banner / Breadcrumb Colors', 'newsfit' ),
+			'description' => __( 'NewsFit Banner Color Section', 'newsfit' ),
+			'priority'    => 6
+		] );
+
 		Customize::add_controls( $this->section_banner_color, $this->get_controls() );
 	}
 

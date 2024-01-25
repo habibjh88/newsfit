@@ -185,8 +185,11 @@
 				}
 
 				&::before {
-					content: "\2014";
-					margin-right: 5px;
+					@extend .metaStyleDash;
+					//content: "---";
+					//letter-spacing: -3.8px;
+					//transform: scaleY(-8);
+					//margin-right: 7px;
 				}
 			}
 

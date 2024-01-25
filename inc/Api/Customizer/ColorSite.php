@@ -14,12 +14,20 @@ use RTFramework\Customize;
  * Customizer class
  */
 class ColorSite extends Customizer {
+	protected string $section_site_color = 'newsfit_site_color_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_site_color,
+			'panel'       => 'rt_color_panel',
+			'title'       => __( 'Site Colors', 'newsfit' ),
+			'description' => __( 'NewsFit Site Color Section', 'newsfit' ),
+			'priority'    => 2
+		] );
 		Customize::add_controls( $this->section_site_color, $this->get_controls() );
 	}
 
@@ -31,9 +39,9 @@ class ColorSite extends Customizer {
 
 		return apply_filters( 'newsfit_site_color_controls', [
 
-			'rt_site_color1' => [
-				'type'    => 'heading',
-				'label'   => __( 'Site Ascent Color', 'newsfit' ),
+			'rt_site_color1'   => [
+				'type'  => 'heading',
+				'label' => __( 'Site Ascent Color', 'newsfit' ),
 			],
 			'rt_primary_color' => [
 				'type'    => 'color',
@@ -64,8 +72,8 @@ class ColorSite extends Customizer {
 			],
 
 			'rt_site_color2' => [
-				'type'    => 'heading',
-				'label'   => __( 'Others Color', 'newsfit' ),
+				'type'  => 'heading',
+				'label' => __( 'Others Color', 'newsfit' ),
 			],
 
 			'rt_body_color' => [

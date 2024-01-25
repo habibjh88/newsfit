@@ -15,12 +15,20 @@ use RTFramework\Customize;
  * Customizer class
  */
 class Footer extends Customizer {
+	protected string $section_footer = 'newsfit_footer_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_footer,
+			'title'       => __( 'Footer', 'newsfit' ),
+			'description' => __( 'NewsFit Footer Section', 'newsfit' ),
+			'priority'    => 38
+		] );
+
 		Customize::add_controls( $this->section_footer, $this->get_controls() );
 	}
 

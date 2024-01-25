@@ -11,7 +11,6 @@ use RT\NewsFit\Helpers\Fns;
 use RT\NewsFit\Options\Opt;
 
 get_header();
-$content_columns = Fns::content_columns();
 $classes         = newsfit_classes( [
 	'single-post-container',
 	Fns::is_single_fullwidth() ? 'should-full-width' : ''
@@ -20,18 +19,19 @@ $classes         = newsfit_classes( [
 
 	<div class="<?php echo esc_attr( $classes ) ?>">
 
-		<?php while ( have_posts() ) : ?>
+		<?php while ( have_posts() ) :
+			the_post(); ?>
 
-			<?php do_action( 'newsfit_before_single_content' ); ?>
+			<?php do_action( 'newsfit_before_single_content', get_the_ID() ); ?>
+
 			<div class="container">
-				<div class="row">
+				<div class="row content-row">
 
-					<div class="<?php echo esc_attr( $content_columns ); ?>">
+					<div class="content-col <?php echo esc_attr( Fns::content_columns() ); ?>">
 
 						<div id="primary" class="content-area single-content">
 							<main id="main" class="site-main" role="main">
 								<?php
-								the_post();
 								get_template_part( 'views/content-single', Opt::$single_style );
 								//post thumbnail navigation
 								get_template_part( 'views/custom/single', 'pagination' );
@@ -50,7 +50,9 @@ $classes         = newsfit_classes( [
 
 				</div><!-- .row -->
 			</div><!-- .container -->
+
 			<?php do_action( 'newsfit_after_single_content' ); ?>
+
 		<?php endwhile; ?>
 
 	</div>

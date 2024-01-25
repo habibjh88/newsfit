@@ -12,7 +12,11 @@
 	@include clearfix;
 }
 
-.rt-container-fluid,
+.rt-container-fluid {
+	padding-left: 0;
+	padding-right: 0;
+}
+
 .container-fluid {
 	max-width: 100%;
 }

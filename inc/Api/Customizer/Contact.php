@@ -14,12 +14,20 @@ use RTFramework\Customize;
  * Customizer class
  */
 class Contact extends Customizer {
+	protected string $section_contact = 'newsfit_contact_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_contact,
+			'panel'       => 'rt_contact_social_panel',
+			'title'       => __( 'Contact Information', 'newsfit' ),
+			'description' => __( 'NewsFit Contact Address Section', 'newsfit' ),
+			'priority'    => 1
+		] );
 		Customize::add_controls( $this->section_contact, $this->get_controls() );
 	}
 
@@ -52,10 +60,6 @@ class Contact extends Customizer {
 				'description' => __( 'Enter company address here.', 'newsfit' ),
 			],
 
-
 		] );
-
-
 	}
-
 }

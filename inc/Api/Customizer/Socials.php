@@ -16,11 +16,21 @@ use RTFramework\Customize;
  */
 class Socials extends Customizer {
 
+	protected string $section_socials = 'newsfit_socials_section';
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_socials,
+			'panel'       => 'rt_contact_social_panel',
+			'title'       => __( 'Socials Information', 'newsfit' ),
+			'description' => __( 'NewsFit Socials Section', 'newsfit' ),
+			'priority'    => 2
+		] );
+
 		Customize::add_controls( $this->section_socials, $this->get_controls() );
 	}
 

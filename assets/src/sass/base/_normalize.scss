@@ -123,6 +123,11 @@ ol {
 	list-style: decimal inside none;
 }
 
+p + ul,
+p + ol {
+	margin: -5px 0 15px;
+}
+
 li > ul,
 li > ol {
 	margin-bottom: 0;

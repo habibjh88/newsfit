@@ -2,12 +2,7 @@
 ***************************/
 
 .has-transparent-header {
-	.site-header {
-		position: absolute;
-		width: 100%;
-		z-index: 99;
-		color: $white_color;
-
+	&.has-menu-shadow .site-header {
 		&::before {
 			content: "";
 			background: rgba(0, 0, 0, 0);
@@ -20,12 +15,19 @@
 			z-index: -1;
 			pointer-events: none;
 		}
+	}
+
+	.site-header {
+		position: absolute;
+		width: 100%;
+		z-index: 99;
+		color: $white_color;
 
 		.main-header-section:not(.rt-sticky) {
 			background: none !important;
 		}
 
-		.site-branding h1 a,
+		.site-branding a,
 		.newsfit-navigation *,
 		.newsfit-navigation ul li a {
 			color: $transparent_menu_color;
@@ -63,6 +65,10 @@
 
 		.menu-icon-wrapper svg {
 			fill: $transparent_menu_color;
+		}
+
+		.menu-icon-wrapper .has-separator li::after {
+			background: $transparent_menu_color;
 		}
 	}
 

@@ -14,12 +14,19 @@ use RTFramework\Customize;
  * Customizer class
  */
 class Labels extends Customizer {
+	protected string $section_labels = 'newsfit_labels_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_labels,
+			'title'       => __( 'Modify Static Text', 'newsfit' ),
+			'description' => __( 'You can change all static text of the theme.', 'newsfit' ),
+			'priority'    => 999
+		] );
 		Customize::add_controls( $this->section_labels, $this->get_controls() );
 	}
 
@@ -32,8 +39,8 @@ class Labels extends Customizer {
 		return apply_filters( 'newsfit_labels_controls', [
 
 			'rt_header_labels' => [
-				'type'        => 'heading',
-				'label'       => __( 'Header Labels', 'newsfit' ),
+				'type'  => 'heading',
+				'label' => __( 'Header Labels', 'newsfit' ),
 			],
 
 			'rt_get_started_label' => [
@@ -47,7 +54,24 @@ class Labels extends Customizer {
 				'type'        => 'text',
 				'label'       => __( 'Follow Us On:', 'newsfit' ),
 				'default'     => __( 'Follow Us On:', 'newsfit' ),
-				'description' => __( 'Context: Topbar icon lable', 'newsfit' ),
+				'description' => __( 'Context: Topbar icon label', 'newsfit' ),
+			],
+
+			'rt_blog_labels'          => [
+				'type'  => 'heading',
+				'label' => __( 'Blog Labels', 'newsfit' ),
+			],
+			'rt_author_prefix' => [
+				'type'        => 'text',
+				'label'       => __( 'By', 'newsfit' ),
+				'default'     => 'by',
+				'description' => __( 'Context: Meta Author Prefix', 'newsfit' ),
+			],
+			'rt_tags'                 => [
+				'type'        => 'text',
+				'label'       => __( 'Tags:', 'newsfit' ),
+				'default'     => __( 'Tags:', 'newsfit' ),
+				'description' => __( 'Context: Single blog footer tags label', 'newsfit' ),
 			],
 
 		] );

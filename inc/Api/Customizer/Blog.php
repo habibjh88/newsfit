@@ -16,11 +16,21 @@ use RTFramework\Customize;
  */
 class Blog extends Customizer {
 
+	protected string $section_blog = 'newsfit_blog_section';
+
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_blog,
+			'title'       => __( 'Blog Archive', 'newsfit' ),
+			'description' => __( 'NewsFit Blog Section', 'newsfit' ),
+			'priority'    => 25
+		] );
+
 		Customize::add_controls( $this->section_blog, $this->get_controls() );
 	}
 
@@ -63,13 +73,7 @@ class Blog extends Customizer {
 				'default' => '30',
 			],
 
-			'rt_author_prefix' => [
-				'type'    => 'text',
-				'label'   => __( 'Author Prefix', 'newsfit' ),
-				'default' => 'by',
-			],
-
-			'rt_meta_heading'     => [
+			'rt_meta_heading'            => [
 				'type'  => 'heading',
 				'label' => __( 'Post Meta Settings', 'newsfit' ),
 			],
@@ -79,7 +83,7 @@ class Blog extends Customizer {
 				'default' => 'meta-style-dash',
 				'choices' => Fns::meta_style( [ 'meta-style-dash-bg', 'meta-style-pipe' ] )
 			],
-			'rt_blog_meta_style'  => [
+			'rt_blog_meta_style'         => [
 				'type'    => 'select',
 				'label'   => __( 'Meta Style', 'newsfit' ),
 				'default' => 'meta-style-default',
@@ -107,7 +111,7 @@ class Blog extends Customizer {
 				'default' => 1
 			],
 
-			'rt_blog_above_meta_visibility' => [
+			'rt_blog_above_cat_visibility' => [
 				'type'  => 'switch',
 				'label' => __( 'Title Above Category Visibility', 'newsfit' ),
 			],

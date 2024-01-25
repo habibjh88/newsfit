@@ -47,6 +47,10 @@ class Extras {
 			$classes[] = 'no-transparent-header';
 		}
 
+		if ( newsfit_option( 'rt_tr_header_shadow' ) ) {
+			$classes[] = 'has-menu-shadow';
+		}
+
 		if ( Opt::$has_banner ) {
 			$classes[] = 'has-banner';
 		} else {

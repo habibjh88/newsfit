@@ -1,8 +1,12 @@
 .metaStyleDash {
-	content: "\2014";
-	color: $meta_color;
-	margin-right: 5px;
-	@include transition_default();
+	content: "-----";
+	margin-right: 7px;
+	letter-spacing: -4px;
+	transform: scaleY(.8);
+	width: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	//@include transition_default();
 }
 
 .primaryColor {

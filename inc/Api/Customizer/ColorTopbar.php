@@ -14,12 +14,21 @@ use RTFramework\Customize;
  * Customizer class
  */
 class ColorTopbar extends Customizer {
+	protected string $section_topbar_color = 'newsfit_topbar_color_section';
 
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_topbar_color,
+			'panel'       => 'rt_color_panel',
+			'title'       => __( 'Topbar Colors', 'newsfit' ),
+			'description' => __( 'NewsFit Topbar Color Section', 'newsfit' ),
+			'priority'    => 3
+		] );
+
 		Customize::add_controls( $this->section_topbar_color, $this->get_controls() );
 	}
 
@@ -33,18 +42,18 @@ class ColorTopbar extends Customizer {
 
 
 			'rt_topbar_color' => [
-				'type'    => 'alfa_color',
-				'label'   => __( 'Topbar Color', 'newsfit' ),
+				'type'  => 'alfa_color',
+				'label' => __( 'Topbar Color', 'newsfit' ),
 			],
 
 			'rt_topbar_active_color' => [
-				'type'    => 'alfa_color',
-				'label'   => __( 'Hover & Active Color', 'newsfit' ),
+				'type'  => 'alfa_color',
+				'label' => __( 'Hover & Active Color', 'newsfit' ),
 			],
 
 			'rt_topbar_bg_color' => [
-				'type'    => 'alfa_color',
-				'label'   => __( 'Topbar Background', 'newsfit' ),
+				'type'  => 'alfa_color',
+				'label' => __( 'Topbar Background', 'newsfit' ),
 			],
 
 			/*

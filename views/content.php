@@ -7,15 +7,13 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Options\Opt;
-
-$meta_key = is_single() ? 'newsfit_single_meta' : 'newsfit_blog_meta';
-$meta_list = newsfit_option( $meta_key, false, true );
-
-$meta = newsfit_option( 'newsfit_blog_above_meta_visibility' );
-$meta = newsfit_option( 'newsfit_single_above_meta_style' );
+$meta_list = newsfit_option( 'rt_blog_meta', false, true );
+if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
+	$category_index = array_search( 'category', $meta_list );
+	unset( $meta_list[ $category_index ] );
+}
 ?>
-<article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_article_classes() ); ?>>
+<article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_post_class() ); ?>>
 	<div class="article-inner-wrapper">
 
 		<?php newsfit_post_thumbnail(); ?>
@@ -24,7 +22,7 @@ $meta = newsfit_option( 'newsfit_single_above_meta_style' );
 			<header class="entry-header">
 				<?php
 
-				newsfit_above_title_meta();
+				newsfit_separate_meta('title-above-meta');
 
 				if ( ! is_single() ) {
 					the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );
@@ -46,7 +44,6 @@ $meta = newsfit_option( 'newsfit_single_above_meta_style' );
 					<?php newsfit_entry_content() ?>
 				</div>
 			<?php endif; ?>
-
 
 			<?php newsfit_entry_footer(); ?>
 		</div>

@@ -15,11 +15,19 @@ use RTFramework\Customize;
  */
 class ZControllerExample extends Customizer {
 
+	protected string $section_test = 'newsfit_test_section';
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'          => $this->section_test,
+			'title'       => __( 'Test Controls', 'newsfit' ),
+			'description' => __( 'Customize the Test', 'newsfit' ),
+			'priority'    => 9999
+		] );
 		Customize::add_controls( $this->section_test, $this->get_controls() );
 	}
 
@@ -32,8 +40,8 @@ class ZControllerExample extends Customizer {
 
 			//Reset button
 			'rt_reset_customize' => [
-				'type'    => 'heading',
-				'reset'    => '1',
+				'type'  => 'heading',
+				'reset' => '1',
 			],
 			//Reset button
 
@@ -143,7 +151,7 @@ class ZControllerExample extends Customizer {
 				'choices' => $this->get_header_presets()
 			],
 
-			'newsfit_image'          => [
+			'newsfit_image' => [
 				'type'         => 'image',
 				'label'        => __( 'Choose Image', 'newsfit' ),
 				'button_label' => __( 'Logo', 'newsfit' ),
@@ -189,9 +197,9 @@ class ZControllerExample extends Customizer {
 			],
 
 
-			'newsfit_select2'    => [
-				'type'  => 'select2',
-				'label' => __( 'Choose Meta', 'newsfit' ),
+			'newsfit_select2' => [
+				'type'        => 'select2',
+				'label'       => __( 'Choose Meta', 'newsfit' ),
 				'placeholder' => __( 'Choose Meta', 'newsfit' ),
 				'multiselect' => true,
 				'choices'     => [

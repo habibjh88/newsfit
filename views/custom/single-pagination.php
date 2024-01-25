@@ -7,12 +7,7 @@
 
 $previous = get_previous_post();
 $next     = get_next_post();
-if ( $previous && $next ) {
-	$cols = 'half-width';
-} else {
-	$cols = 'full-width';
-}
-
+$cols     = ( $previous && $next ) ? 'two-cols' : 'one-cols';
 ?>
 <div class="single-post-pagination <?php echo esc_attr( $cols ) ?>">
 	<?php if ( $previous ):

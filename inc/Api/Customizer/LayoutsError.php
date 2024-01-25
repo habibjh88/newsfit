@@ -18,11 +18,19 @@ class LayoutsError extends Customizer {
 
 	use LayoutControlsTraits;
 
+	protected string $section_error_layout = 'newsfit_error_layout_section';
+
 	/**
 	 * Register controls
 	 * @return void
 	 */
 	public function register(): void {
+		Customize::add_section( [
+			'id'    => $this->section_error_layout,
+			'title' => __( 'Error Layout', 'newsfit' ),
+			'panel' => 'rt_layouts_panel',
+		] );
+
 		Customize::add_controls( $this->section_error_layout, $this->get_controls() );
 	}
 

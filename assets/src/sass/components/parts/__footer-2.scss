@@ -17,7 +17,7 @@
 		}
 
 		> li > a {
-			@include font_size(18px);
+			font-size: 18px;
 			color: $gray40;
 			padding: 8px 16px;
 

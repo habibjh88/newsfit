@@ -574,7 +574,8 @@ if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
 			</figure><!-- .post-thumbnail -->
 			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
 				<figcaption class="wp-caption-text">
-					<span><?php echo wp_kses_post( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
+					<?php echo newsfit_get_svg('camera'); ?>
+					<span><?php echo newsfit_html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
 				</figcaption>
 			<?php endif; ?>
 		</div>

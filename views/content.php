@@ -20,9 +20,9 @@ if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
 
 		<div class="entry-wrapper">
 			<header class="entry-header">
-				<?php
 
-				newsfit_separate_meta('title-above-meta');
+				<?php
+				newsfit_separate_meta( 'title-above-meta' );
 
 				if ( ! is_single() ) {
 					the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' );

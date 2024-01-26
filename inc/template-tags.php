@@ -545,12 +545,14 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 			return;
 		}
 		?>
-		<figure class="post-thumbnail">
-			<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-				<?php the_post_thumbnail( 'newsfit-500-500', [ 'loading' => 'lazy' ] ); ?>
-			</a>
-			<?php edit_post_link( 'Edit' ); ?>
-		</figure><!-- .post-thumbnail -->
+		<div class="post-thumbnail-wrap">
+			<figure class="post-thumbnail">
+				<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+					<?php the_post_thumbnail( 'newsfit-500-500', [ 'loading' => 'lazy' ] ); ?>
+				</a>
+				<?php edit_post_link( 'Edit' ); ?>
+			</figure><!-- .post-thumbnail -->
+		</div>
 		<?php
 	}
 }
@@ -823,4 +825,94 @@ if ( ! function_exists( 'newsfit_breadcrumb' ) ) {
 	}
 }
 
+if ( ! function_exists( 'newsfit_get_avatar_url' ) ) :
+	function newsfit_get_avatar_url( $get_avatar ) {
+		preg_match( "/src='(.*?)'/i", $get_avatar, $matches );
 
+		return $matches[1];
+	}
+endif;
+
+
+function newsfit_comments_cbf( $comment, $args, $depth ) {
+
+	// Get correct tag used for the comments
+	if ( 'div' === $args['style'] ) {
+		$tag       = 'div ';
+		$add_below = 'comment';
+	} else {
+		$tag       = 'li ';
+		$add_below = 'div-comment';
+	} ?>
+
+	<<?php echo $tag; ?><?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?> id="comment-<?php comment_ID() ?>">
+
+	<?php
+	// Switch between different comment types
+	switch ( $comment->comment_type ) :
+		case 'pingback' :
+		case 'trackback' : ?>
+			<div class="pingback-entry"><span class="pingback-heading"><?php esc_html_e( 'Pingback:', 'newsfit' ); ?></span> <?php comment_author_link(); ?></div>
+			<?php
+			break;
+		default :
+
+			if ( 'div' != $args['style'] ) { ?>
+				<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+			<?php } ?>
+			<div class="comment-author">
+				<div class="vcard">
+					<?php
+					// Display avatar unless size is set to 0
+					if ( $args['avatar_size'] != 0 ) {
+						$avatar_size = ! empty( $args['avatar_size'] ) ? $args['avatar_size'] : 70; // set default avatar size
+						echo get_avatar( $comment, $avatar_size );
+					} ?>
+				</div>
+				<div class="author-info">
+					<?php
+					// Display author name
+					printf( __( '<cite class="fn">%s</cite>', 'newsfit' ), get_comment_author_link() ); ?>
+
+					<div class="comment-meta commentmetadata">
+						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>"><?php
+							/* translators: 1: date, 2: time */
+							printf(
+								__( '%1$s at %2$s', 'newsfit' ),
+								get_comment_date(),
+								get_comment_time()
+							); ?>
+						</a><?php
+						edit_comment_link( __( 'Edit', 'newsfit' ), '  ', '' ); ?>
+					</div><!-- .comment-meta -->
+				</div>
+
+			</div><!-- .comment-author -->
+			<div class="comment-details">
+
+				<div class="comment-text"><?php comment_text(); ?></div><!-- .comment-text -->
+				<?php
+				// Display comment moderation text
+				if ( $comment->comment_approved == '0' ) { ?>
+					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'newsfit' ); ?></em><br/><?php
+				} ?>
+
+				<?php
+				$icon = newsfit_get_svg( 'share' );
+				// Display comment reply link
+				comment_reply_link( array_merge( $args, [
+					'add_below'  => $add_below,
+					'depth'      => $depth,
+					'max_depth'  => $args['max_depth'],
+					'reply_text' => $icon . __( 'Reply', 'newsfit' )
+				] ) ); ?>
+
+			</div><!-- .comment-details -->
+			<?php
+			if ( 'div' != $args['style'] ) { ?>
+				</div>
+			<?php }
+			// IMPORTANT: Note that we do NOT close the opening tag, WordPress does this for us
+			break;
+	endswitch; // End comment_type check.
+}

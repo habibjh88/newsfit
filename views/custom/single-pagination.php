@@ -1,8 +1,10 @@
 <?php
 /**
- * @author  RadiusTheme
- * @since   1.0
- * @version 1.0
+ * Template part for single thumbn pagination
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package newsfit
  */
 
 $previous = get_previous_post();

@@ -90,6 +90,8 @@ class App {
 		const siteHeader = $('.site-header');
 		const paddingTop = siteHeader.height() + siteHeader.position().top + 10;
 		$('.has-transparent-header .newsfit-breadcrumb-wrapper').css({'paddingTop': paddingTop + 'px', 'opacity':1})
+
+		const commentBody = $('.comment-list .comment-body').last().addClass('last-item');
 	}
 
 	menuDrawerOpen($) {

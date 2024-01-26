@@ -19,6 +19,10 @@ p {
 	margin: 0 0 15px;
 }
 
+p:last-child {
+	margin-bottom: 0;
+}
+
 main {
 	display: block;
 }
@@ -52,11 +56,8 @@ strong {
 	font-weight: bolder;
 }
 
-code,
-kbd,
-samp {
-	font-family: monospace, monospace; /* 1 */
-	font-size: 1em; /* 2 */
+code, kbd, tt, var, samp {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 }
 
 small {

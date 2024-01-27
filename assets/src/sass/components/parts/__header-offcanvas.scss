@@ -15,6 +15,7 @@
 	transition: 0.4s ease-in-out;
 	max-width: 100%;
 	overflow: auto;
+	box-shadow: 0 0 20px rgba(0, 0, 0, .15);
 
 	&.is-open {
 		margin-left: 0;

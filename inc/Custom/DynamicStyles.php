@@ -190,35 +190,35 @@ class DynamicStyles {
 
 		<?php //Transparent Header ?>
 		<?php if ( ! empty( $_tr_menu_color ) ) : ?>
-			body.has-transparent-header .site-header .site-branding h1 a,
-			body.has-transparent-header .site-header .newsfit-navigation *,
-			body.has-transparent-header .site-header .newsfit-navigation ul li a {
+			body.has-trheader .site-header .site-branding h1 a,
+			body.has-trheader .site-header .newsfit-navigation *,
+			body.has-trheader .site-header .newsfit-navigation ul li a {
 			color: <?php echo esc_attr( $_tr_menu_color ); ?>;
 			}
-			body.has-transparent-header .site-header .menu-bar span,
-			body.has-transparent-header .menu-icon-wrapper .has-separator li:not(:last-child):after {
+			body.has-trheader .site-header .menu-bar span,
+			body.has-trheader .menu-icon-wrapper .has-separator li:not(:last-child):after {
 			background-color: <?php echo esc_attr( $_tr_menu_color ); ?> !important;
 			}
 
-			body.has-transparent-header .site-header .menu-icon-wrapper svg,
-			body.has-transparent-header .site-header .newsfit-topbar .caret svg,
-			body.has-transparent-header .site-header .main-header-section .caret svg {
+			body.has-trheader .site-header .menu-icon-wrapper svg,
+			body.has-trheader .site-header .newsfit-topbar .caret svg,
+			body.has-trheader .site-header .main-header-section .caret svg {
 			fill: <?php echo esc_attr( $_tr_menu_color ); ?>
 			}
 		<?php endif; ?>
 
 		<?php if ( ! empty( $_tr_menu_active_color ) ) : ?>
-			body.has-transparent-header .site-header .newsfit-navigation ul li a:hover,
-			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-item > a,
-			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-ancestor > a {
+			body.has-trheader .site-header .newsfit-navigation ul li a:hover,
+			body.has-trheader .site-header .newsfit-navigation ul li.current-menu-item > a,
+			body.has-trheader .site-header .newsfit-navigation ul li.current-menu-ancestor > a {
 			color: <?php echo esc_attr( $_tr_menu_active_color ); ?>
 			}
-			body.has-transparent-header .main-header-section .menu-icon-wrapper .menu-bar:hover span {
+			body.has-trheader .main-header-section .menu-icon-wrapper .menu-bar:hover span {
 			background-color: <?php echo esc_attr( $_tr_menu_active_color ); ?> !important;
 			}
-			body.has-transparent-header .main-header-section a:hover [class*=rticon] svg,
-			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-ancestor > a svg,
-			body.has-transparent-header .site-header .newsfit-navigation ul li.current-menu-item > a svg {
+			body.has-trheader .main-header-section a:hover [class*=rticon] svg,
+			body.has-trheader .site-header .newsfit-navigation ul li.current-menu-ancestor > a svg,
+			body.has-trheader .site-header .newsfit-navigation ul li.current-menu-item > a svg {
 			fill: <?php echo esc_attr( $_tr_menu_active_color ); ?>
 			}
 		<?php endif; ?>

@@ -301,18 +301,20 @@ class Fns {
 	 * Return content columns
 	 * @return string
 	 */
-	public static function content_columns() {
-		$_columns = "col-md-8";
-		if ( is_singular() ) {
+	public static function content_columns( $full_width_col = 'col-md-12' ) {
+		if ( is_single() ) {
 			$sidebar = Opt::$sidebar === 'default' ? 'rt-single-sidebar' : Opt::$sidebar;
 			$columns = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
 		} else {
 			$sidebar = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
-			$columns = ! is_active_sidebar( $sidebar ) ? "col-md-12" : $_columns;
+			if ( is_home() && is_front_page() ) {
+				$sidebar = 'rt-sidebar';
+			}
+			$columns = ! is_active_sidebar( $sidebar ) ? $full_width_col : 'col-md-8';
 		}
 
 		if ( Opt::$layout === 'full-width' ) {
-			$columns = is_singular() ? "col-md-10 col-md-offset-1" : "col-md-12";
+			$columns = is_single() ? "col-md-10 col-md-offset-1" : $full_width_col;
 		}
 
 		return $columns;
@@ -331,10 +333,15 @@ class Fns {
 		$blog_sidebar   = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
 		$blog_layout    = Opt::$layout ?? 'right-sidebar';
 
+		$default_blog_col = $column;
 		if ( ! $blog_colum_opt && 'full-width' === $blog_layout ) {
 			$default_blog_col = 'col-lg-4';
-		} elseif ( is_active_sidebar( $blog_sidebar ) && ! $blog_colum_opt ) {
-			$default_blog_col = $column;
+		}
+//		elseif ( is_active_sidebar( $blog_sidebar ) && ! $blog_colum_opt ) {
+//			$default_blog_col = $column;
+//		}
+		elseif ( is_home() && is_front_page() && ! is_active_sidebar( 'rt-sidebar' ) ) {
+			$default_blog_col = 'col-lg-4';
 		} elseif ( $blog_colum_opt ) {
 			$default_blog_col = $blog_colum_opt;
 		}

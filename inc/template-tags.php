@@ -175,9 +175,11 @@ if ( ! function_exists( 'newsfit_menu_icons_group' ) ) {
 			<?php if ( newsfit_option( 'rt_header_bar' ) ) : ?>
 				<li>
 					<a class="menu-bar trigger-off-canvas" href="#">
-						<span></span>
-						<span></span>
-						<span></span>
+						<svg class="ham_burger" viewBox="0 0 100 100" width="180">
+							<path class="line top" d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"/>
+							<path class="line middle" d="m 30,50 h 40"/>
+							<path class="line bottom" d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"/>
+						</svg>
 					</a>
 				</li>
 			<?php endif; ?>
@@ -252,10 +254,10 @@ if ( ! function_exists( 'newsfit_get_file' ) ) {
 	 *
 	 * @return string
 	 */
-	function newsfit_get_file( $path ): string {
-		$file = get_stylesheet_directory_uri() . $path;
+	function newsfit_get_file( $path, $return_path = false ): string {
+		$file = ( $return_path ? get_stylesheet_directory() : get_stylesheet_directory_uri() ) . $path;
 		if ( ! file_exists( $file ) ) {
-			$file = get_template_directory_uri() . $path;
+			$file = ( $return_path ? get_template_directory() : get_template_directory_uri() ) . $path;
 		}
 
 		return $file;
@@ -270,10 +272,17 @@ if ( ! function_exists( 'newsfit_get_img' ) ) {
 	 *
 	 * @return string
 	 */
-	function newsfit_get_img( $filename ): string {
-		$path = '/assets/dist/images/' . $filename;
+	function newsfit_get_img( $filename, $echo = false, $image_meta = '' ): string {
+		$path      = '/assets/dist/images/' . $filename;
+		$image_url = newsfit_get_file( $path );
+		if ( $echo ) {
 
-		return newsfit_get_file( $path );
+			$getimagesize = wp_getimagesize( newsfit_get_file( $path, true ) );
+			$image_meta = $getimagesize[3] ?? $image_meta;
+			echo '<img ' . $image_meta . ' src="' . esc_url( $image_url ) . '"/>';
+		}
+
+		return newsfit_get_file( $image_url );
 	}
 }
 
@@ -574,7 +583,7 @@ if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
 			</figure><!-- .post-thumbnail -->
 			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
 				<figcaption class="wp-caption-text">
-					<?php echo newsfit_get_svg('camera'); ?>
+					<?php echo newsfit_get_svg( 'camera' ); ?>
 					<span><?php echo newsfit_html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
 				</figcaption>
 			<?php endif; ?>

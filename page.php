@@ -12,13 +12,15 @@
  * @package newsfit
  */
 
+use RT\NewsFit\Helpers\Fns;
+
 get_header(); ?>
 
 	<div class="container">
 
 		<div class="row">
 
-			<div class="col-sm-8">
+			<div class="<?php echo Fns::content_columns() ?>">
 
 				<div id="primary" class="content-area">
 					<main id="main" class="site-main" role="main">
@@ -44,9 +46,7 @@ get_header(); ?>
 
 			</div><!-- .col- -->
 
-			<div class="col-sm-4">
-				<?php get_sidebar(); ?>
-			</div><!-- .col- -->
+			<?php get_sidebar(); ?>
 
 		</div><!-- .row -->
 

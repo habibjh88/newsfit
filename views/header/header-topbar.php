@@ -7,6 +7,12 @@
  * @package newsfit
  */
 
+use RT\NewsFit\Options\Opt;
+
+if(! Opt::$has_top_bar) {
+	return;
+}
+
 ?>
 
 <div class="newsfit-topbar">

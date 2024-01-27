@@ -54,7 +54,7 @@
 
 }
 
-.has-transparent-header .newsfit-breadcrumb-wrapper {
+.has-trheader .newsfit-breadcrumb-wrapper {
 	padding-top: 130px;
 	opacity: 0;
 	transition: opacity .3s;
@@ -63,7 +63,7 @@
 }
 
 .newsfit-breadcrumb-wrapper.has-bg,
-.has-transparent-header .newsfit-breadcrumb-wrapper {
+.has-trheader .newsfit-breadcrumb-wrapper {
 	.breadcrumb {
 		color: $gray40;
 

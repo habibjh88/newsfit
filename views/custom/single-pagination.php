@@ -22,14 +22,16 @@ $cols     = ( $previous && $next ) ? 'two-cols' : 'one-cols';
 			</a>
 
 			<a href="<?php echo esc_url( get_permalink( $previous ) ); ?>" class="link pg-prev">
-				<div class="post-thumb" style="background-image:url(<?php echo esc_url( $prev_image ) ?>)"></div>
+				<?php if ( $prev_image ) : ?>
+					<div class="post-thumb" style="background-image:url(<?php echo esc_url( $prev_image ) ?>)"></div>
+				<?php endif; ?>
 				<p class="item-title"><?php echo get_the_title( $previous ); ?></p>
 			</a>
 		</div>
 	<?php endif; ?>
 
 	<?php if ( $next ):
-		$prev_image = get_the_post_thumbnail_url( $next ); ?>
+		$next_image = get_the_post_thumbnail_url( $next ); ?>
 
 		<div class="post-navigation next text-right">
 			<a href="<?php echo esc_url( get_permalink( $next ) ); ?>" class="nav-title">
@@ -38,7 +40,9 @@ $cols     = ( $previous && $next ) ? 'two-cols' : 'one-cols';
 			</a>
 			<a href="<?php echo esc_url( get_permalink( $next ) ); ?>" class="link pg-next">
 				<p class="item-title"><?php echo get_the_title( $next ); ?></p>
-				<div class="post-thumb" style="background-image:url(<?php echo esc_url( $prev_image ) ?>)"></div>
+				<?php if ( $next_image ) : ?>
+					<div class="post-thumb" style="background-image:url(<?php echo esc_url( $next_image ) ?>)"></div>
+				<?php endif; ?>
 			</a>
 		</div>
 	<?php endif; ?>

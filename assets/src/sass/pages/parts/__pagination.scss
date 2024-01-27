@@ -1,0 +1,24 @@
+.entry-content .page-links {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding-top: 20px;
+
+	span, a {
+		background: $gray20;
+		color: $title_color;
+		padding: 3px 10px;
+		font-weight: 500;
+		border-radius: 3px;
+		min-width: 32px;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+
+	.current,
+	a:hover {
+		background: $primary_color;
+		color: $white_color;
+	}
+}

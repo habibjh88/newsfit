@@ -13,24 +13,21 @@ get_header(); ?>
 
 		<div class="row">
 
-			<div class="col-sm-8">
+			<div class="col-sm-12">
 
 				<div id="primary" class="content-area">
-					<main id="main" class="site-main" role="main">
+					<main id="main" class="site-main error-404" role="main">
 
-						<h1>
-							<?php
-							esc_html_e( 'Oops! That page can&rsquo;t be found.', 'newsfit' );
-							?>
-						</h1>
+						<?php newsfit_get_img( '404.svg', true, 'width="1007" height="530"' ); ?>
 
+						<div class="error-info">
+						<h2 class="error-title"><?php esc_html_e( 'Error Page!', 'newsfit' ); ?></h2>
+						<p><?php esc_html_e('Sorry! This Page is Not Available!', 'newsfit'); ?></p>
+						<a class="btn btn-primary" href="<?php echo esc_url(home_url()) ?>"><?php esc_html_e('Back to Home', 'newsfit') ?></a>
+						</div>
 					</main><!-- #main -->
 				</div><!-- #primary -->
 
-			</div><!-- .col- -->
-
-			<div class="col-sm-4">
-				<?php get_sidebar(); ?>
 			</div><!-- .col- -->
 
 		</div><!-- .row -->

@@ -11,7 +11,7 @@ use RT\NewsFit\Helpers\Fns;
 use RT\NewsFit\Options\Opt;
 
 get_header();
-$classes         = newsfit_classes( [
+$classes = newsfit_classes( [
 	'single-post-container',
 	Fns::is_single_fullwidth() ? 'should-full-width' : ''
 ] );
@@ -27,7 +27,7 @@ $classes         = newsfit_classes( [
 			<div class="container">
 				<div class="row content-row">
 
-					<div class="content-col <?php echo esc_attr( Fns::content_columns() ); ?>">
+					<div class="content-col <?php echo esc_attr( Fns::content_columns('col-md-10') ); ?>">
 
 						<div id="primary" class="content-area single-content">
 							<main id="main" class="site-main" role="main">

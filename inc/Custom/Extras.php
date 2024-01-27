@@ -42,9 +42,9 @@ class Extras {
 		}
 
 		if ( Opt::$has_tr_header ) {
-			$classes[] = 'has-transparent-header';
+			$classes[] = 'has-trheader';
 		} else {
-			$classes[] = 'no-transparent-header';
+			$classes[] = 'no-trheader';
 		}
 
 		if ( newsfit_option( 'rt_tr_header_shadow' ) ) {

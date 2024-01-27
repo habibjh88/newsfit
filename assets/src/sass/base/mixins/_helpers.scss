@@ -12,6 +12,13 @@
 	margin: 0;
 }
 
+@mixin flex_center($direction:row) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+}
+
 @mixin button_style($color, $bg, $bg_hover) {
 	color: $color;
 	background-color: $bg;

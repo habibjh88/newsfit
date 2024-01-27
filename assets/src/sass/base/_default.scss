@@ -90,9 +90,11 @@ pre {
 a {
 	color: $primary_color;
 }
+
 a:hover {
 	color: $primary_dark_color;
 }
+
 //Table CSS
 table {
 	border-collapse: collapse;
@@ -106,7 +108,6 @@ table td {
 	border: 1px solid #ddd;
 	padding: 8px;
 }
-
 
 td,
 th {

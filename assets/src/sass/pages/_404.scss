@@ -1,5 +1,9 @@
 .error-404 {
 	@include flex_center(column);
+	img {
+		max-width: 700px;
+		height: auto;
+	}
 
 	.error-info {
 		@include flex_center(column);

@@ -1,0 +1,1233 @@
+# Copyright (C) 2024 NewsFit Theme
+# This file is distributed under the same license as the NewsFit Theme package.
+msgid ""
+msgstr ""
+"Project-Id-Version: NewsFit Theme\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-01-29 12:17+0000\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../404.php:24
+msgid "Error Page!"
+msgstr ""
+
+#: ../404.php:25
+msgid "Sorry! This Page is Not Available!"
+msgstr ""
+
+#: ../404.php:26
+msgid "Back to Home"
+msgstr ""
+
+#. translators: 1: Comments count.
+#: ../comments.php:31
+msgid "%d Comment"
+msgid_plural "%d Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../comments.php:52
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:58
+msgid "Older Comments"
+msgstr ""
+
+#: ../comments.php:59
+msgid "Newer Comments"
+msgstr ""
+
+#: ../comments.php:73
+msgid "Comments are closed."
+msgstr ""
+
+#: ../inc/template-tags.php:134
+msgid "Add %s Menu"
+msgstr ""
+
+#: ../inc/template-tags.php:135
+msgid "Add a menu"
+msgstr ""
+
+#: ../inc/template-tags.php:138, ../inc/template-tags.php:752
+msgid "Home"
+msgstr ""
+
+#: ../inc/template-tags.php:506, ../inc/Api/Customizer/Labels.php:66
+msgid "By"
+msgstr ""
+
+#: ../inc/template-tags.php:512
+msgid "%s Comment"
+msgid_plural "%s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../inc/template-tags.php:827
+msgid "Shop"
+msgstr ""
+
+#: ../inc/template-tags.php:823
+msgid "Blog"
+msgstr ""
+
+#: ../inc/template-tags.php:814
+msgid "Posts by: "
+msgstr ""
+
+#: ../inc/template-tags.php:775
+msgid "404"
+msgstr ""
+
+#: ../inc/template-tags.php:770
+msgid "Search results for"
+msgstr ""
+
+#: ../inc/template-tags.php:765
+msgid "Posts made in"
+msgstr ""
+
+#: ../inc/template-tags.php:758
+msgid "Posts Tagged "
+msgstr ""
+
+#: ../inc/template-tags.php:865
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/template-tags.php:885
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: ../inc/template-tags.php:891
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../inc/template-tags.php:896
+msgid "Edit"
+msgstr ""
+
+#: ../inc/template-tags.php:907
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/template-tags.php:917
+msgid "Reply"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:109
+msgid "Header - Topbar - Menu"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:110
+msgid "NewsFit Header"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:116
+msgid "Contact & Socials"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:117
+msgid "NewsFit Contact & Socials"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:123
+msgid "Colors"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:124
+msgid "NewsFit Color Settings"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:130
+msgid "Layout Settings"
+msgstr ""
+
+#: ../inc/Api/Customizer.php:131
+msgid "NewsFit Layout Settings"
+msgstr ""
+
+#: ../inc/Api/Gutenberg.php:46
+msgid "White"
+msgstr ""
+
+#: ../inc/Api/Gutenberg.php:51
+msgid "Black"
+msgstr ""
+
+#: ../inc/Api/Gutenberg.php:56
+msgid "Gold"
+msgstr ""
+
+#: ../inc/Api/Gutenberg.php:61
+msgid "Pink"
+msgstr ""
+
+#: ../inc/Api/Gutenberg.php:66
+msgid "Grey"
+msgstr ""
+
+#: ../inc/Core/Sidebar.php:67
+msgctxt "Widget Name"
+msgid "%s"
+msgstr ""
+
+#: ../inc/Core/Tags.php:35
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#: ../inc/Core/Tags.php:39
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: ../inc/Core/Tags.php:50, ../inc/Core/Tags.php:55, ../inc/Helpers/Fns.php:227
+msgid ", "
+msgstr ""
+
+#: ../inc/Core/Tags.php:52
+msgid "Posted in %1$s"
+msgstr ""
+
+#: ../inc/Core/Tags.php:57
+msgid "Tagged %1$s"
+msgstr ""
+
+#. translators: %s: post title
+#: ../inc/Core/Tags.php:63
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#. translators: %s: Name of current post
+#: ../inc/Core/Tags.php:69
+msgid "Edit %s"
+msgstr ""
+
+#: ../inc/Custom/Extras.php:89
+msgid "Make as Mega Menu"
+msgstr ""
+
+#: ../inc/Custom/Extras.php:91
+msgid "Choose Mega Menu"
+msgstr ""
+
+#: ../inc/Custom/Extras.php:106
+msgid "Mega menu - %s Col %s"
+msgstr ""
+
+#: ../inc/Custom/Extras.php:119
+msgid "Query String Key"
+msgstr ""
+
+#: ../inc/Custom/Extras.php:129
+msgid "Query String Value"
+msgstr ""
+
+#: ../inc/Custom/Extras.php:190
+msgid "Search here..."
+msgstr ""
+
+#: ../inc/Custom/Extras.php:193
+msgid "Search"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:88
+msgid "Facebook"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:92
+msgid "Twitter"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:96
+msgid "Linkedin"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:100
+msgid "Youtube"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:104
+msgid "Pinterest"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:108
+msgid "Instagram"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:112
+msgid "Skype"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:126
+msgid "Choose Sidebar"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:152
+msgid "Style"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:273
+msgid "%s %s"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:285
+msgid "Continue reading %s"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:381, ../inc/Api/Customizer/Blog.php:50, ../inc/Api/Customizer/Blog.php:61
+msgid "Default From Theme"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:382
+msgid "Border Style"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:383
+msgid "Before Dash ( — )"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:384
+msgid "Before Dash with BG ( — )"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:385
+msgid "After Pipe ( | )"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:403
+msgid "Style 1 (Default From Theme)"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:404
+msgid "Style 2 (Full-width Thumbnail)"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:405
+msgid "Style 3 (Transparent Menu)"
+msgstr ""
+
+#: ../inc/Helpers/Fns.php:406
+msgid "Style 4 (Content over on Thumb)"
+msgstr ""
+
+#: ../inc/Setup/Menus.php:26
+msgid "Primary"
+msgstr ""
+
+#: ../inc/Setup/Menus.php:27
+msgid "Topbar Menu"
+msgstr ""
+
+#: ../inc/Setup/Menus.php:28
+msgid "Footer Menu"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:18
+msgid "Left Sidebar"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:19
+msgid "Right Sidebar"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:36, ../inc/Api/Customizer/Footer.php:45, ../inc/Api/Customizer/Header.php:45, ../inc/Api/Customizer/ZControllerExample.php:149
+msgid "Choose Layout"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:45, ../inc/Api/Customizer/Footer.php:67, ../inc/Api/Customizer/Header.php:67
+msgid "Full Width"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:56
+msgid "Choose a Sidebar"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:80
+msgid "Top Bar"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:156, ../inc/Traits/LayoutControlsTraits.php:158, ../inc/Api/Customizer/Banner.php:60
+msgid "Banner Image"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:157, ../inc/Api/Customizer/Banner.php:61
+msgid "Upload Banner Image"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:194, ../inc/Api/Customizer/Footer.php:56
+msgid "Light Footer"
+msgstr ""
+
+#: ../inc/Traits/LayoutControlsTraits.php:195, ../inc/Api/Customizer/Footer.php:57
+msgid "Dark Footer"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:28
+msgid "Banner - Breadcrumb"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:29
+msgid "NewsFit Banner Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:46
+msgid "Banner Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:52
+msgid "Breadcrumb Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:62
+msgid "Banner"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:81
+msgid "Banner Height (px)"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:82
+msgid "Height can be differ for transparent header."
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:89
+msgid "Breadcrumb Settings"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:95
+msgid "Banner Content (Breadcrumb) Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/Banner.php:102
+msgid "Breadcrumb Border"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:29
+msgid "Blog Archive"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:30
+msgid "NewsFit Blog Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:46
+msgid "Blog Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:47, ../inc/Api/Customizer/Blog.php:58
+msgid "This option works only for large device"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:51
+msgid "List"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:57
+msgid "Grid Column"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:62
+msgid "1 Column"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:63
+msgid "2 Column"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:64
+msgid "3 Column"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:65
+msgid "4 Column"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:72
+msgid "Content Limit"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:78
+msgid "Post Meta Settings"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:82
+msgid "Title Above Meta Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:88, ../inc/Api/Customizer/BlogSingle.php:61
+msgid "Meta Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:95, ../inc/Api/Customizer/Blog.php:97, ../inc/Api/Customizer/BlogSingle.php:53, ../inc/Api/Customizer/ZControllerExample.php:202, ../inc/Api/Customizer/ZControllerExample.php:203
+msgid "Choose Meta"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:96, ../inc/Api/Customizer/BlogSingle.php:52
+msgid "You can sort meta by drag and drop"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:105, ../inc/Api/Customizer/BlogSingle.php:68
+msgid "Visibility Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:110, ../inc/Api/Customizer/BlogSingle.php:73
+msgid "Meta Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:116, ../inc/Api/Customizer/BlogSingle.php:79
+msgid "Title Above Category Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:121
+msgid "Entry Content Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/Blog.php:127
+msgid "Entry Footer Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/BlogSingle.php:27
+msgid "Single Blog"
+msgstr ""
+
+#: ../inc/Api/Customizer/BlogSingle.php:28
+msgid "NewsFit Blog Single Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/BlogSingle.php:44
+msgid "Post View Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/BlogSingle.php:51
+msgid "Choose Single Meta"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorBanner.php:28
+msgid "Banner / Breadcrumb Colors"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorBanner.php:29
+msgid "NewsFit Banner Color Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorBanner.php:46
+msgid "Banner Background"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorBanner.php:51
+msgid "Link Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorBanner.php:56
+msgid "Link Active Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:27
+msgid "Footer Colors"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:28
+msgid "NewsFit Footer Color Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:44
+msgid "Main Footer"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:48
+msgid "Footer Background"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:52
+msgid "Footer Text"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:56
+msgid "Footer Link"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:60
+msgid "Footer Link - Hover"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:64
+msgid "Widget Title"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:68
+msgid "Input/List/Table Border Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:72
+msgid "Copyright Area"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:76
+msgid "Copyright Background"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:80
+msgid "Copyright Text"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:84
+msgid "Copyright Link"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorFooter.php:88
+msgid "Copyright Link - Hover"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:28
+msgid "Header Colors"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:29
+msgid "NewsFit Header Color Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:46
+msgid "Default Menu"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:51
+msgid "Menu Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:56
+msgid "Menu Hover & Active Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:61
+msgid "Menu Background Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:66
+msgid "Transparent Menu"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:71
+msgid "TR Menu Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:76
+msgid "TR Menu Hover & Active Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:81
+msgid "Others Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorHeader.php:86
+msgid "Menu Border Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:27
+msgid "Site Colors"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:28
+msgid "NewsFit Site Color Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:44
+msgid "Site Ascent Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:48
+msgid "Primary Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:54
+msgid "Primary Dark Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:60
+msgid "Primary Light Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:70
+msgid "Secondary Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:76
+msgid "Others Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:81
+msgid "Body Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:87
+msgid "Title Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:93
+msgid "Meta Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:99
+msgid "Meta Light"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:105
+msgid "Gray # 1"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorSite.php:111
+msgid "Gray # 2"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorTopbar.php:27
+msgid "Topbar Colors"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorTopbar.php:28
+msgid "NewsFit Topbar Color Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorTopbar.php:46
+msgid "Topbar Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorTopbar.php:51
+msgid "Hover & Active Color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ColorTopbar.php:56
+msgid "Topbar Background"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:27
+msgid "Contact Information"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:28
+msgid "NewsFit Contact Address Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:44
+msgid "Phone"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:49
+msgid "Email"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:54
+msgid "Website"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:59
+msgid "Address"
+msgstr ""
+
+#: ../inc/Api/Customizer/Contact.php:60
+msgid "Enter company address here."
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:27
+msgid "Footer"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:28
+msgid "NewsFit Footer Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:52
+msgid "Footer Schema"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:55
+msgid "Default"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:63
+msgid "Footer Width"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:66, ../inc/Api/Customizer/Header.php:66
+msgid "Box Width"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:73
+msgid "Footer Max Width (PX)"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:74, ../inc/Api/Customizer/Header.php:74
+msgid "Enter a number greater than 1440. Remove value for 100%"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:80
+msgid "Sticky Footer"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:81
+msgid "Show footer at the top when scrolling down"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:86
+msgid "Footer Copyright Text"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:87
+msgid "Copyright© [y] Newsfit by <a href=\"https://radiustheme.com/\">RadiusTheme</a>"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:88
+msgid "Add [y] flag anywhere for dynamic year."
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:93
+msgid "Footer Menu Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:98
+msgid "Footer Menu Alignment"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:101
+msgid "Default from style"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:102
+msgid "Left"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:103
+msgid "Center"
+msgstr ""
+
+#: ../inc/Api/Customizer/Footer.php:104
+msgid "Right"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:26
+msgid "General"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:27
+msgid "NewsFit General Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:43
+msgid "Enable SVG Upload"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:48
+msgid "Preloader"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:53
+msgid "Back to Top"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:58
+msgid "Remove Admin Bar"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:64
+msgid "Social Icon Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:67
+msgid "Default Icon"
+msgstr ""
+
+#: ../inc/Api/Customizer/General.php:68
+msgid "Square Icon"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:28
+msgid "Header Menu"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:29
+msgid "NewsFit Header Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:52
+msgid "Menu Alignment"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:55, ../inc/Api/Customizer/ZControllerExample.php:86, ../inc/Api/Customizer/ZControllerExample.php:104, ../inc/Api/Customizer/ZControllerExample.php:135
+msgid "Left Alignment"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:56, ../inc/Api/Customizer/ZControllerExample.php:87, ../inc/Api/Customizer/ZControllerExample.php:105, ../inc/Api/Customizer/ZControllerExample.php:136
+msgid "Center Alignment"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:57, ../inc/Api/Customizer/ZControllerExample.php:88, ../inc/Api/Customizer/ZControllerExample.php:106, ../inc/Api/Customizer/ZControllerExample.php:137
+msgid "Right Alignment"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:63
+msgid "Header Width"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:73
+msgid "Header Max Width (PX)"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:80
+msgid "Sticky Header"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:81
+msgid "Show header at the top when scrolling down"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:86
+msgid "Transparent Header"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:91
+msgid "Header Dark Shadow"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:96
+msgid "Header Border"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:105
+msgid "User Login ?"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:111
+msgid "Search Icon ?"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:117
+msgid "Header Bar ?"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:118
+msgid "It will be hide only for desktop."
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:124
+msgid "Icon Separator"
+msgstr ""
+
+#: ../inc/Api/Customizer/Header.php:134
+msgid "Get Started Button ?"
+msgstr ""
+
+#: ../inc/Api/Customizer/HeaderTopbar.php:28
+msgid "Header Topbar"
+msgstr ""
+
+#: ../inc/Api/Customizer/HeaderTopbar.php:29
+msgid "NewsFit Topbar Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/HeaderTopbar.php:46
+msgid "Topbar Visibility"
+msgstr ""
+
+#: ../inc/Api/Customizer/HeaderTopbar.php:52
+msgid "Topbar Style"
+msgstr ""
+
+#: ../inc/Api/Customizer/HeaderTopbar.php:60
+msgid "Topbar Border"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:26
+msgid "Modify Static Text"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:27
+msgid "You can change all static text of the theme."
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:43
+msgid "Header Labels"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:48, ../inc/Api/Customizer/Labels.php:49
+msgid "Get Started"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:50
+msgid "Context: Menu Button"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:55, ../inc/Api/Customizer/Labels.php:56
+msgid "Follow Us On:"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:57
+msgid "Context: Topbar icon label"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:62
+msgid "Blog Labels"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:68
+msgid "Context: Meta Author Prefix"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:72, ../inc/Api/Customizer/Labels.php:73
+msgid "Tags:"
+msgstr ""
+
+#: ../inc/Api/Customizer/Labels.php:74
+msgid "Context: Single blog footer tags label"
+msgstr ""
+
+#: ../inc/Api/Customizer/LayoutsBlogs.php:30
+msgid "Blog Layout"
+msgstr ""
+
+#: ../inc/Api/Customizer/LayoutsError.php:30
+msgid "Error Layout"
+msgstr ""
+
+#: ../inc/Api/Customizer/LayoutsPage.php:31
+msgid "Page Layout"
+msgstr ""
+
+#: ../inc/Api/Customizer/LayoutsSingle.php:30
+msgid "Single Layout"
+msgstr ""
+
+#: ../inc/Api/Customizer/LayoutsWooArchive.php:30
+msgid "Woocommerce Archive"
+msgstr ""
+
+#: ../inc/Api/Customizer/LayoutsWooSingle.php:31
+msgid "Woocommerce Single"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:36
+msgid "Main Logo"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:37
+msgid "Upload main logo for your site."
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:38, ../inc/Api/Customizer/ZControllerExample.php:157
+msgid "Logo"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:43, ../inc/Api/Customizer/SiteIdentity.php:45
+msgid "Light Logo"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:44
+msgid "Upload light logo for transparent header. It should a white logo"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:50, ../inc/Api/Customizer/SiteIdentity.php:52
+msgid "Mobile Logo"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:51
+msgid "Upload, if you need a different logo for mobile device.."
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:57
+msgid "Logo Dimension"
+msgstr ""
+
+#: ../inc/Api/Customizer/SiteIdentity.php:58
+msgid "Enter the width and height value separate by comma (,). Eg. 180px,45px"
+msgstr ""
+
+#: ../inc/Api/Customizer/Socials.php:29
+msgid "Socials Information"
+msgstr ""
+
+#: ../inc/Api/Customizer/Socials.php:30
+msgid "NewsFit Socials Section"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:27
+msgid "Test Controls"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:28
+msgid "Customize the Test"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:50
+msgid "All controls"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:51
+msgid "All controls are here"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:56
+msgid "Choose switch"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:61, ../inc/Api/Customizer/ZControllerExample.php:62
+msgid "Text Default"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:70
+msgid "Choose switch2"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:74
+msgid "url"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:75
+msgid "url Default"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:82
+msgid "Select a Val"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:83, ../inc/Api/Customizer/ZControllerExample.php:101
+msgid "Select Discription"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:93
+msgid "Textarea"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:94, ../inc/Api/Customizer/ZControllerExample.php:113
+msgid "Textarea Default"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:100
+msgid "Select a Val2"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:112
+msgid "Textarea2"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:120
+msgid "Choose checkbox"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:125
+msgid "Checkbox Textarea2"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:133
+msgid "Choose radio"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:143
+msgid "newsfit_radio Textarea2 - menu-center"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:156
+msgid "Choose Image"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:175
+msgid "Select a Number"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:176
+msgid "Select Number"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:182
+msgid "Choose page"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:188
+msgid "Choose color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:192
+msgid "Choose alfa_color"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:196
+msgid "Choose datetime"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:216
+msgid "Choose repeater"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:221, ../inc/Api/Customizer/ZControllerExample.php:228
+msgid "Meta Order"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:235, ../inc/Api/Customizer/ZControllerExample.php:248
+msgid "Typography"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:273
+msgid "Style 1"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:277
+msgid "Style 2"
+msgstr ""
+
+#: ../inc/Api/Customizer/ZControllerExample.php:281
+msgid "Style 3"
+msgstr ""
+
+#: ../page-templates/rt-icons.php:3
+msgid "RT Icons"
+msgstr ""
+
+#: ../page-templates/tpl-example.php:3
+msgid "Example Template"
+msgstr ""
+
+#. translators: %s: Search Term.
+#: ../search.php:30
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../views/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: ../views/content-none.php:50
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: ../views/content-none.php:41
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: ../views/content-none.php:27
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../views/content-page.php:23, ../views/content-search.php:43
+msgid "Pages:"
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: ../views/content-search.php:30
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../views/custom/single-pagination.php:21
+msgid "Previous Post: "
+msgstr ""
+
+#: ../views/custom/single-pagination.php:38
+msgid "Next Post: "
+msgstr ""

@@ -2,6 +2,7 @@
 
 namespace RT\NewsFit\Setup;
 
+use RT\NewsFit\Helpers\Constants;
 use RT\NewsFit\Traits\SingletonTraits;
 
 /**
@@ -19,20 +20,16 @@ class Enqueue {
 	}
 
 	/**
-	 * Notice the mix() function in wp_enqueue_...
-	 * It provides the path to a versioned asset by Laravel Mix using querystring-based
-	 * cache-busting (This means, the file name won't change, but the md5. Look here for
-	 * more information: https://github.com/JeffreyWay/laravel-mix/issues/920 )
+	 * Enqueue all necessary scripts and styles for the theme
+	 * @return void
 	 */
 	public function enqueue_scripts() {
-		// Deregister the built-in version of jQuery from WordPress
-
 		// CSS
-		wp_enqueue_style( 'main', mix( 'css/style.css' ), [], '1.0.0', 'all' );
+		wp_enqueue_style( 'main', newsfit_get_css( 'style', true ), [], Constants::get_version() );
 
 		// JS
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'main', mix( 'js/app.js' ), [ 'jquery' ], '1.0.0', true );
+		wp_enqueue_script( 'main', newsfit_get_js( 'app.js' ), [ 'jquery' ], Constants::get_version(), true );
 
 		// Extra
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

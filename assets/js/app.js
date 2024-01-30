@@ -11,10 +11,6 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/app.js */ "./src/scripts/modules/app.js");
 /* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/**
- * Manage global libraries like jQuery or THREE from the webpack.mix.js file
- */
-
 // Import custom modules
 
 (function ($) {
@@ -10928,6 +10924,19 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./src/sass/style.scss":
+/*!*****************************!*\
+  !*** ./src/sass/style.scss ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./src/sass/admin.scss":
 /*!*****************************!*\
   !*** ./src/sass/admin.scss ***!
@@ -10954,10 +10963,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/sass/style.scss":
-/*!*****************************!*\
-  !*** ./src/sass/style.scss ***!
-  \*****************************/
+/***/ "./assets/css/style.css":
+/*!******************************!*\
+  !*** ./assets/css/style.css ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11189,9 +11198,10 @@ function _typeof(o) {
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/js/app": 0,
-/******/ 			"assets/css/style.min": 0,
+/******/ 			"build/temp/style": 0,
+/******/ 			"assets/css/style": 0,
 /******/ 			"build/temp/rtl": 0,
-/******/ 			"assets/css/admin.min": 0
+/******/ 			"assets/css/admin": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -11241,12 +11251,12 @@ function _typeof(o) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/css/style.min","build/temp/rtl","assets/css/admin.min"], () => (__webpack_require__("./src/scripts/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/style.min","build/temp/rtl","assets/css/admin.min"], () => (__webpack_require__("./src/sass/admin.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/style.min","build/temp/rtl","assets/css/admin.min"], () => (__webpack_require__("./src/sass/rtl.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/style.min","build/temp/rtl","assets/css/admin.min"], () => (__webpack_require__("./src/sass/style.scss")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/scripts/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/sass/style.scss")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/sass/admin.scss")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/sass/rtl.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./assets/css/style.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=app.js.map

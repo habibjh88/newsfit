@@ -9,7 +9,7 @@
 		"development": "mix",
 		"watch": "mix watch",
 		"production": "mix --production",
-		"cleanup": "rm -rf build/* && rm -rf assets/**/*.map && rm -rf assets/*.json",
+		"cleanup": "rm -rf build/* && rm -rf assets/**/*.map",
 		"clean": "rm -rf build/*",
 		"clean-temp": "rm -rf build/temp/",
 		"package": "npm run development && npm run cleanup && npm run production --package && npm run clean-temp",

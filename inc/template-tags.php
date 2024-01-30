@@ -31,51 +31,6 @@ if ( ! function_exists( 'starts_with' ) ) {
 	}
 }
 
-if ( ! function_exists( 'mix' ) ) {
-	/**
-	 * Get the path to a versioned Mix file.
-	 *
-	 * @param string $path
-	 * @param string $manifestDirectory
-	 *
-	 * @return string
-	 *
-	 * @throws \Exception
-	 */
-	function mix( $path, $manifestDirectory = '' ): string {
-		if ( ! $manifestDirectory ) {
-			//Setup path for standard AWPS-Folder-Structure
-			$manifestDirectory = "assets/dist/";
-		}
-		static $manifest;
-		if ( ! starts_with( $path, '/' ) ) {
-			$path = "/{$path}";
-		}
-		if ( $manifestDirectory && ! starts_with( $manifestDirectory, '/' ) ) {
-			$manifestDirectory = "/{$manifestDirectory}";
-		}
-		$rootDir = dirname( __FILE__, 2 );
-		if ( file_exists( $rootDir . '/' . $manifestDirectory . '/hot' ) ) {
-			return getenv( 'WP_SITEURL' ) . ":8080" . $path;
-		}
-		if ( ! $manifest ) {
-			$manifestPath = $rootDir . $manifestDirectory . 'mix-manifest.json';
-			if ( ! file_exists( $manifestPath ) ) {
-				throw new Exception( 'The Mix manifest does not exist.' );
-			}
-			$manifest = json_decode( file_get_contents( $manifestPath ), true );
-		}
-
-		if ( starts_with( $manifest[ $path ], '/' ) ) {
-			$manifest[ $path ] = ltrim( $manifest[ $path ], '/' );
-		}
-
-		$path = $manifestDirectory . $manifest[ $path ];
-
-		return get_template_directory_uri() . $path;
-	}
-}
-
 function newsfit_html( $html, $checked = true ) {
 	$allowed_html = [
 		'a'      => [
@@ -269,20 +224,24 @@ if ( ! function_exists( 'newsfit_get_img' ) ) {
 	 * Get Image Path
 	 *
 	 * @param $filename
+	 * @param $echo
+	 * @param $image_meta
 	 *
-	 * @return string
+	 * @return string|void
 	 */
-	function newsfit_get_img( $filename, $echo = false, $image_meta = '' ): string {
-		$path      = '/assets/dist/images/' . $filename;
+	function newsfit_get_img( $filename, $echo = false, $image_meta = '' ) {
+		$path      = '/assets/images/' . $filename;
 		$image_url = newsfit_get_file( $path );
+
 		if ( $echo ) {
-
-			$getimagesize = wp_getimagesize( newsfit_get_file( $path, true ) );
-			$image_meta = $getimagesize[3] ?? $image_meta;
+			if ( ! strpos( $filename, '.svg' ) ) {
+				$getimagesize = wp_getimagesize( newsfit_get_file( $path, true ) );
+				$image_meta   = $getimagesize[3] ?? $image_meta;
+			}
 			echo '<img ' . $image_meta . ' src="' . esc_url( $image_url ) . '"/>';
+		} else {
+			return newsfit_get_file( $image_url );
 		}
-
-		return newsfit_get_file( $image_url );
 	}
 }
 
@@ -291,11 +250,14 @@ if ( ! function_exists( 'newsfit_get_css' ) ) {
 	 * Get CSS Path
 	 *
 	 * @param $filename
+	 * @param bool $check_rtl
 	 *
 	 * @return string
 	 */
-	function newsfit_get_css( $filename ) {
-		$path = '/assets/dist/css/' . $filename . '.css';
+	function newsfit_get_css( $filename, $check_rtl = false ) {
+		$min    = WP_DEBUG ? '.css' : '.min.css';
+		$is_rtl = $check_rtl && is_rtl() ? 'css-rtl' : 'css';
+		$path   = "/assets/$is_rtl/" . $filename . $min;
 
 		return newsfit_get_file( $path );
 	}
@@ -310,28 +272,10 @@ if ( ! function_exists( 'newsfit_get_js' ) ) {
 	 * @return string
 	 */
 	function newsfit_get_js( $filename ) {
-		$path = '/assets/dist/js/' . $filename . '.js';
+		$min  = WP_DEBUG ? '.js' : '.min.js';
+		$path = '/assets/js/' . $filename . $min;
 
 		return newsfit_get_file( $path );
-	}
-}
-
-if ( ! function_exists( 'newsfit_maybe_rtl' ) ) {
-	/**
-	 * Get css path conditionally by RTL
-	 *
-	 * @param $filename
-	 *
-	 * @return string
-	 */
-	function newsfit_maybe_rtl( $filename ) {
-		if ( is_rtl() ) {
-			$path = '/assets/dist/css-rtl/' . $filename . '.css';
-
-			return newsfit_get_file( $path );
-		} else {
-			return newsfit_get_file( $filename );
-		}
 	}
 }
 

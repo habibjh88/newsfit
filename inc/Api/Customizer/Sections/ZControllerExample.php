@@ -5,7 +5,7 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer;
+namespace RT\NewsFit\Api\Customizer\Sections;
 
 use RT\NewsFit\Api\Customizer;
 use RTFramework\Customize;
@@ -15,7 +15,7 @@ use RTFramework\Customize;
  */
 class ZControllerExample extends Customizer {
 
-	protected string $section_test = 'newsfit_test_section';
+	protected string $section_test = 'rt_test_test_section';
 
 	/**
 	 * Register controls
@@ -36,7 +36,7 @@ class ZControllerExample extends Customizer {
 	 * @return array
 	 */
 	public function get_controls(): array {
-		return apply_filters( 'newsfit_test_controls', [
+		return apply_filters( 'rt_test_test_controls', [
 
 			//Reset button
 			'rt_reset_customize' => [
@@ -45,39 +45,39 @@ class ZControllerExample extends Customizer {
 			],
 			//Reset button
 
-			'newsfit_heading1' => [
+			'rt_test_heading1' => [
 				'type'        => 'heading',
 				'label'       => __( 'All controls', 'newsfit' ),
 				'description' => __( 'All controls are here', 'newsfit' ),
 			],
 
-			'newsfit_switch' => [
+			'rt_test_switch' => [
 				'type'  => 'switch',
 				'label' => __( 'Choose switch', 'newsfit' ),
 			],
 
-			'newsfit_text' => [
+			'rt_test_text' => [
 				'type'      => 'text',
 				'label'     => __( 'Text Default', 'newsfit' ),
 				'default'   => __( 'Text Default', 'newsfit' ),
 				'transport' => '',
-				'condition' => [ 'newsfit_switch' ]
+				'condition' => [ 'rt_test_switch' ]
 			],
 
 
-			'newsfit_switch2' => [
+			'rt_test_switch2' => [
 				'type'  => 'switch',
 				'label' => __( 'Choose switch2', 'newsfit' ),
 			],
-			'newsfit_url'     => [
+			'rt_test_url'     => [
 				'type'      => 'url',
 				'label'     => __( 'url', 'newsfit' ),
 				'default'   => __( 'url Default', 'newsfit' ),
 				'transport' => '',
-				'condition' => [ 'newsfit_switch2', '!==', 1 ]
+				'condition' => [ 'rt_test_switch2', '!==', 1 ]
 			],
 
-			'newsfit_select'   => [
+			'rt_test_select'   => [
 				'type'        => 'select',
 				'label'       => __( 'Select a Val', 'newsfit' ),
 				'description' => __( 'Select Discription', 'newsfit' ),
@@ -88,14 +88,14 @@ class ZControllerExample extends Customizer {
 					'menu-right'  => __( 'Right Alignment', 'newsfit' ),
 				]
 			],
-			'newsfit_textarea' => [
+			'rt_test_textarea' => [
 				'type'      => 'textarea',
 				'label'     => __( 'Textarea', 'newsfit' ),
 				'default'   => __( 'Textarea Default', 'newsfit' ),
 				'transport' => '',
 			],
 
-			'newsfit_select5' => [
+			'rt_test_select5' => [
 				'type'        => 'select',
 				'label'       => __( 'Select a Val2', 'newsfit' ),
 				'description' => __( 'Select Discription', 'newsfit' ),
@@ -107,7 +107,7 @@ class ZControllerExample extends Customizer {
 				]
 			],
 
-			'newsfit_textarea2' => [
+			'rt_test_textarea2' => [
 				'type'      => 'textarea',
 				'label'     => __( 'Textarea2', 'newsfit' ),
 				'default'   => __( 'Textarea Default', 'newsfit' ),
@@ -115,20 +115,20 @@ class ZControllerExample extends Customizer {
 			],
 
 
-			'newsfit_checkbox' => [
+			'rt_test_checkbox' => [
 				'type'  => 'checkbox',
 				'label' => __( 'Choose checkbox', 'newsfit' ),
 			],
 
-			'newsfit_textarea22' => [
+			'rt_test_textarea22' => [
 				'type'      => 'textarea',
 				'label'     => __( 'Checkbox Textarea2', 'newsfit' ),
 				'transport' => '',
-				'condition' => [ 'newsfit_checkbox', '==', '1' ]
+				'condition' => [ 'rt_test_checkbox', '==', '1' ]
 			],
 
 
-			'newsfit_radio' => [
+			'rt_test_radio' => [
 				'type'    => 'radio',
 				'label'   => __( 'Choose radio', 'newsfit' ),
 				'choices' => [
@@ -138,26 +138,26 @@ class ZControllerExample extends Customizer {
 				]
 			],
 
-			'newsfit_textarea222' => [
+			'rt_test_textarea222' => [
 				'type'      => 'textarea',
-				'label'     => __( 'newsfit_radio Textarea2 - menu-center', 'newsfit' ),
+				'label'     => __( 'rt_test_radio Textarea2 - menu-center', 'newsfit' ),
 				'transport' => '',
 			],
 
-			'newsfit_image_choose' => [
+			'rt_test_image_choose' => [
 				'type'    => 'image_select',
 				'label'   => __( 'Choose Layout', 'newsfit' ),
 				'default' => '1',
 				'choices' => $this->get_header_presets()
 			],
 
-			'newsfit_image' => [
+			'rt_test_image' => [
 				'type'         => 'image',
 				'label'        => __( 'Choose Image', 'newsfit' ),
 				'button_label' => __( 'Logo', 'newsfit' ),
 			],
 
-			'newsfit_image_attr' => [
+			'rt_test_image_attr' => [
 				'type'      => 'bg_attribute',
 				'condition' => [ 'rt_banner' ],
 				'default'   => json_encode(
@@ -170,34 +170,34 @@ class ZControllerExample extends Customizer {
 				)
 			],
 
-			'newsfit_number' => [
+			'rt_test_number' => [
 				'type'        => 'number',
 				'label'       => __( 'Select a Number', 'newsfit' ),
 				'description' => __( 'Select Number', 'newsfit' ),
 				'default'     => '5',
 			],
 
-			'newsfit_pages' => [
+			'rt_test_pages' => [
 				'type'  => 'pages',
 				'label' => __( 'Choose page', 'newsfit' ),
 			],
 
 
-			'newsfit_color'      => [
+			'rt_test_color'      => [
 				'type'  => 'color',
 				'label' => __( 'Choose color', 'newsfit' ),
 			],
-			'newsfit_alfa_color' => [
+			'rt_test_alfa_color' => [
 				'type'  => 'alfa_color',
 				'label' => __( 'Choose alfa_color', 'newsfit' ),
 			],
-			'newsfit_datetime'   => [
+			'rt_test_datetime'   => [
 				'type'  => 'datetime',
 				'label' => __( 'Choose datetime', 'newsfit' ),
 			],
 
 
-			'newsfit_select2' => [
+			'rt_test_select2' => [
 				'type'        => 'select2',
 				'label'       => __( 'Choose Meta', 'newsfit' ),
 				'placeholder' => __( 'Choose Meta', 'newsfit' ),
@@ -211,26 +211,26 @@ class ZControllerExample extends Customizer {
 				],
 			],
 
-			'newsfit_repeater' => [
+			'rt_test_repeater' => [
 				'type'  => 'repeater',
 				'label' => __( 'Choose repeater', 'newsfit' ),
 			],
 
-			'newsfit_blog_meta_order1' => [
+			'rt_test_blog_meta_order1' => [
 				'type'    => 'repeater',
 				'label'   => __( 'Meta Order', 'newsfit' ),
 				'default' => 'one, two, three, four',
 				'use_as'  => 'sort', //'sort','repeater'
 			],
 
-			'newsfit_blog_meta_order2' => [
+			'rt_test_blog_meta_order2' => [
 				'type'    => 'repeater',
 				'label'   => __( 'Meta Order', 'newsfit' ),
 				'default' => 'one, two, three, four',
 //				'use_as'  => 'repeater', //'sort','repeater'
 			],
 
-			'newsfit_typography2' => [
+			'rt_test_typography2' => [
 				'type'    => 'typography',
 				'label'   => __( 'Typography', 'newsfit' ),
 				'default' => json_encode(
@@ -243,7 +243,7 @@ class ZControllerExample extends Customizer {
 				)
 			],
 
-			'newsfit_typography3' => [
+			'rt_test_typography3' => [
 				'type'    => 'typography',
 				'label'   => __( 'Typography', 'newsfit' ),
 				'default' => json_encode(

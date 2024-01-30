@@ -5,7 +5,7 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer;
+namespace RT\NewsFit\Api\Customizer\Sections;
 
 use RT\NewsFit\Api\Customizer;
 use RT\NewsFit\Helpers\Fns;
@@ -87,8 +87,8 @@ class Header extends Customizer {
 			],
 
 			'rt_tr_header_shadow' => [
-				'type'      => 'switch',
-				'label'     => __( 'Header Dark Shadow', 'newsfit' ),
+				'type'  => 'switch',
+				'label' => __( 'Header Dark Shadow', 'newsfit' ),
 			],
 
 			'rt_header_border' => [

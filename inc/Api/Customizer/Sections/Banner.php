@@ -5,7 +5,7 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer;
+namespace RT\NewsFit\Api\Customizer\Sections;
 
 use RT\NewsFit\Api\Customizer;
 use RT\NewsFit\Helpers\Fns;

@@ -7,8 +7,8 @@
 
 namespace RT\NewsFit\Api;
 
+use RT\NewsFit\Api\Customizer\Pannels;
 use RT\NewsFit\Traits\SingletonTraits;
-use RTFramework\Customize;
 
 /**
  * Customizer class
@@ -24,7 +24,7 @@ class Customizer {
 	 */
 	public function __construct() {
 		if ( defined( 'RT_FRAMEWORK_VERSION' ) ) {
-			$this->add_panels();
+			new Pannels();
 			add_action( 'after_setup_theme', [ $this, 'register_controls' ] );
 		}
 		add_action( 'after_setup_theme', [ $this, 'get_controls_default_value' ] );
@@ -36,32 +36,35 @@ class Customizer {
 	 */
 	public static function add_controls(): array {
 		$classess = [
-			Customizer\General::class,
-			Customizer\SiteIdentity::class,
-			Customizer\Header::class,
-			Customizer\HeaderTopbar::class,
-			Customizer\Banner::class,
-			Customizer\Blog::class,
-			Customizer\BlogSingle::class,
-			Customizer\Contact::class,
-			Customizer\Socials::class,
-			Customizer\ColorSite::class,
-			Customizer\ColorTopbar::class,
-			Customizer\ColorHeader::class,
-			Customizer\ColorBanner::class,
-			Customizer\ColorFooter::class,
-			Customizer\Labels::class,
-			Customizer\LayoutsBlogs::class,
-			Customizer\LayoutsSingle::class,
-			Customizer\LayoutsPage::class,
-			Customizer\LayoutsError::class,
-			Customizer\Footer::class,
-			Customizer\ZControllerExample::class,
+			Customizer\Sections\General::class,
+			Customizer\Sections\SiteIdentity::class,
+			Customizer\Sections\Header::class,
+			Customizer\Sections\HeaderTopbar::class,
+			Customizer\Sections\Banner::class,
+			Customizer\Sections\TypographyBody::class,
+			Customizer\Sections\TypographyHeading::class,
+			Customizer\Sections\TypographyMenu::class,
+			Customizer\Sections\Blog::class,
+			Customizer\Sections\BlogSingle::class,
+			Customizer\Sections\Contact::class,
+			Customizer\Sections\Socials::class,
+			Customizer\Sections\ColorSite::class,
+			Customizer\Sections\ColorTopbar::class,
+			Customizer\Sections\ColorHeader::class,
+			Customizer\Sections\ColorBanner::class,
+			Customizer\Sections\ColorFooter::class,
+			Customizer\Sections\Labels::class,
+			Customizer\Sections\LayoutsBlogs::class,
+			Customizer\Sections\LayoutsSingle::class,
+			Customizer\Sections\LayoutsPage::class,
+			Customizer\Sections\LayoutsError::class,
+			Customizer\Sections\Footer::class,
+			Customizer\Sections\ZControllerExample::class,
 		];
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			$classess[] = Customizer\LayoutsWooSingle::class;
-			$classess[] = Customizer\LayoutsWooArchive::class;
+			$classess[] = Customizer\Sections\LayoutsWooSingle::class;
+			$classess[] = Customizer\Sections\LayoutsWooArchive::class;
 		}
 
 
@@ -98,39 +101,4 @@ class Customizer {
 		}
 
 	}
-
-	/**
-	 * Add Panels
-	 * @return void
-	 */
-	public function add_panels(): void {
-		Customize::add_panel( [
-			'id'          => 'rt_header_panel',
-			'title'       => esc_html__( 'Header - Topbar - Menu', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Header', 'newsfit' ),
-			'priority'    => 22,
-		] );
-
-		Customize::add_panel( [
-			'id'          => 'rt_contact_social_panel',
-			'title'       => esc_html__( 'Contact & Socials', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Contact & Socials', 'newsfit' ),
-			'priority'    => 24,
-		] );
-
-		Customize::add_panel( [
-			'id'          => 'rt_color_panel',
-			'title'       => esc_html__( 'Colors', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Color Settings', 'newsfit' ),
-			'priority'    => 28,
-		] );
-
-		Customize::add_panel( [
-			'id'          => 'rt_layouts_panel',
-			'title'       => esc_html__( 'Layout Settings', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Layout Settings', 'newsfit' ),
-			'priority'    => 34,
-		] );
-	}
-
 }

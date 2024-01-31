@@ -61,12 +61,8 @@ class Layouts {
 			Opt::$single_style = $this->check_meta_option_value( 'single_post_style' );
 
 		} // Blog and Archive
-		elseif ( is_home() || is_archive() || is_search() || is_404() ) {
-			if ( is_404() ) {
-				$this->type                               = 'error';
-				Opt::$options[ $this->type . '_layout' ]  = 'full-width';
-				Opt::$options[ $this->type . '_sidebar' ] = '';
-			} elseif ( class_exists( 'WooCommerce' ) && is_shop() ) {
+		elseif ( is_home() || is_archive() || is_search() ) {
+			if ( class_exists( 'WooCommerce' ) && is_shop() ) {
 				$this->type = 'woocommerce_archive';
 			} else {
 				$this->type = 'blog';

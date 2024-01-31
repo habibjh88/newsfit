@@ -57,7 +57,7 @@ class Customizer {
 			Customizer\Sections\LayoutsBlogs::class,
 			Customizer\Sections\LayoutsSingle::class,
 			Customizer\Sections\LayoutsPage::class,
-			Customizer\Sections\LayoutsError::class,
+//			Customizer\Sections\LayoutsError::class,
 			Customizer\Sections\Footer::class,
 			Customizer\Sections\ZControllerExample::class,
 		];

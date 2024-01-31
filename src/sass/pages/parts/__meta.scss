@@ -50,12 +50,25 @@
 
 		ul {
 			column-gap: 10px;
+			display: block;
+		}
+		ul li {
+			display: inline;
 		}
 
-		ul li:not(:last-child)::after {
-			content: "/";
-			margin-left: 10px;
-			font-size: 15px;
+		ul li:not(:last-child) {
+			margin-right: 16px;
+		}
+
+		ul li::before {
+			content: "";
+			width: 5px;
+			height: 5px;
+			background-color: $meta_color;
+			border-radius: 50%;
+			display: inline-block;
+			margin-right: 5px;
+			transform: translateY(-2px);
 		}
 	}
 

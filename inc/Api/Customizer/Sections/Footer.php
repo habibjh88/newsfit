@@ -47,17 +47,6 @@ class Footer extends Customizer {
 				'choices' => Fns::image_placeholder( 'footer', 2 )
 			],
 
-			'rt_footer_schema' => [
-				'type'    => 'select',
-				'label'   => __( 'Footer Schema', 'newsfit' ),
-				'default' => 'schema-default',
-				'choices' => [
-					'schema-default' => __( 'Default', 'newsfit' ),
-					'footer-light'   => __( 'Light Footer', 'newsfit' ),
-					'footer-dark'    => __( 'Dark Footer', 'newsfit' ),
-				]
-			],
-
 			'rt_footer_width' => [
 				'type'    => 'select',
 				'label'   => __( 'Footer Width', 'newsfit' ),

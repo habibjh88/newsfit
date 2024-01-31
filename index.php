@@ -12,11 +12,10 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Options\Opt;
 use RT\NewsFit\Helpers\Fns;
 
 get_header();
-$content_columns = Fns::content_columns( );
+$content_columns = Fns::content_columns();
 
 ?>
 
@@ -59,6 +58,4 @@ $content_columns = Fns::content_columns( );
 	</div><!-- .container -->
 
 <?php
-
-
 get_footer();

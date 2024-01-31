@@ -73,21 +73,23 @@ class Blog extends Customizer {
 				'default' => '30',
 			],
 
-			'rt_meta_heading'            => [
+			'rt_meta_heading' => [
 				'type'  => 'heading',
 				'label' => __( 'Post Meta Settings', 'newsfit' ),
 			],
+
+			'rt_blog_meta_style' => [
+				'type'    => 'select',
+				'label'   => __( 'Meta Style', 'newsfit' ),
+				'default' => 'meta-style-default',
+				'choices' => Fns::meta_style()
+			],
+
 			'rt_single_above_meta_style' => [
 				'type'    => 'select',
 				'label'   => __( 'Title Above Meta Style', 'newsfit' ),
 				'default' => 'meta-style-dash',
 				'choices' => Fns::meta_style( [ 'meta-style-dash-bg', 'meta-style-pipe' ] )
-			],
-			'rt_blog_meta_style'         => [
-				'type'    => 'select',
-				'label'   => __( 'Meta Style', 'newsfit' ),
-				'default' => 'meta-style-default',
-				'choices' => Fns::meta_style()
 			],
 
 			'rt_blog_meta' => [

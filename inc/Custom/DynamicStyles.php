@@ -13,13 +13,13 @@ class DynamicStyles {
 	protected $meta_data;
 
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ], 1 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ], 20 );
 	}
 
 	public function enqueue_scripts() {
 		$this->meta_data = get_post_meta( get_the_ID(), "rt_layout_meta_data", true );
 		$dynamic_css     = $this->inline_style();
-		wp_register_style( 'newsfit-dynamic', false );
+		wp_register_style( 'newsfit-dynamic', false, 'newsfit-main' );
 		wp_enqueue_style( 'newsfit-dynamic' );
 		wp_add_inline_style( 'newsfit-dynamic', $this->minify_css( $dynamic_css ) );
 	}
@@ -69,6 +69,7 @@ class DynamicStyles {
 		}
 
 		<?php
+		$this->site_fonts();
 		$this->topbar_css();
 		$this->header_css();
 		$this->breadcrumb_css();
@@ -83,22 +84,11 @@ class DynamicStyles {
 	 * @return void
 	 */
 	protected function topbar_css() {
-		$_topbar_color        = newsfit_option( 'rt_topbar_color' );
 		$_topbar_active_color = newsfit_option( 'rt_topbar_active_color' );
-		$_topbar_bg_color     = newsfit_option( 'rt_topbar_bg_color' );
-		?>
+		echo self::css( 'body .site-header .newsfit-topbar .topbar-container *:not(.dropdown-menu *)', 'color', 'rt_topbar_color' );
+		echo self::css( 'body .site-header .newsfit-topbar .topbar-container svg:not(.dropdown-menu svg)', 'fill', 'rt_topbar_color', ' !important' );
 
-		<?php if ( ! empty( $_topbar_color ) ) : ?>
-
-			body .site-header .newsfit-topbar .topbar-container *:not(.dropdown-menu *) {
-			color: <?php echo esc_attr( $_topbar_color ); ?>!important;
-			}
-			body .site-header .newsfit-topbar .topbar-container svg:not(.dropdown-menu svg) {
-			fill: <?php echo esc_attr( $_topbar_color ); ?>!important;
-			}
-		<?php endif; ?>
-
-		<?php if ( ! empty( $_topbar_active_color ) ) : ?>
+		if ( ! empty( $_topbar_active_color ) ) : ?>
 			body .site-header .newsfit-topbar .topbar-container a:hover:not(.dropdown-menu a:hover),
 			body .newsfit-topbar #topbar-menu ul ul li.current_page_item > a,
 			body .newsfit-topbar #topbar-menu ul ul li.current-menu-ancestor > a,
@@ -115,13 +105,8 @@ class DynamicStyles {
 			}
 		<?php endif; ?>
 
-		<?php if ( ! empty( $_topbar_bg_color ) ) : ?>
-			body .newsfit-topbar {
-			background-color: <?php echo esc_attr( $_topbar_bg_color ); ?>;
-			}
-		<?php endif; ?>
-
 		<?php
+		echo self::css( 'body .newsfit-topbar', 'background-color', 'rt_topbar_bg_color' );
 	}
 
 
@@ -298,52 +283,92 @@ class DynamicStyles {
 	 * @return void
 	 */
 	protected function footer_css() {
-		$_footer_text          = newsfit_option( 'rt_footer_text' );
-		$_footer_link          = newsfit_option( 'rt_footer_link' );
-		$_footer_link_hover    = newsfit_option( 'rt_footer_link_hover' );
-		$_footer_input_border  = newsfit_option( 'rt_footer_input_border' );
-		$_footer_bg            = newsfit_option( 'rt_footer_bg' );
-		$_footer_widget_title  = newsfit_option( 'rt_footer_widget_title' );
-		$_copyright_text       = newsfit_option( 'rt_copyright_text' );
-		$_copyright_link       = newsfit_option( 'rt_copyright_link' );
-		$_copyright_link_hover = newsfit_option( 'rt_copyright_link_hover' );
-		$_copyright_bg         = newsfit_option( 'rt_copyright_bg' );
-		?>
+		if ( newsfit_option( 'rt_footer_width' ) && newsfit_option( 'rt_footer_max_width' ) > 1400 ) {
+			echo self::css( '.site-footer .footer-container', 'width', 'rt_footer_max_width', 'px;max-width: 100%' );
+		}
 
-		<?php if ( newsfit_option( 'rt_footer_width' ) && newsfit_option( 'rt_footer_max_width' ) > 1400 ) : ?>
-			.site-footer .footer-container {width: <?php echo newsfit_option( 'rt_footer_max_width' ); ?>px;max-width: 100%;}
-		<?php endif; ?>
-
-		<?php if ( ! empty( $_footer_text ) ) : ?>
-			body .site-footer *:not(a) {color: <?php echo esc_attr( $_footer_text ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_footer_link ) ) : ?>
-			body .site-footer a {color: <?php echo esc_attr( $_footer_link ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_footer_link_hover ) ) : ?>
-			body .site-footer a:hover {color: <?php echo esc_attr( $_footer_link_hover ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_footer_bg ) ) : ?>
-			body .site-footer, body .site-footer select option {background-color: <?php echo esc_attr( $_footer_bg ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_footer_input_border ) ) : ?>
-			.site-footer .widget :is(td, th, select, .search-box) {border-color: <?php echo esc_attr( $_footer_input_border ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_footer_widget_title ) ) : ?>
-			body .site-footer .widget-title {color: <?php echo esc_attr( $_footer_widget_title ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_copyright_text ) ) : ?>
-			body .site-footer .footer-copyright-wrapper {color: <?php echo esc_attr( $_copyright_text ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_copyright_link ) ) : ?>
-			body .site-footer .footer-copyright-wrapper a {color: <?php echo esc_attr( $_copyright_link ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_copyright_link_hover ) ) : ?>
-			body .site-footer .footer-copyright-wrapper a:hover {color: <?php echo esc_attr( $_copyright_link_hover ); ?>;}
-		<?php endif; ?>
-		<?php if ( ! empty( $_copyright_bg ) ) : ?>
-			body .site-footer .footer-copyright-wrapper {background-color: <?php echo esc_attr( $_copyright_bg ); ?>;}
-		<?php endif;
+		echo self::css( 'body .site-footer *:not(a)', 'color', 'rt_footer_text_color' );
+		echo self::css( 'body .site-footer a', 'color', 'rt_footer_link_color' );
+		echo self::css( 'body .site-footer a:hover', 'color', 'rt_footer_link_hover_color' );
+		echo self::css( 'body .site-footer, body .site-footer select option', 'background-color', 'rt_footer_bg' );
+		echo self::css( '.site-footer .widget :is(td, th, select, .search-box)', 'border-color', 'rt_footer_input_border_color' );
+		echo self::css( 'body .site-footer .widget-title', 'color', 'rt_footer_widget_title_color' );
+		echo self::css( 'body .site-footer .footer-copyright-wrapper', 'color', 'rt_copyright_text_color' );
+		echo self::css( 'body .site-footer .footer-copyright-wrapper a', 'color', 'rt_copyright_link_color' );
+		echo self::css( 'body .site-footer .footer-copyright-wrapper a:hover', 'color', 'rt_copyright_link_hover_color' );
+		echo self::css( 'body .site-footer .footer-copyright-wrapper', 'background-color', 'rt_copyright_bg' );
 	}
+
+
+	protected function site_fonts() {
+
+		$typo_body           = json_decode( newsfit_option( 'rt_body_typo' ), true );
+		$typo_menu           = json_decode( newsfit_option( 'rt_menu_typo' ), true );
+		$typo_heading        = json_decode( newsfit_option( 'rt_all_heading_typo' ), true );
+		$body_font_family    = $typo_body['font'] ?? 'IBM Plex Sans';
+		$heading_font_family = $typo_heading['font'] ?? $body_font_family;
+		?>
+		:root{
+		--rt-body-font: '<?php echo esc_html( $typo_body['font'] ); ?>', sans-serif;;
+		--rt-heading-font: '<?php echo esc_html( $heading_font_family ); ?>', sans-serif;
+		--rt-menu-font: '<?php echo esc_html( $typo_body['font'] ); ?>', sans-serif;
+		}
+
+		<?php
+		echo self::font_css( 'body', $typo_body );
+		echo self::font_css( '.site-header', [ 'font' => $typo_menu['font'] ] );
+		echo self::font_css( '.main-header-section .newsfit-navigation ul li a', [ 'lineheight' => $typo_menu['lineheight'], 'regularweight' => $typo_menu['regularweight'] ] );
+		echo self::font_css( '.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6', [ 'font' => $typo_heading['font'], 'regularweight' => $typo_heading['regularweight'] ] );
+
+		$heading_fonts = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
+		foreach ( $heading_fonts as $heading ) {
+			$font = json_decode( newsfit_option( "rt_heading_{$heading}_typo" ), true );
+			if ( ! empty( $font['font'] ) ) {
+				$selector = "$heading, .$heading";
+				echo self::font_css( $selector, $font );
+			}
+		}
+	}
+
+
+	/**
+	 * Generate CSS
+	 *
+	 * @param $selector
+	 * @param $property
+	 * @param $theme_mod
+	 *
+	 * @return string|void
+	 */
+	public static function css( $selector, $property, $theme_mod, $after_css = '' ) {
+		$theme_mod = newsfit_option( $theme_mod );
+
+		if ( ! empty( $theme_mod ) ) {
+			return sprintf( '%s { %s:%s%s; }', $selector, $property, $theme_mod, $after_css );
+		}
+	}
+
+	/**
+	 * Font CSS
+	 *
+	 * @param $selector
+	 * @param $property
+	 * @param $theme_mod
+	 * @param $after_css
+	 *
+	 * @return string
+	 */
+	public static function font_css( $selector, $font ) {
+		$css = '';
+		$css .= $selector . '{'; //Start CSS
+		$css .= ! empty( $font['font'] ) ? "font-family: '" . $font['font'] . "', sans-serif;" : '';
+		$css .= ! empty( $font['size'] ) ? "font-size: {$font['size']}px;" : '';
+		$css .= ! empty( $font['lineheight'] ) ? "line-height: {$font['lineheight']}px;" : '';
+		$css .= ! empty( $font['regularweight'] ) ? "font-weight: {$font['regularweight']};" : '';
+		$css .= '}'; //End CSS
+
+		return $css;
+	}
+
 
 }

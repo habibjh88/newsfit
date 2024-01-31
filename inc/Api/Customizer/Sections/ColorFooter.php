@@ -47,23 +47,23 @@ class ColorFooter extends Customizer {
 				'type'  => 'color',
 				'label' => __( 'Footer Background', 'newsfit' ),
 			],
-			'rt_footer_text'             => [
+			'rt_footer_text_color'             => [
 				'type'  => 'color',
 				'label' => __( 'Footer Text', 'newsfit' ),
 			],
-			'rt_footer_link'             => [
+			'rt_footer_link_color'             => [
 				'type'  => 'color',
 				'label' => __( 'Footer Link', 'newsfit' ),
 			],
-			'rt_footer_link_hover'       => [
+			'rt_footer_link_hover_color'       => [
 				'type'  => 'color',
 				'label' => __( 'Footer Link - Hover', 'newsfit' ),
 			],
-			'rt_footer_widget_title'     => [
+			'rt_footer_widget_title_color'     => [
 				'type'  => 'color',
 				'label' => __( 'Widget Title', 'newsfit' ),
 			],
-			'rt_footer_input_border'     => [
+			'rt_footer_input_border_color'     => [
 				'type'  => 'color',
 				'label' => __( 'Input/List/Table Border Color', 'newsfit' ),
 			],
@@ -75,15 +75,15 @@ class ColorFooter extends Customizer {
 				'type'  => 'color',
 				'label' => __( 'Copyright Background', 'newsfit' ),
 			],
-			'rt_copyright_text'          => [
+			'rt_copyright_text_color'          => [
 				'type'  => 'color',
 				'label' => __( 'Copyright Text', 'newsfit' ),
 			],
-			'rt_copyright_link'          => [
+			'rt_copyright_link_color'          => [
 				'type'  => 'color',
 				'label' => __( 'Copyright Link', 'newsfit' ),
 			],
-			'rt_copyright_link_hover'    => [
+			'rt_copyright_link_hover_color'    => [
 				'type'  => 'color',
 				'label' => __( 'Copyright Link - Hover', 'newsfit' ),
 			],

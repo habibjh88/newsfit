@@ -27,7 +27,7 @@ $classes = newsfit_classes( [
 			<div class="container">
 				<div class="row content-row">
 
-					<div class="content-col <?php echo esc_attr( Fns::content_columns('col-md-10') ); ?>">
+					<div class="content-col <?php echo esc_attr( Fns::single_content_colums() ); ?>">
 
 						<div id="primary" class="content-area single-content">
 							<main id="main" class="site-main" role="main">

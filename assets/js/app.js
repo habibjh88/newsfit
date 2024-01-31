@@ -11199,9 +11199,9 @@ function _typeof(o) {
 /******/ 		var installedChunks = {
 /******/ 			"/assets/js/app": 0,
 /******/ 			"build/temp/style": 0,
-/******/ 			"assets/css/style": 0,
 /******/ 			"build/temp/rtl": 0,
-/******/ 			"assets/css/admin": 0
+/******/ 			"assets/css/admin": 0,
+/******/ 			"assets/css/style": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -11251,12 +11251,13 @@ function _typeof(o) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/scripts/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/sass/style.scss")))
-/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/sass/admin.scss")))
-/******/ 	__webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./src/sass/rtl.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["build/temp/style","assets/css/style","build/temp/rtl","assets/css/admin"], () => (__webpack_require__("./assets/css/style.css")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","build/temp/rtl","assets/css/admin","assets/css/style"], () => (__webpack_require__("./src/scripts/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","build/temp/rtl","assets/css/admin","assets/css/style"], () => (__webpack_require__("./src/sass/style.scss")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","build/temp/rtl","assets/css/admin","assets/css/style"], () => (__webpack_require__("./src/sass/admin.scss")))
+/******/ 	__webpack_require__.O(undefined, ["build/temp/style","build/temp/rtl","assets/css/admin","assets/css/style"], () => (__webpack_require__("./src/sass/rtl.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["build/temp/style","build/temp/rtl","assets/css/admin","assets/css/style"], () => (__webpack_require__("./assets/css/style.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
+//# sourceMappingURL=app.js.map

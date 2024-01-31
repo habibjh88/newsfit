@@ -240,7 +240,7 @@ if ( ! function_exists( 'newsfit_get_img' ) ) {
 			}
 			echo '<img ' . $image_meta . ' src="' . esc_url( $image_url ) . '"/>';
 		} else {
-			return newsfit_get_file( $image_url );
+			return $image_url;
 		}
 	}
 }
@@ -614,6 +614,8 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 		<?php
 	}
 }
+
+
 
 if ( ! function_exists( 'newsfit_post_class' ) ) {
 	/**

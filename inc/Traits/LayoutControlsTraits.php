@@ -54,7 +54,7 @@ trait LayoutControlsTraits {
 			$prefix . '_sidebar' => [
 				'type'    => 'select',
 				'label'   => __( 'Choose a Sidebar', 'newsfit' ),
-				'default' => 'sidebar',
+				'default' => 'default',
 				'choices' => Fns::sidebar_lists()
 			],
 

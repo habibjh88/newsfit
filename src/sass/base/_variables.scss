@@ -63,8 +63,10 @@ $colors: (
 );
 
 //Typography
-$base_font: 'IBM Plex Sans', sans-serif;
-$heading_font: 'IBM Plex Sans', sans-serif;
+
+$base_font: var(--rt-body-font, 'IBM Plex Sans'), sans-serif;
+$heading_font: var(--rt-heading-font, 'IBM Plex Sans'), sans-serif;
+$menu_font: var(--rt-menu-font, 'IBM Plex Sans'), sans-serif;
 
 $base_fs: 16px;
 

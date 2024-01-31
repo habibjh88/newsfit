@@ -7,55 +7,46 @@
  * @package newsfit
  */
 
-get_header(); ?>
+use RT\NewsFit\Helpers\Fns;
+
+get_header();
+$content_columns = Fns::content_columns( );
+
+?>
 
 	<div class="container">
 
-		<div class="row">
+		<div class="row align-stretch">
 
-			<div class="col-sm-8">
+			<div class="<?php echo esc_attr( $content_columns ); ?>">
 
 				<div id="primary" class="content-area">
 					<main id="main" class="site-main" role="main">
-
-						<?php
-						if ( have_posts() ) :
-							?>
-
-							<header>
-								<?php
-								the_archive_title( '<h1 class="page-title">', '</h1>' );
-								the_archive_description( '<div class="archive-description">', '</div>' );
-								?>
-							</header>
-
+						<div class="row">
 							<?php
-							/* Start the Loop */
-							while ( have_posts() ) :
+							if ( have_posts() ) :
+								/* Start the Loop */
+								while ( have_posts() ) :
+									the_post();
+									get_template_part( 'views/content', get_post_format() );
+								endwhile;
+							else :
+								get_template_part( 'views/content', 'none' );
+							endif;
+							?>
+						</div>
 
-								the_post();
-
-								get_template_part( 'views/content', get_post_format() );
-
-							endwhile;
-
-							the_posts_navigation();
-
-						else :
-
-							get_template_part( 'views/content', 'none' );
-
-						endif;
-						?>
+						<div class="row post-pagination">
+							<?php the_posts_navigation(); ?>
+						</div>
 
 					</main><!-- #main -->
 				</div><!-- #primary -->
 
 			</div><!-- .col- -->
 
-			<div class="col-sm-4">
-				<?php get_sidebar(); ?>
-			</div><!-- .col- -->
+
+			<?php get_sidebar(); ?>
 
 		</div><!-- .row -->
 

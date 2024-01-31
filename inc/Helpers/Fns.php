@@ -146,7 +146,7 @@ class Fns {
 	public static function image_placeholder( $name, $total = 1, $type = 'svg' ): array {
 		$presets = [];
 		for ( $i = 1; $i <= $total; $i ++ ) {
-			$image_name    = $name . '-' . $i . '.' . $type;
+			$image_name    = "$name-$i.$type";
 			$presets[ $i ] = [
 				'image' => newsfit_get_img( $image_name ),
 				'name'  => __( 'Style', 'newsfit' ) . ' ' . $i,
@@ -302,19 +302,21 @@ class Fns {
 	 * @return string
 	 */
 	public static function content_columns( $full_width_col = 'col-md-12' ) {
-		if ( is_single() ) {
-			$sidebar = Opt::$sidebar === 'default' ? 'rt-single-sidebar' : Opt::$sidebar;
-			$columns = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
-		} else {
-			$sidebar = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
-			if ( is_home() && is_front_page() ) {
-				$sidebar = 'rt-sidebar';
-			}
-			$columns = ! is_active_sidebar( $sidebar ) ? $full_width_col : 'col-md-8';
+		$sidebar = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
+		$columns = ! is_active_sidebar( $sidebar ) ? $full_width_col : 'col-md-8';
+		if ( Opt::$layout === 'full-width' ) {
+			$columns = $full_width_col;
 		}
 
+		return $columns;
+	}
+
+	public static function single_content_colums() {
+		$sidebar = Opt::$sidebar === 'default' ? 'rt-single-sidebar' : Opt::$sidebar;
+		$columns = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
+
 		if ( Opt::$layout === 'full-width' ) {
-			$columns = is_single() ? "col-md-10 col-md-offset-1" : $full_width_col;
+			$columns = "col-md-10 col-md-offset-1";
 		}
 
 		return $columns;
@@ -323,30 +325,24 @@ class Fns {
 
 	/**
 	 * Get blog colum
-	 *
-	 * @param $blog_col
-	 *
 	 * @return mixed|string
 	 */
-	public static function blog_column( $column = 'col-lg-6' ) {
+	public static function blog_column() {
+		if ( ! empty( $_REQUEST['column'] ) ) {
+			return sanitize_text_field( $_REQUEST['column'] );
+		}
 		$blog_colum_opt = newsfit_option( 'rt_blog_column' ) !== 'default' ? newsfit_option( 'rt_blog_column' ) : '';
 		$blog_sidebar   = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
 		$blog_layout    = Opt::$layout ?? 'right-sidebar';
 
-		$default_blog_col = $column;
-		if ( ! $blog_colum_opt && 'full-width' === $blog_layout ) {
-			$default_blog_col = 'col-lg-4';
-		}
-//		elseif ( is_active_sidebar( $blog_sidebar ) && ! $blog_colum_opt ) {
-//			$default_blog_col = $column;
-//		}
-		elseif ( is_home() && is_front_page() && ! is_active_sidebar( 'rt-sidebar' ) ) {
-			$default_blog_col = 'col-lg-4';
-		} elseif ( $blog_colum_opt ) {
-			$default_blog_col = $blog_colum_opt;
+		$output = 'col-lg-4';
+		if ( $blog_colum_opt ) {
+			$output = $blog_colum_opt;
+		} elseif ( in_array( $blog_layout, [ 'left-sidebar', 'right-sidebar' ] ) && is_active_sidebar( $blog_sidebar ) ) {
+			$output = 'col-lg-6';
 		}
 
-		return $default_blog_col;
+		return $output;
 	}
 
 	/**

@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap);
 /*--------------------------------------------------------------
 # Import Modules
 --------------------------------------------------------------*/
@@ -3070,7 +3069,7 @@ input[type=submit]:active {
 }
 
 body {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--rt-body-font, "IBM Plex Sans"), sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
@@ -3079,7 +3078,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--rt-heading-font, "IBM Plex Sans"), sans-serif;
   margin: 0 0 15px 0;
   font-weight: 700;
   color: var(--rt-title-color, #161D25);
@@ -3088,66 +3087,44 @@ h1, h2, h3, h4, h5, h6 {
 h1,
 .h1 {
   font-size: 40px;
-  line-height: 1.6;
+  line-height: 60px;
 }
 @media (max-width: 576px) {
   h1,
   .h1 {
     font-size: 26px;
-    line-height: 1.6;
+    line-height: 36;
   }
 }
 
 h2,
 .h2 {
-  font-size: 26px;
-  line-height: 1.6;
-}
-@media (max-width: 576px) {
-  h2,
-  .h2 {
-    font-size: 20px;
-    line-height: 1.6;
-  }
+  font-size: 28px;
+  line-height: 40px;
 }
 
 h3,
 .h3 {
-  font-size: 22px;
-  line-height: 1.6;
-}
-@media (max-width: 576px) {
-  h3,
-  .h3 {
-    font-size: 18px;
-    line-height: 1.6;
-  }
+  font-size: 24px;
+  line-height: 34px;
 }
 
 h4,
 .h4 {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.6;
-}
-@media (max-width: 576px) {
-  h4,
-  .h4 {
-    font-size: 15px;
-    line-height: 1.6;
-  }
 }
 
 h5,
 .h5 {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 30px;
 }
-@media (max-width: 576px) {
-  h5,
-  .h5 {
-    font-size: 15px;
-    line-height: 1.6;
-  }
+
+h6,
+.h6 {
+  font-size: 18px;
+  line-height: 28px;
 }
 
 small,
@@ -3828,7 +3805,6 @@ body .rtrs-review-form {
   color: var(--rt-title-color, #161D25);
   padding: 32px 16px;
   text-transform: capitalize;
-  font-family: "Roboto", sans-serif;
   position: relative;
 }
 @media (max-width: 1199px) {
@@ -4098,7 +4074,7 @@ body .rtrs-review-form {
   opacity: 0;
   visibility: hidden;
   z-index: 9999;
-  font-size: "IBM Plex Sans", sans-serif-1;
+  font-size: var(--rt-body-font, "IBM Plex Sans"), sans-serif-1;
 }
 .newsfit-search-popup .newsfit-search-form::before {
   content: "";
@@ -5291,11 +5267,23 @@ article:hover .newsfit-post-meta ul li.edit-link {
 .meta-style-default .newsfit-post-meta ul {
   -moz-column-gap: 10px;
        column-gap: 10px;
+  display: block;
 }
-.meta-style-default .newsfit-post-meta ul li:not(:last-child)::after {
-  content: "/";
-  margin-right: 10px;
-  font-size: 15px;
+.meta-style-default .newsfit-post-meta ul li {
+  display: inline;
+}
+.meta-style-default .newsfit-post-meta ul li:not(:last-child) {
+  margin-left: 16px;
+}
+.meta-style-default .newsfit-post-meta ul li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: var(--rt-meta-color, #808993);
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+  transform: translateY(-2px);
 }
 .meta-style-border .newsfit-post-meta ul {
   gap: 5px;
@@ -5564,34 +5552,34 @@ article:hover .newsfit-post-meta ul li.edit-link {
   color: #FFFFFF;
 }
 
-.single-content {
+.single-content .newsfit-post-card {
   font-size: 17px;
 }
-.single-content .entry-title {
+.single-content .newsfit-post-card .entry-title {
   font-size: 40px;
   line-height: 1.5;
   margin-top: -5px;
   margin-bottom: 15px;
 }
-.single-content .entry-content {
+.single-content .newsfit-post-card .entry-content {
   font-size: 18px;
   margin-bottom: 40px;
 }
-.single-content .entry-content > p + :is(h1, h2, h3) {
+.single-content .newsfit-post-card .entry-content > p + :is(h1, h2, h3) {
   margin-top: 20px;
 }
-.single-content .separate-meta {
+.single-content .newsfit-post-card .separate-meta {
   margin-bottom: 15px;
 }
-.single-content .entry-footer {
+.single-content .newsfit-post-card .entry-footer {
   margin-bottom: 30px;
 }
-.single-content .entry-footer .post-tags {
+.single-content .newsfit-post-card .entry-footer .post-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
-.single-content .newsfit-post-meta {
+.single-content .newsfit-post-card .newsfit-post-meta {
   font-size: 20px;
   color: var(--rt-meta-color, #808993);
   margin-bottom: 20px;
@@ -7744,8 +7732,12 @@ Start MailChim Style
 
 /* End Pricing Table */
 
+/*# sourceMappingURL=style.css.map*/
 
+/*# sourceMappingURL=style.css.map*/
 html[dir=rtl] .rtl-test {
   float: right;
   color: red;
 }
+
+/*# sourceMappingURL=rtl.css.map*/

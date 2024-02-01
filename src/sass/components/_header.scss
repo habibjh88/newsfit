@@ -36,6 +36,7 @@ $dropdown_top_bottom_margin: 10px;
 			display: flex;
 			@extend .primaryColor;
 			padding: 10px 0;
+			font-weight: bold;
 		}
 
 		h1 a:hover {

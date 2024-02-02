@@ -27,7 +27,8 @@ class Header extends Customizer {
 			'panel'       => 'rt_header_panel',
 			'title'       => __( 'Header Menu', 'newsfit' ),
 			'description' => __( 'NewsFit Header Section', 'newsfit' ),
-			'priority'    => 2
+			'priority'    => 2,
+			'edit-point'  => ''
 		] );
 		Customize::add_controls( $this->section_header, $this->get_controls() );
 	}
@@ -41,20 +42,22 @@ class Header extends Customizer {
 		return apply_filters( 'newsfit_header_controls', [
 
 			'rt_header_style' => [
-				'type'    => 'image_select',
-				'label'   => __( 'Choose Layout', 'newsfit' ),
-				'default' => '1',
-				'choices' => Fns::image_placeholder( 'menu', 1 )
+				'type'      => 'image_select',
+				'label'     => __( 'Choose Layout', 'newsfit' ),
+				'default'   => '1',
+				'edit-link' => '.site-branding',
+				'choices'   => Fns::image_placeholder( 'menu' )
 			],
 
 			'rt_menu_alignment' => [
 				'type'    => 'select',
 				'label'   => __( 'Menu Alignment', 'newsfit' ),
-				'default' => 'text-left',
+				'default' => '',
 				'choices' => [
-					'text-left'   => __( 'Left Alignment', 'newsfit' ),
-					'text-center' => __( 'Center Alignment', 'newsfit' ),
-					'text-right'  => __( 'Right Alignment', 'newsfit' ),
+					''                       => __( 'Menu Alignment', 'newsfit' ),
+					'justify-content-start'  => __( 'Left Alignment', 'newsfit' ),
+					'justify-content-center' => __( 'Center Alignment', 'newsfit' ),
+					'justify-content-end'    => __( 'Right Alignment', 'newsfit' ),
 				]
 			],
 
@@ -98,6 +101,7 @@ class Header extends Customizer {
 			],
 			'rt_header_sep1'   => [
 				'type' => 'separator',
+				'edit-link' => '.menu-icon-wrapper',
 			],
 
 			'rt_header_login_link' => [
@@ -114,7 +118,7 @@ class Header extends Customizer {
 
 			'rt_header_bar' => [
 				'type'        => 'switch',
-				'label'       => __( 'Header Bar ?', 'newsfit' ),
+				'label'       => __( 'Hamburger Menu', 'newsfit' ),
 				'description' => __( 'It will be hide only for desktop.', 'newsfit' ),
 				'default'     => 1,
 			],

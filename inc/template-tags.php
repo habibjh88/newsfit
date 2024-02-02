@@ -346,11 +346,10 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 		$mobile_logo     = $logo_mobile ?? $site_logo;
 		$has_mobile_logo = ! empty( $logo_mobile ) ? 'has-mobile-logo' : '';
 		ob_start();
-
-		if ( $with_h1 ) {
-			echo '<h1 class="site-title">';
-		}
 		?>
+		<?php if ( $with_h1 ) : ?>
+			<h1 class="site-title">
+		<?php endif; ?>
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="<?php echo esc_attr( $has_mobile_logo ) ?>">
 			<?php
 			if ( ! empty( $site_logo ) ) {
@@ -363,11 +362,9 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 			}
 			?>
 		</a>
-		<?php
-		if ( $with_h1 ) {
-			echo '</h1>';
-		}
-
+		<?php if ( $with_h1 ) : ?>
+		<h1 class="site-title">
+		<?php endif;
 		return ob_get_clean();
 	}
 }

@@ -9,7 +9,8 @@
 
 use RT\NewsFit\Helpers\Fns;
 
-$logo_h1 = ! is_singular( [ 'post' ] );
+$logo_h1      = ! is_singular( [ 'post' ] );
+$menu_classes = newsfit_option( 'rt_menu_alignment' );
 ?>
 
 <div class="main-header-section">
@@ -21,14 +22,13 @@ $logo_h1 = ! is_singular( [ 'post' ] );
 				<?php echo newsfit_site_logo( $logo_h1 ); ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15" role="navigation">
+			<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15 <?php echo esc_attr( $menu_classes ) ?>" role="navigation">
 				<?php
-				$menu_classes = newsfit_option( 'rt_menu_alignment' );
 				wp_nav_menu( [
 					'theme_location' => 'primary',
 					'menu_id'        => 'primary-menu',
 					'menu_class'     => 'newsfit-navbar',
-					'items_wrap'     => '<ul id="%1$s" class="%2$s ' . $menu_classes . '">%3$s</ul>',
+					'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 					'fallback_cb'    => 'newsfit_custom_menu_cb',
 					'walker'         => has_nav_menu( 'primary' ) ? new RT\NewsFit\Core\WalkerNav() : '',
 				] );

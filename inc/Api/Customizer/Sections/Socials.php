@@ -41,12 +41,17 @@ class Socials extends Customizer {
 	public function get_controls(): array {
 		$social_list      = Fns::get_socials();
 		$social_icon_list = [];
+		$count            = 1;
 		foreach ( $social_list as $id => $social ) {
 			$social_icon_list[ $id ] = [
 				'type'    => 'text',
 				'label'   => $social['title'],
 				'default' => in_array( $id, [ 'facebook', 'twitter', 'linkedin' ] ) ? '#' : ''
 			];
+			if ( $count == 1 ) {
+				$social_icon_list[ $id ]['edit-link'] = '.topbar-row .social-icon, .footer-social';
+			}
+			$count ++;
 		}
 
 		return apply_filters( 'newsfit_socials_controls', $social_icon_list );

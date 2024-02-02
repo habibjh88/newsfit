@@ -3708,6 +3708,7 @@ body .rtrs-review-form {
 .site-header .site-branding h1 a {
   display: flex;
   padding: 10px 0;
+  font-weight: bold;
 }
 .site-header .site-branding h1 a:hover {
   color: var(--rt-primary-dark, #091EF6);

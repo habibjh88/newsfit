@@ -42,9 +42,10 @@ class HeaderTopbar extends Customizer {
 		return apply_filters( 'newsfit_topbar_controls', [
 
 			'rt_top_bar' => [
-				'type'    => 'switch',
-				'label'   => __( 'Topbar Visibility', 'newsfit' ),
-				'default' => 1
+				'type'      => 'switch',
+				'label'     => __( 'Topbar Visibility', 'newsfit' ),
+				'default'   => 1,
+				'edit-link' => '.topbar-row',
 			],
 
 			'rt_topbar_style' => [

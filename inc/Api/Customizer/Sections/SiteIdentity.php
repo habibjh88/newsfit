@@ -19,7 +19,7 @@ class SiteIdentity extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_controls( 'title_tagline', $this->get_controls() );
 	}
 
@@ -27,7 +27,7 @@ class SiteIdentity extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 
 		return apply_filters( 'newsfit_title_tagline_controls', [
 

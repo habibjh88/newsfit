@@ -21,7 +21,7 @@ class Layouts {
 	 * Set Options value
 	 * @return void
 	 */
-	public function set_options_value(): void {
+	public function set_options_value() {
 
 		// Single Pages
 		if ( ( is_single() || is_page() ) ) {

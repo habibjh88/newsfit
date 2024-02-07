@@ -21,7 +21,7 @@ class Header extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_header,
 			'panel'       => 'rt_header_panel',
@@ -37,7 +37,7 @@ class Header extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 
 		return apply_filters( 'newsfit_header_controls', [
 

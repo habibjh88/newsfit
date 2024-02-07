@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 trait LayoutControlsTraits {
-	public function get_layout_controls( $prefix = '' ): array {
+	public function get_layout_controls( $prefix = '' ) {
 
 		$_left_text  = __( 'Left Sidebar', 'newsfit' );
 		$_right_text = __( 'Right Sidebar', 'newsfit' );

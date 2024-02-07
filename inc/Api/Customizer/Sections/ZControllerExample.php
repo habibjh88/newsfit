@@ -21,7 +21,7 @@ class ZControllerExample extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_test,
 			'title'       => __( 'Test Controls', 'newsfit' ),
@@ -35,7 +35,7 @@ class ZControllerExample extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 		return apply_filters( 'rt_test_test_controls', [
 
 			//Reset button
@@ -262,7 +262,7 @@ class ZControllerExample extends Customizer {
 	 * Get Header Presets
 	 * @return array[]
 	 */
-	public function get_header_presets(): array {
+	public function get_header_presets() {
 		if ( ! defined( 'RT_FRAMEWORK_DIR_URL' ) ) {
 			return [];
 		}

@@ -22,7 +22,7 @@ class Socials extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_socials,
 			'panel'       => 'rt_contact_social_panel',
@@ -38,7 +38,7 @@ class Socials extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 		$social_list      = Fns::get_socials();
 		$social_icon_list = [];
 		$count            = 1;

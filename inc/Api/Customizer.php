@@ -34,7 +34,7 @@ class Customizer {
 	 * Add customize controls
 	 * @return string[]
 	 */
-	public static function add_controls(): array {
+	public static function add_controls() {
 		$classess = [
 			Customizer\Sections\General::class,
 			Customizer\Sections\SiteIdentity::class,
@@ -76,7 +76,7 @@ class Customizer {
 	 *
 	 * @param string $section_general
 	 */
-	public function register_controls(): void {
+	public function register_controls() {
 		foreach ( self::add_controls() as $class ) {
 			$control = new $class();
 			if ( method_exists( $control, 'register' ) ) {

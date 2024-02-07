@@ -23,7 +23,7 @@ class Blog extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_blog,
 			'title'       => __( 'Blog Archive', 'newsfit' ),
@@ -38,7 +38,7 @@ class Blog extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 		return apply_filters( 'newsfit_blog_controls', [
 
 			'rt_blog_style' => [

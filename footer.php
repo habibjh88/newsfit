@@ -10,6 +10,8 @@
  */
 
 use RT\NewsFit\Options\Opt;
+use RT\NewsFitCore\Helper\Fns;
+
 $classes = newsfit_classes([
 	'site-footer',
 	Opt::$footer_schema
@@ -25,20 +27,8 @@ $classes = newsfit_classes([
 
 <?php wp_footer();
 
-
-
-$all_post = get_posts(
-	[
-		'post_type'=>'post',
-		'posts_per_page' =>-1
-	]
-);
-foreach($all_post as $item){
-//	update_post_meta( $item->ID, '_thumbnail_id', 2299 );
-}
-
-
-
+var_dump(get_option('rt_hf_header'));
+var_dump(get_option('rt_hf_footer'));
 
 
 ?>

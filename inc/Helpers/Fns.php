@@ -143,7 +143,7 @@ class Fns {
 	 *
 	 * @return array
 	 */
-	public static function image_placeholder( $name, $total = 1, $type = 'svg' ): array {
+	public static function image_placeholder( $name, $total = 1, $type = 'svg' ) {
 		$presets = [];
 		for ( $i = 1; $i <= $total; $i ++ ) {
 			$image_name    = "$name-$i.$type";
@@ -353,13 +353,12 @@ class Fns {
 		$post_types = get_post_types(
 			[
 				'public'            => true,
-				'show_in_nav_menus' => true,
 			],
 			'objects'
 		);
 		$post_types = wp_list_pluck( $post_types, 'label', 'name' );
 
-		$exclude = apply_filters( 'newsfit_exclude_post_type', [ 'attachment', 'revision', 'nav_menu_item', 'elementor_library', 'tpg_builder', 'e-landing-page' ] );
+		$exclude = apply_filters( 'newsfit_exclude_post_type', [ 'attachment', 'revision', 'nav_menu_item', 'elementor_library', 'tpg_builder', 'e-landing-page', 'elementor-newsfit' ] );
 
 		foreach ( $exclude as $ex ) {
 			unset( $post_types[ $ex ] );
@@ -394,7 +393,7 @@ class Fns {
 	 * Single Style
 	 * @return array
 	 */
-	public static function single_post_style( $exclude = [] ): array {
+	public static function single_post_style( $exclude = [] ) {
 		$meta_style = [
 			'1' => __( 'Style 1 (Default From Theme)', 'newsfit' ),
 			'2' => __( 'Style 2 (Full-width Thumbnail)', 'newsfit' ),

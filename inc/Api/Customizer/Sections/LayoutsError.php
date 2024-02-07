@@ -24,7 +24,7 @@ class LayoutsError extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'    => $this->section_error_layout,
 			'title' => __( 'Error Layout', 'newsfit' ),
@@ -34,7 +34,7 @@ class LayoutsError extends Customizer {
 		Customize::add_controls( $this->section_error_layout, $this->get_controls() );
 	}
 
-	public function get_controls(): array {
+	public function get_controls() {
 		$options_val = $this->get_layout_controls( 'error' );
 		unset( $options_val['error_layout'] );
 		unset( $options_val['error__header_style'] );

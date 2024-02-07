@@ -21,7 +21,7 @@ class TypographyBody extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_id,
 			'title'       => __( 'Body Typography', 'newsfit' ),
@@ -37,7 +37,7 @@ class TypographyBody extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 
 		return apply_filters( 'newsfit_body_typo_section', [
 

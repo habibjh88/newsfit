@@ -25,7 +25,7 @@ class LayoutsPage extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'    => $this->section_page_layout,
 			'title' => __( 'Page Layout', 'newsfit' ),
@@ -35,7 +35,7 @@ class LayoutsPage extends Customizer {
 		Customize::add_controls( $this->section_page_layout, $this->get_controls() );
 	}
 
-	public function get_controls(): array {
+	public function get_controls() {
 		return $this->get_layout_controls( 'page' );
 	}
 

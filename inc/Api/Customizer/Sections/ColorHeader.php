@@ -20,7 +20,7 @@ class ColorHeader extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 
 		Customize::add_section( [
 			'id'          => $this->section_header_color,
@@ -37,7 +37,7 @@ class ColorHeader extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 
 		return apply_filters( 'newsfit_header_color_controls', [
 

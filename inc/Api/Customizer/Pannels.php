@@ -31,7 +31,7 @@ class Pannels {
 	 * Add Panels
 	 * @return void
 	 */
-	public function add_panels(): void {
+	public function add_panels() {
 		Customize::add_panels(
 			[
 				[
@@ -69,7 +69,7 @@ class Pannels {
 		);
 	}
 
-	public function add_panels_backup(): void {
+	public function add_panels_backup() {
 		Customize::add_panel( [
 			'id'          => 'rt_header_panel',
 			'title'       => esc_html__( 'Header - Topbar - Menu', 'newsfit' ),

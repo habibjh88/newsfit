@@ -21,7 +21,7 @@ class BlogSingle extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_blog_single,
 			'title'       => __( 'Single Blog', 'newsfit' ),
@@ -36,7 +36,7 @@ class BlogSingle extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 		return apply_filters( 'newsfit_single_controls', [
 
 			'rt_single_post_style' => [

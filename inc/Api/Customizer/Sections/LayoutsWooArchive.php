@@ -24,7 +24,7 @@ class LayoutsWooArchive extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'    => $this->section_woocommerce_archive_layout,
 			'title' => __( 'Woocommerce Archive', 'newsfit' ),
@@ -33,7 +33,7 @@ class LayoutsWooArchive extends Customizer {
 		Customize::add_controls( $this->section_woocommerce_archive_layout, $this->get_controls() );
 	}
 
-	public function get_controls(): array {
+	public function get_controls() {
 		return $this->get_layout_controls( 'woo_archive' );
 	}
 

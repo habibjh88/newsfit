@@ -20,7 +20,7 @@ class ColorFooter extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_footer_color,
 			'panel'       => 'rt_color_panel',
@@ -36,7 +36,7 @@ class ColorFooter extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 
 		return apply_filters( 'newsfit_footer_color_controls', [
 			'rt_footer_color1'           => [

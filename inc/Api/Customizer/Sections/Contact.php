@@ -20,7 +20,7 @@ class Contact extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'          => $this->section_contact,
 			'panel'       => 'rt_contact_social_panel',
@@ -35,7 +35,7 @@ class Contact extends Customizer {
 	 * Get controls
 	 * @return array
 	 */
-	public function get_controls(): array {
+	public function get_controls() {
 
 		return apply_filters( 'newsfit_contact_controls', [
 

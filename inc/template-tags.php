@@ -315,7 +315,7 @@ if ( ! function_exists( 'newsfit_get_social_html' ) ) {
 	 * @return void
 	 */
 
-	function newsfit_get_social_html( $color = '' ): void {
+	function newsfit_get_social_html( $color = '' ) {
 		ob_start();
 		$icon_style = newsfit_option( 'rt_social_icon_style' ) ?? '';
 		foreach ( Fns::get_socials() as $id => $item ) {
@@ -421,7 +421,7 @@ if ( ! function_exists( 'newsfit_scroll_top' ) ) {
 	 * Back-to-top button
 	 * @return void
 	 */
-	function newsfit_scroll_top( $class = '', $icon = 'scroll-top' ): void {
+	function newsfit_scroll_top( $class = '', $icon = 'scroll-top' ) {
 		if ( newsfit_option( 'rt_back_to_top' ) ) {
 			?>
 			<a href="#" class="scrollToTop <?php echo esc_attr( $class ) ?>">

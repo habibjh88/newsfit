@@ -56,7 +56,7 @@ class Sidebar {
 	 * Define the sidebar
 	 * @return void
 	 */
-	public function widgets_init(): void {
+	public function widgets_init() {
 
 		foreach ( self::sidebar_lists() as $id => $sidebar ) {
 

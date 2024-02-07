@@ -24,7 +24,7 @@ class LayoutsSingle extends Customizer {
 	 * Register controls
 	 * @return void
 	 */
-	public function register(): void {
+	public function register() {
 		Customize::add_section( [
 			'id'    => $this->section_single_layout,
 			'title' => __( 'Single Layout', 'newsfit' ),
@@ -33,7 +33,7 @@ class LayoutsSingle extends Customizer {
 		Customize::add_controls( $this->section_single_layout, $this->get_controls() );
 	}
 
-	public function get_controls(): array {
+	public function get_controls() {
 		return $this->get_layout_controls( 'single_post' );
 	}
 

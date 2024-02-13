@@ -33,9 +33,10 @@ mix.autoload({
 
 mix.js('src/scripts/app.js', 'assets/js')
 	.js('src/scripts/admin.js', 'assets/js')
-	.sass('src/sass/style.scss', `assets/css/style${min}.css`).sourceMaps(true, 'source-map')
+	.sass('src/sass/style.scss', `assets/css/style${min}.css`)
 	.sass('src/sass/admin.scss', `assets/css/admin${min}.css`)
 	.sass('src/sass/rtl.scss', 'build/temp/')
+	.sourceMaps(true, 'source-map')
 	.options({
 		terser: {
 			extractComments: false,
@@ -49,41 +50,6 @@ mix.js('src/scripts/app.js', 'assets/js')
 		'build/temp/style.css',
 		'build/temp/rtl.css'
 	], `assets/css-rtl/style-rtl${min}.css`)
-
-
-if (mix.inProduction()) {
-	// mix.js('src/scripts/app.js', 'assets/js')
-	// 	.js('src/scripts/admin.js', 'assets/js')
-	// 	.sass('src/sass/style.scss', 'assets/dist/style.min.css')
-	// 	.sass('src/sass/admin.scss', 'assets/dist/admin.min.css')
-	// 	.options({
-	// 		terser: {
-	// 			extractComments: false,
-	// 		}
-	// 	})
-} else {
-	// mix.js('src/scripts/app.js', 'assets/js')
-	// 	.js('src/scripts/admin.js', 'assets/js')
-	// 	.sass('src/sass/style.scss', 'assets/dist/style.min.css').sourceMaps(true, 'source-map')
-	// 	.sass('src/sass/admin.scss', 'assets/dist/admin.min.css')
-	// 	.sass('src/sass/rtl.scss', 'build/temp')
-	//
-	// 	.copy('assets/dist/style.min.css', 'assets/css/style.css')
-	// 	.copy('assets/dist/admin.min.css', 'assets/css/admin.css')
-
-	// mix.postCss('assets/dist/style.min.css', 'build/temp/style.css', [
-	// 		require('rtlcss'),
-	// 	])
-	// 	.combine([
-	// 		'build/temp/style.css',
-	// 		'build/temp/rtl.css'
-	// 	], 'assets/dist/style-rtl.min.css')
-
-
-// .postCss('assets/dist/style.min.css', 'assets/css/style.css')
-// 		.postCss('assets/dist/admin.min.css', 'assets/css/admin.css')
-
-}
 
 
 if (mix.inProduction()) {

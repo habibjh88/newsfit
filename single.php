@@ -11,7 +11,7 @@ use RT\NewsFit\Helpers\Fns;
 use RT\NewsFit\Options\Opt;
 
 get_header();
-$classes = newsfit_classes( [
+$classes = Fns::class_list( [
 	'single-post-container',
 	Fns::is_single_fullwidth() ? 'should-full-width' : ''
 ] );

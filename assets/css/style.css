@@ -3026,7 +3026,7 @@ textarea {
 .single-post-pagination .link:hover, .newsfit-post-card .entry-title a:hover, .meta-style-dash .separate-meta a::before, .above-meta-style-border .separate-meta a, .separate-meta a, .meta-style-dash-bg .newsfit-post-meta li:is(.category, .tag) a, .meta-style-dash-bg .newsfit-post-meta li:not(.category, .tag) a, .meta-style-dash-bg .newsfit-post-meta li:not(.category, .tag):before, .meta-style-dash-bg .newsfit-post-meta li:not(.category, .tag), .meta-style-border .newsfit-post-meta ul li:is(.category, .tag) a, .meta-style-border .newsfit-post-meta ul li:not(.category, .tag) a, .meta-style-border .newsfit-post-meta ul li:not(.category, .tag), .widget_tag_cloud .tagcloud a, .widget a:hover, .newsfit-breadcrumb-wrapper .breadcrumb li.active .title, .newsfit-topbar #topbar-menu ul ul li a:hover, .newsfit-offcanvas-drawer ul li.current-menu-item > a,
 .newsfit-offcanvas-drawer ul li.current-menu-ancestor > a, .newsfit-offcanvas-drawer ul li a:hover, .newsfit-navigation ul.menu li ul.dropdown-menu li a:hover, .newsfit-navigation ul li ul li:hover > a, .newsfit-navigation ul.menu li.current-menu-item > a,
 .newsfit-navigation ul.menu li.current > a, .newsfit-navigation ul.menu > li > a:hover, .newsfit-navigation ul li a:hover, .newsfit-navigation ul li.current-menu-item > a,
-.newsfit-navigation ul li.current-menu-ancestor > a, .site-header .site-branding h1 a {
+.newsfit-navigation ul li.current-menu-ancestor > a, .site-branding h1 a {
   color: var(--rt-primary-color, #007BFF);
 }
 
@@ -3460,6 +3460,11 @@ a, a:hover, a:focus {
   visibility: visible;
 }
 
+.newsfit-header-footer .site-header {
+  opacity: 0;
+  transition: opacity 0s 0.5s;
+}
+
 [class*=rticon] {
   display: inline-flex;
   justify-content: center;
@@ -3693,25 +3698,26 @@ body .rtrs-review-form {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.site-header {
-  position: relative;
-}
-.site-header .site-branding {
+.site-branding {
   display: flex;
   align-items: center;
   font-size: 40px;
   font-weight: bold;
 }
-.site-header .site-branding h1 {
+.site-branding h1 {
   margin: 0;
 }
-.site-header .site-branding h1 a {
+.site-branding h1 a {
   display: flex;
   padding: 10px 0;
   font-weight: bold;
 }
-.site-header .site-branding h1 a:hover {
+.site-branding h1 a:hover {
   color: var(--rt-primary-dark, #091EF6);
+}
+
+.site-header {
+  position: relative;
 }
 .site-header ul {
   list-style-type: none;
@@ -3746,6 +3752,7 @@ body .rtrs-review-form {
   fill: var(--rt-primary-color, #007BFF);
 }
 .menu-icon-wrapper ul li {
+  list-style: none;
   position: relative;
 }
 .menu-icon-wrapper svg {

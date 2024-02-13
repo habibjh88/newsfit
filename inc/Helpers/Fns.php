@@ -443,4 +443,14 @@ class Fns {
 		return $meta_list;
 	}
 
+	/**
+	 * Class list
+	 * @param $clsses
+	 *
+	 * @return string
+	 */
+	public static function class_list( $clsses ): string {
+		return implode( ' ', $clsses );
+	}
+
 }//End the Class

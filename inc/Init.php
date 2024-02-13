@@ -28,7 +28,6 @@ final class Init {
 	 * @return void
 	 */
 	public function register() {
-		Helpers\Constants::instance();
 		Core\Tags::instance();
 		Core\Sidebar::instance();
 		Options\Opt::instance();

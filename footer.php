@@ -10,9 +10,9 @@
  */
 
 use RT\NewsFit\Options\Opt;
-use RT\NewsFitCore\Helper\Fns;
+use RT\NewsFit\Helpers\Fns;
 
-$classes = newsfit_classes([
+$classes = Fns::class_list([
 	'site-footer',
 	Opt::$footer_schema
 ]);
@@ -25,13 +25,7 @@ $classes = newsfit_classes([
 
 </div><!-- #page -->
 
-<?php wp_footer();
-
-var_dump(get_option('rt_hf_header'));
-var_dump(get_option('rt_hf_footer'));
-
-
-?>
+<?php wp_footer(); ?>
 
 </body>
 </html>

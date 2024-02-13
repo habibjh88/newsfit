@@ -8,6 +8,7 @@
  */
 
 use RT\NewsFit\Options\Opt;
+use RT\NewsFit\Helpers\Fns;
 
 if ( ! Opt::$has_banner ) {
 	return;
@@ -48,7 +49,7 @@ if ( in_array( Opt::$single_style, [ '3', '4' ] ) ) {
 	$banner_image_css = '';
 }
 
-$classes = newsfit_classes( [
+$classes = Fns::class_list( [
 	'newsfit-breadcrumb-wrapper',
 	$has_image ? 'has-bg' : 'no-bg'
 ] );

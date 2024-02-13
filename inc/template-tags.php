@@ -7,29 +7,7 @@
  */
 
 use RT\NewsFit\Options\Opt;
-use RT\NewsFit\Core\Constants;
 use RT\NewsFit\Helpers\Fns;
-
-
-if ( ! function_exists( 'starts_with' ) ) {
-	/**
-	 * Determine if a given string starts with a given substring.
-	 *
-	 * @param string $haystack
-	 * @param string|array $needles
-	 *
-	 * @return bool
-	 */
-	function starts_with( $haystack, $needles ) {
-		foreach ( (array) $needles as $needle ) {
-			if ( $needle != '' && substr( $haystack, 0, strlen( $needle ) ) === (string) $needle ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-}
 
 function newsfit_html( $html, $checked = true ) {
 	$allowed_html = [
@@ -338,13 +316,14 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 	 * Newfit Site Logo
 	 *
 	 */
-	function newsfit_site_logo( $with_h1 = false ) {
+	function newsfit_site_logo( $with_h1 = false, $custom_title='' ) {
 		$main_logo       = newsfit_option( 'rt_logo' );
 		$logo_light      = newsfit_option( 'rt_logo_light' );
 		$logo_mobile     = newsfit_option( 'rt_logo_mobile' );
 		$site_logo       = Opt::$has_tr_header ? $logo_light : $main_logo;
 		$mobile_logo     = $logo_mobile ?? $site_logo;
 		$has_mobile_logo = ! empty( $logo_mobile ) ? 'has-mobile-logo' : '';
+		$site_title =  $custom_title ?: get_bloginfo( 'name', 'display' );
 		ob_start();
 		?>
 		<?php if ( $with_h1 ) : ?>
@@ -358,12 +337,12 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 					echo wp_get_attachment_image( $mobile_logo, 'full', null, [ 'id' => 'rt-mobile-logo' ] );
 				}
 			} else {
-				bloginfo( 'name' );
+				echo esc_html($site_title);
 			}
 			?>
 		</a>
 		<?php if ( $with_h1 ) : ?>
-		<h1 class="site-title">
+		</h1>
 		<?php endif;
 		return ob_get_clean();
 	}
@@ -400,19 +379,6 @@ if ( ! function_exists( 'newsfit_footer_logo' ) ) {
 		</a>
 		<?php
 		return ob_get_clean();
-	}
-}
-
-if ( ! function_exists( 'newsfit_classes' ) ) {
-	/**
-	 * Merge all classes
-	 *
-	 * @param $clsses
-	 *
-	 * @return string
-	 */
-	function newsfit_classes( $clsses ): string {
-		return implode( ' ', $clsses );
 	}
 }
 
@@ -624,10 +590,10 @@ if ( ! function_exists( 'newsfit_post_class' ) ) {
 
 		if ( is_single() ) {
 			$meta_style   = newsfit_option( 'rt_single_meta_style' );
-			$post_classes = newsfit_classes( [ $meta_style, $above_meta_style ] );
+			$post_classes = Fns::class_list( [ $meta_style, $above_meta_style ] );
 		} else {
 			$meta_style   = newsfit_option( 'rt_blog_meta_style' );
-			$post_classes = newsfit_classes( [ $meta_style, $above_meta_style, Fns::blog_column() ] );
+			$post_classes = Fns::class_list( [ $meta_style, $above_meta_style, Fns::blog_column() ] );
 		}
 
 		if ( $default_class ) {

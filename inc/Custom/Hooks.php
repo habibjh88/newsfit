@@ -19,6 +19,18 @@ class Hooks {
 		add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
 		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'meta_css' ] );
 		add_action( 'newsfit_before_single_content', [ __CLASS__, 'before_single_content' ] );
+		add_action( 'wp_footer', [ __CLASS__, 'wp_footer_hook' ] );
+	}
+
+	public static function wp_footer_hook() {
+		?>
+		<style>
+			.newsfit-header-footer .site-header {
+				opacity: 1;
+			}
+		</style>
+
+		<?php
 	}
 
 	/**
@@ -47,7 +59,7 @@ class Hooks {
 		$style = Opt::$single_style;
 
 		if ( in_array( $style, [ '2', '3', '4' ] ) ) {
-			$classes = newsfit_classes( [
+			$classes = Fns::class_list( [
 				'content-top-area',
 				( $style == '2' ) ? 'container' : 'rt-container-fluid'
 			] );

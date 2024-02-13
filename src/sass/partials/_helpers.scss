@@ -54,3 +54,9 @@
 	display: inline-block;
 	visibility: visible;
 }
+
+
+.newsfit-header-footer .site-header {
+	opacity: 0;
+	transition: opacity 0s 0.5s;
+}

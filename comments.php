@@ -18,6 +18,10 @@
 if ( post_password_required() ) :
 	return;
 endif;
+
+if ( 'open' !== get_option( 'default_comment_status' ) ) {
+	return;
+}
 ?>
 
 <div id="comments" class="comments-area">

@@ -35,17 +35,7 @@ $menu_classes = newsfit_option( 'rt_menu_alignment' );
 					?>
 				</nav><!-- .newsfit-navigation -->
 
-				<div class="menu-icon-wrapper d-flex pl-15 ml-auto align-items-center gap-15">
-					<?php newsfit_menu_icons_group(); ?>
-
-					<?php if ( ! empty( newsfit_option( 'rt_get_started_label' ) ) && newsfit_option( 'rt_get_started_button' ) ) : ?>
-						<div class="newsfit-get-started-btn">
-							<a class="btn btn-primary" href="#">
-								<?php echo esc_html( newsfit_option( 'rt_get_started_label' ) ); ?>
-							</a>
-						</div>
-					<?php endif; ?>
-				</div>
+				<?php newsfit_menu_icons_group(); ?>
 
 			</div><!-- .row -->
 

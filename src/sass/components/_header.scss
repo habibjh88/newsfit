@@ -34,6 +34,7 @@ $dropdown_top_bottom_margin: 10px;
 		@extend .primaryColor;
 		padding: 10px 0;
 		font-weight: bold;
+		transition: color 0.4s;
 	}
 
 	h1 a:hover {
@@ -110,7 +111,12 @@ $dropdown_top_bottom_margin: 10px;
 			top: 50%;
 			transform: translateY(-50%);
 		}
-
+	}
+	.has-button li:nth-last-child(2) {
+		padding-right: 4px;
+	}
+	.has-button li:nth-last-child(2)::after {
+		content: none;
 	}
 }
 

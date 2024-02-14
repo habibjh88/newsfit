@@ -15,7 +15,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
 	<?php wp_head(); ?>
 </head>
 
@@ -26,7 +25,6 @@
 	<header id="masthead" class="site-header" role="banner">
 		<?php get_template_part( 'views/header/header', 'topbar' ); ?>
 		<?php get_template_part( 'views/header/header', newsfit_option( 'rt_header_style' ) ); ?>
-		<?php get_template_part( 'views/header/offcanvas', 'drawer' ); ?>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

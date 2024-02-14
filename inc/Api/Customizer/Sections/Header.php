@@ -139,6 +139,11 @@ class Header extends Customizer {
 				'default' => 1
 			],
 
+			'rt_get_started_button_url' => [
+				'type'    => 'text',
+				'label'   => __( 'Button Link', 'newsfit' ),
+			],
+
 
 		] );
 

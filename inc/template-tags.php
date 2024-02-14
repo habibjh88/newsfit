@@ -98,43 +98,72 @@ if ( ! function_exists( 'newsfit_menu_icons_group' ) ) {
 	 * Get menu icon group
 	 * @return void
 	 */
-	function newsfit_menu_icons_group() {
+	function newsfit_menu_icons_group( $args = [] ) {
+		$default_args = [
+			'hamburg'       => newsfit_option( 'rt_header_bar' ),
+			'search'        => newsfit_option( 'rt_header_search' ),
+			'login'         => newsfit_option( 'rt_header_login_link' ),
+			'button'        => newsfit_option( 'rt_get_started_button' ),
+			'button_label'  => newsfit_option( 'rt_get_started_label' ),
+			'button_link'   => newsfit_option( 'rt_get_started_button_url' ),
+			'has_separator' => newsfit_option( 'rt_header_separator' )
+		];
+		$args         = wp_parse_args( $args, $default_args );
+		$has_button   = $args['button'] && $args['button_label'];
 		$menu_classes = '';
-		if ( newsfit_option( 'rt_header_separator' ) ) {
-			$menu_classes = 'has-separator';
+
+		if ( $args['has_separator'] ) {
+			$menu_classes .= 'has-separator ';
+		}
+
+		if ( $has_button ) {
+			$menu_classes .= 'has-button ';
 		}
 		?>
-		<ul class="d-flex gap-15 align-items-center <?php echo esc_attr( $menu_classes ) ?>">
-			<?php if ( newsfit_option( 'rt_header_bar' ) ) : ?>
-				<li>
-					<a class="menu-bar trigger-off-canvas" href="#">
-						<svg class="ham_burger" viewBox="0 0 100 100" width="180">
-							<path class="line top" d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"/>
-							<path class="line middle" d="m 30,50 h 40"/>
-							<path class="line bottom" d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"/>
-						</svg>
-					</a>
-				</li>
-			<?php endif; ?>
+		<div class="menu-icon-wrapper d-flex pl-15 ml-auto align-items-center gap-15">
+			<ul class="d-flex gap-15 align-items-center <?php echo esc_attr( $menu_classes ) ?>">
+				<?php if ( $args['hamburg'] ) : ?>
+					<li>
+						<a class="menu-bar trigger-off-canvas" href="#">
+							<svg class="ham_burger" viewBox="0 0 100 100" width="180">
+								<path class="line top" d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"/>
+								<path class="line middle" d="m 30,50 h 40"/>
+								<path class="line bottom" d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"/>
+							</svg>
+						</a>
+					</li>
+				<?php endif; ?>
 
-			<?php if ( newsfit_option( 'rt_header_search' ) ) : ?>
-				<li class="newsfit-search-popup">
-					<a class="menu-search-bar newsfit-search-trigger" href="#">
-						<?php echo newsfit_get_svg( 'search' ); ?>
-					</a>
-					<?php get_search_form(); ?>
-				</li>
-			<?php endif; ?>
+				<?php if ( $args['search'] ) : ?>
+					<li class="newsfit-search-popup">
+						<a class="menu-search-bar newsfit-search-trigger" href="#">
+							<?php echo newsfit_get_svg( 'search' ); ?>
+						</a>
+						<?php get_search_form(); ?>
+					</li>
+				<?php endif; ?>
 
-			<?php if ( newsfit_option( 'rt_header_login_link' ) ) : ?>
-				<li class="newsfit-user-login">
-					<a href="<?php echo esc_url( wp_login_url() ) ?>">
-						<?php echo newsfit_get_svg( 'user' ); ?>
-					</a>
-				</li>
-			<?php endif; ?>
-		</ul>
+				<?php if ( $args['login'] ) : ?>
+					<li class="newsfit-user-login">
+						<a href="<?php echo esc_url( wp_login_url() ) ?>">
+							<?php echo newsfit_get_svg( 'user' ); ?>
+						</a>
+					</li>
+				<?php endif; ?>
+
+				<?php if ( $has_button ) : ?>
+					<li class="newsfit-get-started-btn">
+						<a class="btn btn-primary" href="<?php echo esc_url( $args['button_link'] ) ?>">
+							<?php echo esc_html( $args['button_label'] ); ?>
+						</a>
+					</li>
+				<?php endif; ?>
+			</ul>
+		</div>
 		<?php
+		if ( $args['hamburg'] ) {
+			get_template_part( 'views/header/offcanvas', 'drawer' );
+		}
 	}
 }
 
@@ -316,14 +345,14 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 	 * Newfit Site Logo
 	 *
 	 */
-	function newsfit_site_logo( $with_h1 = false, $custom_title='' ) {
+	function newsfit_site_logo( $with_h1 = false, $custom_title = '' ) {
 		$main_logo       = newsfit_option( 'rt_logo' );
 		$logo_light      = newsfit_option( 'rt_logo_light' );
 		$logo_mobile     = newsfit_option( 'rt_logo_mobile' );
 		$site_logo       = Opt::$has_tr_header ? $logo_light : $main_logo;
 		$mobile_logo     = $logo_mobile ?? $site_logo;
 		$has_mobile_logo = ! empty( $logo_mobile ) ? 'has-mobile-logo' : '';
-		$site_title =  $custom_title ?: get_bloginfo( 'name', 'display' );
+		$site_title      = $custom_title ?: get_bloginfo( 'name', 'display' );
 		ob_start();
 		?>
 		<?php if ( $with_h1 ) : ?>
@@ -337,13 +366,14 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 					echo wp_get_attachment_image( $mobile_logo, 'full', null, [ 'id' => 'rt-mobile-logo' ] );
 				}
 			} else {
-				echo esc_html($site_title);
+				echo esc_html( $site_title );
 			}
 			?>
 		</a>
 		<?php if ( $with_h1 ) : ?>
-		</h1>
+			</h1>
 		<?php endif;
+
 		return ob_get_clean();
 	}
 }
@@ -577,7 +607,6 @@ if ( ! function_exists( 'newsfit_sidebar' ) ) {
 		<?php
 	}
 }
-
 
 
 if ( ! function_exists( 'newsfit_post_class' ) ) {

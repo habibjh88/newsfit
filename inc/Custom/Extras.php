@@ -21,6 +21,7 @@ class Extras {
 		add_action( 'wp_update_nav_menu_item', [ $this, 'menu_update' ], 10, 2 );
 		add_filter( 'wp_get_nav_menu_items', [ $this, 'menu_modify' ], 11, 3 );
 		add_filter( 'get_search_form', [ $this, 'search_form' ] );
+		add_action( 'after_switch_theme', [ $this, 'rewrite_flush' ] );
 	}
 
 	/*
@@ -197,5 +198,14 @@ class Extras {
 		';
 
 		return $output;
+	}
+
+	/**
+	 * Flush Rewrite on CPT activation
+	 * @return empty
+	 */
+	public function rewrite_flush() {
+		// Flush the rewrite rules only on theme activation
+		flush_rewrite_rules();
 	}
 }

@@ -36,7 +36,6 @@ final class Init {
 		Setup\Menus::instance();
 		Setup\Enqueue::instance();
 		Custom\Hooks::instance();
-		Custom\PostTypes::instance();
 		Custom\Extras::instance();
 		Custom\DynamicStyles::instance();
 		Api\Customizer::instance();

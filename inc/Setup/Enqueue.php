@@ -35,7 +35,7 @@ class Enqueue {
 
 		// JS
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'newsfit-main', newsfit_get_js( 'app' ), [ 'jquery' ], Constants::get_version(), true );
+		wp_enqueue_script( 'newsfit-main', newsfit_get_js( 'scripts' ), [ 'jquery' ], Constants::get_version(), true );
 
 		// Extra
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

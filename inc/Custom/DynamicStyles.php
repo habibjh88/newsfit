@@ -229,7 +229,6 @@ class DynamicStyles {
 		<?php
 	}
 
-
 	/**
 	 * Breadcrumb Settings
 	 * @return void
@@ -300,6 +299,10 @@ class DynamicStyles {
 	}
 
 
+	/**
+	 * Load site fonts
+	 * @return void
+	 */
 	protected function site_fonts() {
 
 		$typo_body           = json_decode( newsfit_option( 'rt_body_typo' ), true );

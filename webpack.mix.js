@@ -31,9 +31,7 @@ mix.autoload({
 // .sass('src/sass/rtl.scss', 'build/temp')
 
 
-mix.js('src/scripts/app.js', 'assets/js')
-	.js('src/scripts/admin.js', 'assets/js')
-	.sass('src/sass/style.scss', `assets/css/style${min}.css`)
+mix.sass('src/sass/style.scss', `assets/css/style${min}.css`)
 	.sass('src/sass/admin.scss', `assets/css/admin${min}.css`)
 	.sass('src/sass/rtl.scss', 'build/temp/')
 	.sourceMaps(true, 'source-map')

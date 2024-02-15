@@ -7,7 +7,7 @@
  * @package newsfit
  */
 
-$meta_list = newsfit_option( 'rt_single_meta', false, true );
+$meta_list = newsfit_option( 'rt_single_meta', '', true );
 $meta      = newsfit_option( 'rt_blog_above_cat_visibility' );
 $meta      = newsfit_option( 'rt_single_above_meta_style' );
 if ( newsfit_option( 'rt_single_above_cat_visibility' ) ) {

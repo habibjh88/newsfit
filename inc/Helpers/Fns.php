@@ -302,7 +302,7 @@ class Fns {
 
 
 	public static function single_meta_lists() {
-		$meta_list = newsfit_option( 'rt_single_meta', false, true );
+		$meta_list = newsfit_option( 'rt_single_meta', '', true );
 		if ( newsfit_option( 'rt_single_above_cat_visibility' ) ) {
 			$category_index = array_search( 'category', $meta_list );
 			unset( $meta_list[ $category_index ] );

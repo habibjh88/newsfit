@@ -16,14 +16,11 @@ use RTFramework\Customize;
 class Pannels {
 	use SingletonTraits;
 
-	public static $default_value = [];
-
 	/**
 	 * register default hooks and actions for WordPress
 	 * @return
 	 */
 	public function __construct() {
-
 		$this->add_panels();
 	}
 
@@ -67,36 +64,6 @@ class Pannels {
 
 			]
 		);
-	}
-
-	public function add_panels_backup() {
-		Customize::add_panel( [
-			'id'          => 'rt_header_panel',
-			'title'       => esc_html__( 'Header - Topbar - Menu', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Header', 'newsfit' ),
-			'priority'    => 22,
-		] );
-
-		Customize::add_panel( [
-			'id'          => 'rt_contact_social_panel',
-			'title'       => esc_html__( 'Contact & Socials', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Contact & Socials', 'newsfit' ),
-			'priority'    => 24,
-		] );
-
-		Customize::add_panel( [
-			'id'          => 'rt_color_panel',
-			'title'       => esc_html__( 'Colors', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Color Settings', 'newsfit' ),
-			'priority'    => 28,
-		] );
-
-		Customize::add_panel( [
-			'id'          => 'rt_layouts_panel',
-			'title'       => esc_html__( 'Layout Settings', 'newsfit' ),
-			'description' => esc_html__( 'NewsFit Layout Settings', 'newsfit' ),
-			'priority'    => 34,
-		] );
 	}
 
 }

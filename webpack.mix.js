@@ -1,5 +1,4 @@
 const mix = require("laravel-mix");
-const del = require('del');
 const fs = require("fs-extra");
 const path = require("path");
 const cliColor = require("cli-color");

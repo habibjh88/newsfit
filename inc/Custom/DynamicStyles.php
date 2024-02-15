@@ -34,16 +34,16 @@ class DynamicStyles {
 
 	private function inline_style() {
 
-		$primary_color       = newsfit_option( 'rt_primary_color' ) ?? '#00c194';
-		$primary_dark_color  = newsfit_option( 'rt_primary_dark_color' ) ?? '#091EF6';
-		$primary_light_color = newsfit_option( 'rt_primary_light_color' ) ?? '#4AA2FF';
-		$secondary_color     = newsfit_option( 'rt_secondary_color' ) ?? '#131619';
-		$body_color          = newsfit_option( 'rt_body_color' ) ?? '#3D3E41';
-		$title_color         = newsfit_option( 'rt_title_color' ) ?? '#161D25';
-		$meta_color          = newsfit_option( 'rt_meta_color' ) ?? '#808993';
-		$meta_light          = newsfit_option( 'rt_meta_light' ) ?? '#F2F8FF';
-		$gray20              = newsfit_option( 'rt_gray20_color' ) ?? '#E6E6E6';
-		$gray40              = newsfit_option( 'rt_gray40_color' ) ?? '#D0D0D0';
+		$primary_color       = newsfit_option( 'rt_primary_color', '#007BFF' );
+		$primary_dark_color  = newsfit_option( 'rt_primary_dark_color', '#0273EC' );
+		$primary_light_color = newsfit_option( 'rt_primary_light_color', '#479DFA' );
+		$secondary_color     = newsfit_option( 'rt_secondary_color', '#131619' );
+		$body_color          = newsfit_option( 'rt_body_color', '#3D3E41' );
+		$title_color         = newsfit_option( 'rt_title_color', '#161D25' );
+		$meta_color          = newsfit_option( 'rt_meta_color', '#808993' );
+		$meta_light          = newsfit_option( 'rt_meta_light', '#F2F8FF' );
+		$gray20              = newsfit_option( 'rt_gray20_color', '#E6E6E6' );
+		$gray40              = newsfit_option( 'rt_gray40_color', '#D0D0D0' );
 
 		ob_start(); ?>
 
@@ -126,13 +126,13 @@ class DynamicStyles {
 		}
 
 		//Default Menu
-		$_menu_color        = newsfit_option( 'rt_menu_color' ) ?? '';
-		$_menu_active_color = newsfit_option( 'rt_menu_active_color' ) ?? '';
-		$_menu_bg_color     = newsfit_option( 'rt_menu_bg_color' ) ?? '';
+		$_menu_color        = newsfit_option( 'rt_menu_color' );
+		$_menu_active_color = newsfit_option( 'rt_menu_active_color' );
+		$_menu_bg_color     = newsfit_option( 'rt_menu_bg_color' );
 
 		//Transparent Menu
-		$_tr_menu_color        = newsfit_option( 'rt_tr_menu_color' ) ?? '';
-		$_tr_menu_active_color = newsfit_option( 'rt_tr_menu_active_color' ) ?? '';
+		$_tr_menu_color        = newsfit_option( 'rt_tr_menu_color' );
+		$_tr_menu_active_color = newsfit_option( 'rt_tr_menu_active_color' );
 
 		$_topbar_border     = newsfit_option( 'rt_topbar_border' );
 		$_header_border     = newsfit_option( 'rt_header_border' );
@@ -234,9 +234,9 @@ class DynamicStyles {
 	 * @return void
 	 */
 	protected function breadcrumb_css() {
-		$banner_bg         = newsfit_option( 'rt_banner_bg' ) ?? '';
-		$breadcrumb_color  = newsfit_option( 'rt_breadcrumb_color' ) ?? '';
-		$breadcrumb_active = newsfit_option( 'rt_breadcrumb_active' ) ?? '';
+		$banner_bg         = newsfit_option( 'rt_banner_bg' );
+		$breadcrumb_color  = newsfit_option( 'rt_breadcrumb_color' );
+		$breadcrumb_active = newsfit_option( 'rt_breadcrumb_active' );
 		if ( ! empty( $banner_bg ) ) : ?>
 			body .newsfit-breadcrumb-wrapper {background-color: <?php echo esc_attr( $banner_bg ) ?>;}
 		<?php endif; ?>

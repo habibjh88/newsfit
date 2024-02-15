@@ -32,7 +32,7 @@ if(! Opt::$has_top_bar) {
 
 			<ul class="topbar-right d-flex gap-15 align-items-center">
 				<li class="social-icon">
-					<label><?php newsfit_option( 'rt_follow_us_label', true ) ?></label>
+					<label><?php echo newsfit_option( 'rt_follow_us_label' ) ?></label>
 					<?php newsfit_get_social_html( '#555' ); ?>
 				</li>
 			</ul>

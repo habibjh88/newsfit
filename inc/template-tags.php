@@ -421,18 +421,18 @@ if ( ! function_exists( 'newsfit_option' ) ) {
 	 *
 	 * @return mixed
 	 */
-	function newsfit_option( $key, $echo = false, $return_array = false ): mixed {
-		if ( isset( Opt::$options[ $key ] ) ) {
-			if ( $echo ) {
-				echo newsfit_html( Opt::$options[ $key ] );
-			} else {
-				$opt_val = Opt::$options[ $key ];
-				if ( $return_array && $opt_val ) {
-					$opt_val = explode( ',', trim( $opt_val, ', ' ) );
-				}
-
-				return $opt_val;
+	function newsfit_option( $key, $default = '', $return_array = false ) {
+		if ( ! empty( Opt::$options[ $key ] ) ) {
+			$opt_val = Opt::$options[ $key ];
+			if ( $return_array && $opt_val ) {
+				$opt_val = explode( ',', trim( $opt_val, ', ' ) );
 			}
+
+			return $opt_val;
+		}
+
+		if ( $default ) {
+			return $default;
 		}
 
 		return false;
@@ -450,7 +450,7 @@ if ( ! function_exists( 'newsfit_get_social_html' ) ) {
 
 	function newsfit_get_social_html( $color = '' ) {
 		ob_start();
-		$icon_style = newsfit_option( 'rt_social_icon_style' ) ?? '';
+		$icon_style = newsfit_option( 'rt_social_icon_style' );
 		foreach ( Fns::get_socials() as $id => $item ) {
 			if ( empty( $item['url'] ) ) {
 				continue;

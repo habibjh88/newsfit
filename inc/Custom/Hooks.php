@@ -1,10 +1,10 @@
 <?php
 
-namespace RT\NewsFit\Custom;
+namespace RT\Newsfit\Custom;
 
-use RT\NewsFit\Helpers\Fns;
-use RT\NewsFit\Traits\SingletonTraits;
-use RT\NewsFit\Options\Opt;
+use RT\Newsfit\Helpers\Fns;
+use RT\Newsfit\Traits\SingletonTraits;
+use RT\Newsfit\Options\Opt;
 
 /**
  * Extras.

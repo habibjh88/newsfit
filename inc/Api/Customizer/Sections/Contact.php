@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class Contact extends Customizer {
 			'id'          => $this->section_contact,
 			'panel'       => 'rt_contact_social_panel',
 			'title'       => __( 'Contact Information', 'newsfit' ),
-			'description' => __( 'NewsFit Contact Address Section', 'newsfit' ),
+			'description' => __( 'Newsfit Contact Address Section', 'newsfit' ),
 			'priority'    => 1
 		] );
 		Customize::add_controls( $this->section_contact, $this->get_controls() );

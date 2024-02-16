@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -26,7 +26,7 @@ class ColorBanner extends Customizer {
 			'id'          => $this->section_banner_color,
 			'panel'       => 'rt_color_panel',
 			'title'       => __( 'Banner / Breadcrumb Colors', 'newsfit' ),
-			'description' => __( 'NewsFit Banner Color Section', 'newsfit' ),
+			'description' => __( 'Newsfit Banner Color Section', 'newsfit' ),
 			'priority'    => 6
 		] );
 

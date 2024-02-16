@@ -7,8 +7,8 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Helpers\Fns;
-use RT\NewsFit\Options\Opt;
+use RT\Newsfit\Helpers\Fns;
+use RT\Newsfit\Options\Opt;
 
 ?>
 <article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_post_class() ); ?>>

@@ -1,8 +1,8 @@
 <?php
 
-namespace RT\NewsFit\Core;
+namespace RT\Newsfit\Core;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 
 /**
  * Tags.

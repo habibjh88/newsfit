@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\NewsFit\Core;
+namespace RT\Newsfit\Core;
 
-use RT\NewsFit\Helpers\Constants;
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Helpers\Constants;
+use RT\Newsfit\Traits\SingletonTraits;
 
 /**
  * Sidebar.

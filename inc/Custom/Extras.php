@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\NewsFit\Custom;
+namespace RT\Newsfit\Custom;
 
-use RT\NewsFit\Traits\SingletonTraits;
-use RT\NewsFit\Options\Opt;
+use RT\Newsfit\Traits\SingletonTraits;
+use RT\Newsfit\Options\Opt;
 
 /**
  * Extras.

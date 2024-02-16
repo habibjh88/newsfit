@@ -1,8 +1,8 @@
 <?php
 
-namespace RT\NewsFit\Options;
+namespace RT\Newsfit\Options;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 
 class Layouts {
 

@@ -6,8 +6,8 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Options\Opt;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Options\Opt;
+use RT\Newsfit\Helpers\Fns;
 
 function newsfit_html( $html, $checked = true ) {
 	$allowed_html = [
@@ -657,7 +657,7 @@ if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
 
 if ( ! function_exists( 'newsfit_entry_footer' ) ) {
 	/**
-	 * NewsFit Entry Footer
+	 * Newsfit Entry Footer
 	 *
 	 * @return void
 	 *

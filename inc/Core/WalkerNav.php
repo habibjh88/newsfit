@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\NewsFit\Core;
+namespace RT\Newsfit\Core;
 
 use Walker_Nav_Menu;
 

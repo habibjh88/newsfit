@@ -7,8 +7,8 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Helpers\Fns;
-use RT\NewsFit\Options\Opt;
+use RT\Newsfit\Helpers\Fns;
+use RT\Newsfit\Options\Opt;
 
 get_header();
 $classes = Fns::class_list( [

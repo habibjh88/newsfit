@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\NewsFit\Helpers;
+namespace RT\Newsfit\Helpers;
 
-use RT\NewsFit\Core\Sidebar;
-use RT\NewsFit\Options\Opt;
+use RT\Newsfit\Core\Sidebar;
+use RT\Newsfit\Options\Opt;
 
 /**
  * Extras.

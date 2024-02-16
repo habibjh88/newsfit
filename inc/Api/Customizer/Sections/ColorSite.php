@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class ColorSite extends Customizer {
 			'id'          => $this->section_site_color,
 			'panel'       => 'rt_color_panel',
 			'title'       => __( 'Site Colors', 'newsfit' ),
-			'description' => __( 'NewsFit Site Color Section', 'newsfit' ),
+			'description' => __( 'Newsfit Site Color Section', 'newsfit' ),
 			'priority'    => 2
 		] );
 		Customize::add_controls( $this->section_site_color, $this->get_controls() );

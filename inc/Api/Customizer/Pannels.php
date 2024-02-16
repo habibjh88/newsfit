@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer;
+namespace RT\Newsfit\Api\Customizer;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 use RTFramework\Customize;
 
 /**
@@ -34,31 +34,31 @@ class Pannels {
 				[
 					'id'          => 'rt_header_panel',
 					'title'       => esc_html__( 'Header - Topbar - Menu', 'newsfit' ),
-					'description' => esc_html__( 'NewsFit Header', 'newsfit' ),
+					'description' => esc_html__( 'Newsfit Header', 'newsfit' ),
 					'priority'    => 22,
 				],
 				[
 					'id'          => 'rt_typography_panel',
 					'title'       => esc_html__( 'Typography', 'newsfit' ),
-					'description' => esc_html__( 'NewsFit Typography', 'newsfit' ),
+					'description' => esc_html__( 'Newsfit Typography', 'newsfit' ),
 					'priority'    => 24,
 				],
 				[
 					'id'          => 'rt_color_panel',
 					'title'       => esc_html__( 'Colors', 'newsfit' ),
-					'description' => esc_html__( 'NewsFit Color Settings', 'newsfit' ),
+					'description' => esc_html__( 'Newsfit Color Settings', 'newsfit' ),
 					'priority'    => 28,
 				],
 				[
 					'id'          => 'rt_layouts_panel',
 					'title'       => esc_html__( 'Layout Settings', 'newsfit' ),
-					'description' => esc_html__( 'NewsFit Layout Settings', 'newsfit' ),
+					'description' => esc_html__( 'Newsfit Layout Settings', 'newsfit' ),
 					'priority'    => 34,
 				],
 				[
 					'id'          => 'rt_contact_social_panel',
 					'title'       => esc_html__( 'Contact & Socials', 'newsfit' ),
-					'description' => esc_html__( 'NewsFit Contact & Socials', 'newsfit' ),
+					'description' => esc_html__( 'Newsfit Contact & Socials', 'newsfit' ),
 					'priority'    => 24,
 				],
 

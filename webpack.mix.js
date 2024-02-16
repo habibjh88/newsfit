@@ -54,7 +54,7 @@ if (mix.inProduction()) {
 	fs.ensureDir(languages, function (err) {
 		if (err) return console.error(err); // if file or folder does not exist
 		wpPot({
-			package: "NewsFit Theme",
+			package: "Newsfit Theme",
 			bugReport: "",
 			src: "**/*.php",
 			domain: "newsfit",

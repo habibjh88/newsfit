@@ -5,10 +5,10 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Api\Customizer;
+use RT\Newsfit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -26,7 +26,7 @@ class HeaderTopbar extends Customizer {
 			'id'          => $this->section_topbar,
 			'panel'       => 'rt_header_panel',
 			'title'       => __( 'Header Topbar', 'newsfit' ),
-			'description' => __( 'NewsFit Topbar Section', 'newsfit' ),
+			'description' => __( 'Newsfit Topbar Section', 'newsfit' ),
 			'priority'    => 1
 		] );
 

@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -24,7 +24,7 @@ class General extends Customizer {
 		Customize::add_section( [
 			'id'          => $this->section_general,
 			'title'       => __( 'General', 'newsfit' ),
-			'description' => __( 'NewsFit General Section', 'newsfit' ),
+			'description' => __( 'Newsfit General Section', 'newsfit' ),
 			'priority'    => 20
 		] );
 		Customize::add_controls( $this->section_general, $this->get_controls() );
@@ -56,7 +56,7 @@ class General extends Customizer {
 			'rt_remove_admin_bar' => [
 				'type'        => 'switch',
 				'label'       => __( 'Remove Admin Bar', 'newsfit' ),
-				'description' => __( 'This option not work for administrator role.', 'homlisti' ),
+				'description' => __( 'This option not work for administrator role.', 'newsfit' ),
 			],
 
 			'rt_social_icon_style' => [

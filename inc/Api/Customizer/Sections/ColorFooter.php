@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class ColorFooter extends Customizer {
 			'id'          => $this->section_footer_color,
 			'panel'       => 'rt_color_panel',
 			'title'       => __( 'Footer Colors', 'newsfit' ),
-			'description' => __( 'NewsFit Footer Color Section', 'newsfit' ),
+			'description' => __( 'Newsfit Footer Color Section', 'newsfit' ),
 			'priority'    => 8
 		] );
 

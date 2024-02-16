@@ -18,7 +18,7 @@
 				array(
 					'theme_location' => 'primary',
 					'menu_id'        => 'primary-menu',
-					'walker'         => new RT\NewsFit\Core\WalkerNav(),
+					'walker'         => new RT\Newsfit\Core\WalkerNav(),
 				)
 			);
 		endif;

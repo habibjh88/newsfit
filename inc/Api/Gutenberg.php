@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api;
+namespace RT\Newsfit\Api;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 
 /**
  * Customizer class

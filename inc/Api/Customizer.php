@@ -5,10 +5,10 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api;
+namespace RT\Newsfit\Api;
 
-use RT\NewsFit\Api\Customizer\Pannels;
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Api\Customizer\Pannels;
+use RT\Newsfit\Traits\SingletonTraits;
 
 /**
  * Customizer class
@@ -60,6 +60,7 @@ class Customizer {
 //			Customizer\Sections\LayoutsError::class,
 			Customizer\Sections\Footer::class,
 			Customizer\Sections\ZControllerExample::class,
+//			Customizer\Sections\Test::class,
 		];
 
 		if ( class_exists( 'WooCommerce' ) ) {

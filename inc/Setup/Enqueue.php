@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\NewsFit\Setup;
+namespace RT\Newsfit\Setup;
 
-use RT\NewsFit\Helpers\Constants;
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Helpers\Constants;
+use RT\Newsfit\Traits\SingletonTraits;
 
 /**
  * Enqueue.

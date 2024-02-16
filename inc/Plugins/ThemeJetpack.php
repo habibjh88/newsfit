@@ -5,9 +5,9 @@
  * @link https://jetpack.com/
  */
 
-namespace RT\NewsFit\Plugins;
+namespace RT\Newsfit\Plugins;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 use Jetpack;
 
 class ThemeJetpack {

@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var NewsFit = {
+    var Newsfit = {
 
         _init: function () {
 
@@ -13,14 +13,14 @@
                 menuDropdown: $('.dropdown-menu.depth_0'),
             };
 
-            NewsFit.readyFunctionality();
-            NewsFit.menuDrawerOpen(offCanvas);
-            NewsFit.offcanvasMenuToggle(offCanvas);
-            NewsFit.headerSearchOpen();
-            NewsFit.backToTop();
-            NewsFit.menuOffset();
-            NewsFit.slickSlider();
-            NewsFit.magnificPopup();
+            Newsfit.readyFunctionality();
+            Newsfit.menuDrawerOpen(offCanvas);
+            Newsfit.offcanvasMenuToggle(offCanvas);
+            Newsfit.headerSearchOpen();
+            Newsfit.backToTop();
+            Newsfit.menuOffset();
+            Newsfit.slickSlider();
+            Newsfit.magnificPopup();
         },
 
         magnificPopup: function (){
@@ -175,33 +175,33 @@
     };
 
     $(document).ready(function (e) {
-        NewsFit._init();
+        Newsfit._init();
     });
 
     $(document).on('load', () => {
-        NewsFit.menuOffset();
+        Newsfit.menuOffset();
     })
 
     $(window).on('scroll', (event) => {
-        NewsFit.headerSticky(event);
-        NewsFit.backTopTopScroll(event);
+        Newsfit.headerSticky(event);
+        Newsfit.backTopTopScroll(event);
     });
 
     $(window).on('resize', () => {
-        NewsFit.menuOffset($);
+        Newsfit.menuOffset($);
     });
 
     $(window).on('elementor/frontend/init', () => {
         if (elementorFrontend.isEditMode()) {
             //For all widgets
             elementorFrontend.hooks.addAction('frontend/element_ready/widget', () => {
-                NewsFit.slickSlider($);
-                NewsFit.magnificPopup();
+                Newsfit.slickSlider($);
+                Newsfit.magnificPopup();
             });
 
         }
     });
 
-    window.NewsFit = NewsFit;
+    window.Newsfit = Newsfit;
 
 })(jQuery);

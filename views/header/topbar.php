@@ -7,7 +7,7 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Options\Opt;
+use RT\Newsfit\Options\Opt;
 
 if(! Opt::$has_top_bar) {
 	return;
@@ -25,7 +25,7 @@ if(! Opt::$has_top_bar) {
 					'menu_class' => 'newsfit-navbar',
 					'items_wrap'     => '<ul id="%1$s" class="%2$s newsfit-topbar-menu">%3$s</ul>',
 					'fallback_cb'    => 'newsfit_custom_menu_cb',
-					'walker'         => has_nav_menu( 'topbar' ) ? new RT\NewsFit\Core\WalkerNav() : '',
+					'walker'         => has_nav_menu( 'topbar' ) ? new RT\Newsfit\Core\WalkerNav() : '',
 				] );
 				?>
 			</nav><!-- .topbar-navigation -->

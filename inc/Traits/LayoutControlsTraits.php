@@ -3,10 +3,10 @@
  * LayoutControls
  */
 
-namespace RT\NewsFit\Traits;
+namespace RT\Newsfit\Traits;
 
 // Do not allow directly accessing this file.
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Helpers\Fns;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
@@ -60,18 +60,18 @@ trait LayoutControlsTraits {
 
 			$prefix . '_header_heading' => [
 				'type'  => 'heading',
-				'label' => __( 'Header Settings', 'homlisti' ),
+				'label' => __( 'Header Settings', 'newsfit' ),
 			],
 
 			$prefix . '_header_style' => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => __( 'Header Layout', 'homlisti' ),
+				'label'   => __( 'Header Layout', 'newsfit' ),
 				'choices' => [
-					'default' => __( '--Default--', 'homlisti' ),
-					'1'       => __( 'Layout 1', 'homlisti' ),
-					'2'       => __( 'Layout 2', 'homlisti' ),
-					'3'       => __( 'Layout 3', 'homlisti' ),
+					'default' => __( '--Default--', 'newsfit' ),
+					'1'       => __( 'Layout 1', 'newsfit' ),
+					'2'       => __( 'Layout 2', 'newsfit' ),
+					'3'       => __( 'Layout 3', 'newsfit' ),
 				],
 			],
 
@@ -80,75 +80,37 @@ trait LayoutControlsTraits {
 				'label'   => __( 'Top Bar', 'newsfit' ),
 				'default' => 'default',
 				'choices' => [
-					'default' => __( '--Default--', 'homlisti' ),
-					'on'      => __( 'On', 'homlisti' ),
-					'off'     => __( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'newsfit' ),
+					'on'      => __( 'On', 'newsfit' ),
+					'off'     => __( 'Off', 'newsfit' ),
 				]
 			],
 
-			$prefix . '_header_width' => [
-				'type'    => 'select',
-				'default' => 'default',
-				'label'   => __( 'Header Width', 'homlisti' ),
-				'choices' => [
-					'default'   => __( '--Default--', 'homlisti' ),
-					'box-width' => __( 'Box width', 'homlisti' ),
-					'fullwidth' => __( 'Fullwidth', 'homlisti' ),
-				],
-			],
-
-			$prefix . '_menu_alignment' => [
-				'type'    => 'select',
-				'default' => 'default',
-				'label'   => __( 'Menu Alignment', 'homlisti' ),
-				'choices' => [
-					'default'     => __( '--Default--', 'homlisti' ),
-					'menu-left'   => __( 'Left Alignment', 'homlisti' ),
-					'menu-center' => __( 'Center Alignment', 'homlisti' ),
-					'menu-right'  => __( 'Right Alignment', 'homlisti' ),
-				],
-			],
-
-			$prefix . '_tr_header'      => [
-				'type'    => 'select',
-				'default' => 'default',
-				'label'   => __( 'Transparent Header', 'homlisti' ),
-				'choices' => [
-					'default' => __( '--Default--', 'homlisti' ),
-					'on'      => __( 'On', 'homlisti' ),
-					'off'     => __( 'Off', 'homlisti' ),
-				],
-			],
 			$prefix . '_banner_heading' => [
 				'type'  => 'heading',
-				'label' => __( 'Banner Settings', 'homlisti' ),
+				'label' => __( 'Banner Settings', 'newsfit' ),
 			],
 
 			$prefix . '_banner' => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => __( 'Banner Visibility', 'homlisti' ),
+				'label'   => __( 'Banner Visibility', 'newsfit' ),
 				'choices' => [
-					'default' => __( '--Default--', 'homlisti' ),
-					'on'      => __( 'On', 'homlisti' ),
-					'off'     => __( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'newsfit' ),
+					'on'      => __( 'On', 'newsfit' ),
+					'off'     => __( 'Off', 'newsfit' ),
 				],
 			],
 
 			$prefix . '_breadcrumb' => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => __( 'Banner Content (Breadcrumb) Visibility', 'homlisti' ),
+				'label'   => __( 'Banner Content (Breadcrumb) Visibility', 'newsfit' ),
 				'choices' => [
-					'default' => __( '--Default--', 'homlisti' ),
-					'on'      => __( 'On', 'homlisti' ),
-					'off'     => __( 'Off', 'homlisti' ),
+					'default' => __( '--Default--', 'newsfit' ),
+					'on'      => __( 'On', 'newsfit' ),
+					'off'     => __( 'Off', 'newsfit' ),
 				],
-			],
-
-			$prefix . '_banner_height' => [
-				'type'  => 'number',
-				'label' => __( 'Banner Height (px)', 'homlisti' ),
 			],
 
 			$prefix . '_banner_image' => [
@@ -158,44 +120,21 @@ trait LayoutControlsTraits {
 				'button_label' => __( 'Banner Image', 'newsfit' ),
 			],
 
-			$prefix . '_others_heading' => [
+			$prefix . '_footer_heading' => [
 				'type'  => 'heading',
-				'label' => __( 'Others Settings', 'homlisti' ),
+				'label' => __( 'Footer Settings', 'newsfit' ),
 			],
-
-//			$prefix . '_padding_top' => [
-//				'type'    => 'number',
-//				'label'   => __( 'Content Padding Top (px)', 'homlisti' ),
-//				'default' => '100',
-//			],
-//
-//			$prefix . '_padding_bottom' => [
-//				'type'    => 'number',
-//				'label'   => __( 'Content Bottom Top (px)', 'homlisti' ),
-//				'default' => '100',
-//			],
 
 			$prefix . '_footer_style'  => [
 				'type'    => 'select',
 				'default' => 'default',
-				'label'   => __( 'Footer Layout', 'homlisti' ),
+				'label'   => __( 'Footer Layout', 'newsfit' ),
 				'choices' => [
-					'default' => __( '--Default--', 'homlisti' ),
-					'1'       => __( 'Layout 1', 'homlisti' ),
-					'2'       => __( 'Layout 2', 'homlisti' ),
+					'default' => __( '--Default--', 'newsfit' ),
+					'1'       => __( 'Layout 1', 'newsfit' ),
+					'2'       => __( 'Layout 2', 'newsfit' ),
 				],
 			],
-			$prefix . '_footer_schema' => [
-				'type'    => 'select',
-				'default' => 'default',
-				'label'   => __( 'Footer Schema', 'homlisti' ),
-				'choices' => [
-					'default'      => __( '--Default--', 'homlisti' ),
-					'footer-light' => __( 'Light Footer', 'newsfit' ),
-					'footer-dark'  => __( 'Dark Footer', 'newsfit' ),
-				]
-			],
-
 
 		] );
 

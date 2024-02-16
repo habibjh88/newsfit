@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta">
-				<?php RT\NewsFit\Core\Tags::posted_on(); ?>
+				<?php RT\Newsfit\Core\Tags::posted_on(); ?>
 			</div><!-- .entry-meta -->
 
 		<?php endif; ?>

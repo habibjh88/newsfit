@@ -24,7 +24,7 @@ $footer_container = 'container' . newsfit_option( 'rt_footer_width' );
 						'menu_class'     => 'newsfit-navbar',
 						'items_wrap'     => '<ul id="%1$s" class="%2$s newsfit-footer-menu">%3$s</ul>',
 						'fallback_cb'    => 'newsfit_custom_menu_cb',
-						'walker'         => has_nav_menu( 'footer' ) ? new RT\NewsFit\Core\WalkerNav() : '',
+						'walker'         => has_nav_menu( 'footer' ) ? new RT\Newsfit\Core\WalkerNav() : '',
 					] );
 					?>
 				</nav><!-- .footer-navigation -->

@@ -9,8 +9,8 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Options\Opt;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Options\Opt;
+use RT\Newsfit\Helpers\Fns;
 
 $classes = Fns::class_list([
 	'site-footer',

@@ -8,9 +8,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit;
+namespace RT\Newsfit;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 
 final class Init {
 

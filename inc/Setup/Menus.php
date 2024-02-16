@@ -1,8 +1,8 @@
 <?php
 
-namespace RT\NewsFit\Setup;
+namespace RT\Newsfit\Setup;
 
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Traits\SingletonTraits;
 
 /**
  * Menus

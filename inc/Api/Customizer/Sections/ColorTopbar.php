@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class ColorTopbar extends Customizer {
 			'id'          => $this->section_topbar_color,
 			'panel'       => 'rt_color_panel',
 			'title'       => __( 'Topbar Colors', 'newsfit' ),
-			'description' => __( 'NewsFit Topbar Color Section', 'newsfit' ),
+			'description' => __( 'Newsfit Topbar Color Section', 'newsfit' ),
 			'priority'    => 3
 		] );
 

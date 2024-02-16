@@ -13,8 +13,8 @@ use RTFramework\Customize;
 /**
  * Customizer class
  */
-class Labels extends Customizer {
-	protected string $section_labels = 'newsfit_labels_section';
+class Test extends Customizer {
+	protected string $section_labels = 'newsfit_test_section';
 
 	/**
 	 * Register controls

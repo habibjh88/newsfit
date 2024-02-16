@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\NewsFit\Options;
+namespace RT\Newsfit\Options;
 
-use RT\NewsFit\Api\Customizer;
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Api\Customizer;
+use RT\Newsfit\Traits\SingletonTraits;
 
 class Opt {
 
@@ -14,6 +14,7 @@ class Opt {
 	public static $layout = null;
 	public static $sidebar = null;
 	public static $header_style = null;
+	public static $topbar_style = null;
 	public static $footer_style = null;
 	public static $footer_schema = null;
 	public static $has_banner = null;

@@ -1,10 +1,10 @@
 <?php
 
-namespace RT\NewsFit\Custom;
+namespace RT\Newsfit\Custom;
 
-use RT\NewsFit\Helpers\Fns;
-use RT\NewsFit\Options\Opt;
-use RT\NewsFit\Traits\SingletonTraits;
+use RT\Newsfit\Helpers\Fns;
+use RT\Newsfit\Options\Opt;
+use RT\Newsfit\Traits\SingletonTraits;
 
 class DynamicStyles {
 
@@ -140,8 +140,13 @@ class DynamicStyles {
 		?>
 
 		<?php //Header Logo CSS ?>
-		<?php if ( newsfit_option( 'rt_header_width' ) && newsfit_option( 'rt_header_max_width' ) > 1400 ) : ?>
-			.header-container, .topbar-container {width: <?php echo newsfit_option( 'rt_header_max_width' ); ?>px;max-width: 100%;}
+		<?php if ( Opt::$header_width == 'fullwidth' ) :
+			$h_width = '100%';
+			if ( ($header_width = newsfit_option( 'rt_header_max_width' )) > 992 ) {
+				$h_width = $header_width;
+			}
+			?>
+			.header-container, .topbar-container {width: <?php echo $h_width; ?>px;max-width: 100%;}
 		<?php endif; ?>
 
 		<?php if ( ! empty( $logo_width ) ) : ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\NewsFit\Helpers;
+namespace RT\Newsfit\Helpers;
 
 class Constants {
 

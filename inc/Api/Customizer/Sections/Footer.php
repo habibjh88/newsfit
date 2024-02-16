@@ -5,10 +5,10 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Api\Customizer;
+use RT\Newsfit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class Footer extends Customizer {
 		Customize::add_section( [
 			'id'          => $this->section_footer,
 			'title'       => __( 'Footer', 'newsfit' ),
-			'description' => __( 'NewsFit Footer Section', 'newsfit' ),
+			'description' => __( 'Newsfit Footer Section', 'newsfit' ),
 			'priority'    => 38
 		] );
 
@@ -60,7 +60,7 @@ class Footer extends Customizer {
 			'rt_footer_max_width' => [
 				'type'        => 'number',
 				'label'       => __( 'Footer Max Width (PX)', 'newsfit' ),
-				'description' => __( 'Enter a number greater than 1440. Remove value for 100%', 'newsfit' ),
+				'description' => __( 'Enter a number greater than 992.', 'newsfit' ),
 				'condition'   => [ 'rt_footer_width', '==', '-fluid' ]
 			],
 

@@ -5,10 +5,10 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Api\Customizer;
+use RT\Newsfit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -27,7 +27,7 @@ class Socials extends Customizer {
 			'id'          => $this->section_socials,
 			'panel'       => 'rt_contact_social_panel',
 			'title'       => __( 'Socials Information', 'newsfit' ),
-			'description' => __( 'NewsFit Socials Section', 'newsfit' ),
+			'description' => __( 'Newsfit Socials Section', 'newsfit' ),
 			'priority'    => 2
 		] );
 

@@ -7,7 +7,7 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Helpers\Fns;
 
 get_header();
 $content_columns = Fns::content_columns( );

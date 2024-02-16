@@ -5,9 +5,9 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
+use RT\Newsfit\Api\Customizer;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class TypographyBody extends Customizer {
 		Customize::add_section( [
 			'id'          => $this->section_id,
 			'title'       => __( 'Body Typography', 'newsfit' ),
-			'description' => __( 'NewsFit Body Typography Section', 'newsfit' ),
+			'description' => __( 'Newsfit Body Typography Section', 'newsfit' ),
 			'panel'       => 'rt_typography_panel',
 			'priority'    => 1
 		] );

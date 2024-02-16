@@ -340,11 +340,7 @@ th {
   clear: both;
 }
 
-.rt-container-fluid {
-  padding-right: 0;
-  padding-left: 0;
-}
-
+.rt-container-fluid,
 .container-fluid {
   max-width: 100%;
 }
@@ -3682,7 +3678,7 @@ body .rtrs-review-form {
   fill: #FFFFFF;
 }
 
-/* NewsFit Header Style
+/* Newsfit Header Style
 ***************************/
 @media (min-width: 768px) {
   #rt-mobile-logo {

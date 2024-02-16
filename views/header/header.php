@@ -7,8 +7,6 @@
  * @package newsfit
  */
 
-use RT\NewsFit\Helpers\Fns;
-
 $logo_h1      = ! is_singular( [ 'post' ] );
 $menu_classes = newsfit_option( 'rt_menu_alignment' );
 ?>
@@ -30,7 +28,7 @@ $menu_classes = newsfit_option( 'rt_menu_alignment' );
 						'menu_class'     => 'newsfit-navbar',
 						'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						'fallback_cb'    => 'newsfit_custom_menu_cb',
-						'walker'         => has_nav_menu( 'primary' ) ? new RT\NewsFit\Core\WalkerNav() : '',
+						'walker'         => has_nav_menu( 'primary' ) ? new RT\Newsfit\Core\WalkerNav() : '',
 					] );
 					?>
 				</nav><!-- .newsfit-navigation -->

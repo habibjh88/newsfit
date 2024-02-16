@@ -7,6 +7,7 @@
  * @package newsfit
  */
 
+
 $meta_list = newsfit_option( 'rt_blog_meta', '', true );
 if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
 	$category_index = array_search( 'category', $meta_list );

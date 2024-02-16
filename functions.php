@@ -12,7 +12,7 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) :
 	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 endif;
 
-if ( class_exists( 'RT\\NewsFit\\Init' ) ) :
-	RT\NewsFit\Init::instance();
+if ( class_exists( 'RT\\Newsfit\\Init' ) ) :
+	RT\Newsfit\Init::instance();
 	do_action('newsfit_theme_init');
 endif;

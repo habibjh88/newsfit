@@ -8,6 +8,7 @@
  *
  * @package newsfit
  */
+use RT\Newsfit\Options\Opt;
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -23,8 +24,8 @@
 
 <div id="page" class="site">
 	<header id="masthead" class="site-header" role="banner">
-		<?php get_template_part( 'views/header/header', 'topbar' ); ?>
-		<?php get_template_part( 'views/header/header', newsfit_option( 'rt_header_style' ) ); ?>
+		<?php get_template_part( 'views/header/topbar', Opt::$topbar_style ); ?>
+		<?php get_template_part( 'views/header/header', Opt::$header_style ); ?>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

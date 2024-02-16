@@ -5,10 +5,10 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Api\Customizer;
+use RT\Newsfit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -25,7 +25,7 @@ class BlogSingle extends Customizer {
 		Customize::add_section( [
 			'id'          => $this->section_blog_single,
 			'title'       => __( 'Single Blog', 'newsfit' ),
-			'description' => __( 'NewsFit Blog Single Section', 'newsfit' ),
+			'description' => __( 'Newsfit Blog Single Section', 'newsfit' ),
 			'priority'    => 26
 		] );
 

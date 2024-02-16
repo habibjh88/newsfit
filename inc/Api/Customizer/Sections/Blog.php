@@ -5,10 +5,10 @@
  * @package newsfit
  */
 
-namespace RT\NewsFit\Api\Customizer\Sections;
+namespace RT\Newsfit\Api\Customizer\Sections;
 
-use RT\NewsFit\Api\Customizer;
-use RT\NewsFit\Helpers\Fns;
+use RT\Newsfit\Api\Customizer;
+use RT\Newsfit\Helpers\Fns;
 use RTFramework\Customize;
 
 /**
@@ -27,7 +27,7 @@ class Blog extends Customizer {
 		Customize::add_section( [
 			'id'          => $this->section_blog,
 			'title'       => __( 'Blog Archive', 'newsfit' ),
-			'description' => __( 'NewsFit Blog Section', 'newsfit' ),
+			'description' => __( 'Newsfit Blog Section', 'newsfit' ),
 			'priority'    => 25
 		] );
 

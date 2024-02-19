@@ -9,50 +9,6 @@
 use RT\Newsfit\Options\Opt;
 use RT\Newsfit\Helpers\Fns;
 
-function newsfit_html( $html, $checked = true ) {
-	$allowed_html = [
-		'a'      => [
-			'href'   => [],
-			'title'  => [],
-			'class'  => [],
-			'target' => [],
-		],
-		'br'     => [],
-		'span'   => [
-			'class' => [],
-			'id'    => [],
-		],
-		'em'     => [],
-		'strong' => [],
-		'i'      => [
-			'class' => []
-		],
-		'iframe' => [
-			'class'                 => [],
-			'id'                    => [],
-			'name'                  => [],
-			'src'                   => [],
-			'title'                 => [],
-			'frameBorder'           => [],
-			'width'                 => [],
-			'height'                => [],
-			'scrolling'             => [],
-			'allowvr'               => [],
-			'allow'                 => [],
-			'allowFullScreen'       => [],
-			'webkitallowfullscreen' => [],
-			'mozallowfullscreen'    => [],
-			'loading'               => [],
-		],
-	];
-
-	if ( $checked ) {
-		return wp_kses( $html, $allowed_html );
-	} else {
-		return $html;
-	}
-}
-
 if ( ! function_exists( 'newsfit_custom_menu_cb' ) ) {
 	/**
 	 * Callback function for the main menu
@@ -320,6 +276,7 @@ if ( ! function_exists( 'newsfit_get_svg' ) ) {
 			'home'             => '<svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.38258 1.03781C7.2994 0.972961 7.19695 0.937744 7.09148 0.937744C6.98602 0.937744 6.88357 0.972961 6.80039 1.03781L0.0644531 6.29015L0.647109 7.02703L1.4707 6.38484V12.1875C1.4712 12.436 1.57013 12.6742 1.74584 12.8499C1.92155 13.0256 2.15971 13.1245 2.4082 13.125H11.7832C12.0317 13.1245 12.2699 13.0256 12.4456 12.8499C12.6213 12.6742 12.7202 12.436 12.7207 12.1875V6.38906L13.5443 7.03125L14.127 6.29437L7.38258 1.03781ZM8.0332 12.1875H6.1582V8.4375H8.0332V12.1875ZM8.9707 12.1875V8.4375C8.97045 8.18893 8.8716 7.95062 8.69584 7.77486C8.52008 7.5991 8.28177 7.50025 8.0332 7.5H6.1582C5.90964 7.50025 5.67133 7.5991 5.49556 7.77486C5.3198 7.95062 5.22095 8.18893 5.2207 8.4375V12.1875H2.4082V5.65406L7.0957 2.0025L11.7832 5.65875V12.1875H8.9707Z"/></svg>',
 			'share'            => '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.72904 2.93333V0L0.595703 5.13333L5.72904 10.2667V7.26C9.3957 7.26 11.9624 8.43333 13.7957 11C13.0624 7.33333 10.8624 3.66667 5.72904 2.93333Z"/></svg>',
 			'camera'           => '<svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.0843 2.9079H18.489H16.9559V1.90484C16.9559 1.53787 16.8172 1.20352 16.5644 0.942561C16.3116 0.681603 15.9691 0.542969 15.6021 0.542969H13.1149C12.3646 0.542969 11.753 1.15459 11.753 1.90484V2.9079H6.17502C6.15871 2.492 5.99561 2.10872 5.70203 1.80699C5.39214 1.4971 4.9844 1.32584 4.55218 1.32584C3.67145 1.334 2.95381 2.03532 2.92935 2.9079H2.25249C1.24128 2.9079 0.425781 3.7234 0.425781 4.72646V14.7244C0.425781 15.7275 1.24128 16.543 2.24433 16.543H19.0761C20.0792 16.543 20.8947 15.7275 20.8947 14.7244V4.72646C20.9028 3.7234 20.0874 2.9079 19.0843 2.9079ZM12.3728 1.90484C12.3728 1.4971 12.7071 1.16274 13.1149 1.16274H15.6021C15.7 1.16274 15.7979 1.17905 15.8876 1.21983C15.9773 1.2606 16.0588 1.30953 16.124 1.38293C16.2627 1.52156 16.3361 1.70913 16.3361 1.90484V2.9079H12.3728V1.90484ZM4.55218 1.95377C4.8213 1.95377 5.0741 2.05979 5.26166 2.24735C5.44107 2.42676 5.53893 2.6551 5.55524 2.9079H3.54912C3.57359 2.37783 4.01396 1.95377 4.55218 1.95377ZM1.04556 14.7244V4.72646C1.04556 4.0659 1.58378 3.52768 2.24433 3.52768H3.19846C3.20662 3.52768 3.22293 3.52768 3.23108 3.52768H5.86513C5.87328 3.52768 5.88959 3.52768 5.89775 3.52768H18.1791V15.9232H2.24433C1.58378 15.9232 1.04556 15.385 1.04556 14.7244ZM20.2831 14.7244C20.2831 15.385 19.7448 15.9232 19.0843 15.9232H18.7989V3.52768H19.0843C19.7448 3.52768 20.2831 4.0659 20.2831 4.72646V14.7244Z"/><path d="M10.6681 7.77637C9.59167 7.77637 8.71094 8.6571 8.71094 9.73355C8.71094 10.81 9.59167 11.6907 10.6681 11.6907C11.7446 11.6907 12.6253 10.81 12.6253 9.73355C12.6172 8.64895 11.7446 7.77637 10.6681 7.77637ZM10.6681 11.0628C9.93418 11.0628 9.33071 10.4675 9.33071 9.7254C9.33071 8.99145 9.92602 8.38799 10.6681 8.38799C11.4021 8.38799 12.0055 8.9833 12.0055 9.7254C11.9974 10.4593 11.4021 11.0628 10.6681 11.0628Z"/><path d="M10.669 5.14233C8.14098 5.14233 6.08594 7.19738 6.08594 9.72541C6.08594 12.2534 8.14098 14.3085 10.669 14.3085C13.197 14.3085 15.2521 12.2534 15.2521 9.72541C15.2521 7.19738 13.1889 5.14233 10.669 5.14233ZM10.669 13.6887C8.48349 13.6887 6.70571 11.9109 6.70571 9.72541C6.70571 7.53989 8.48349 5.76211 10.669 5.76211C12.8545 5.76211 14.6323 7.53989 14.6323 9.72541C14.6242 11.9109 12.8464 13.6887 10.669 13.6887Z"/></svg>',
+			'folder'           => '<svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.6787 21.3334C24.6787 22.0698 24.0818 22.6667 23.3454 22.6667H2.01204C1.27567 22.6667 0.678711 22.0698 0.678711 21.3334M24.6787 21.3334V10.6667C24.6787 9.19395 23.4848 8.00004 22.012 8.00004H3.34538C1.87262 8.00004 0.678711 9.19395 0.678711 10.6667V21.3334M24.6787 21.3334V5.33337C24.6787 4.597 24.0818 4.00004 23.3454 4.00004H10.012L8.67871 1.33337H2.01204L0.960244 3.43699C0.775098 3.80727 0.678711 4.21557 0.678711 4.62956V21.3334" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 		] );
 		$rotate_style = '';
 		if ( $rotate ) {
@@ -554,6 +511,28 @@ if ( ! function_exists( 'newsfit_scroll_top' ) ) {
 	}
 }
 
+if ( ! function_exists( 'newsfit_meta_icons' ) ) {
+	/**
+	 * Newsfit meta icons
+	 *
+	 * @param $name
+	 *
+	 * @return string|void
+	 */
+	function newsfit_meta_icons( $name ) {
+		$icon_list = [
+			'category' => newsfit_get_svg( 'folder' ),
+			'tag'      => newsfit_get_svg( 'folder' ),
+			'date'     => newsfit_get_svg( 'folder' ),
+			'author'   => newsfit_get_svg( 'folder' ),
+			'comment'  => newsfit_get_svg( 'folder' ),
+		];
+
+		if ( isset( $icon_list[ $name ] ) ) {
+			return $icon_list[ $name ];
+		}
+	}
+}
 
 if ( ! function_exists( 'newsfit_post_meta' ) ) {
 	/**
@@ -566,7 +545,8 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 			'with_list'     => true,
 			'include'       => [],
 			'class'         => '',
-			'author_prefix' => __( 'By', 'newsfit' )
+			'author_prefix' => __( 'By', 'newsfit' ),
+			'with_icon'     => false,
 		];
 
 		$args = wp_parse_args( $args, $default_args );
@@ -594,6 +574,7 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 				continue;
 			}
 			$output .= ( $args['with_list'] ) ? '<li class="' . $key . '">' : '';
+			$output .= $args['with_icon'] ? newsfit_meta_icons( $key ) : null;
 			$output .= $meta;
 			$output .= ( $args['with_list'] ) ? '</li>' : '';
 		}
@@ -647,7 +628,7 @@ if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
 			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
 				<figcaption class="wp-caption-text">
 					<?php echo newsfit_get_svg( 'camera' ); ?>
-					<span><?php echo newsfit_html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
+					<span><?php echo Fns::html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
 				</figcaption>
 			<?php endif; ?>
 		</div>
@@ -794,6 +775,7 @@ if ( ! function_exists( 'newsfit_single_entry_header' ) ) {
 					'with_list'     => true,
 					'include'       => Fns::single_meta_lists(),
 					'author_prefix' => newsfit_option( 'rt_author_prefix' ),
+					'with_icon'     => true
 				] );
 			}
 			?>
@@ -990,3 +972,5 @@ function newsfit_comments_cbf( $comment, $args, $depth ) {
 			break;
 	endswitch; // End comment_type check.
 }
+
+

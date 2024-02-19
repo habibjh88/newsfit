@@ -8,8 +8,10 @@
  */
 
 
-if ( is_singular() && is_active_sidebar( 'rt-single-sidebar' ) ) {
-	newsfit_sidebar( 'rt-single-sidebar' );
+use RT\Newsfit\Helpers\Fns;
+
+if ( is_singular() && is_active_sidebar( Fns::sidebar( 'single' ) ) ) {
+	newsfit_sidebar( Fns::sidebar( 'single' ) );
 } else {
-	newsfit_sidebar( 'rt-sidebar' );
+	newsfit_sidebar( Fns::sidebar( 'main' ) );
 }

@@ -36,6 +36,7 @@ if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
 						'with_list'     => true,
 						'include'       => $meta_list,
 						'author_prefix' => newsfit_option( 'rt_author_prefix' ),
+						'with_icon'     => true
 					] );
 				}
 				?>

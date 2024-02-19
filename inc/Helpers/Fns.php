@@ -23,6 +23,67 @@ class Fns {
 		);
 	}
 
+	public static function html( $html, $checked = true ) {
+		$allowed_html = [
+			'a'      => [
+				'href'   => [],
+				'title'  => [],
+				'class'  => [],
+				'target' => [],
+			],
+			'br'     => [],
+			'span'   => [
+				'class' => [],
+				'id'    => [],
+			],
+			'em'     => [],
+			'strong' => [],
+			'i'      => [
+				'class' => []
+			],
+			'iframe' => [
+				'class'                 => [],
+				'id'                    => [],
+				'name'                  => [],
+				'src'                   => [],
+				'title'                 => [],
+				'frameBorder'           => [],
+				'width'                 => [],
+				'height'                => [],
+				'scrolling'             => [],
+				'allowvr'               => [],
+				'allow'                 => [],
+				'allowFullScreen'       => [],
+				'webkitallowfullscreen' => [],
+				'mozallowfullscreen'    => [],
+				'loading'               => [],
+			],
+		];
+
+		if ( $checked ) {
+			return wp_kses( $html, $allowed_html );
+		} else {
+			return $html;
+		}
+	}
+
+	/**
+	 * Sanitize Text Field
+	 *
+	 * @param $data
+	 * @param $default
+	 * @param $mode
+	 *
+	 * @return mixed|string
+	 */
+	public static function sanitize( $data, $default = '', $mode = '' ) {
+		if ( 'html' === $mode ) {
+			return ! empty( $data ) ? self::html( $data ) : $default;
+		}
+
+		return ! empty( $data ) ? sanitize_text_field( $data ) : $default;
+	}
+
 	/**
 	 * Social icon for the site
 	 * @return mixed|null
@@ -61,21 +122,6 @@ class Fns {
 
 	}
 
-	/**
-	 * Get Sidebar lists
-	 * @return array
-	 */
-	public static function sidebar_lists() {
-		$sidebar_fields            = [];
-		$sidebar_fields['default'] = esc_html__( 'Choose Sidebar', 'newsfit' );
-		if ( ! empty( Sidebar::sidebar_lists() ) ) {
-			foreach ( Sidebar::sidebar_lists() as $id => $sidebar ) {
-				$sidebar_fields[ $id ] = $sidebar['name'];
-			}
-		}
-
-		return $sidebar_fields;
-	}
 
 	/**
 	 * Get image presets
@@ -170,7 +216,7 @@ class Fns {
 	 * @return string
 	 */
 	public static function content_columns( $full_width_col = 'col-md-12' ) {
-		$sidebar = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
+		$sidebar = Opt::$sidebar === 'default' ? Fns::sidebar( 'main' ) : Opt::$sidebar;
 		$columns = ! is_active_sidebar( $sidebar ) ? $full_width_col : 'col-md-8';
 		if ( Opt::$layout === 'full-width' ) {
 			$columns = $full_width_col;
@@ -180,8 +226,9 @@ class Fns {
 	}
 
 	public static function single_content_colums() {
-		$sidebar = Opt::$sidebar === 'default' ? 'rt-single-sidebar' : Opt::$sidebar;
-		$columns = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
+		$default_sitebar = is_active_sidebar( Fns::sidebar( 'single' ) ) ? Fns::sidebar( 'single' ) : Fns::sidebar( 'main' );
+		$sidebar         = Opt::$sidebar === 'default' ? $default_sitebar : Opt::$sidebar;
+		$columns         = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
 
 		if ( Opt::$layout === 'full-width' ) {
 			$columns = "col-md-10 col-md-offset-1";
@@ -200,7 +247,7 @@ class Fns {
 			return sanitize_text_field( $_REQUEST['column'] );
 		}
 		$blog_colum_opt = newsfit_option( 'rt_blog_column' ) !== 'default' ? newsfit_option( 'rt_blog_column' ) : '';
-		$blog_sidebar   = Opt::$sidebar === 'default' ? 'rt-sidebar' : Opt::$sidebar;
+		$blog_sidebar   = Opt::$sidebar === 'default' ? Fns::sidebar( 'main' ) : Opt::$sidebar;
 		$blog_layout    = Opt::$layout ?? 'right-sidebar';
 
 		$output = 'col-lg-4';
@@ -322,4 +369,60 @@ class Fns {
 		return implode( ' ', $clsses );
 	}
 
+	public static function sidebar( $id = '' ) {
+		$sidebar_lists = [
+			'main'   => [
+				'id'    => 'rt-sidebar',
+				'name'  => __( 'Main Sidebar', 'newsfit' ),
+				'class' => 'rt-sidebar'
+			],
+			'single' => [
+				'id'    => 'rt-single-sidebar',
+				'name'  => __( 'Single Sidebar', 'newsfit' ),
+				'class' => 'rt-single-sidebar'
+			],
+			'footer' => [
+				'id'    => 'rt-footer-sidebar',
+				'name'  => 'Footer Sidebar',
+				'class' => 'footer-sidebar col-lg-3 col-md-6',
+			],
+		];
+		if ( class_exists( 'WooCommerce' ) ) {
+			$sidebar_lists['woo-archive'] = [
+				'id'    => 'rt-woo-archive-sidebar',
+				'name'  => __( 'WooCommerce Archive Sidebar', 'newsfit' ),
+				'class' => 'woo-archive-sidebar',
+			];
+			$sidebar_lists['woo-single']  = [
+				'id'    => 'rt-woo-single-sidebar',
+				'name'  => __( 'WooCommerce Single Sidebar', 'newsfit' ),
+				'class' => 'woo-single-sidebar',
+			];
+		}
+		$sidebar_lists = apply_filters( 'newsfit_sidebar_lists', $sidebar_lists );
+		if ( ! $id ) {
+			return $sidebar_lists;
+		}
+		if ( isset( $sidebar_lists[ $id ] ) ) {
+			return $sidebar_lists[ $id ]['id'];
+		}
+
+		return [];
+	}
+
+	/**
+	 * Get Sidebar lists
+	 * @return array
+	 */
+	public static function sidebar_lists() {
+		$sidebar_fields            = [];
+		$sidebar_fields['default'] = esc_html__( 'Choose Sidebar', 'newsfit' );
+
+		foreach ( self::sidebar() as $id => $sidebar ) {
+			$sidebar_fields[ $id ] = $sidebar['name'];
+		}
+
+
+		return $sidebar_fields;
+	}
 }

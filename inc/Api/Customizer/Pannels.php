@@ -18,6 +18,7 @@ class Pannels {
 
 	/**
 	 * register default hooks and actions for WordPress
+	 *
 	 * @return
 	 */
 	public function __construct() {
@@ -26,6 +27,7 @@ class Pannels {
 
 	/**
 	 * Add Panels
+	 *
 	 * @return void
 	 */
 	public function add_panels() {
@@ -65,5 +67,4 @@ class Pannels {
 			]
 		);
 	}
-
 }

@@ -17,19 +17,26 @@ use RT\Newsfit\Traits\LayoutControlsTraits;
 class LayoutsError extends Customizer {
 
 	use LayoutControlsTraits;
-
+	/**
+	 * Section ID
+	 *
+	 * @var string
+	 */
 	protected string $section_error_layout = 'newsfit_error_layout_section';
 
 	/**
 	 * Register controls
+	 *
 	 * @return void
 	 */
 	public function register() {
-		Customize::add_section( [
-			'id'    => $this->section_error_layout,
-			'title' => __( 'Error Layout', 'newsfit' ),
-			'panel' => 'rt_layouts_panel',
-		] );
+		Customize::add_section(
+			[
+				'id'    => $this->section_error_layout,
+				'title' => __( 'Error Layout', 'newsfit' ),
+				'panel' => 'rt_layouts_panel',
+			]
+		);
 
 		Customize::add_controls( $this->section_error_layout, $this->get_controls() );
 	}
@@ -41,5 +48,4 @@ class LayoutsError extends Customizer {
 
 		return $options_val;
 	}
-
 }

@@ -12,11 +12,11 @@ use RT\Newsfit\Helpers\Fns;
 $footer_width = 'container' . newsfit_option( 'rt_footer_width' );
 ?>
 
-<?php if ( is_active_sidebar( Fns::sidebar( 'footer' ) ) ) : ?>
+<?php if ( is_active_sidebar( Fns::default_sidebar( 'footer' ) ) ) : ?>
 	<div class="footer-widgets-wrapper">
 		<div class="footer-container <?php echo esc_attr( $footer_width ) ?>">
 			<div class="footer-widgets row">
-				<?php dynamic_sidebar( Fns::sidebar( 'footer' ) ); ?>
+				<?php dynamic_sidebar( Fns::default_sidebar( 'footer' ) ); ?>
 			</div>
 		</div>
 	</div><!-- .site-info -->
@@ -47,7 +47,7 @@ $footer_width = 'container' . newsfit_option( 'rt_footer_width' );
 <?php if ( ! empty( newsfit_option( 'rt_footer_copyright' ) ) ) : ?>
 	<div class="footer-copyright-wrapper text-center">
 		<div class="copyright-text">
-			<?php echo Fns::html( str_replace( '[y]', date( 'Y' ), newsfit_option( 'rt_footer_copyright' ) ) ); ?>
+			<?php Fns::print_html( str_replace( '[y]', date( 'Y' ), newsfit_option( 'rt_footer_copyright' ) ) ); ?>
 		</div>
 	</div>
 <?php endif; ?>

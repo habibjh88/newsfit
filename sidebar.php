@@ -10,8 +10,8 @@
 
 use RT\Newsfit\Helpers\Fns;
 
-if ( is_singular() && is_active_sidebar( Fns::sidebar( 'single' ) ) ) {
-	newsfit_sidebar( Fns::sidebar( 'single' ) );
+if ( is_singular() && is_active_sidebar( Fns::default_sidebar( 'single' ) ) ) {
+	newsfit_sidebar( Fns::default_sidebar( 'single' ) );
 } else {
-	newsfit_sidebar( Fns::sidebar( 'main' ) );
+	newsfit_sidebar( Fns::default_sidebar( 'main' ) );
 }

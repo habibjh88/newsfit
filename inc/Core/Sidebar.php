@@ -25,7 +25,7 @@ class Sidebar {
 	 */
 	public function widgets_init() {
 
-		foreach ( Fns::sidebar() as $sidebar ) {
+		foreach ( Fns::default_sidebar() as $sidebar ) {
 
 			$classes = $sidebar['class'] ?? '';
 

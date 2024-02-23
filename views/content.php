@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying content
+ *
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -32,18 +32,20 @@ if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
 				}
 
 				if ( ! empty( $meta_list ) && newsfit_option( 'rt_meta_visibility' ) ) {
-					echo newsfit_post_meta( [
-						'with_list'     => true,
-						'include'       => $meta_list,
-						'author_prefix' => newsfit_option( 'rt_author_prefix' ),
-						'with_icon'     => true
-					] );
+					newsfit_post_meta(
+						[
+							'with_list'     => true,
+							'include'       => $meta_list,
+							'author_prefix' => newsfit_option( 'rt_author_prefix' ),
+							'with_icon'     => true,
+						]
+					);
 				}
 				?>
 			</header>
 			<?php if ( newsfit_option( 'rt_blog_content_visibility' ) ) : ?>
 				<div class="entry-content">
-					<?php newsfit_entry_content() ?>
+					<?php newsfit_entry_content(); ?>
 				</div>
 			<?php endif; ?>
 

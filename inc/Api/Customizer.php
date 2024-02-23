@@ -20,6 +20,7 @@ class Customizer {
 
 	/**
 	 * register default hooks and actions for WordPress
+	 *
 	 * @return
 	 */
 	public function __construct() {
@@ -32,6 +33,7 @@ class Customizer {
 
 	/**
 	 * Add customize controls
+	 *
 	 * @return string[]
 	 */
 	public static function add_controls() {
@@ -57,17 +59,16 @@ class Customizer {
 			Customizer\Sections\LayoutsBlogs::class,
 			Customizer\Sections\LayoutsSingle::class,
 			Customizer\Sections\LayoutsPage::class,
-//			Customizer\Sections\LayoutsError::class,
-			Customizer\Sections\Footer::class,
+			// Customizer\Sections\LayoutsError::class,
+							Customizer\Sections\Footer::class,
 			Customizer\Sections\ZControllerExample::class,
-//			Customizer\Sections\Test::class,
+		// Customizer\Sections\Test::class,
 		];
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			$classess[] = Customizer\Sections\LayoutsWooSingle::class;
 			$classess[] = Customizer\Sections\LayoutsWooArchive::class;
 		}
-
 
 		return $classess;
 	}
@@ -88,6 +89,7 @@ class Customizer {
 
 	/**
 	 * Get controls default value
+	 *
 	 * @return void
 	 */
 	public function get_controls_default_value() {
@@ -100,6 +102,5 @@ class Customizer {
 				}
 			}
 		}
-
 	}
 }

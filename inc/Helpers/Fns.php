@@ -14,7 +14,6 @@ class Fns {
 	 * Filters whether post thumbnail can be displayed.
 	 *
 	 * @param bool $show_post_thumbnail Whether to show post thumbnail.
-	 *
 	 */
 	public static function can_show_post_thumbnail() {
 		return apply_filters(
@@ -23,103 +22,169 @@ class Fns {
 		);
 	}
 
-	public static function html( $html, $checked = true ) {
-		$allowed_html = [
-			'a'      => [
-				'href'   => [],
-				'title'  => [],
-				'class'  => [],
-				'target' => [],
-			],
-			'br'     => [],
-			'span'   => [
-				'class' => [],
-				'id'    => [],
-			],
-			'em'     => [],
-			'strong' => [],
-			'i'      => [
-				'class' => []
-			],
-			'iframe' => [
-				'class'                 => [],
-				'id'                    => [],
-				'name'                  => [],
-				'src'                   => [],
-				'title'                 => [],
-				'frameBorder'           => [],
-				'width'                 => [],
-				'height'                => [],
-				'scrolling'             => [],
-				'allowvr'               => [],
-				'allow'                 => [],
-				'allowFullScreen'       => [],
-				'webkitallowfullscreen' => [],
-				'mozallowfullscreen'    => [],
-				'loading'               => [],
-			],
-		];
+	/**
+	 * Allowed HTML for wp_kses.
+	 *
+	 * @param $html
+	 * @param $echo
+	 *
+	 * @return string
+	 */
+	public static function print_html( $html, $echo = true, $context = 'basic' ) {
+		$allowed_html = [];
+		if ( 'basic' == $context ) {
+			$allowed_html = [
+				'b'      => [
+					'class' => [],
+					'id'    => [],
+				],
+				'i'      => [
+					'class' => [],
+					'id'    => [],
+				],
+				'u'      => [
+					'class' => [],
+					'id'    => [],
+				],
+				'br'     => [
+					'class' => [],
+					'id'    => [],
+				],
+				'em'     => [
+					'class' => [],
+					'id'    => [],
+				],
+				'span'   => [
+					'class' => [],
+					'id'    => [],
+				],
+				'strong' => [
+					'class' => [],
+					'id'    => [],
+				],
+				'hr'     => [
+					'class' => [],
+					'id'    => [],
+				],
+				'a'      => [
+					'href'   => [],
+					'title'  => [],
+					'class'  => [],
+					'id'     => [],
+					'target' => [],
+				],
+				'input'  => [
+					'type'  => [],
+					'name'  => [],
+					'class' => [],
+					'value' => [],
+				],
+				'img'    => [
+					'src'      => [],
+					'data-src' => [],
+					'alt'      => [],
+					'height'   => [],
+					'width'    => [],
+					'class'    => [],
+					'id'       => [],
+					'style'    => [],
+					'srcset'   => [],
+					'loading'  => [],
+					'sizes'    => [],
+				],
+				'div'    => [
+					'class' => [],
+				],
+			];
+		}
 
-		if ( $checked ) {
-			return wp_kses( $html, $allowed_html );
+		if ( $echo ) {
+			echo wp_kses( $html, $allowed_html );
 		} else {
-			return $html;
+			return wp_kses( $html, $allowed_html );
 		}
 	}
+
+
+	/**
+	 * Prints HTMl.
+	 *
+	 * @param $html
+	 * @param $allHtml
+	 *
+	 * @return void
+	 */
+	public static function print_html_all( $html, $allHtml = false ) {
+		if ( ! $html ) {
+			return;
+		}
+		if ( $allHtml ) {
+			echo stripslashes_deep( $html ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			echo wp_kses_post( stripslashes_deep( $html ) );
+		}
+	}
+
 
 	/**
 	 * Sanitize Text Field
 	 *
-	 * @param $data
+	 * @param $input
 	 * @param $default
 	 * @param $mode
 	 *
 	 * @return mixed|string
 	 */
-	public static function sanitize( $data, $default = '', $mode = '' ) {
+	public static function sanitize( $input, $default = '', $mode = '' ) {
+
+		$data = $input ?? $default;
+
 		if ( 'html' === $mode ) {
-			return ! empty( $data ) ? self::html( $data ) : $default;
+			return self::print_html( $data, false );
 		}
 
-		return ! empty( $data ) ? sanitize_text_field( $data ) : $default;
+		return sanitize_text_field( $data );
 	}
 
 	/**
 	 * Social icon for the site
+	 *
 	 * @return mixed|null
 	 */
 	public static function get_socials() {
-		return apply_filters( 'newsfit_socials_icon', [
-			'facebook'  => [
-				'title' => __( 'Facebook', 'newsfit' ),
-				'url'   => newsfit_option( 'facebook' ),
-			],
-			'twitter'   => [
-				'title' => __( 'Twitter', 'newsfit' ),
-				'url'   => newsfit_option( 'twitter' ),
-			],
-			'linkedin'  => [
-				'title' => __( 'Linkedin', 'newsfit' ),
-				'url'   => newsfit_option( 'linkedin' ),
-			],
-			'youtube'   => [
-				'title' => __( 'Youtube', 'newsfit' ),
-				'url'   => newsfit_option( 'youtube' ),
-			],
-			'pinterest' => [
-				'title' => __( 'Pinterest', 'newsfit' ),
-				'url'   => newsfit_option( 'pinterest' ),
-			],
-			'instagram' => [
-				'title' => __( 'Instagram', 'newsfit' ),
-				'url'   => newsfit_option( 'instagram' ),
-			],
-			'skype'     => [
-				'title' => __( 'Skype', 'newsfit' ),
-				'url'   => newsfit_option( 'skype' ),
-			],
-		] );
-
+		return apply_filters(
+			'newsfit_socials_icon',
+			[
+				'facebook'  => [
+					'title' => __( 'Facebook', 'newsfit' ),
+					'url'   => newsfit_option( 'facebook' ),
+				],
+				'twitter'   => [
+					'title' => __( 'Twitter', 'newsfit' ),
+					'url'   => newsfit_option( 'twitter' ),
+				],
+				'linkedin'  => [
+					'title' => __( 'Linkedin', 'newsfit' ),
+					'url'   => newsfit_option( 'linkedin' ),
+				],
+				'youtube'   => [
+					'title' => __( 'Youtube', 'newsfit' ),
+					'url'   => newsfit_option( 'youtube' ),
+				],
+				'pinterest' => [
+					'title' => __( 'Pinterest', 'newsfit' ),
+					'url'   => newsfit_option( 'pinterest' ),
+				],
+				'instagram' => [
+					'title' => __( 'Instagram', 'newsfit' ),
+					'url'   => newsfit_option( 'instagram' ),
+				],
+				'skype'     => [
+					'title' => __( 'Skype', 'newsfit' ),
+					'url'   => newsfit_option( 'skype' ),
+				],
+			]
+		);
 	}
 
 
@@ -127,14 +192,14 @@ class Fns {
 	 * Get image presets
 	 *
 	 * @param $name
-	 * @param int $total
+	 * @param int    $total
 	 * @param string $type
 	 *
 	 * @return array
 	 */
 	public static function image_placeholder( $name, $total = 1, $type = 'svg' ) {
 		$presets = [];
-		for ( $i = 1; $i <= $total; $i ++ ) {
+		for ( $i = 1; $i <= $total; $i++ ) {
 			$image_name    = "$name-$i.$type";
 			$presets[ $i ] = [
 				'image' => newsfit_get_img( $image_name ),
@@ -154,7 +219,7 @@ class Fns {
 	 * @return string
 	 */
 	public static function hex2rgb( $hex ) {
-		$hex = str_replace( "#", "", $hex );
+		$hex = str_replace( '#', '', $hex );
 		if ( strlen( $hex ) == 3 ) {
 			$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
 			$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
@@ -203,20 +268,22 @@ class Fns {
 
 	/**
 	 * Return Sidebar Column
+	 *
 	 * @return string
 	 */
 	public static function sidebar_columns() {
-		$columns = "col-md-4";
+		$columns = 'col-md-4';
 
 		return $columns;
 	}
 
 	/**
 	 * Return content columns
+	 *
 	 * @return string
 	 */
 	public static function content_columns( $full_width_col = 'col-md-12' ) {
-		$sidebar = Opt::$sidebar === 'default' ? Fns::sidebar( 'main' ) : Opt::$sidebar;
+		$sidebar = Opt::$sidebar === 'default' ? self::default_sidebar( 'main' ) : Opt::$sidebar;
 		$columns = ! is_active_sidebar( $sidebar ) ? $full_width_col : 'col-md-8';
 		if ( Opt::$layout === 'full-width' ) {
 			$columns = $full_width_col;
@@ -226,12 +293,12 @@ class Fns {
 	}
 
 	public static function single_content_colums() {
-		$default_sitebar = is_active_sidebar( Fns::sidebar( 'single' ) ) ? Fns::sidebar( 'single' ) : Fns::sidebar( 'main' );
+		$default_sitebar = is_active_sidebar( self::default_sidebar( 'single' ) ) ? self::default_sidebar( 'single' ) : self::default_sidebar( 'main' );
 		$sidebar         = Opt::$sidebar === 'default' ? $default_sitebar : Opt::$sidebar;
-		$columns         = is_active_sidebar( $sidebar ) ? "col-md-8" : "col-md-10 col-md-offset-1";
+		$columns         = is_active_sidebar( $sidebar ) ? 'col-md-8' : 'col-md-10 col-md-offset-1';
 
 		if ( Opt::$layout === 'full-width' ) {
-			$columns = "col-md-10 col-md-offset-1";
+			$columns = 'col-md-10 col-md-offset-1';
 		}
 
 		return $columns;
@@ -240,6 +307,7 @@ class Fns {
 
 	/**
 	 * Get blog colum
+	 *
 	 * @return mixed|string
 	 */
 	public static function blog_column() {
@@ -247,7 +315,7 @@ class Fns {
 			return sanitize_text_field( $_REQUEST['column'] );
 		}
 		$blog_colum_opt = newsfit_option( 'rt_blog_column' ) !== 'default' ? newsfit_option( 'rt_blog_column' ) : '';
-		$blog_sidebar   = Opt::$sidebar === 'default' ? Fns::sidebar( 'main' ) : Opt::$sidebar;
+		$blog_sidebar   = Opt::$sidebar === 'default' ? self::default_sidebar( 'main' ) : Opt::$sidebar;
 		$blog_layout    = Opt::$layout ?? 'right-sidebar';
 
 		$output = 'col-lg-4';
@@ -262,6 +330,7 @@ class Fns {
 
 	/**
 	 * Get all post type
+	 *
 	 * @return array
 	 */
 	public static function get_post_types() {
@@ -284,6 +353,7 @@ class Fns {
 
 	/**
 	 * Meta Style
+	 *
 	 * @return array
 	 */
 	public static function meta_style( $exclude = [] ) {
@@ -306,6 +376,7 @@ class Fns {
 
 	/**
 	 * Single Style
+	 *
 	 * @return array
 	 */
 	public static function single_post_style( $exclude = [] ) {
@@ -327,18 +398,25 @@ class Fns {
 
 	/**
 	 * Blog Meta Style
+	 *
 	 * @return array
 	 */
 	public static function blog_meta_list() {
 		return [
-			'author'   => __( 'Author', 'skyrocket' ),
-			'date'     => __( 'Date', 'skyrocket' ),
-			'category' => __( 'Category', 'skyrocket' ),
-			'tag'      => __( 'Tag', 'skyrocket' ),
-			'comment'  => __( 'Comment', 'skyrocket' ),
+			'author'   => __( 'Author', 'newsfit' ),
+			'date'     => __( 'Date', 'newsfit' ),
+			'category' => __( 'Category', 'newsfit' ),
+			'tag'      => __( 'Tag', 'newsfit' ),
+			'comment'  => __( 'Comment', 'newsfit' ),
+			'time'     => __( 'Reading Time', 'newsfit' ),
 		];
 	}
 
+	/**
+	 * Check if single is fullwidth
+	 *
+	 * @return bool
+	 */
 	public static function is_single_fullwidth() {
 		if ( in_array( Opt::$single_style, [ 'rt-single-top-thumb', 'rt-single-transparent', 'rt-single-content-on-thumb' ] ) ) {
 			return true;
@@ -369,17 +447,24 @@ class Fns {
 		return implode( ' ', $clsses );
 	}
 
-	public static function sidebar( $id = '' ) {
+	/**
+	 * Get all default sidebar args for theme
+	 *
+	 * @param $id
+	 *
+	 * @return array|mixed|null
+	 */
+	public static function default_sidebar( $id = '' ) {
 		$sidebar_lists = [
 			'main'   => [
 				'id'    => 'rt-sidebar',
 				'name'  => __( 'Main Sidebar', 'newsfit' ),
-				'class' => 'rt-sidebar'
+				'class' => 'rt-sidebar',
 			],
 			'single' => [
 				'id'    => 'rt-single-sidebar',
 				'name'  => __( 'Single Sidebar', 'newsfit' ),
-				'class' => 'rt-single-sidebar'
+				'class' => 'rt-single-sidebar',
 			],
 			'footer' => [
 				'id'    => 'rt-footer-sidebar',
@@ -412,17 +497,51 @@ class Fns {
 
 	/**
 	 * Get Sidebar lists
+	 *
 	 * @return array
 	 */
-	public static function sidebar_lists() {
+	public static function sidebar_lists( $default_title = '' ) {
 		$sidebar_fields            = [];
-		$sidebar_fields['default'] = esc_html__( 'Choose Sidebar', 'newsfit' );
+		$sidebar_fields['default'] = $default_title ?? esc_html__( 'Choose Sidebar', 'newsfit' );
 
-		foreach ( self::sidebar() as $id => $sidebar ) {
+		foreach ( self::default_sidebar() as $id => $sidebar ) {
 			$sidebar_fields[ $id ] = $sidebar['name'];
 		}
 
-
 		return $sidebar_fields;
+	}
+
+	/**
+	 * Post reading time calculate
+	 *
+	 * @param $content
+	 * @param $is_zero
+	 * @param $reading_suffix
+	 *
+	 * @return string
+	 */
+	public static function reading_time_count( $content = '', $is_zero = false, $reading_suffix = '' ) {
+		global $post;
+		$post_content = $content ?? $post->post_content;
+		$word         = str_word_count( wp_strip_all_tags( strip_shortcodes( $post_content ) ) );
+		$m            = floor( $word / 200 );
+		$s            = floor( $word % 200 / ( 200 / 60 ) );
+		if ( $is_zero && $m < 10 ) {
+			$m = '0' . $m;
+		}
+		if ( $is_zero && $s < 10 ) {
+			$s = '0' . $s;
+		}
+		$suffix = $reading_suffix ? ' ' . $reading_suffix : null;
+
+		/* translators: used time as singular and plular */
+		$text = sprintf( _n( '%s Min', '%s Mins', $m, 'newsfit' ), $m );
+
+		if ( $m < 1 ) {
+			/* translators: used time as singular and plular */
+			$text = sprintf( _n( '%s Second', '%s Seconds', $s, 'newsfit' ), $s );
+		}
+
+		return $text . $suffix;
 	}
 }

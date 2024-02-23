@@ -11,17 +11,17 @@ get_header(); ?>
 	<div class="container">
 		<div class="row pt-50 pb-50 d-flex gap-15">
 			<?php
-			echo newsfit_get_svg( 'search' );
-			echo newsfit_get_svg( 'facebook' );
-			echo newsfit_get_svg( 'twitter' );
-			echo newsfit_get_svg( 'linkedin' );
-			echo newsfit_get_svg( 'instagram' );
-			echo newsfit_get_svg( 'pinterest' );
-			echo newsfit_get_svg( 'tiktok' );
-			echo newsfit_get_svg( 'youtube' );
-			echo newsfit_get_svg( 'snapchat' );
-			echo newsfit_get_svg( 'whatsapp' );
-			echo newsfit_get_svg( 'reddit' );
+			newsfit_get_svg( 'search' );
+			newsfit_get_svg( 'facebook' );
+			newsfit_get_svg( 'twitter' );
+			newsfit_get_svg( 'linkedin' );
+			newsfit_get_svg( 'instagram' );
+			newsfit_get_svg( 'pinterest' );
+			newsfit_get_svg( 'tiktok' );
+			newsfit_get_svg( 'youtube' );
+			newsfit_get_svg( 'snapchat' );
+			newsfit_get_svg( 'whatsapp' );
+			newsfit_get_svg( 'reddit' );
 			?>
 		</div>
 	</div>

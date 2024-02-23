@@ -17,7 +17,7 @@ $menu_classes = newsfit_option( 'rt_menu_alignment' );
 			<div class="row align-middle m-0">
 
 				<div class="site-branding pr-15">
-					<?php echo newsfit_site_logo( $logo_h1 ); ?>
+					<?php newsfit_site_logo( $logo_h1 ); ?>
 				</div><!-- .site-branding -->
 
 				<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15 <?php echo esc_attr( $menu_classes ) ?>" role="navigation">

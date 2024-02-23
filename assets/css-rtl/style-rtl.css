@@ -5278,6 +5278,16 @@ article:hover .newsfit-post-meta ul li.edit-link {
 .newsfit-post-meta ul li a:hover {
   color: var(--rt-title-color);
 }
+.newsfit-post-meta svg {
+  fill: none;
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  transform: translateY(2px);
+}
+.newsfit-post-meta svg path {
+  stroke: var(--rt-meta-color);
+}
 .meta-style-default .newsfit-post-meta {
   font-size: 16px;
 }

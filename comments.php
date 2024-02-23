@@ -56,8 +56,8 @@ if ( 'open' !== get_option( 'default_comment_status' ) ) {
 					<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'newsfit' ); ?></h2>
 					<div class="nav-links">
 						<?php
-						$arrow_next = newsfit_get_svg( 'arrow-right' );
-						$arrow_prev = newsfit_get_svg( 'arrow-right', '180' );
+						$arrow_next = newsfit_get_svg( 'arrow-right', false );
+						$arrow_prev = newsfit_get_svg( 'arrow-right', false, '180' );
 						?>
 						<div class="nav-previous"><?php previous_comments_link( $arrow_prev . esc_html__( 'Older Comments', 'newsfit' ) ); ?></div>
 						<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'newsfit' ) . $arrow_next ); ?></div>

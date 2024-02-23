@@ -44,6 +44,22 @@
 		}
 	}
 
+	svg {
+		fill: none;
+		width: 16px;
+		height: 16px;
+		margin-right: 6px;
+		transform: translateY(2px);
+	}
+
+	.rticon-tag svg {
+
+	}
+
+	svg path {
+		stroke: $meta_color;
+	}
+
 	//Default meta style
 	.meta-style-default & {
 		font-size: $base_fs;

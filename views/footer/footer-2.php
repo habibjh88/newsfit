@@ -46,7 +46,7 @@ $footer_container = 'container' . newsfit_option( 'rt_footer_width' );
 				</div>
 				<div class="col-md-6">
 					<div class="copyright-text text-right">
-						<?php echo Fns::html( str_replace( '[y]', date( 'Y' ), newsfit_option( 'rt_footer_copyright' ) ) ); ?>
+						<?php Fns::print_html( str_replace( '[y]', date( 'Y' ), newsfit_option( 'rt_footer_copyright' ) ) ); ?>
 					</div>
 				</div>
 			</div>

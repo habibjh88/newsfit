@@ -190,7 +190,7 @@ class Extras {
             <div class="search-box">
 				<input type="text" class="form-control" placeholder="' . esc_attr__( 'Search here...', 'newsfit' ) . '" value="' . get_search_query() . '" name="s" />
 				<button class="item-btn" type="submit">
-					' . newsfit_get_svg( 'search' ) . '
+					' . newsfit_get_svg( 'search', false ) . '
 					<span class="btn-label">' . esc_html__( "Search", "newsfit" ) . '</span>
 				</button>
             </div>

@@ -21,7 +21,7 @@ use RT\Newsfit\Options\Opt;
 		<div class="entry-wrapper">
 			<?php newsfit_single_entry_header(); ?>
 
-			<?php if ( newsfit_option( 'rt_blog_content_visibility' ) ) : ?>
+			<?php if ( newsfit_option( 'rt_blog_content' ) ) : ?>
 				<div class="entry-content">
 					<?php newsfit_entry_content() ?>
 				</div>

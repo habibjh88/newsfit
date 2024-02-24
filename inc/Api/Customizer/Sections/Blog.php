@@ -51,8 +51,7 @@ class Blog extends Customizer {
 		return apply_filters(
 			'newsfit_blog_controls',
 			[
-
-				'rt_blog_style'                => [
+				'rt_blog_style' => [
 					'type'        => 'select',
 					'label'       => __( 'Blog Style', 'newsfit' ),
 					'description' => __( 'This option works only for large device', 'newsfit' ),
@@ -63,7 +62,7 @@ class Blog extends Customizer {
 					],
 				],
 
-				'rt_blog_column'               => [
+				'rt_blog_column' => [
 					'type'        => 'select',
 					'label'       => __( 'Grid Column', 'newsfit' ),
 					'description' => __( 'This option works only for large device', 'newsfit' ),
@@ -77,32 +76,32 @@ class Blog extends Customizer {
 					],
 				],
 
-				'rt_excerpt_limit'             => [
+				'rt_excerpt_limit' => [
 					'type'    => 'text',
 					'label'   => __( 'Content Limit', 'newsfit' ),
 					'default' => '30',
 				],
 
-				'rt_meta_heading'              => [
+				'rt_meta_heading' => [
 					'type'  => 'heading',
 					'label' => __( 'Post Meta Settings', 'newsfit' ),
 				],
 
-				'rt_blog_meta_style'           => [
+				'rt_blog_meta_style' => [
 					'type'    => 'select',
 					'label'   => __( 'Meta Style', 'newsfit' ),
 					'default' => 'meta-style-default',
 					'choices' => Fns::meta_style(),
 				],
 
-				'rt_single_above_meta_style'   => [
+				'rt_single_above_meta_style' => [
 					'type'    => 'select',
 					'label'   => __( 'Title Above Meta Style', 'newsfit' ),
 					'default' => 'meta-style-dash',
 					'choices' => Fns::meta_style( [ 'meta-style-dash-bg', 'meta-style-pipe' ] ),
 				],
 
-				'rt_blog_meta'                 => [
+				'rt_blog_meta' => [
 					'type'        => 'select2',
 					'label'       => __( 'Choose Meta', 'newsfit' ),
 					'description' => __( 'You can sort meta by drag and drop', 'newsfit' ),
@@ -112,29 +111,42 @@ class Blog extends Customizer {
 					'choices'     => Fns::blog_meta_list(),
 				],
 
-				'rt_visibility'                => [
+				'rt_visibility' => [
 					'type'  => 'heading',
 					'label' => __( 'Visibility Section', 'newsfit' ),
 				],
 
-				'rt_meta_visibility'           => [
+				'rt_meta_visibility' => [
 					'type'    => 'switch',
 					'label'   => __( 'Meta Visibility', 'newsfit' ),
 					'default' => 1,
 				],
 
-				'rt_blog_above_cat_visibility' => [
+				'rt_blog_above_meta' => [
 					'type'  => 'switch',
 					'label' => __( 'Title Above Meta Visibility', 'newsfit' ),
 				],
 
-				'rt_blog_content_visibility'   => [
+				'rt_meta_icon' => [
+					'type'    => 'switch',
+					'label'   => __( 'Meta Icons ?', 'newsfit' ),
+					'default' => 0,
+				],
+
+				'rt_meta_user_avatar' => [
+					'type'      => 'switch',
+					'label'     => __( 'Meta User Avatar ?', 'newsfit' ),
+					'default'   => 0,
+					'condition' => [ 'rt_meta_icon' ],
+				],
+
+				'rt_blog_content' => [
 					'type'    => 'switch',
 					'label'   => __( 'Entry Content Visibility', 'newsfit' ),
 					'default' => 1,
 				],
 
-				'rt_blog_footer_visibility'    => [
+				'rt_blog_footer' => [
 					'type'    => 'switch',
 					'label'   => __( 'Entry Footer Visibility', 'newsfit' ),
 					'default' => 1,

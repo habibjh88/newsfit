@@ -4,11 +4,15 @@ namespace RT\Newsfit\Setup;
 
 use RT\Newsfit\Traits\SingletonTraits;
 
+/**
+ * Theme Setup Class
+ */
 class Setup {
 	use SingletonTraits;
 
 	/**
-	 * register default hooks and actions for WordPress
+	 * Register default hooks and actions for WordPress
+	 *
 	 * @return void
 	 */
 	public function __construct() {
@@ -20,6 +24,7 @@ class Setup {
 
 	/**
 	 * Setup Theme
+	 *
 	 * @return void
 	 */
 	public function setup() {
@@ -31,12 +36,13 @@ class Setup {
 
 	/**
 	 * Add Image Size
+	 *
 	 * @return void
 	 */
 	private function add_image_size() {
 		$sizes = [
-			'rdtheme-1200-650' => [ 1200, 650, true ],
-			'newsfit-500-500'  => [ 500, 500, true ],
+			'rt-large'  => [ 1200, 650, true ],
+			'rt-square' => [ 500, 500, true ],
 		];
 
 		$sizes = apply_filters( 'newsfit_image_size', $sizes );
@@ -48,6 +54,7 @@ class Setup {
 
 	/**
 	 * Add Theme Support
+	 *
 	 * @return void
 	 */
 	private function add_theme_support() {
@@ -63,34 +70,19 @@ class Setup {
 		add_theme_support( 'wp-block-styles' );
 		add_theme_support( 'editor-styles' );
 		add_theme_support( 'custom-logo' );
-		add_theme_support( "custom-header" );
-		add_theme_support( "custom-background" );
+		add_theme_support( 'custom-header' );
+		add_theme_support( 'custom-background' );
 
 		/**
 		 * Add woocommerce support and woocommerce override
 		 */
-//		add_theme_support( 'woocommerce' );
-
-
-		/*
-		 * Activate Post formats if you need
-		 */
-		add_theme_support( 'post-formats', [
-			'aside',
-			'gallery',
-			'link',
-			'image',
-			'quote',
-			'status',
-			'video',
-			'audio',
-			'chat',
-		] );
+		add_theme_support( 'woocommerce' );
 	}
 
-	/*
-		Define a max content width to allow WordPress to properly resize your images
-	*/
+	/**
+	 * Define a max content width to allow WordPress to properly resize your images
+	 * @return void
+	 */
 	public function content_width() {
 		$GLOBALS['content_width'] = apply_filters( 'content_width', 1440 );
 	}
@@ -102,7 +94,7 @@ class Setup {
 	 *
 	 * @return mixed
 	 */
-	function newsfit_mime_types( $mimes ) {
+	public function newsfit_mime_types( $mimes ) {
 		if ( ! newsfit_option( 'rt_svg_enable' ) ) {
 			return $mimes;
 		}

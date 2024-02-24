@@ -7,10 +7,10 @@
  * @package newsfit
  */
 
-$meta_list = newsfit_option( 'rt_single_meta', '', true );
-$meta      = newsfit_option( 'rt_blog_above_cat_visibility' );
+$meta_list = newsfit_option( 'rt_single_meta_list', '', true );
+$meta      = newsfit_option( 'rt_blog_above_meta' );
 $meta      = newsfit_option( 'rt_single_above_meta_style' );
-if ( newsfit_option( 'rt_single_above_cat_visibility' ) ) {
+if ( newsfit_option( 'rt_single_above_meta' ) ) {
 	$category_index = array_search( 'category', $meta_list );
 	unset( $meta_list[ $category_index ] );
 }
@@ -19,7 +19,7 @@ if ( newsfit_option( 'rt_single_above_cat_visibility' ) ) {
 	<div class="article-inner-wrapper">
 
 		<div class="entry-wrapper">
-			<?php if ( newsfit_option( 'rt_blog_content_visibility' ) ) : ?>
+			<?php if ( newsfit_option( 'rt_blog_content' ) ) : ?>
 				<div class="entry-content">
 					<?php newsfit_entry_content() ?>
 				</div>

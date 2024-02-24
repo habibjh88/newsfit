@@ -9,7 +9,7 @@
 
 
 $meta_list = newsfit_option( 'rt_blog_meta', '', true );
-if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
+if ( newsfit_option( 'rt_blog_above_ca_visibility' ) ) {
 	$category_index = array_search( 'category', $meta_list );
 	unset( $meta_list[ $category_index ] );
 }
@@ -32,18 +32,11 @@ if ( newsfit_option( 'rt_blog_above_cat_visibility' ) ) {
 				}
 
 				if ( ! empty( $meta_list ) && newsfit_option( 'rt_meta_visibility' ) ) {
-					newsfit_post_meta(
-						[
-							'with_list'     => true,
-							'include'       => $meta_list,
-							'author_prefix' => newsfit_option( 'rt_author_prefix' ),
-							'with_icon'     => true,
-						]
-					);
+					newsfit_post_meta( [ 'include' => $meta_list ] );
 				}
 				?>
 			</header>
-			<?php if ( newsfit_option( 'rt_blog_content_visibility' ) ) : ?>
+			<?php if ( newsfit_option( 'rt_blog_content' ) ) : ?>
 				<div class="entry-content">
 					<?php newsfit_entry_content(); ?>
 				</div>

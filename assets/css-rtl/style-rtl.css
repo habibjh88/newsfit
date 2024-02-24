@@ -5247,18 +5247,15 @@ p.comment-form-cookies-consent * {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
   row-gap: 2px;
   -moz-column-gap: 10px;
        column-gap: 10px;
 }
 .newsfit-post-meta ul li {
   position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline;
   line-height: 1.5;
+  margin-left: 12px;
 }
 .newsfit-post-meta ul li .prefix {
   margin-left: 4px;
@@ -5278,12 +5275,19 @@ article:hover .newsfit-post-meta ul li.edit-link {
 .newsfit-post-meta ul li a:hover {
   color: var(--rt-title-color);
 }
-.newsfit-post-meta svg {
+.newsfit-post-meta ul li svg {
   fill: none;
   width: 16px;
   height: 16px;
   margin-left: 6px;
   transform: translateY(2px);
+}
+.newsfit-post-meta ul li img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 6px;
+  transform: translateY(8px);
 }
 .newsfit-post-meta svg path {
   stroke: var(--rt-meta-color);
@@ -5295,9 +5299,6 @@ article:hover .newsfit-post-meta ul li.edit-link {
   -moz-column-gap: 10px;
        column-gap: 10px;
   display: block;
-}
-.meta-style-default .newsfit-post-meta ul li {
-  display: inline;
 }
 .meta-style-default .newsfit-post-meta ul li:not(:last-child) {
   margin-left: 16px;
@@ -5311,13 +5312,24 @@ article:hover .newsfit-post-meta ul li.edit-link {
   display: inline-block;
   margin-left: 5px;
   transform: translateY(-2px);
+  opacity: 0.7;
 }
 .meta-style-border .newsfit-post-meta ul {
   gap: 5px;
 }
+.meta-style-border .newsfit-post-meta ul li {
+  display: inline-block;
+  align-items: center;
+  margin-bottom: 4px;
+  margin-left: 5px;
+}
+.meta-style-border .newsfit-post-meta img,
+.meta-style-border .newsfit-post-meta [class*=rticon] {
+  display: none;
+}
 .meta-style-border .newsfit-post-meta ul li:not(.category, .tag) {
   border: 1px solid var(--rt-primary-color);
-  padding: 0 10px;
+  padding: 2px 10px;
 }
 .meta-style-border .newsfit-post-meta ul li:is(.category, .tag) {
   padding: 0;
@@ -5348,6 +5360,13 @@ article:hover .newsfit-post-meta ul li.edit-link {
 }
 .meta-style-dash-bg .newsfit-post-meta li {
   padding: 0;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.meta-style-dash-bg .newsfit-post-meta img,
+.meta-style-dash-bg .newsfit-post-meta [class*=rticon] {
+  display: none;
 }
 .meta-style-dash-bg .newsfit-post-meta .tag-links,
 .meta-style-dash-bg .newsfit-post-meta .category-links {
@@ -5361,7 +5380,7 @@ article:hover .newsfit-post-meta ul li.edit-link {
   justify-content: center;
   align-items: center;
   padding: 3px 10px;
-  margin: 0;
+  margin-bottom: 5px;
   transition: all 320ms ease;
 }
 .meta-style-dash-bg .newsfit-post-meta li:not(.category, .tag) a:hover {

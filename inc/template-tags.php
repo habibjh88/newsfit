@@ -129,7 +129,7 @@ if ( ! function_exists( 'newsfit_require' ) ) {
 	 * Require any file. If the file will available in the child theme, the file will load from the child theme
 	 *
 	 * @param $filename
-	 * @param string   $dir
+	 * @param string $dir
 	 *
 	 * @return false|void
 	 */
@@ -289,7 +289,7 @@ if ( ! function_exists( 'newsfit_get_svg' ) ) {
 				'share'            => '<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.72904 2.93333V0L0.595703 5.13333L5.72904 10.2667V7.26C9.3957 7.26 11.9624 8.43333 13.7957 11C13.0624 7.33333 10.8624 3.66667 5.72904 2.93333Z"/></svg>',
 				'camera'           => '<svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.0843 2.9079H18.489H16.9559V1.90484C16.9559 1.53787 16.8172 1.20352 16.5644 0.942561C16.3116 0.681603 15.9691 0.542969 15.6021 0.542969H13.1149C12.3646 0.542969 11.753 1.15459 11.753 1.90484V2.9079H6.17502C6.15871 2.492 5.99561 2.10872 5.70203 1.80699C5.39214 1.4971 4.9844 1.32584 4.55218 1.32584C3.67145 1.334 2.95381 2.03532 2.92935 2.9079H2.25249C1.24128 2.9079 0.425781 3.7234 0.425781 4.72646V14.7244C0.425781 15.7275 1.24128 16.543 2.24433 16.543H19.0761C20.0792 16.543 20.8947 15.7275 20.8947 14.7244V4.72646C20.9028 3.7234 20.0874 2.9079 19.0843 2.9079ZM12.3728 1.90484C12.3728 1.4971 12.7071 1.16274 13.1149 1.16274H15.6021C15.7 1.16274 15.7979 1.17905 15.8876 1.21983C15.9773 1.2606 16.0588 1.30953 16.124 1.38293C16.2627 1.52156 16.3361 1.70913 16.3361 1.90484V2.9079H12.3728V1.90484ZM4.55218 1.95377C4.8213 1.95377 5.0741 2.05979 5.26166 2.24735C5.44107 2.42676 5.53893 2.6551 5.55524 2.9079H3.54912C3.57359 2.37783 4.01396 1.95377 4.55218 1.95377ZM1.04556 14.7244V4.72646C1.04556 4.0659 1.58378 3.52768 2.24433 3.52768H3.19846C3.20662 3.52768 3.22293 3.52768 3.23108 3.52768H5.86513C5.87328 3.52768 5.88959 3.52768 5.89775 3.52768H18.1791V15.9232H2.24433C1.58378 15.9232 1.04556 15.385 1.04556 14.7244ZM20.2831 14.7244C20.2831 15.385 19.7448 15.9232 19.0843 15.9232H18.7989V3.52768H19.0843C19.7448 3.52768 20.2831 4.0659 20.2831 4.72646V14.7244Z"/><path d="M10.6681 7.77637C9.59167 7.77637 8.71094 8.6571 8.71094 9.73355C8.71094 10.81 9.59167 11.6907 10.6681 11.6907C11.7446 11.6907 12.6253 10.81 12.6253 9.73355C12.6172 8.64895 11.7446 7.77637 10.6681 7.77637ZM10.6681 11.0628C9.93418 11.0628 9.33071 10.4675 9.33071 9.7254C9.33071 8.99145 9.92602 8.38799 10.6681 8.38799C11.4021 8.38799 12.0055 8.9833 12.0055 9.7254C11.9974 10.4593 11.4021 11.0628 10.6681 11.0628Z"/><path d="M10.669 5.14233C8.14098 5.14233 6.08594 7.19738 6.08594 9.72541C6.08594 12.2534 8.14098 14.3085 10.669 14.3085C13.197 14.3085 15.2521 12.2534 15.2521 9.72541C15.2521 7.19738 13.1889 5.14233 10.669 5.14233ZM10.669 13.6887C8.48349 13.6887 6.70571 11.9109 6.70571 9.72541C6.70571 7.53989 8.48349 5.76211 10.669 5.76211C12.8545 5.76211 14.6323 7.53989 14.6323 9.72541C14.6242 11.9109 12.8464 13.6887 10.669 13.6887Z"/></svg>',
 				'comment'          => '<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.7492 13.978C19.7492 14.5085 19.5385 15.0172 19.1634 15.3922C18.7883 15.7673 18.2796 15.978 17.7492 15.978H5.74918L1.74918 19.978V3.97803C1.74918 3.44759 1.95989 2.93889 2.33496 2.56381C2.71004 2.18874 3.21874 1.97803 3.74918 1.97803H17.7492C18.2796 1.97803 18.7883 2.18874 19.1634 2.56381C19.5385 2.93889 19.7492 3.44759 19.7492 3.97803V13.978Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-				'calender'         => '<svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7719 1.81143V5.81143M6.77188 1.81143V5.81143M1.77188 9.8114H19.7719M3.77188 3.81143H17.7719C18.8765 3.81143 19.7719 4.70686 19.7719 5.81143V19.8114C19.7719 20.916 18.8765 21.8114 17.7719 21.8114H3.77188C2.66731 21.8114 1.77188 20.916 1.77188 19.8114V5.81143C1.77188 4.70686 2.66731 3.81143 3.77188 3.81143Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+				'date'             => '<svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7719 1.81143V5.81143M6.77188 1.81143V5.81143M1.77188 9.8114H19.7719M3.77188 3.81143H17.7719C18.8765 3.81143 19.7719 4.70686 19.7719 5.81143V19.8114C19.7719 20.916 18.8765 21.8114 17.7719 21.8114H3.77188C2.66731 21.8114 1.77188 20.916 1.77188 19.8114V5.81143C1.77188 4.70686 2.66731 3.81143 3.77188 3.81143Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 				'category'         => '<svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9231 17.8114C21.9231 18.3419 21.7124 18.8506 21.3373 19.2256C20.9622 19.6007 20.4535 19.8114 19.9231 19.8114H3.9231C3.39266 19.8114 2.88395 19.6007 2.50888 19.2256C2.13381 18.8506 1.9231 18.3419 1.9231 17.8114V3.81143C1.9231 3.281 2.13381 2.77229 2.50888 2.39722C2.88395 2.02215 3.39266 1.81143 3.9231 1.81143H8.9231L10.9231 4.81143H19.9231C20.4535 4.81143 20.9622 5.02215 21.3373 5.39722C21.7124 5.77229 21.9231 6.281 21.9231 6.81143V17.8114Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 				'tag'              => '<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.375 6.66845H16.3647M2.45246 13.2353L9.79789 20.5807C9.98818 20.7712 10.2142 20.9224 10.4629 21.0255C10.7116 21.1286 10.9782 21.1817 11.2475 21.1817C11.5168 21.1817 11.7834 21.1286 12.0321 21.0255C12.2809 20.9224 12.5068 20.7712 12.6971 20.5807L21.4973 11.7908V1.54614H11.2526L2.45246 10.3463C2.07084 10.7302 1.85664 11.2495 1.85664 11.7908C1.85664 12.3321 2.07084 12.8514 2.45246 13.2353Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 				'author'           => '<svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5477 19.978V17.978C17.5477 16.9172 17.1263 15.8997 16.3761 15.1496C15.626 14.3995 14.6086 13.978 13.5477 13.978H5.54771C4.48685 13.978 3.46943 14.3995 2.71929 15.1496C1.96914 15.8997 1.54771 16.9172 1.54771 17.978V19.978M13.5477 5.97803C13.5477 8.18717 11.7569 9.97803 9.54771 9.97803C7.33858 9.97803 5.54771 8.18717 5.54771 5.97803C5.54771 3.76889 7.33858 1.97803 9.54771 1.97803C11.7569 1.97803 13.5477 3.76889 13.5477 5.97803Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -368,7 +368,7 @@ if ( ! function_exists( 'newsfit_get_css' ) ) {
 	 * Get CSS Path
 	 *
 	 * @param $filename
-	 * @param bool     $check_rtl
+	 * @param bool $check_rtl
 	 *
 	 * @return string
 	 */
@@ -480,7 +480,7 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 		</a>
 		<?php if ( $with_h1 ) : ?>
 			</h1>
-			<?php
+		<?php
 		endif;
 	}
 }
@@ -546,8 +546,10 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 			'with_list'     => true,
 			'include'       => [],
 			'class'         => '',
-			'author_prefix' => __( 'By', 'newsfit' ),
-			'with_icon'     => false,
+			'author_prefix' => newsfit_option( 'rt_author_prefix' ),
+			'with_icon'     => newsfit_option( 'rt_meta_icon' ),
+			'with_avatar'   => newsfit_option( 'rt_meta_user_avatar' ),
+			'avatar_size'   => 30,
 		];
 
 		$args = wp_parse_args( $args, $default_args );
@@ -576,9 +578,17 @@ if ( ! function_exists( 'newsfit_post_meta' ) ) {
 			if ( ! $meta ) {
 				continue;
 			}
+			$icons = newsfit_get_svg( $key, false );
+
+			if ( $args['with_avatar'] && 'author' === $key ) {
+				$icons = get_avatar( get_the_author_meta( 'ID' ), $args['avatar_size'], '', 'Avater Image' );
+			}
+
 			$output .= ( $args['with_list'] ) ? '<li class="' . $key . '">' : '';
-			$output .= $args['with_icon'] ? newsfit_get_svg( $key, false ) : null;
+			$output .= '<span class="meta-inner">';
+			$output .= $args['with_icon'] ? $icons : null;
 			$output .= $meta;
+			$output .= '</span>';
 			$output .= ( $args['with_list'] ) ? '</li>' : '';
 		}
 
@@ -605,7 +615,7 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 		<div class="post-thumbnail-wrap">
 			<figure class="post-thumbnail">
 				<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-					<?php the_post_thumbnail( 'newsfit-500-500', [ 'loading' => 'lazy' ] ); ?>
+					<?php the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] ); ?>
 				</a>
 				<?php edit_post_link( 'Edit' ); ?>
 			</figure><!-- .post-thumbnail -->
@@ -650,7 +660,7 @@ if ( ! function_exists( 'newsfit_entry_footer' ) ) {
 	function newsfit_entry_footer() {
 
 		if ( ! is_single() ) {
-			if ( newsfit_option( 'rt_blog_footer_visibility' ) ) {
+			if ( newsfit_option( 'rt_blog_footer' ) ) {
 				?>
 				<footer class="entry-footer">
 					<a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo newsfit_readmore_text(); ?></a>
@@ -756,7 +766,7 @@ if ( ! function_exists( 'newsfit_separate_meta' ) ) {
 	 * @return string
 	 */
 	function newsfit_separate_meta( $class = '', $includes = [ 'category' ] ) {
-		if ( ( ! is_single() && newsfit_option( 'rt_blog_above_cat_visibility' ) ) || ( is_single() && newsfit_option( 'rt_single_above_cat_visibility' ) ) ) :
+		if ( ( ! is_single() && newsfit_option( 'rt_blog_above_meta' ) ) || ( is_single() && newsfit_option( 'rt_single_above_meta' ) ) ) :
 			?>
 			<div class="separate-meta <?php echo esc_attr( $class ); ?>">
 				<?php
@@ -764,11 +774,12 @@ if ( ! function_exists( 'newsfit_separate_meta' ) ) {
 					[
 						'with_list' => false,
 						'include'   => $includes,
+						'with_icon' => false,
 					]
 				);
 				?>
 			</div>
-			<?php
+		<?php
 		endif;
 	}
 }
@@ -787,7 +798,7 @@ if ( ! function_exists( 'newsfit_single_entry_header' ) ) {
 
 			the_title( '<h1 class="entry-title default-max-width">', '</h1>' );
 
-			if ( ! empty( Fns::single_meta_lists() ) && newsfit_option( 'rt_single_meta_visibility' ) ) {
+			if ( ! empty( Fns::single_meta_lists() ) && newsfit_option( 'rt_single_meta' ) ) {
 				newsfit_post_meta(
 					[
 						'with_list'     => true,

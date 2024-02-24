@@ -7,18 +7,15 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
-		display: flex;
-		flex-wrap: wrap;
 		row-gap: 2px;
 		column-gap: 10px;
 	}
 
 	ul li {
 		position: relative;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
+		display: inline;
 		line-height: 1.5;
+		margin-right: 12px;
 
 		.prefix {
 			margin-right: 4px;
@@ -44,12 +41,20 @@
 		}
 	}
 
-	svg {
+	ul li svg {
 		fill: none;
 		width: 16px;
 		height: 16px;
 		margin-right: 6px;
 		transform: translateY(2px);
+	}
+
+	ul li img {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		margin-right: 6px;
+		transform: translateY(8px);
 	}
 
 	.rticon-tag svg {
@@ -68,9 +73,6 @@
 			column-gap: 10px;
 			display: block;
 		}
-		ul li {
-			display: inline;
-		}
 
 		ul li:not(:last-child) {
 			margin-right: 16px;
@@ -85,17 +87,32 @@
 			display: inline-block;
 			margin-right: 5px;
 			transform: translateY(-2px);
+			opacity: .7;
 		}
 	}
+
+	//Border meta style
 
 	.meta-style-border & {
 		ul {
 			gap: 5px;
 		}
 
+		ul li {
+			display: inline-block;
+			align-items: center;
+			margin-bottom: 4px;
+			margin-right: 5px;
+		}
+
+		img,
+		[class*=rticon] {
+			display: none;
+		}
+
 		ul li:not(.category, .tag) {
 			border: 1px solid $primary_color;
-			padding: 0 10px;
+			padding: 2px 10px;
 			@extend .primaryColor;
 
 			a {
@@ -158,10 +175,18 @@
 
 		li {
 			padding: 0;
+			display: inline-block;
+			margin-right: 5px;
+			margin-bottom: 5px;
 		}
 
 		li::before {
 			@extend .metaStyleDash;
+		}
+
+		img,
+		[class*=rticon] {
+			display: none;
 		}
 
 		.tag-links,
@@ -177,7 +202,7 @@
 			justify-content: center;
 			align-items: center;
 			padding: 3px 10px;
-			margin: 0;
+			margin-bottom: 5px;
 			@include transition_default();
 			@extend .primaryColor;
 

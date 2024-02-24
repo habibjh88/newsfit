@@ -50,14 +50,14 @@ class BlogSingle extends Customizer {
 			'newsfit_single_controls',
 			[
 
-				'rt_single_post_style'           => [
+				'rt_single_post_style' => [
 					'type'    => 'select',
 					'label'   => __( 'Post View Style', 'newsfit' ),
 					'default' => 'single-default',
 					'choices' => Fns::single_post_style(),
 				],
 
-				'rt_single_meta'                 => [
+				'rt_single_meta_list' => [
 					'type'        => 'select2',
 					'label'       => __( 'Choose Single Meta', 'newsfit' ),
 					'description' => __( 'You can sort meta by drag and drop', 'newsfit' ),
@@ -67,25 +67,25 @@ class BlogSingle extends Customizer {
 					'choices'     => Fns::blog_meta_list(),
 				],
 
-				'rt_single_meta_style'           => [
+				'rt_single_meta_style' => [
 					'type'    => 'select',
 					'label'   => __( 'Meta Style', 'newsfit' ),
 					'default' => 'meta-style-default',
 					'choices' => Fns::meta_style(),
 				],
 
-				'rt_single_visibility_heading'   => [
+				'rt_single_visibility_heading' => [
 					'type'  => 'heading',
 					'label' => __( 'Visibility Section', 'newsfit' ),
 				],
 
-				'rt_single_meta_visibility'      => [
+				'rt_single_meta' => [
 					'type'    => 'switch',
 					'label'   => __( 'Meta Visibility', 'newsfit' ),
 					'default' => 1,
 				],
 
-				'rt_single_above_cat_visibility' => [
+				'rt_single_above_meta' => [
 					'type'  => 'switch',
 					'label' => __( 'Title Above Meta Visibility', 'newsfit' ),
 				],

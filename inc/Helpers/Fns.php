@@ -192,14 +192,14 @@ class Fns {
 	 * Get image presets
 	 *
 	 * @param $name
-	 * @param int    $total
+	 * @param int $total
 	 * @param string $type
 	 *
 	 * @return array
 	 */
 	public static function image_placeholder( $name, $total = 1, $type = 'svg' ) {
 		$presets = [];
-		for ( $i = 1; $i <= $total; $i++ ) {
+		for ( $i = 1; $i <= $total; $i ++ ) {
 			$image_name    = "$name-$i.$type";
 			$presets[ $i ] = [
 				'image' => newsfit_get_img( $image_name ),
@@ -359,6 +359,7 @@ class Fns {
 	public static function meta_style( $exclude = [] ) {
 		$meta_style = [
 			'meta-style-default' => __( 'Default From Theme', 'newsfit' ),
+			'meta-style-none'    => __( 'No Style', 'newsfit' ),
 			'meta-style-border'  => __( 'Border Style', 'newsfit' ),
 			'meta-style-dash'    => __( 'Before Dash ( — )', 'newsfit' ),
 			'meta-style-dash-bg' => __( 'Before Dash with BG ( — )', 'newsfit' ),
@@ -427,8 +428,8 @@ class Fns {
 
 
 	public static function single_meta_lists() {
-		$meta_list = newsfit_option( 'rt_single_meta', '', true );
-		if ( newsfit_option( 'rt_single_above_cat_visibility' ) ) {
+		$meta_list = newsfit_option( 'rt_single_meta_list', '', true );
+		if ( newsfit_option( 'rt_single_above_meta' ) ) {
 			$category_index = array_search( 'category', $meta_list );
 			unset( $meta_list[ $category_index ] );
 		}

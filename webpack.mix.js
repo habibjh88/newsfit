@@ -19,16 +19,6 @@ mix.autoload({
 	jquery: ['$', 'window.jQuery', 'jQuery'],
 });
 
-// mix.setPublicPath('./assets/dist');
-
-// JS Compile assets.
-// mix.js('src/scripts/app.js', 'assets/js')
-// 	.js('src/scripts/admin.js', 'assets/js');
-//
-// mix.sass('src/sass/admin.scss', 'assets/dist/admin.min.css')
-// 	.sass('src/sass/rtl.scss', 'build/temp')
-// .sass('src/sass/rtl.scss', 'build/temp')
-
 
 mix.sass('src/sass/style.scss', `assets/css/style${min}.css`)
 	.sass('src/sass/admin.scss', `assets/css/admin${min}.css`)
@@ -37,7 +27,8 @@ mix.sass('src/sass/style.scss', `assets/css/style${min}.css`)
 	.options({
 		terser: {
 			extractComments: false,
-		}
+		},
+		processCssUrls: false
 	})
 
 	.postCss('assets/css/style.css', 'build/temp/style.css', [

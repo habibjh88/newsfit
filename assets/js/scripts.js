@@ -23,8 +23,26 @@
             Newsfit.magnificPopup();
         },
 
+		slickSlider: function () {
+			$('.rt-carousel').css({'opacity': 1, 'transition':'0.4s'})
+			if (typeof $.fn.slick == 'function') {
+				$('.rt-slick').slick()
+			}
+
+			/*{
+				dots: true,
+					arrows: false,
+				fade: true,
+				speed: 100,
+				autoplay: true,
+				autoplaySpeed: 5000,
+				// adaptiveHeight: true,
+			}*/
+
+		},
+
         magnificPopup: function (){
-            var yPopup = $(".popup-youtube");
+            var yPopup = $(".rt-popup-video");
 
             if (yPopup.length) {
                 yPopup.magnificPopup({
@@ -36,24 +54,6 @@
                     fixedContentPos: false
                 });
             }
-        },
-
-        slickSlider: function () {
-            $('.rt-carousel').css({'opacity': 1, 'transition':'0.4s'})
-            if (typeof $.fn.slick == 'function') {
-                $('.rt-slick').slick()
-            }
-
-            /*{
-                dots: true,
-                    arrows: false,
-                fade: true,
-                speed: 100,
-                autoplay: true,
-                autoplaySpeed: 5000,
-                // adaptiveHeight: true,
-            }*/
-
         },
 
         menuOffset: function () {

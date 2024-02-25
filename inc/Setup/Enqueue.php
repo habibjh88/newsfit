@@ -40,8 +40,33 @@ class Enqueue {
 		wp_enqueue_style( 'newsfit-main', newsfit_get_css( 'style', true ), [], Constants::get_version() );
 
 		// JS.
-		// wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'newsfit-main', newsfit_get_js( 'scripts' ), [ 'jquery' ], Constants::get_version(), true );
+
+		$scripts = [
+			[
+				'handle' => 'magnific-popup',
+				'src'    => newsfit_get_js( 'vendor/magnific-popup' ),
+				'deps'   => [ 'jquery' ],
+				'footer' => true,
+			],
+			[
+				'handle' => 'slick',
+				'src'    => newsfit_get_js( 'vendor/slick' ),
+				'deps'   => [ 'jquery' ],
+				'footer' => true,
+			],
+			[
+				'handle' => 'newsfit-main',
+				'src'    => newsfit_get_js( 'scripts' ),
+				'deps'   => [ 'jquery' ],
+				'footer' => true,
+			],
+		];
+		foreach ( $scripts as $script ) {
+			wp_enqueue_script( $script['handle'], $script['src'], $script['deps'], $script['version'] ?? Constants::get_version(), $script['footer'] );
+		}
+
+		//wp_enqueue_script( 'magnific-popup', newsfit_get_js( 'vendor/magnific-popup' ), [ 'jquery' ], Constants::get_version(), true );
+		//wp_enqueue_script( 'newsfit-main', newsfit_get_js( 'scripts' ), [ 'jquery' ], Constants::get_version(), true );
 
 		// Extra.
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

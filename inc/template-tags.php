@@ -295,6 +295,8 @@ if ( ! function_exists( 'newsfit_get_svg' ) ) {
 				'author'           => '<svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5477 19.978V17.978C17.5477 16.9172 17.1263 15.8997 16.3761 15.1496C15.626 14.3995 14.6086 13.978 13.5477 13.978H5.54771C4.48685 13.978 3.46943 14.3995 2.71929 15.1496C1.96914 15.8997 1.54771 16.9172 1.54771 17.978V19.978M13.5477 5.97803C13.5477 8.18717 11.7569 9.97803 9.54771 9.97803C7.33858 9.97803 5.54771 8.18717 5.54771 5.97803C5.54771 3.76889 7.33858 1.97803 9.54771 1.97803C11.7569 1.97803 13.5477 3.76889 13.5477 5.97803Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 				'eye'              => '<svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.12813 9.97803C1.12813 9.97803 5.12813 1.97803 12.1281 1.97803C19.1281 1.97803 23.1281 9.97803 23.1281 9.97803C23.1281 9.97803 19.1281 17.978 12.1281 17.978C5.12813 17.978 1.12813 9.97803 1.12813 9.97803Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.1281 12.978C13.785 12.978 15.1281 11.6349 15.1281 9.97803C15.1281 8.32117 13.785 6.97803 12.1281 6.97803C10.4713 6.97803 9.12814 8.32117 9.12814 9.97803C9.12814 11.6349 10.4713 12.978 12.1281 12.978Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 				'time'             => '<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.8749 5.48877V11.4888L15.8749 13.4888M21.8749 11.4888C21.8749 17.0116 17.3978 21.4888 11.8749 21.4888C6.35208 21.4888 1.87493 17.0116 1.87493 11.4888C1.87493 5.96592 6.35208 1.48877 11.8749 1.48877C17.3978 1.48877 21.8749 5.96592 21.8749 11.4888Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+				'play'             => '<svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.35001 1L15.35 10L1.35001 19V1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+				'audio'            => '<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.46005 16.7829V10.7829C1.46005 8.39598 2.40826 6.10679 4.09609 4.41897C5.78392 2.73114 8.0731 1.78293 10.4601 1.78293C12.847 1.78293 15.1362 2.73114 16.824 4.41897C18.5118 6.10679 19.4601 8.39598 19.4601 10.7829V16.7829M19.4601 17.7829C19.4601 18.3134 19.2493 18.8221 18.8743 19.1971C18.4992 19.5722 17.9905 19.7829 17.4601 19.7829H16.4601C15.9296 19.7829 15.4209 19.5722 15.0458 19.1971C14.6708 18.8221 14.4601 18.3134 14.4601 17.7829V14.7829C14.4601 14.2525 14.6708 13.7438 15.0458 13.3687C15.4209 12.9936 15.9296 12.7829 16.4601 12.7829H19.4601V17.7829ZM1.46005 17.7829C1.46005 18.3134 1.67077 18.8221 2.04584 19.1971C2.42091 19.5722 2.92962 19.7829 3.46005 19.7829H4.46005C4.99049 19.7829 5.49919 19.5722 5.87427 19.1971C6.24934 18.8221 6.46005 18.3134 6.46005 17.7829V14.7829C6.46005 14.2525 6.24934 13.7438 5.87427 13.3687C5.49919 12.9936 4.99049 12.7829 4.46005 12.7829H1.46005V17.7829Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 				'icon3'            => '',
 			]
 		);
@@ -608,21 +610,120 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 	 * @return void
 	 */
 	function newsfit_post_thumbnail() {
-		if ( ! Fns::can_show_post_thumbnail() ) {
-			return;
+		$post_format = get_post_meta( get_the_ID(), 'rt_post_format', 'true' );
+
+		switch ( $post_format ) {
+			case 'video':
+			case 'audio':
+				newsfit_video_thumbnail( $post_format );
+				break;
+			case 'gallery':
+				newsfit_gallery_thumbnail( $post_format );
+				break;
+			default:
+				newsfit_default_thumbnail();
 		}
-		?>
-		<div class="post-thumbnail-wrap">
-			<figure class="post-thumbnail">
-				<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-					<?php the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] ); ?>
-				</a>
-				<?php edit_post_link( 'Edit' ); ?>
-			</figure><!-- .post-thumbnail -->
-		</div>
-		<?php
 	}
 }
+
+function newsfit_gallery_thumbnail( $post_format ) {
+
+	$gallery_meta = get_post_meta( get_the_ID(), 'rt_gallery', 'true' );
+	$gallery_ids  = explode( ',', $gallery_meta );
+	$thumb_id     = get_post_thumbnail_id( get_the_ID() );
+	if ( $thumb_id ) {
+		array_unshift( $gallery_ids, $thumb_id );
+	}
+	$gallery_ids = array_unique( $gallery_ids );
+	if ( ! $gallery_ids ) {
+		return;
+	}
+
+	$dataSlick = [
+		'dots'           => false,
+		'arrows'         => true,
+		'fade'           => false,
+		'speed'          => 700,
+		'autoplay'       => true,
+		'autoplaySpeed'  => 1500,
+		'adaptiveHeight' => false,
+	];
+
+	?>
+	<div class="post-thumbnail-wrap">
+		<figure class="post-thumbnail ">
+			<div class="rt-slick rt-carousel" data-slick="<?php echo htmlspecialchars( wp_json_encode( $dataSlick ) ) ?>">
+				<?php foreach ( $gallery_ids as $id ) : ?>
+				<div class="item">
+					<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+						<?php echo wp_get_attachment_image( $id, 'rt-square', [ 'loading' => 'lazy' ] ); ?>
+					</a>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</figure><!-- .post-thumbnail -->
+	</div>
+	<?php
+}
+
+function newsfit_video_thumbnail( $post_format ) {
+
+	if ( 'video' === $post_format ) {
+		$media_url  = get_post_meta( get_the_ID(), 'rt_video_url', 'true' );
+		$media_icon = 'play';
+	} else {
+		$media_url  = get_post_meta( get_the_ID(), 'rt_audio_url', 'true' );
+		$media_icon = 'audio';
+	}
+	?>
+	<div class="post-thumbnail-wrap">
+		<figure class="post-thumbnail">
+			<a class="post-thumb-link alignwide rt-popup-video" href="<?php echo esc_url( $media_url ); ?>" aria-hidden="true" tabindex="-1">
+				<?php
+				if ( Fns::can_show_post_thumbnail() ) {
+					the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] );
+					newsfit_get_svg( $media_icon );
+				} else {
+					if ( strpos( $media_url, '.mp4' ) ) {
+						?>
+						<video controls>
+							<source src="<?php echo esc_url( $media_url ); ?>" type="video/mp4">
+						</video>
+						<?php
+					} elseif ( strpos( $media_url, '.mp3' ) ) {
+						?>
+						<audio controls>
+							<source src="<?php echo esc_url( $media_url ); ?>" type="audio/mpeg">
+						</audio>
+						<?php
+					} else {
+						Fns::print_html_all( wp_oembed_get( $media_url ) );
+					}
+				}
+				?>
+			</a>
+			<?php edit_post_link( 'Edit' ); ?>
+		</figure><!-- .post-thumbnail -->
+	</div>
+	<?php
+}
+
+function newsfit_default_thumbnail() {
+	if ( ! Fns::can_show_post_thumbnail() ) {
+		return;
+	}
+	?>
+	<div class="post-thumbnail-wrap">
+		<figure class="post-thumbnail">
+			<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<?php the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] ); ?>
+			</a>
+			<?php edit_post_link( 'Edit' ); ?>
+		</figure><!-- .post-thumbnail -->
+	</div>
+	<?php
+}
+
 
 if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
 	/**
@@ -742,13 +843,15 @@ if ( ! function_exists( 'newsfit_post_class' ) ) {
 	 */
 	function newsfit_post_class( $default_class = 'newsfit-post-card' ) {
 		$above_meta_style = 'above-' . newsfit_option( 'rt_single_above_meta_style' );
+		$post_format      = get_post_meta( get_the_ID(), 'rt_post_format', true );
+		$common_class     = $post_format ? 'format-' . $post_format : '';
 
 		if ( is_single() ) {
 			$meta_style   = newsfit_option( 'rt_single_meta_style' );
-			$post_classes = Fns::class_list( [ $meta_style, $above_meta_style ] );
+			$post_classes = Fns::class_list( [ $common_class, $meta_style, $above_meta_style ] );
 		} else {
 			$meta_style   = newsfit_option( 'rt_blog_meta_style' );
-			$post_classes = Fns::class_list( [ $meta_style, $above_meta_style, Fns::blog_column() ] );
+			$post_classes = Fns::class_list( [ $common_class, $meta_style, $above_meta_style, Fns::blog_column() ] );
 		}
 
 		if ( $default_class ) {

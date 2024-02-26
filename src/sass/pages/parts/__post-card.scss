@@ -112,9 +112,11 @@
 //List and 1st Big Style
 //.blog-big-first-style .newsfit-post-card:not(:first-child),
 
-.widget .newsfit-post-card .entry-title {
-	@include font-size(20px, 26px);
-	margin-bottom: 6px;
+.widget .newsfit-post-card {
+	.entry-title {
+		@include font-size(20px, 26px);
+		margin-bottom: 6px;
+	}
 }
 
 .blog-list-style .newsfit-post-card {
@@ -125,15 +127,20 @@
 		gap: 15px;
 	}
 
-	.post-thumbnail {
+	.post-thumbnail-wrap {
 		flex: 0 0 90px;
 		max-width: 90px;
 		height: 90px;
 
-		a, img {
+		.post-thumbnail,
+		img,
+		a {
 			width: 100%;
 			height: 100%;
 			padding: 0;
+		}
+
+		img {
 			object-fit: cover;
 		}
 	}

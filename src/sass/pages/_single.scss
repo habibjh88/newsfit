@@ -65,15 +65,20 @@ body:not(.newsfit-single-1) {
 	}
 }
 
-.content-top-area {
+.single .content-top-area {
 	position: relative;
-
+	padding: 0;
 	.single-top-header {
 		position: absolute;
 		bottom: 80px;
 		left: 0;
 		right: 0;
 		width: 100%;
+	}
+
+	.post-thumb-link {
+		padding-top: 0;
+		height: 100%;
 	}
 
 }

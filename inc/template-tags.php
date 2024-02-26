@@ -129,7 +129,7 @@ if ( ! function_exists( 'newsfit_require' ) ) {
 	 * Require any file. If the file will available in the child theme, the file will load from the child theme
 	 *
 	 * @param $filename
-	 * @param string $dir
+	 * @param string   $dir
 	 *
 	 * @return false|void
 	 */
@@ -370,7 +370,7 @@ if ( ! function_exists( 'newsfit_get_css' ) ) {
 	 * Get CSS Path
 	 *
 	 * @param $filename
-	 * @param bool $check_rtl
+	 * @param bool     $check_rtl
 	 *
 	 * @return string
 	 */
@@ -482,7 +482,7 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 		</a>
 		<?php if ( $with_h1 ) : ?>
 			</h1>
-		<?php
+			<?php
 		endif;
 	}
 }
@@ -609,24 +609,28 @@ if ( ! function_exists( 'newsfit_post_thumbnail' ) ) {
 	 *
 	 * @return void
 	 */
-	function newsfit_post_thumbnail() {
+	function newsfit_post_thumbnail( $size = 'full', $description = null ) {
 		$post_format = get_post_meta( get_the_ID(), 'rt_post_format', 'true' );
-
+		echo '<div class="post-thumbnail-wrap">';
 		switch ( $post_format ) {
 			case 'video':
 			case 'audio':
-				newsfit_video_thumbnail( $post_format );
+				newsfit_video_thumbnail( $size, $post_format );
 				break;
 			case 'gallery':
-				newsfit_gallery_thumbnail( $post_format );
+				newsfit_gallery_thumbnail( $size );
 				break;
 			default:
-				newsfit_default_thumbnail();
+				newsfit_default_thumbnail( $size );
 		}
+		if ( $description ) {
+			newsfit_thumb_description();
+		}
+		echo '</div>';
 	}
 }
 
-function newsfit_gallery_thumbnail( $post_format ) {
+function newsfit_gallery_thumbnail( $size ) {
 
 	$gallery_meta = get_post_meta( get_the_ID(), 'rt_gallery', 'true' );
 	$gallery_ids  = explode( ',', $gallery_meta );
@@ -650,23 +654,21 @@ function newsfit_gallery_thumbnail( $post_format ) {
 	];
 
 	?>
-	<div class="post-thumbnail-wrap">
-		<figure class="post-thumbnail ">
-			<div class="rt-slick rt-carousel" data-slick="<?php echo htmlspecialchars( wp_json_encode( $dataSlick ) ) ?>">
-				<?php foreach ( $gallery_ids as $id ) : ?>
+	<figure class="post-thumbnail">
+		<div class="rt-slick rt-carousel" data-slick="<?php echo htmlspecialchars( wp_json_encode( $dataSlick ) ); ?>">
+			<?php foreach ( $gallery_ids as $id ) : ?>
 				<div class="item">
 					<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-						<?php echo wp_get_attachment_image( $id, 'rt-square', [ 'loading' => 'lazy' ] ); ?>
+						<?php echo wp_get_attachment_image( $id, $size, [ 'loading' => 'lazy' ] ); ?>
 					</a>
 				</div>
-				<?php endforeach; ?>
-			</div>
-		</figure><!-- .post-thumbnail -->
-	</div>
+			<?php endforeach; ?>
+		</div>
+	</figure><!-- .post-thumbnail -->
 	<?php
 }
 
-function newsfit_video_thumbnail( $post_format ) {
+function newsfit_video_thumbnail( $size, $post_format ) {
 
 	if ( 'video' === $post_format ) {
 		$media_url  = get_post_meta( get_the_ID(), 'rt_video_url', 'true' );
@@ -676,80 +678,62 @@ function newsfit_video_thumbnail( $post_format ) {
 		$media_icon = 'audio';
 	}
 	?>
-	<div class="post-thumbnail-wrap">
-		<figure class="post-thumbnail">
-			<a class="post-thumb-link alignwide rt-popup-video" href="<?php echo esc_url( $media_url ); ?>" aria-hidden="true" tabindex="-1">
-				<?php
-				if ( Fns::can_show_post_thumbnail() ) {
-					the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] );
-					newsfit_get_svg( $media_icon );
+
+	<figure class="post-thumbnail">
+		<a class="post-thumb-link alignwide rt-popup-video" href="<?php echo esc_url( $media_url ); ?>" aria-hidden="true" tabindex="-1">
+			<?php
+			if ( Fns::can_show_post_thumbnail() ) {
+				the_post_thumbnail( $size, [ 'loading' => 'lazy' ] );
+				newsfit_get_svg( $media_icon );
+			} else {
+				if ( strpos( $media_url, '.mp4' ) ) {
+					?>
+					<video controls>
+						<source src="<?php echo esc_url( $media_url ); ?>" type="video/mp4">
+					</video>
+					<?php
+				} elseif ( strpos( $media_url, '.mp3' ) ) {
+					?>
+					<audio controls>
+						<source src="<?php echo esc_url( $media_url ); ?>" type="audio/mpeg">
+					</audio>
+					<?php
 				} else {
-					if ( strpos( $media_url, '.mp4' ) ) {
-						?>
-						<video controls>
-							<source src="<?php echo esc_url( $media_url ); ?>" type="video/mp4">
-						</video>
-						<?php
-					} elseif ( strpos( $media_url, '.mp3' ) ) {
-						?>
-						<audio controls>
-							<source src="<?php echo esc_url( $media_url ); ?>" type="audio/mpeg">
-						</audio>
-						<?php
-					} else {
-						Fns::print_html_all( wp_oembed_get( $media_url ) );
-					}
+					Fns::print_html_all( wp_oembed_get( $media_url ) );
 				}
-				?>
-			</a>
-			<?php edit_post_link( 'Edit' ); ?>
-		</figure><!-- .post-thumbnail -->
-	</div>
+			}
+			?>
+		</a>
+		<?php edit_post_link( 'Edit' ); ?>
+	</figure><!-- .post-thumbnail -->
 	<?php
 }
 
-function newsfit_default_thumbnail() {
+function newsfit_default_thumbnail( $size ) {
 	if ( ! Fns::can_show_post_thumbnail() ) {
-		return;
+//		return;
 	}
 	?>
-	<div class="post-thumbnail-wrap">
-		<figure class="post-thumbnail">
-			<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-				<?php the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] ); ?>
-			</a>
-			<?php edit_post_link( 'Edit' ); ?>
-		</figure><!-- .post-thumbnail -->
-	</div>
+
+	<figure class="post-thumbnail">
+		<a class="post-thumb-link alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<?php the_post_thumbnail( 'rt-square', [ 'loading' => 'lazy' ] ); ?>
+		</a>
+		<?php edit_post_link( 'Edit' ); ?>
+	</figure><!-- .post-thumbnail -->
 	<?php
 }
 
 
-if ( ! function_exists( 'newsfit_post_single_thumbnail' ) ) {
-	/**
-	 * Display post details thumbnail
-	 *
-	 * @return void
-	 */
-	function newsfit_post_single_thumbnail() {
-		if ( ! Fns::can_show_post_thumbnail() ) {
-			return;
-		}
+function newsfit_thumb_description() {
+	if ( wp_get_attachment_caption( get_post_thumbnail_id() ) && is_single() ) :
 		?>
-		<div class="post-thumbnail-wrap">
-			<figure class="post-thumbnail">
-				<?php the_post_thumbnail( 'full', [ 'loading' => true ] ); ?>
-				<?php edit_post_link( 'Edit' ); ?>
-			</figure><!-- .post-thumbnail -->
-			<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
-				<figcaption class="wp-caption-text">
-					<?php newsfit_get_svg( 'camera' ); ?>
-					<span><?php Fns::print_html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
-				</figcaption>
-			<?php endif; ?>
-		</div>
+		<figcaption class="wp-caption-text">
+			<?php newsfit_get_svg( 'camera' ); ?>
+			<span><?php Fns::print_html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
+		</figcaption>
 		<?php
-	}
+	endif;
 }
 
 if ( ! function_exists( 'newsfit_entry_footer' ) ) {
@@ -882,7 +866,7 @@ if ( ! function_exists( 'newsfit_separate_meta' ) ) {
 				);
 				?>
 			</div>
-		<?php
+			<?php
 		endif;
 	}
 }
@@ -907,7 +891,8 @@ if ( ! function_exists( 'newsfit_single_entry_header' ) ) {
 						'with_list'     => true,
 						'include'       => Fns::single_meta_lists(),
 						'author_prefix' => newsfit_option( 'rt_author_prefix' ),
-						'with_icon'     => true,
+						'with_icon'     => newsfit_option( 'rt_single_meta_icon' ),
+						'with_avatar'   => newsfit_option( 'rt_single_meta_user_avatar' ),
 					]
 				);
 			}

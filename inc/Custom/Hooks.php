@@ -85,7 +85,7 @@ class Hooks {
 
 			<div class="<?php echo esc_attr( $classes ); ?>">
 
-				<?php newsfit_post_single_thumbnail(); ?>
+				<?php newsfit_post_thumbnail('full', true); ?>
 
 				<?php if ( '3' == $style ) : ?>
 					<div class='single-top-header <?php echo esc_attr( newsfit_post_class( null ) ); ?>'>

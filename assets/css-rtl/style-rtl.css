@@ -3433,8 +3433,8 @@ img.mfp-img {
 
 @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   /**
-       * Remove all paddings around the image on small screen
-       */
+  	 * Remove all paddings around the image on small screen
+  	 */
   .mfp-img-mobile .mfp-image-holder {
     padding-right: 0;
     padding-left: 0;
@@ -3498,24 +3498,27 @@ img.mfp-img {
   position: relative;
   display: block;
   box-sizing: border-box;
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
 
 .slick-list {
   position: relative;
-  overflow: hidden;
   display: block;
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }
+
 .slick-list:focus {
   outline: none;
 }
+
 .slick-list.dragging {
   cursor: pointer;
   cursor: hand;
@@ -3528,47 +3531,58 @@ img.mfp-img {
 
 .slick-track {
   position: relative;
-  right: 0;
   top: 0;
+  right: 0;
   display: block;
   margin-right: auto;
   margin-left: auto;
 }
-.slick-track:before, .slick-track:after {
-  content: "";
+
+.slick-track:before,
+.slick-track:after {
   display: table;
+  content: "";
 }
+
 .slick-track:after {
   clear: both;
 }
+
 .slick-loading .slick-track {
   visibility: hidden;
 }
 
 .slick-slide {
+  display: none;
   float: right;
   height: 100%;
   min-height: 1px;
-  display: none;
 }
+
 [dir=rtl] .slick-slide {
   float: left;
 }
+
 .slick-slide img {
   display: block;
 }
+
 .slick-slide.slick-loading img {
   display: none;
 }
+
 .slick-slide.dragging img {
   pointer-events: none;
 }
+
 .slick-initialized .slick-slide {
   display: block;
 }
+
 .slick-loading .slick-slide {
   visibility: hidden;
 }
+
 .slick-vertical .slick-slide {
   display: block;
   height: auto;
@@ -5866,6 +5880,10 @@ article:hover .newsfit-post-meta ul li.edit-link {
   margin-left: 6px;
   transform: translateY(2px);
 }
+.single-post .newsfit-post-meta ul li svg {
+  width: 18px;
+  height: 18px;
+}
 .newsfit-post-meta ul li img {
   width: 30px;
   height: 30px;
@@ -6123,15 +6141,19 @@ article:hover .newsfit-post-meta ul li.edit-link {
   display: flex;
   gap: 15px;
 }
-.blog-list-style .newsfit-post-card .post-thumbnail {
+.blog-list-style .newsfit-post-card .post-thumbnail-wrap {
   flex: 0 0 90px;
   max-width: 90px;
   height: 90px;
 }
-.blog-list-style .newsfit-post-card .post-thumbnail a, .blog-list-style .newsfit-post-card .post-thumbnail img {
+.blog-list-style .newsfit-post-card .post-thumbnail-wrap .post-thumbnail,
+.blog-list-style .newsfit-post-card .post-thumbnail-wrap img,
+.blog-list-style .newsfit-post-card .post-thumbnail-wrap a {
   width: 100%;
   height: 100%;
   padding: 0;
+}
+.blog-list-style .newsfit-post-card .post-thumbnail-wrap img {
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -6263,15 +6285,20 @@ body:not(.newsfit-single-1) .wp-block-quote cite, body:not(.newsfit-single-1) .w
   color: var(--rt-title-color);
 }
 
-.content-top-area {
+.single .content-top-area {
   position: relative;
+  padding: 0;
 }
-.content-top-area .single-top-header {
+.single .content-top-area .single-top-header {
   position: absolute;
   bottom: 80px;
   right: 0;
   left: 0;
   width: 100%;
+}
+.single .content-top-area .post-thumb-link {
+  padding-top: 0;
+  height: 100%;
 }
 
 .post-thumbnail-wrap .wp-caption-text {

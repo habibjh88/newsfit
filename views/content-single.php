@@ -15,7 +15,7 @@ use RT\Newsfit\Options\Opt;
 	<div class="article-inner-wrapper">
 
 		<?php if ( ! in_array( Opt::$single_style, [ '2', '3', '4' ] ) ) : ?>
-			<?php newsfit_post_single_thumbnail(); ?>
+			<?php newsfit_post_thumbnail('full', true); ?>
 		<?php endif; ?>
 
 		<div class="entry-wrapper">
@@ -23,7 +23,7 @@ use RT\Newsfit\Options\Opt;
 
 			<?php if ( newsfit_option( 'rt_blog_content' ) ) : ?>
 				<div class="entry-content">
-					<?php newsfit_entry_content() ?>
+					<?php newsfit_entry_content(); ?>
 				</div>
 			<?php endif; ?>
 

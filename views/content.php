@@ -17,7 +17,7 @@ if ( newsfit_option( 'rt_blog_above_ca_visibility' ) ) {
 <article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_post_class() ); ?>>
 	<div class="article-inner-wrapper">
 
-		<?php newsfit_post_thumbnail(); ?>
+		<?php newsfit_post_thumbnail( 'rt-square' ); ?>
 
 		<div class="entry-wrapper">
 			<header class="entry-header">

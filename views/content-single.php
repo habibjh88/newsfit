@@ -7,15 +7,15 @@
  * @package newsfit
  */
 
-use RT\Newsfit\Helpers\Fns;
 use RT\Newsfit\Options\Opt;
+use RT\Newsfit\Modules\Thumbnail;
 
 ?>
 <article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_post_class() ); ?>>
 	<div class="article-inner-wrapper">
 
 		<?php if ( ! in_array( Opt::$single_style, [ '2', '3', '4' ] ) ) : ?>
-			<?php newsfit_post_thumbnail('full', true); ?>
+			<?php Thumbnail::get_thumbnail( 'full', true ); ?>
 		<?php endif; ?>
 
 		<div class="entry-wrapper">

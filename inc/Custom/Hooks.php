@@ -5,6 +5,7 @@ namespace RT\Newsfit\Custom;
 use RT\Newsfit\Helpers\Fns;
 use RT\Newsfit\Traits\SingletonTraits;
 use RT\Newsfit\Options\Opt;
+use RT\Newsfit\Modules\Thumbnail;
 
 /**
  * Extras.
@@ -85,7 +86,7 @@ class Hooks {
 
 			<div class="<?php echo esc_attr( $classes ); ?>">
 
-				<?php newsfit_post_thumbnail('full', true); ?>
+				<?php Thumbnail::get_thumbnail( 'full', true ); ?>
 
 				<?php if ( '3' == $style ) : ?>
 					<div class='single-top-header <?php echo esc_attr( newsfit_post_class( null ) ); ?>'>

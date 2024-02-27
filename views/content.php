@@ -7,6 +7,8 @@
  * @package newsfit
  */
 
+use RT\Newsfit\Modules\Thumbnail;
+use RT\Newsfit\Modules\PostMeta;
 
 $meta_list = newsfit_option( 'rt_blog_meta', '', true );
 if ( newsfit_option( 'rt_blog_above_ca_visibility' ) ) {
@@ -17,7 +19,7 @@ if ( newsfit_option( 'rt_blog_above_ca_visibility' ) ) {
 <article data-post-id="<?php the_ID(); ?>" <?php post_class( newsfit_post_class() ); ?>>
 	<div class="article-inner-wrapper">
 
-		<?php newsfit_post_thumbnail( 'rt-square' ); ?>
+		<?php Thumbnail::get_thumbnail( 'rt-square' ); ?>
 
 		<div class="entry-wrapper">
 			<header class="entry-header">
@@ -32,7 +34,7 @@ if ( newsfit_option( 'rt_blog_above_ca_visibility' ) ) {
 				}
 
 				if ( ! empty( $meta_list ) && newsfit_option( 'rt_meta_visibility' ) ) {
-					newsfit_post_meta( [ 'include' => $meta_list ] );
+					PostMeta::get_meta( [ 'include' => $meta_list ] );
 				}
 				?>
 			</header>

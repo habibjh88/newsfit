@@ -9,6 +9,7 @@
 
 use RT\Newsfit\Options\Opt;
 use RT\Newsfit\Helpers\Fns;
+use RT\Newsfit\Modules\Breadcrumb;
 
 if ( ! Opt::$has_banner ) {
 	return;
@@ -23,7 +24,7 @@ if ( ! empty( Opt::$banner_image ) ) {
 	$banner_image_css .= isset( $image_url[0] ) ? "background-image:url({$image_url[0]});" : '';
 
 	if ( ! empty( Opt::$banner_height ) ) {
-		$banner_image_css .= "min-height:" . rtrim( Opt::$banner_height, 'px' ) . "px;";
+		$banner_image_css .= 'min-height:' . rtrim( Opt::$banner_height, 'px' ) . 'px;';
 	}
 
 	if ( ! empty( newsfit_option( 'rt_banner_image_attr' ) ) ) {
@@ -49,16 +50,18 @@ if ( in_array( Opt::$single_style, [ '3', '4' ] ) ) {
 	$banner_image_css = '';
 }
 
-$classes = Fns::class_list( [
-	'newsfit-breadcrumb-wrapper',
-	$has_image ? 'has-bg' : 'no-bg'
-] );
+$classes = Fns::class_list(
+	[
+		'newsfit-breadcrumb-wrapper',
+		$has_image ? 'has-bg' : 'no-bg',
+	]
+);
 ?>
 
-<div class="<?php echo esc_attr( $classes ) ?>" style="<?php echo esc_attr( $banner_image_css ) ?>">
-	<?php if ( Opt::$has_breadcrumb )  : ?>
+<div class="<?php echo esc_attr( $classes ); ?>" style="<?php echo esc_attr( $banner_image_css ); ?>">
+	<?php if ( Opt::$has_breadcrumb ) : ?>
 		<div class="container">
-			<?php newsfit_breadcrumb(); ?>
+			<?php Breadcrumb::get_breadcrumb(); ?>
 		</div>
 	<?php endif; ?>
 </div>

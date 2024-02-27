@@ -22,8 +22,8 @@ endif;
 if ( 'open' !== get_option( 'default_comment_status' ) ) {
 	return;
 }
+use RT\Newsfit\Modules\Svg;
 ?>
-
 <div id="comments" class="comments-area">
 
 	<?php if ( have_comments() ) : ?>
@@ -45,7 +45,7 @@ if ( 'open' !== get_option( 'default_comment_status' ) ) {
 						'style'       => 'ol',
 						'avatar_size' => 45,
 						'short_ping'  => true,
-						'callback'    => 'newsfit_comments_cbf',
+						'callback'    => [ 'RT\Newsfit\Modules\Comments', 'callback' ],
 					]
 				);
 				?>
@@ -56,26 +56,28 @@ if ( 'open' !== get_option( 'default_comment_status' ) ) {
 					<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'newsfit' ); ?></h2>
 					<div class="nav-links">
 						<?php
-						$arrow_next = newsfit_get_svg( 'arrow-right', false );
-						$arrow_prev = newsfit_get_svg( 'arrow-right', false, '180' );
+						$arrow_next = Svg::get_svg( 'arrow-right', false );
+						$arrow_prev = Svg::get_svg( 'arrow-right', false, '180' );
 						?>
 						<div class="nav-previous"><?php previous_comments_link( $arrow_prev . esc_html__( 'Older Comments', 'newsfit' ) ); ?></div>
 						<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments', 'newsfit' ) . $arrow_next ); ?></div>
 
 					</div><!-- .nav-links -->
 				</nav><!-- #comment-nav-below -->
-			<?php
-			endif; // Check for comment navigation.?>
+				<?php
+			endif; // Check for comment navigation.
+			?>
 		</div>
-	<?php
+		<?php
 
 	endif; // Check for have_comments().
 
 
 	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+		?>
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'newsfit' ); ?></p>
-	<?php
+		<?php
 	endif;
 
 	comment_form();

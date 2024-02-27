@@ -13,6 +13,7 @@
  */
 
 use RT\Newsfit\Helpers\Fns;
+use RT\Newsfit\Modules\Pagination;
 
 get_header();
 $content_columns = Fns::content_columns();
@@ -42,7 +43,12 @@ $content_columns = Fns::content_columns();
 						</div>
 
 						<div class="row post-pagination">
-							<?php the_posts_navigation(); ?>
+							<div class="col-md-12">
+								<?php
+								Pagination::get_pagination();
+								// the_posts_navigation();
+								?>
+							</div>
 						</div>
 
 					</main><!-- #main -->

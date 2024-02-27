@@ -10,17 +10,6 @@ use RT\Newsfit\Options\Opt;
  */
 class Fns {
 
-	/**
-	 * Filters whether post thumbnail can be displayed.
-	 *
-	 * @param bool $show_post_thumbnail Whether to show post thumbnail.
-	 */
-	public static function can_show_post_thumbnail() {
-		return apply_filters(
-			'newsfit_can_show_post_thumbnail',
-			! post_password_required() && ! is_attachment() && has_post_thumbnail()
-		);
-	}
 
 	/**
 	 * Allowed HTML for wp_kses.
@@ -285,6 +274,7 @@ class Fns {
 	public static function content_columns( $full_width_col = 'col-md-12' ) {
 		$sidebar = Opt::$sidebar === 'default' ? self::default_sidebar( 'main' ) : Opt::$sidebar;
 		$columns = ! is_active_sidebar( $sidebar ) ? $full_width_col : 'col-md-8';
+
 		if ( Opt::$layout === 'full-width' ) {
 			$columns = $full_width_col;
 		}
@@ -501,12 +491,12 @@ class Fns {
 	 *
 	 * @return array
 	 */
-	public static function sidebar_lists( $default_title = '' ) {
+	public static function sidebar_lists( $default_title = null ) {
 		$sidebar_fields            = [];
 		$sidebar_fields['default'] = $default_title ?? esc_html__( 'Choose Sidebar', 'newsfit' );
 
 		foreach ( self::default_sidebar() as $id => $sidebar ) {
-			$sidebar_fields[ $id ] = $sidebar['name'];
+			$sidebar_fields[ $sidebar['id'] ] = $sidebar['name'];
 		}
 
 		return $sidebar_fields;

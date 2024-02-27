@@ -6,7 +6,7 @@
  *
  * @package newsfit
  */
-
+use RT\Newsfit\Modules\Svg;
 $previous = get_previous_post();
 $next     = get_next_post();
 $cols     = ( $previous && $next ) ? 'two-cols' : 'one-cols';
@@ -17,7 +17,7 @@ $cols     = ( $previous && $next ) ? 'two-cols' : 'one-cols';
 
 		<div class="post-navigation prev">
 			<a href="<?php echo esc_url( get_permalink( $previous ) ); ?>" class="nav-title">
-				<?php newsfit_get_svg( 'arrow-right', true, '180' ); ?>
+				<?php Svg::get_svg( 'arrow-right', true, '180' ); ?>
 				<?php esc_html_e( 'Previous Post: ', 'newsfit' ) ?>
 			</a>
 
@@ -36,7 +36,7 @@ $cols     = ( $previous && $next ) ? 'two-cols' : 'one-cols';
 		<div class="post-navigation next text-right">
 			<a href="<?php echo esc_url( get_permalink( $next ) ); ?>" class="nav-title">
 				<?php esc_html_e( 'Next Post: ', 'newsfit' ) ?>
-				<?php newsfit_get_svg( 'arrow-right' ); ?>
+				<?php Svg::get_svg( 'arrow-right' ); ?>
 			</a>
 			<a href="<?php echo esc_url( get_permalink( $next ) ); ?>" class="link pg-next">
 				<p class="item-title"><?php echo get_the_title( $next ); ?></p>

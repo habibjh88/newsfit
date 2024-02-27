@@ -4,14 +4,30 @@ namespace RT\Newsfit\Options;
 
 use RT\Newsfit\Traits\SingletonTraits;
 
+/**
+ * Layouts Class
+ */
 class Layouts {
 
 	use SingletonTraits;
 
-	public $base;
-	public $type;
-	public $meta_value;
+	/**
+	 * Page Type depending on the page type
+	 *
+	 * @var null
+	 */
+	public $type = null;
 
+	/**
+	 * Store temporary Meta Value
+	 *
+	 * @var null
+	 */
+	public $meta_value = null;
+
+	/**
+	 * Class Constructor function
+	 */
 	public function __construct() {
 		add_action( 'template_redirect', [ $this, 'set_options_value' ] );
 		add_action( 'template_redirect', [ $this, 'overwrite_options_value' ] );
@@ -19,22 +35,22 @@ class Layouts {
 
 	/**
 	 * Set Options value
+	 *
 	 * @return void
 	 */
 	public function set_options_value() {
 
-		// Single Pages
 		if ( ( is_single() || is_page() ) ) {
+			// Single Pages.
 			$post_type        = get_post_type();
 			$post_id          = get_the_id();
-			$this->meta_value = get_post_meta( $post_id, "rt_layout_meta_data", true );
-
+			$this->meta_value = get_post_meta( $post_id, 'rt_layout_meta_data', true );
 
 			switch ( $post_type ) {
 				case 'post':
 					$this->type = 'single_post';
 					break;
-				case 'product' :
+				case 'product':
 					$this->type = 'woocommerce_single';
 					break;
 				default:
@@ -56,12 +72,9 @@ class Layouts {
 			Opt::$has_tr_header  = $this->check_meta_and_layout_value( 'tr_header', true, true );
 			Opt::$has_breadcrumb = $this->check_meta_and_layout_value( 'breadcrumb', true, true );
 			Opt::$has_banner     = $this->check_meta_and_layout_value( 'banner', true, true );
-
-
-			Opt::$single_style = $this->check_meta_option_value( 'single_post_style' );
-
-		} // Blog and Archive
-		elseif ( is_home() || is_archive() || is_search() ) {
+			Opt::$single_style   = $this->check_meta_option_value( 'single_post_style' );
+		} elseif ( is_home() || is_archive() || is_search() ) {
+			// Blog and Archive.
 			if ( class_exists( 'WooCommerce' ) && is_shop() ) {
 				$this->type = 'woocommerce_archive';
 			} else {
@@ -91,6 +104,7 @@ class Layouts {
 	 *
 	 * @param $key
 	 * @param $is_bool
+	 * @param $check_layout
 	 *
 	 * @return bool|mixed|string
 	 */
@@ -100,17 +114,19 @@ class Layouts {
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
 		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
 
-
-		if ( ! empty( $meta_value ) && $meta_value != 'default' ) { //Check from Meta
+		if ( ! empty( $meta_value ) && 'default' != $meta_value ) {
+			// Check from Meta.
 			$result = $meta_value;
-		} elseif ( $check_layout && ! empty( $opt_from_layout ) && $opt_from_layout != 'default' ) { //Check from Layout
+		} elseif ( $check_layout && ! empty( $opt_from_layout ) && 'default' != $opt_from_layout ) {
+			// Check from Layout.
 			$result = $opt_from_layout;
-		} else { //Set global option
+		} else {
+			// Set global option.
 			$result = $opt_from_global;
 		}
 
 		if ( $is_bool ) {
-			return $result == 1 || $result == 'on';
+			return 1 == $result || 'on' == $result;
 		}
 
 		return $result;
@@ -120,9 +136,10 @@ class Layouts {
 	 * Get Options value only
 	 *
 	 * @param $key
-	 * @param bool $is_bool
+	 * @param $is_bool
+	 * @param $check_layout
 	 *
-	 * @return bool|mixed|string
+	 * @return bool|string
 	 */
 	private function check_option_value( $key, $is_bool = false, $check_layout = false ) {
 		$option_key = $this->type . '_' . $key;
@@ -130,24 +147,31 @@ class Layouts {
 		$opt_from_layout = Opt::$options[ $option_key ] ?? 'default';
 		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
 
-		if ( $check_layout && ! empty( $opt_from_layout ) && $opt_from_layout != 'default' ) {
+		if ( $check_layout && ! empty( $opt_from_layout ) && 'default' != $opt_from_layout ) {
 			$result = $opt_from_layout;
 		} else {
 			$result = $opt_from_global;
 		}
 
 		if ( $is_bool ) {
-			return $result == 1 || $result == 'on';
+			return 1 == $result || 'on' == $result;
 		}
 
 		return $result;
 	}
 
+	/**
+	 * Check meta options value
+	 *
+	 * @param $key
+	 *
+	 * @return mixed|string
+	 */
 	private function check_meta_option_value( $key ) {
 		$meta_value      = $this->meta_value[ $key ] ?? 'default';
 		$opt_from_global = Opt::$options[ 'rt_' . $key ] ?? 'default';
 
-		if ( ! empty( $meta_value ) && $meta_value != 'default' ) { //Check from Meta
+		if ( ! empty( $meta_value ) && 'default' != $meta_value ) { // Check from Meta.
 			$result = $meta_value;
 		} else {
 			$result = $opt_from_global;
@@ -156,10 +180,14 @@ class Layouts {
 		return $result;
 	}
 
+	/**
+	 * Overwrite options value
+	 *
+	 * @return void
+	 */
 	public function overwrite_options_value() {
-		if ( Opt::$single_style == '3' ) {
+		if ( '3' == Opt::$single_style ) {
 			Opt::$has_tr_header = '1';
 		}
-
 	}
 }

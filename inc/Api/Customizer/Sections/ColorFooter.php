@@ -19,7 +19,7 @@ class ColorFooter extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_footer_color = 'newsfit_footer_color_section';
+	protected string $section_id = 'newsfit_footer_color_section';
 
 	/**
 	 * Register controls
@@ -29,7 +29,7 @@ class ColorFooter extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_footer_color,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_color_panel',
 				'title'       => __( 'Footer Colors', 'newsfit' ),
 				'description' => __( 'Newsfit Footer Color Section', 'newsfit' ),
@@ -37,7 +37,7 @@ class ColorFooter extends Customizer {
 			]
 		);
 
-		Customize::add_controls( $this->section_footer_color, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

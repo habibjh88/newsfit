@@ -24,7 +24,7 @@ class LayoutsPage extends Customizer {
 	 * @var string
 	 */
 
-	protected string $section_page_layout = 'newsfit_page_layout_section';
+	protected string $section_id = 'newsfit_page_layout_section';
 
 
 	/**
@@ -35,13 +35,13 @@ class LayoutsPage extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'    => $this->section_page_layout,
+				'id'    => $this->section_id,
 				'title' => __( 'Page Layout', 'newsfit' ),
 				'panel' => 'rt_layouts_panel',
 			]
 		);
 
-		Customize::add_controls( $this->section_page_layout, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	public function get_controls() {

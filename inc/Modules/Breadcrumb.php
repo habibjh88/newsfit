@@ -13,11 +13,15 @@ class Breadcrumb {
 	 *
 	 * @return void
 	 */
-	public static function get_breadcrumb() {
+	public static function get_breadcrumb( ) {
+
+		global $wp_query;
+		$found_posts = $wp_query->found_posts;
+
 		?>
 		<nav aria-label="breadcrumb">
 			<ul class="breadcrumb">
-				<li class="breadcrumb-item">
+				<li class="home-link breadcrumb-item">
 					<?php Svg::get_svg( 'home' ); ?>
 					<a href="<?php echo esc_url( site_url() ); ?>"><?php esc_html_e( 'Home', 'newsfit' ); ?></a>
 					<span class="raquo">/</span>
@@ -36,10 +40,17 @@ class Breadcrumb {
 						echo esc_html( get_the_time( is_year() ? 'Y' : ( is_month() ? 'F, Y' : 'F jS, Y' ) ) );
 						echo '</span>';
 					} elseif ( is_search() ) {
-						echo '<span class="title">';
-						esc_html_e( 'Search results for', 'newsfit' );
+						echo '<p class="title">';
+						esc_html_e( 'Search Results for: ', 'newsfit' );
 						the_search_query();
+						echo '<span class="description">';
+						printf(
+							/* translators: 1: Total post count. */
+							esc_html( _n( 'Showing %d result for your search', 'Showing %d results for your search', $found_posts, 'newsfit' ) ),
+							absint( $found_posts )
+						);
 						echo '</span>';
+						echo '</p>';
 					} elseif ( is_404() ) {
 						echo '<span class="title">';
 						esc_html_e( '404', 'newsfit' );

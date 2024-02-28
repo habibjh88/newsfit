@@ -20,7 +20,7 @@ class Banner extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_breadcrumb = 'newsfit_breadcrumb_section';
+	protected string $section_id = 'newsfit_breadcrumb_section';
 
 	/**
 	 * Register controls
@@ -30,14 +30,14 @@ class Banner extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_breadcrumb,
+				'id'          => $this->section_id,
 				'title'       => __( 'Banner - Breadcrumb', 'newsfit' ),
 				'description' => __( 'Newsfit Banner Section', 'newsfit' ),
 				'priority'    => 23,
 			]
 		);
 
-		Customize::add_controls( $this->section_breadcrumb, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**
@@ -58,10 +58,15 @@ class Banner extends Customizer {
 				],
 
 				'rt_banner_style'      => [
-					'type'      => 'image_select',
+					'type'      => 'select',
 					'label'     => __( 'Breadcrumb Style', 'newsfit' ),
-					'default'   => '1',
-					'choices'   => Fns::image_placeholder( 'menu', 1 ),
+					'default'   => 'style-default',
+					'choices'   => [
+						'style-default' => __( 'Default from theme', 'newsfit' ),
+						'style-left'    => __( 'Text Left', 'newsfit' ),
+						'style-center'  => __( 'Text Center', 'newsfit' ),
+						'style-right'   => __( 'Text Right', 'newsfit' ),
+					],
 					'condition' => [ 'rt_banner' ],
 				],
 

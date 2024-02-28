@@ -20,7 +20,7 @@ class BlogSingle extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_blog_single = 'newsfit_blog_single_section';
+	protected string $section_id = 'newsfit_blog_single_section';
 
 	/**
 	 * Register controls
@@ -30,14 +30,14 @@ class BlogSingle extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_blog_single,
+				'id'          => $this->section_id,
 				'title'       => __( 'Single Blog', 'newsfit' ),
 				'description' => __( 'Newsfit Blog Single Section', 'newsfit' ),
 				'priority'    => 26,
 			]
 		);
 
-		Customize::add_controls( $this->section_blog_single, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

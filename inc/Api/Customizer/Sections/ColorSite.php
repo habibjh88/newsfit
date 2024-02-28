@@ -19,7 +19,7 @@ class ColorSite extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_site_color = 'newsfit_site_color_section';
+	protected string $section_id = 'newsfit_site_color_section';
 
 	/**
 	 * Register controls
@@ -29,14 +29,14 @@ class ColorSite extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_site_color,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_color_panel',
 				'title'       => __( 'Site Colors', 'newsfit' ),
 				'description' => __( 'Newsfit Site Color Section', 'newsfit' ),
 				'priority'    => 2,
 			]
 		);
-		Customize::add_controls( $this->section_site_color, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

@@ -59,7 +59,7 @@ class SiteIdentity extends Customizer {
 				'rt_logo_width_height' => [
 					'type'        => 'text',
 					'label'       => __( 'Logo Dimension', 'newsfit' ),
-					'description' => __( 'Enter the width and height value separate by comma (,). Eg. 180px,45px', 'newsfit' ),
+					'description' => __( 'Enter the width and height value separate by comma (,). Eg. 180px,45px. This options won\'t work for the text logo', 'newsfit' ),
 					'transport'   => '',
 				],
 

@@ -19,7 +19,7 @@ class Contact extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_contact = 'newsfit_contact_section';
+	protected string $section_id = 'newsfit_contact_section';
 
 	/**
 	 * Register controls
@@ -29,14 +29,14 @@ class Contact extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_contact,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_contact_social_panel',
 				'title'       => __( 'Contact Information', 'newsfit' ),
 				'description' => __( 'Newsfit Contact Address Section', 'newsfit' ),
 				'priority'    => 1,
 			]
 		);
-		Customize::add_controls( $this->section_contact, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

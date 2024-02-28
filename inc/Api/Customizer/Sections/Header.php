@@ -20,7 +20,7 @@ class Header extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_header = 'newsfit_header_section';
+	protected string $section_id = 'newsfit_header_section';
 
 	/**
 	 * Register controls
@@ -30,7 +30,7 @@ class Header extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_header,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_header_panel',
 				'title'       => __( 'Header Menu', 'newsfit' ),
 				'description' => __( 'Newsfit Header Section', 'newsfit' ),
@@ -38,7 +38,7 @@ class Header extends Customizer {
 				'edit-point'  => '',
 			]
 		);
-		Customize::add_controls( $this->section_header, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**
@@ -75,18 +75,18 @@ class Header extends Customizer {
 				'rt_header_width'           => [
 					'type'    => 'select',
 					'label'   => __( 'Header Width', 'newsfit' ),
-					'default' => '',
+					'default' => 'box-width',
 					'choices' => [
-						''       => __( 'Box Width', 'newsfit' ),
-						'-fluid' => __( 'Full Width', 'newsfit' ),
+						'box-width'  => __( 'Box Width (Container width)', 'newsfit' ),
+						'full-width' => __( 'Full Width', 'newsfit' ),
 					],
 				],
 
 				'rt_header_max_width'       => [
 					'type'        => 'number',
 					'label'       => __( 'Header Max Width (PX)', 'newsfit' ),
-					'description' => __( 'Enter a number greater than 1440. Remove value for 100%', 'newsfit' ),
-					'condition'   => [ 'rt_header_width', '==', '-fluid' ],
+					'description' => __( 'Enter a number greater than 992. Remove for 100%', 'newsfit' ),
+					'condition'   => [ 'rt_header_width', '==', 'full-width' ],
 				],
 
 				'rt_sticy_header'           => [
@@ -102,7 +102,7 @@ class Header extends Customizer {
 
 				'rt_tr_header_shadow'       => [
 					'type'  => 'switch',
-					'label' => __( 'Header Dark Shadow', 'newsfit' ),
+					'label' => __( 'TR Header Dark Overlay', 'newsfit' ),
 				],
 
 				'rt_header_border'          => [

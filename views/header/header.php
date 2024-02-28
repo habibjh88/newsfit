@@ -9,10 +9,11 @@
 
 $logo_h1      = ! is_singular( [ 'post' ] );
 $menu_classes = newsfit_option( 'rt_menu_alignment' );
+$header_width = 'full-width' == newsfit_option( 'rt_header_width' ) ? '-fluid' : '';
 ?>
 
 	<div class="main-header-section">
-		<div class="header-container rt-container<?php echo newsfit_option( 'rt_header_width' ) ?>">
+		<div class="header-container rt-container<?php echo esc_attr( $header_width ); ?>">
 
 			<div class="row align-middle m-0">
 
@@ -20,16 +21,18 @@ $menu_classes = newsfit_option( 'rt_menu_alignment' );
 					<?php newsfit_site_logo( $logo_h1 ); ?>
 				</div><!-- .site-branding -->
 
-				<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15 <?php echo esc_attr( $menu_classes ) ?>" role="navigation">
+				<nav id="site-navigation" class="newsfit-navigation pl-15 pr-15 <?php echo esc_attr( $menu_classes ); ?>" role="navigation">
 					<?php
-					wp_nav_menu( [
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'menu_class'     => 'newsfit-navbar',
-						'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-						'fallback_cb'    => 'newsfit_custom_menu_cb',
-						'walker'         => has_nav_menu( 'primary' ) ? new RT\Newsfit\Core\WalkerNav() : '',
-					] );
+					wp_nav_menu(
+						[
+							'theme_location' => 'primary',
+							'menu_id'        => 'primary-menu',
+							'menu_class'     => 'newsfit-navbar',
+							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+							'fallback_cb'    => 'newsfit_custom_menu_cb',
+							'walker'         => has_nav_menu( 'primary' ) ? new RT\Newsfit\Core\WalkerNav() : '',
+						]
+					);
 					?>
 				</nav><!-- .newsfit-navigation -->
 

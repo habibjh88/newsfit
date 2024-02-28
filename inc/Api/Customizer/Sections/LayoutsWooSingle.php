@@ -23,7 +23,7 @@ class LayoutsWooSingle extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_woocommerce_single_layout = 'newsfit_woocommerce_single_layout_section';
+	protected string $section_id = 'newsfit_woocommerce_single_layout_section';
 
 	/**
 	 * Register controls
@@ -34,12 +34,12 @@ class LayoutsWooSingle extends Customizer {
 
 		Customize::add_section(
 			[
-				'id'    => $this->section_woocommerce_single_layout,
+				'id'    => $this->section_id,
 				'title' => __( 'Woocommerce Single', 'newsfit' ),
 				'panel' => 'rt_layouts_panel',
 			]
 		);
-		Customize::add_controls( $this->section_woocommerce_single_layout, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	public function get_controls() {

@@ -19,7 +19,7 @@ class ColorBanner extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_banner_color = 'newsfit_banner_color_section';
+	protected string $section_id = 'newsfit_banner_color_section';
 
 	/**
 	 * Register controls
@@ -29,7 +29,7 @@ class ColorBanner extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_banner_color,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_color_panel',
 				'title'       => __( 'Banner / Breadcrumb Colors', 'newsfit' ),
 				'description' => __( 'Newsfit Banner Color Section', 'newsfit' ),
@@ -37,7 +37,7 @@ class ColorBanner extends Customizer {
 			]
 		);
 
-		Customize::add_controls( $this->section_banner_color, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**
@@ -54,6 +54,12 @@ class ColorBanner extends Customizer {
 				'rt_banner_bg'         => [
 					'type'  => 'color',
 					'label' => __( 'Banner Background', 'newsfit' ),
+				],
+
+				'rt_banner_overlay'    => [
+					'type'    => 'alfa_color',
+					'default' => 'rgba(3,6,60,0.60)',
+					'label'   => __( 'Banner Overlay', 'newsfit' ),
 				],
 
 				'rt_breadcrumb_color'  => [

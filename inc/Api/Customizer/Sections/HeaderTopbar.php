@@ -20,7 +20,7 @@ class HeaderTopbar extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_topbar = 'newsfit_topbar_section';
+	protected string $section_id = 'newsfit_topbar_section';
 
 	/**
 	 * Register controls
@@ -30,7 +30,7 @@ class HeaderTopbar extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_topbar,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_header_panel',
 				'title'       => __( 'Header Topbar', 'newsfit' ),
 				'description' => __( 'Newsfit Topbar Section', 'newsfit' ),
@@ -38,7 +38,7 @@ class HeaderTopbar extends Customizer {
 			]
 		);
 
-		Customize::add_controls( $this->section_topbar, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

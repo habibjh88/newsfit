@@ -21,7 +21,7 @@ class Blog extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_blog = 'newsfit_blog_section';
+	protected string $section_id = 'newsfit_blog_section';
 
 
 	/**
@@ -32,14 +32,14 @@ class Blog extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_blog,
+				'id'          => $this->section_id,
 				'title'       => __( 'Blog Archive', 'newsfit' ),
 				'description' => __( 'Newsfit Blog Section', 'newsfit' ),
 				'priority'    => 25,
 			]
 		);
 
-		Customize::add_controls( $this->section_blog, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

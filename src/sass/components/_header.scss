@@ -62,17 +62,17 @@ $dropdown_top_bottom_margin: 10px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+	}
 
-		.ham_burger {
-			width: 47px;
-			height: 47px;
-			margin: 0 -13px;
-			.line {
-				stroke: $meta_color;
-			}
-			&:hover .line {
-				stroke: $primary_color;
-			}
+	.ham_burger {
+		width: 47px;
+		height: 47px;
+		margin: 0 -13px;
+		path {
+			stroke: $meta_color;
+		}
+		&:hover path {
+			stroke: $primary_color;
 		}
 	}
 

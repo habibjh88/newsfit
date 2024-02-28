@@ -23,7 +23,7 @@ class LayoutsBlogs extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_blog_layout = 'newsfit_blog_layout_section';
+	protected string $section_id = 'newsfit_blog_layout_section';
 
 	/**
 	 * Register controls
@@ -33,12 +33,12 @@ class LayoutsBlogs extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'    => $this->section_blog_layout,
+				'id'    => $this->section_id,
 				'title' => __( 'Blog Layout', 'newsfit' ),
 				'panel' => 'rt_layouts_panel',
 			]
 		);
-		Customize::add_controls( $this->section_blog_layout, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	public function get_controls() {

@@ -67,6 +67,10 @@
 			fill: $transparent_menu_color;
 		}
 
+		.menu-icon-wrapper svg path {
+			stroke: $transparent_menu_color;
+		}
+
 		.menu-icon-wrapper .has-separator li::after {
 			background: $transparent_menu_color;
 		}

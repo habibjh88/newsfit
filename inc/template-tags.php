@@ -306,6 +306,7 @@ if ( ! function_exists( 'newsfit_site_logo' ) ) {
 	function newsfit_site_logo( $with_h1 = false, $custom_title = '' ) {
 		$main_logo       = newsfit_option( 'rt_logo' );
 		$logo_light      = newsfit_option( 'rt_logo_light' );
+		$logo_light      = $logo_light ?: $main_logo;
 		$logo_mobile     = newsfit_option( 'rt_logo_mobile' );
 		$site_logo       = Opt::$has_tr_header ? $logo_light : $main_logo;
 		$mobile_logo     = $logo_mobile ?? $site_logo;

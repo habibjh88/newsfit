@@ -59,10 +59,11 @@ class Customizer {
 			Customizer\Sections\LayoutsBlogs::class,
 			Customizer\Sections\LayoutsSingle::class,
 			Customizer\Sections\LayoutsPage::class,
-			// Customizer\Sections\LayoutsError::class,
-							Customizer\Sections\Footer::class,
+			Customizer\Sections\LayoutsSearch::class,
+			Customizer\Sections\Footer::class,
 			Customizer\Sections\ZControllerExample::class,
-		// Customizer\Sections\Test::class,
+			// Customizer\Sections\LayoutsError::class,
+			// Customizer\Sections\Test::class,
 		];
 
 		if ( class_exists( 'WooCommerce' ) ) {

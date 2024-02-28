@@ -19,7 +19,7 @@ class General extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_general = 'newsfit_general_section';
+	protected string $section_id = 'newsfit_general_section';
 
 	/**
 	 * Register controls
@@ -29,13 +29,13 @@ class General extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_general,
+				'id'          => $this->section_id,
 				'title'       => __( 'General', 'newsfit' ),
 				'description' => __( 'Newsfit General Section', 'newsfit' ),
 				'priority'    => 20,
 			]
 		);
-		Customize::add_controls( $this->section_general, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

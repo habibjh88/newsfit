@@ -4316,15 +4316,15 @@ body .rtrs-review-form {
   flex-direction: column;
   justify-content: space-between;
 }
-.menu-icon-wrapper .menu-bar .ham_burger {
+.menu-icon-wrapper .ham_burger {
   width: 47px;
   height: 47px;
   margin: 0 -13px;
 }
-.menu-icon-wrapper .menu-bar .ham_burger .line {
+.menu-icon-wrapper .ham_burger path {
   stroke: var(--rt-meta-color);
 }
-.menu-icon-wrapper .menu-bar .ham_burger:hover .line {
+.menu-icon-wrapper .ham_burger:hover path {
   stroke: var(--rt-primary-color);
 }
 .menu-icon-wrapper a {
@@ -4946,6 +4946,9 @@ body.admin-bar .rt-sticky {
 .has-trheader .site-header .menu-icon-wrapper svg {
   fill: rgba(255, 255, 255, 0.9);
 }
+.has-trheader .site-header .menu-icon-wrapper svg path {
+  stroke: rgba(255, 255, 255, 0.9);
+}
 .has-trheader .site-header .menu-icon-wrapper .has-separator li::after {
   background: rgba(255, 255, 255, 0.9);
 }
@@ -4998,9 +5001,45 @@ body.admin-bar .rt-sticky {
   padding: 30px 0;
   background-color: #FFFFFF;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.newsfit-breadcrumb-wrapper .breadcrumb {
+  padding: 0;
+  list-style: none;
+  background-color: transparent;
+  border-radius: 0;
+  color: var(--rt-body-color);
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  gap: 10px;
+  margin: 0;
+  position: relative;
+}
+.newsfit-breadcrumb-wrapper .breadcrumb li {
+  display: inline;
+  position: relative;
+  gap: 10px;
+}
+.newsfit-breadcrumb-wrapper .breadcrumb a {
+  color: var(--rt-body-color);
+}
+.newsfit-breadcrumb-wrapper .breadcrumb a:hover {
+  color: var(--rt-primary-color);
+}
+.newsfit-breadcrumb-wrapper .breadcrumb svg {
+  fill: var(--rt-body-color);
+  transform: translateY(3px);
 }
 .newsfit-breadcrumb-wrapper.has-bg {
   position: relative;
+  min-height: 400px;
+  text-align: center;
+}
+.newsfit-breadcrumb-wrapper.has-bg .breadcrumb li.active span.raquo {
+  display: none;
 }
 .newsfit-breadcrumb-wrapper.has-bg::before {
   content: "";
@@ -5011,31 +5050,16 @@ body.admin-bar .rt-sticky {
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
 }
-.newsfit-breadcrumb-wrapper .breadcrumb {
-  padding: 0;
-  list-style: none;
-  background-color: transparent;
-  border-radius: 0;
-  color: var(--rt-body-color);
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  gap: 10px;
-  margin: 0;
-  position: relative;
+.newsfit-breadcrumb-wrapper.style-left {
+  text-align: left;
 }
-.newsfit-breadcrumb-wrapper .breadcrumb li {
-  display: flex;
-  position: relative;
-  align-items: center;
-  gap: 10px;
+.newsfit-breadcrumb-wrapper.style-center {
+  text-align: center;
 }
-.newsfit-breadcrumb-wrapper .breadcrumb a {
-  color: var(--rt-body-color);
+.newsfit-breadcrumb-wrapper.style-right {
+  text-align: right;
 }
-.newsfit-breadcrumb-wrapper .breadcrumb svg {
-  fill: var(--rt-body-color);
-}
+
 .has-trheader .newsfit-breadcrumb-wrapper {
   padding-top: 130px;
   opacity: 0;
@@ -5045,6 +5069,11 @@ body.admin-bar .rt-sticky {
 .newsfit-breadcrumb-wrapper.has-bg .breadcrumb,
 .has-trheader .newsfit-breadcrumb-wrapper .breadcrumb {
   color: var(--rt-gray40);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
 }
 .newsfit-breadcrumb-wrapper.has-bg .breadcrumb a,
 .has-trheader .newsfit-breadcrumb-wrapper .breadcrumb a {
@@ -5062,6 +5091,44 @@ body.admin-bar .rt-sticky {
 .has-trheader .newsfit-breadcrumb-wrapper .breadcrumb li.active .title {
   color: #FFFFFF;
   font-weight: bold;
+}
+.newsfit-breadcrumb-wrapper.has-bg.style-left .breadcrumb,
+.has-trheader .newsfit-breadcrumb-wrapper.style-left .breadcrumb {
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+.newsfit-breadcrumb-wrapper.has-bg.style-center .breadcrumb,
+.has-trheader .newsfit-breadcrumb-wrapper.style-center .breadcrumb {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.newsfit-breadcrumb-wrapper.has-bg.style-right .breadcrumb,
+.has-trheader .newsfit-breadcrumb-wrapper.style-right .breadcrumb {
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+}
+.newsfit-breadcrumb-wrapper.has-bg .breadcrumb li.active .title,
+.has-trheader .newsfit-breadcrumb-wrapper .breadcrumb li.active .title {
+  font-size: 26px;
+  line-height: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.newsfit-breadcrumb-wrapper.has-bg .breadcrumb li.active .title .description,
+.has-trheader .newsfit-breadcrumb-wrapper .breadcrumb li.active .title .description {
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: normal;
+}
+
+.blog .breadcrumb .raquo,
+.home .breadcrumb .raquo,
+.search .breadcrumb .raquo {
+  display: none;
 }
 
 .newsfit-widget-area {

@@ -12,11 +12,11 @@ use RT\Newsfit\Options\Opt;
 if(! Opt::$has_top_bar) {
 	return;
 }
-
+$header_width = 'full-width' == newsfit_option( 'rt_header_width' ) ? '-fluid' : '';
 ?>
 
 <div class="newsfit-topbar">
-	<div class="topbar-container rt-container<?php echo newsfit_option( 'rt_header_width' ) ?>">
+	<div class="topbar-container rt-container<?php echo esc_attr( $header_width ) ?>">
 		<div class="row ml-0 mr-0 topbar-row">
 			<nav id="topbar-menu" class="newsfit-navigation pr-10" role="navigation">
 				<?php

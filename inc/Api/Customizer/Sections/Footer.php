@@ -20,7 +20,7 @@ class Footer extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_footer = 'newsfit_footer_section';
+	protected string $section_id = 'newsfit_footer_section';
 
 	/**
 	 * Register controls
@@ -30,14 +30,14 @@ class Footer extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_footer,
+				'id'          => $this->section_id,
 				'title'       => __( 'Footer', 'newsfit' ),
 				'description' => __( 'Newsfit Footer Section', 'newsfit' ),
 				'priority'    => 38,
 			]
 		);
 
-		Customize::add_controls( $this->section_footer, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

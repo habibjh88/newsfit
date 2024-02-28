@@ -19,7 +19,7 @@ class Labels extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_labels = 'newsfit_labels_section';
+	protected string $section_id = 'newsfit_labels_section';
 
 	/**
 	 * Register controls
@@ -29,13 +29,13 @@ class Labels extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_labels,
+				'id'          => $this->section_id,
 				'title'       => __( 'Modify Static Text', 'newsfit' ),
 				'description' => __( 'You can change all static text of the theme.', 'newsfit' ),
 				'priority'    => 999,
 			]
 		);
-		Customize::add_controls( $this->section_labels, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

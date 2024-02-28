@@ -73,10 +73,12 @@ class Layouts {
 			Opt::$has_breadcrumb = $this->check_meta_and_layout_value( 'breadcrumb', true, true );
 			Opt::$has_banner     = $this->check_meta_and_layout_value( 'banner', true, true );
 			Opt::$single_style   = $this->check_meta_option_value( 'single_post_style' );
-		} elseif ( is_home() || is_archive() || is_search() ) {
+		} elseif ( is_home() || is_archive() || is_search() || is_search() ) {
 			// Blog and Archive.
 			if ( class_exists( 'WooCommerce' ) && is_shop() ) {
 				$this->type = 'woocommerce_archive';
+			} elseif ( is_search() ) {
+				$this->type = 'search';
 			} else {
 				$this->type = 'blog';
 			}

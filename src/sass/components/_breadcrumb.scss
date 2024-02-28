@@ -2,10 +2,55 @@
 	padding: 30px 0;
 	background-color: $white_color;
 	border-bottom: 1px solid rgba($black_color, 0.1);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 
+	.breadcrumb {
+		padding: 0;
+		list-style: none;
+		background-color: transparent;
+		border-radius: 0;
+		color: $body_color;
+		font-size: $base_fs - 2;
+		font-weight: 500;
+		display: inline-block;
+		gap: 10px;
+		margin: 0;
+		position: relative;
+
+		li {
+			display: inline;
+			position: relative;
+			gap: 10px;
+		}
+
+		a {
+			color: $body_color;
+			&:hover {
+				color: $primary_color;
+			}
+		}
+
+		svg {
+			fill: $body_color;
+			transform: translateY(3px);
+		}
+
+		li.active .title {
+			@extend .primaryColor;
+		}
+
+	}
 
 	&.has-bg {
 		position: relative;
+		min-height: 400px;
+		text-align: center;
+
+		.breadcrumb li.active span.raquo {
+			display: none;
+		}
 
 		&::before {
 			content: "";
@@ -18,39 +63,18 @@
 		}
 	}
 
-	.breadcrumb {
-		padding: 0;
-		list-style: none;
-		background-color: transparent;
-		border-radius: 0;
-		color: $body_color;
-		font-size: $base_fs - 2;
-		font-weight: 500;
-		display: flex;
-		gap: 10px;
-		margin: 0;
-		position: relative;
-
-		li {
-			display: flex;
-			position: relative;
-			align-items: center;
-			gap: 10px;
-		}
-
-		a {
-			color: $body_color;
-		}
-
-		svg {
-			fill: $body_color;
-		}
-
-		li.active .title {
-			@extend .primaryColor;
-		}
-
+	&.style-left {
+		text-align: left;
 	}
+
+	&.style-center {
+		text-align: center;
+	}
+
+	&.style-right {
+		text-align: right;
+	}
+
 
 }
 
@@ -58,14 +82,17 @@
 	padding-top: 130px;
 	opacity: 0;
 	transition: opacity .3s;
-
-
 }
 
 .newsfit-breadcrumb-wrapper.has-bg,
 .has-trheader .newsfit-breadcrumb-wrapper {
 	.breadcrumb {
 		color: $gray40;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		gap: 5px;
 
 		a {
 			color: $gray40;
@@ -83,5 +110,45 @@
 			color: $white_color;
 			font-weight: bold;
 		}
+	}
+
+	&.style-left .breadcrumb {
+		justify-content: flex-start;
+		align-items: flex-start;
+		text-align: left;
+	}
+
+	&.style-center .breadcrumb {
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	&.style-right .breadcrumb {
+		justify-content: flex-end;
+		align-items: flex-end;
+		text-align: right;
+	}
+
+	.breadcrumb li.active .title {
+		font-size: 26px;
+		line-height: 36px;
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+
+		.description {
+			font-size: 15px;
+			line-height: 25px;
+			font-weight: normal;
+		}
+	}
+}
+
+.blog,
+.home,
+.search {
+	.breadcrumb .raquo {
+		display: none
 	}
 }

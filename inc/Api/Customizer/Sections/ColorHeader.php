@@ -19,7 +19,7 @@ class ColorHeader extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_header_color = 'newsfit_header_color_section';
+	protected string $section_id = 'newsfit_header_color_section';
 
 	/**
 	 * Register controls
@@ -30,7 +30,7 @@ class ColorHeader extends Customizer {
 
 		Customize::add_section(
 			[
-				'id'          => $this->section_header_color,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_color_panel',
 				'title'       => __( 'Header Colors', 'newsfit' ),
 				'description' => __( 'Newsfit Header Color Section', 'newsfit' ),
@@ -38,7 +38,7 @@ class ColorHeader extends Customizer {
 			]
 		);
 
-		Customize::add_controls( $this->section_header_color, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

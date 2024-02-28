@@ -23,7 +23,7 @@ class LayoutsWooArchive extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_woocommerce_archive_layout = 'newsfit_woocommerce_archive_layout_section';
+	protected string $section_id = 'newsfit_woocommerce_archive_layout_section';
 
 	/**
 	 * Register controls
@@ -33,12 +33,12 @@ class LayoutsWooArchive extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'    => $this->section_woocommerce_archive_layout,
+				'id'    => $this->section_id,
 				'title' => __( 'Woocommerce Archive', 'newsfit' ),
 				'panel' => 'rt_layouts_panel',
 			]
 		);
-		Customize::add_controls( $this->section_woocommerce_archive_layout, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	public function get_controls() {

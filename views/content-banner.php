@@ -52,13 +52,13 @@ if ( in_array( Opt::$single_style, [ '3', '4' ] ) ) {
 
 $classes = Fns::class_list(
 	[
-		'newsfit-breadcrumb-wrapper',
+		newsfit_option( 'rt_banner_style' ),
 		$has_image ? 'has-bg' : 'no-bg',
 	]
 );
 ?>
 
-<div class="<?php echo esc_attr( $classes ); ?>" style="<?php echo esc_attr( $banner_image_css ); ?>">
+<div class="newsfit-breadcrumb-wrapper <?php echo esc_attr( $classes ); ?>" style="<?php echo esc_attr( $banner_image_css ); ?>">
 	<?php if ( Opt::$has_breadcrumb ) : ?>
 		<div class="container">
 			<?php Breadcrumb::get_breadcrumb(); ?>

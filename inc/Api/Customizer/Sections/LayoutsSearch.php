@@ -12,17 +12,18 @@ use RTFramework\Customize;
 use RT\Newsfit\Traits\LayoutControlsTraits;
 
 /**
- * Customizer class
+ * LayoutsSearch class
  */
-class LayoutsError extends Customizer {
+class LayoutsSearch extends Customizer {
 
 	use LayoutControlsTraits;
+
 	/**
 	 * Section ID
 	 *
 	 * @var string
 	 */
-	protected string $section_id = 'newsfit_error_layout_section';
+	protected string $section_id = 'newsfit_search_layout_section';
 
 	/**
 	 * Register controls
@@ -33,7 +34,7 @@ class LayoutsError extends Customizer {
 		Customize::add_section(
 			[
 				'id'    => $this->section_id,
-				'title' => __( 'Error Layout', 'newsfit' ),
+				'title' => __( 'Search Layout', 'newsfit' ),
 				'panel' => 'rt_layouts_panel',
 			]
 		);
@@ -41,11 +42,13 @@ class LayoutsError extends Customizer {
 		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
+	/**
+	 * Get controls
+	 *
+	 * @return mixed|null
+	 */
 	public function get_controls() {
-		$options_val = $this->get_layout_controls( 'error' );
-		unset( $options_val['error_layout'] );
-		unset( $options_val['error__header_style'] );
-
+		$options_val = $this->get_layout_controls( 'search' );
 		return $options_val;
 	}
 }

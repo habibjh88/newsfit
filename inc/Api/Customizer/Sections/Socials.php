@@ -21,7 +21,7 @@ class Socials extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_socials = 'newsfit_socials_section';
+	protected string $section_id = 'newsfit_socials_section';
 
 	/**
 	 * Register controls
@@ -31,7 +31,7 @@ class Socials extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_socials,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_contact_social_panel',
 				'title'       => __( 'Socials Information', 'newsfit' ),
 				'description' => __( 'Newsfit Socials Section', 'newsfit' ),
@@ -39,7 +39,7 @@ class Socials extends Customizer {
 			]
 		);
 
-		Customize::add_controls( $this->section_socials, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

@@ -19,7 +19,7 @@ class ColorTopbar extends Customizer {
 	 *
 	 * @var string
 	 */
-	protected string $section_topbar_color = 'newsfit_topbar_color_section';
+	protected string $section_id = 'newsfit_topbar_color_section';
 
 	/**
 	 * Register controls
@@ -29,7 +29,7 @@ class ColorTopbar extends Customizer {
 	public function register() {
 		Customize::add_section(
 			[
-				'id'          => $this->section_topbar_color,
+				'id'          => $this->section_id,
 				'panel'       => 'rt_color_panel',
 				'title'       => __( 'Topbar Colors', 'newsfit' ),
 				'description' => __( 'Newsfit Topbar Color Section', 'newsfit' ),
@@ -37,7 +37,7 @@ class ColorTopbar extends Customizer {
 			]
 		);
 
-		Customize::add_controls( $this->section_topbar_color, $this->get_controls() );
+		Customize::add_controls( $this->section_id, $this->get_controls() );
 	}
 
 	/**

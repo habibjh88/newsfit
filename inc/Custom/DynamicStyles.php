@@ -17,7 +17,7 @@ class DynamicStyles {
 	}
 
 	public function enqueue_scripts() {
-		$this->meta_data = get_post_meta( get_the_ID(), "rt_layout_meta_data", true );
+		$this->meta_data = get_post_meta( get_the_ID(), 'rt_layout_meta_data', true );
 		$dynamic_css     = $this->inline_style();
 		wp_register_style( 'newsfit-dynamic', false, 'newsfit-main' );
 		wp_enqueue_style( 'newsfit-dynamic' );
@@ -81,6 +81,7 @@ class DynamicStyles {
 
 	/**
 	 * Topbar Settings
+	 *
 	 * @return void
 	 */
 	protected function topbar_css() {
@@ -88,7 +89,8 @@ class DynamicStyles {
 		echo self::css( 'body .site-header .newsfit-topbar .topbar-container *:not(.dropdown-menu *)', 'color', 'rt_topbar_color' );
 		echo self::css( 'body .site-header .newsfit-topbar .topbar-container svg:not(.dropdown-menu svg)', 'fill', 'rt_topbar_color', ' !important' );
 
-		if ( ! empty( $_topbar_active_color ) ) : ?>
+		if ( ! empty( $_topbar_active_color ) ) :
+			?>
 			body .site-header .newsfit-topbar .topbar-container a:hover:not(.dropdown-menu a:hover),
 			body .newsfit-topbar #topbar-menu ul ul li.current_page_item > a,
 			body .newsfit-topbar #topbar-menu ul ul li.current-menu-ancestor > a,
@@ -112,10 +114,11 @@ class DynamicStyles {
 
 	/**
 	 * Menu Color Settings
+	 *
 	 * @return void
 	 */
 	protected function header_css() {
-		//Logo CSS
+		// Logo CSS
 		$logo_width = '';
 
 		$logo_dimension     = newsfit_option( 'rt_logo_width_height' );
@@ -125,12 +128,12 @@ class DynamicStyles {
 			$logo_width = explode( ',', $logo_dimension );
 		}
 
-		//Default Menu
+		// Default Menu
 		$_menu_color        = newsfit_option( 'rt_menu_color' );
 		$_menu_active_color = newsfit_option( 'rt_menu_active_color' );
 		$_menu_bg_color     = newsfit_option( 'rt_menu_bg_color' );
 
-		//Transparent Menu
+		// Transparent Menu
 		$_tr_menu_color        = newsfit_option( 'rt_tr_menu_color' );
 		$_tr_menu_active_color = newsfit_option( 'rt_tr_menu_active_color' );
 
@@ -139,46 +142,45 @@ class DynamicStyles {
 		$_breadcrumb_border = newsfit_option( 'rt_breadcrumb_border' );
 		?>
 
-		<?php //Header Logo CSS ?>
-		<?php if ( Opt::$header_width == 'fullwidth' ) :
-			$h_width = '100%';
-			if ( ($header_width = newsfit_option( 'rt_header_max_width' )) > 992 ) {
-				$h_width = $header_width;
-			}
+		<?php // Header Logo CSS ?>
+		<?php
+		if ( 'full-width' == Opt::$header_width ) :
+			$header_width = newsfit_option( 'rt_header_max_width' );
+			$h_width      = $header_width > 992 ? $header_width . 'px' : '100%';
 			?>
-			.header-container, .topbar-container {width: <?php echo $h_width; ?>px;max-width: 100%;}
+			.header-container, .topbar-container {width: <?php echo esc_attr( $h_width ); ?>;max-width: 100%;}
 		<?php endif; ?>
 
 		<?php if ( ! empty( $logo_width ) ) : ?>
 			.site-header .site-branding img {
-			max-width: <?php echo esc_attr( $logo_width[0] ?? '100%' ) ?>;
-			max-height: <?php echo esc_attr( $logo_width[1] ?? 'auto' ) ?>;
+			width: <?php echo esc_attr( $logo_width[0] ?? '100%' ); ?>;
+			height: <?php echo esc_attr( $logo_width[1] ?? 'auto' ); ?>;
 			object-fit: contain;
 			}
 		<?php endif; ?>
 
-		<?php //Default Header ?>
+		<?php // Default Header ?>
 		<?php if ( ! empty( $_menu_color ) ) : ?>
-			body .main-header-section .newsfit-navigation ul li a {color: <?php echo esc_attr( $_menu_color ) ?>;}
-			body .main-header-section svg {fill: <?php echo esc_attr( $_menu_color ) ?>;}
+			body .main-header-section .newsfit-navigation ul li a {color: <?php echo esc_attr( $_menu_color ); ?>;}
+			body .main-header-section svg {fill: <?php echo esc_attr( $_menu_color ); ?>;}
 			body .main-header-section .menu-icon-wrapper .menu-bar span,
-			body .menu-icon-wrapper .has-separator li:not(:last-child):after {background-color: <?php echo esc_attr( $_menu_color ) ?>;}
+			body .menu-icon-wrapper .has-separator li:not(:last-child):after {background-color: <?php echo esc_attr( $_menu_color ); ?>;}
 		<?php endif; ?>
 
 		<?php if ( ! empty( $_menu_active_color ) ) : ?>
 			body .main-header-section .newsfit-navigation ul li a:hover,
 			body .main-header-section .newsfit-navigation ul li.current-menu-item > a,
-			body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a {color: <?php echo esc_attr( $_menu_active_color ) ?>;}
-			body .main-header-section .newsfit-navigation ul li.current-menu-item > a svg,body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a svg {fill: <?php echo esc_attr( $_menu_active_color ) ?>;}
-			body .main-header-section .menu-icon-wrapper .menu-bar:hover span {background-color: <?php echo esc_attr( $_menu_active_color ) ?>;}
-			body .main-header-section a:hover [class*=rticon] svg {fill: <?php echo esc_attr( $_menu_active_color ) ?>;}
+			body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a {color: <?php echo esc_attr( $_menu_active_color ); ?>;}
+			body .main-header-section .newsfit-navigation ul li.current-menu-item > a svg,body .main-header-section .newsfit-navigation ul li.current-menu-ancestor > a svg {fill: <?php echo esc_attr( $_menu_active_color ); ?>;}
+			body .main-header-section .menu-icon-wrapper .menu-bar:hover span {background-color: <?php echo esc_attr( $_menu_active_color ); ?>;}
+			body .main-header-section a:hover [class*=rticon] svg {fill: <?php echo esc_attr( $_menu_active_color ); ?>;}
 		<?php endif; ?>
 
 		<?php if ( ! empty( $_menu_bg_color ) ) : ?>
-			body .main-header-section {background-color: <?php echo esc_attr( $_menu_bg_color ) ?>;}
+			body .main-header-section {background-color: <?php echo esc_attr( $_menu_bg_color ); ?>;}
 		<?php endif; ?>
 
-		<?php //Transparent Header ?>
+		<?php // Transparent Header ?>
 		<?php if ( ! empty( $_tr_menu_color ) ) : ?>
 			body.has-trheader .site-header .site-branding h1 a,
 			body.has-trheader .site-header .newsfit-navigation *,
@@ -236,26 +238,34 @@ class DynamicStyles {
 
 	/**
 	 * Breadcrumb Settings
+	 *
 	 * @return void
 	 */
 	protected function breadcrumb_css() {
 		$banner_bg         = newsfit_option( 'rt_banner_bg' );
+		$banner_overlay    = newsfit_option( 'rt_banner_overlay' );
 		$breadcrumb_color  = newsfit_option( 'rt_breadcrumb_color' );
 		$breadcrumb_active = newsfit_option( 'rt_breadcrumb_active' );
-		if ( ! empty( $banner_bg ) ) : ?>
-			body .newsfit-breadcrumb-wrapper {background-color: <?php echo esc_attr( $banner_bg ) ?>;}
+		?>
+		<?php if ( ! empty( $banner_bg ) ) : ?>
+			body .newsfit-breadcrumb-wrapper {background-color: <?php echo esc_attr( $banner_bg ); ?>;}
+		<?php endif ?>
+		<?php if ( ! empty( $banner_overlay ) ) : ?>
+			body .newsfit-breadcrumb-wrapper.has-bg::before {background-color: <?php echo esc_attr( $banner_overlay ); ?>;}
 		<?php endif; ?>
 		<?php if ( ! empty( $breadcrumb_color ) ) : ?>
-			body .newsfit-breadcrumb-wrapper .breadcrumb a {color: <?php echo esc_attr( $breadcrumb_color ) ?>;}
-			body .newsfit-breadcrumb-wrapper .breadcrumb li::after {border-color: <?php echo esc_attr( $breadcrumb_color ) ?>;}
+			body .newsfit-breadcrumb-wrapper .breadcrumb a {color: <?php echo esc_attr( $breadcrumb_color ); ?>;}
+			body .newsfit-breadcrumb-wrapper .breadcrumb li::after {border-color: <?php echo esc_attr( $breadcrumb_color ); ?>;}
 		<?php endif; ?>
 		<?php if ( ! empty( $breadcrumb_active ) ) : ?>
-			body .newsfit-breadcrumb-wrapper .breadcrumb li.active {color: <?php echo esc_attr( $breadcrumb_active ) ?>;}
-		<?php endif;
+			body .newsfit-breadcrumb-wrapper .breadcrumb li.active {color: <?php echo esc_attr( $breadcrumb_active ); ?>;}
+			<?php
+		endif;
 	}
 
 	/**
 	 * Content Padding
+	 *
 	 * @return void
 	 */
 	protected function content_padding_css() {
@@ -271,7 +281,7 @@ class DynamicStyles {
 			$class = 'body.has-banner .site-content .newsfit-breadcrumb-wrapper + div';
 		}
 		?>
-		<?php echo esc_attr( $class ) ?> {
+		<?php echo esc_attr( $class ); ?> {
 		<?php if ( $content_padding_top ) : ?>
 			padding-top: <?php echo esc_attr( $content_padding_top ); ?>px;
 		<?php endif; ?>
@@ -284,6 +294,7 @@ class DynamicStyles {
 
 	/**
 	 * Footer CSS
+	 *
 	 * @return void
 	 */
 	protected function footer_css() {
@@ -306,6 +317,7 @@ class DynamicStyles {
 
 	/**
 	 * Load site fonts
+	 *
 	 * @return void
 	 */
 	protected function site_fonts() {
@@ -325,8 +337,20 @@ class DynamicStyles {
 		<?php
 		echo self::font_css( 'body', $typo_body );
 		echo self::font_css( '.site-header', [ 'font' => $typo_menu['font'] ] );
-		echo self::font_css( '.main-header-section .newsfit-navigation ul li a', [ 'lineheight' => $typo_menu['lineheight'], 'regularweight' => $typo_menu['regularweight'] ] );
-		echo self::font_css( '.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6', [ 'font' => $typo_heading['font'], 'regularweight' => $typo_heading['regularweight'] ] );
+		echo self::font_css(
+			'.main-header-section .newsfit-navigation ul li a',
+			[
+				'lineheight'    => $typo_menu['lineheight'],
+				'regularweight' => $typo_menu['regularweight'],
+			]
+		);
+		echo self::font_css(
+			'.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6',
+			[
+				'font'          => $typo_heading['font'],
+				'regularweight' => $typo_heading['regularweight'],
+			]
+		);
 
 		$heading_fonts = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
 		foreach ( $heading_fonts as $heading ) {
@@ -367,16 +391,14 @@ class DynamicStyles {
 	 * @return string
 	 */
 	public static function font_css( $selector, $font ) {
-		$css = '';
-		$css .= $selector . '{'; //Start CSS
+		$css  = '';
+		$css .= $selector . '{'; // Start CSS
 		$css .= ! empty( $font['font'] ) ? "font-family: '" . $font['font'] . "', sans-serif;" : '';
 		$css .= ! empty( $font['size'] ) ? "font-size: {$font['size']}px;" : '';
 		$css .= ! empty( $font['lineheight'] ) ? "line-height: {$font['lineheight']}px;" : '';
 		$css .= ! empty( $font['regularweight'] ) ? "font-weight: {$font['regularweight']};" : '';
-		$css .= '}'; //End CSS
+		$css .= '}'; // End CSS
 
 		return $css;
 	}
-
-
 }

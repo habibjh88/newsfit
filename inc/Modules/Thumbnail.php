@@ -65,7 +65,7 @@ class Thumbnail {
 			'fade'           => false,
 			'speed'          => 700,
 			'autoplay'       => true,
-			'autoplaySpeed'  => 1500,
+			'autoplaySpeed'  => 30000,
 			'adaptiveHeight' => (bool) $single,
 		];
 		$classes   = Fns::class_list(
@@ -92,15 +92,16 @@ class Thumbnail {
 								<?php if ( ! $single ) : ?>
 							</a>
 						<?php endif; ?>
+						<?php
+						if ( $single ) {
+							self::thumb_description( $id );
+						}
+						?>
 						</div>
 					<?php endforeach; ?>
 				</div>
 			</figure><!-- .post-thumbnail -->
-			<?php
-			if ( $single ) {
-				self::thumb_description();
-			}
-			?>
+
 		</div>
 		<?php
 	}
@@ -221,12 +222,13 @@ class Thumbnail {
 	 *
 	 * @return void
 	 */
-	public static function thumb_description() {
-		if ( wp_get_attachment_caption( get_post_thumbnail_id() ) && is_single() ) :
+	public static function thumb_description( $thumb_id = null ) {
+		$image_id = $thumb_id ?: get_post_thumbnail_id();
+		if ( wp_get_attachment_caption( $image_id ) && is_single() ) :
 			?>
 			<figcaption class="wp-caption-text">
 				<?php Svg::get_svg( 'camera' ); ?>
-				<span><?php Fns::print_html( wp_get_attachment_caption( get_post_thumbnail_id() ) ); ?></span>
+				<span><?php Fns::print_html( wp_get_attachment_caption( $image_id ) ); ?></span>
 			</figcaption>
 			<?php
 		endif;

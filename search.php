@@ -15,6 +15,7 @@ $content_columns = Fns::content_columns();
 
 ?>
 
+<?php get_search_form( [ 'echo' => true ] ); ?>
 	<div class="container">
 
 		<div class="row align-stretch">

@@ -44,28 +44,30 @@ class DynamicStyles {
 		$meta_light          = newsfit_option( 'rt_meta_light', '#F2F8FF' );
 		$gray20              = newsfit_option( 'rt_gray20_color', '#E6E6E6' );
 		$gray40              = newsfit_option( 'rt_gray40_color', '#D0D0D0' );
+		$rt_container_width  = newsfit_option( 'rt_container_width', '1240' );
 
 		ob_start(); ?>
 
 		:root {
-		--rt-primary-color: <?php echo esc_html( $primary_color ); ?>;
-		--rt-primary-dark: <?php echo esc_html( $primary_dark_color ); ?>;
-		--rt-primary-light: <?php echo esc_html( $primary_light_color ); ?>;
-		--rt-secondary-color: <?php echo esc_html( $secondary_color ); ?>;
-		--rt-body-color: <?php echo esc_html( $body_color ); ?>;
-		--rt-title-color: <?php echo esc_html( $title_color ); ?>;
-		--rt-meta-color: <?php echo esc_html( $meta_color ); ?>;
-		--rt-meta-light: <?php echo esc_html( $meta_light ); ?>;
-		--rt-gray20: <?php echo esc_html( $gray20 ); ?>;
-		--rt-gray40: <?php echo esc_html( $gray40 ); ?>;
-		--rt-body-rgb: <?php echo esc_html( Fns::hex2rgb( $body_color ) ); ?>;
-		--rt-title-rgb: <?php echo esc_html( Fns::hex2rgb( $title_color ) ); ?>;
-		--rt-primary-rgb: <?php echo esc_html( Fns::hex2rgb( $primary_color ) ); ?>;
-		--rt-secondary-rgb: <?php echo esc_html( Fns::hex2rgb( $secondary_color ) ); ?>;
+		--rt-primary-color: <?php echo esc_attr( $primary_color ); ?>;
+		--rt-primary-dark: <?php echo esc_attr( $primary_dark_color ); ?>;
+		--rt-primary-light: <?php echo esc_attr( $primary_light_color ); ?>;
+		--rt-secondary-color: <?php echo esc_attr( $secondary_color ); ?>;
+		--rt-body-color: <?php echo esc_attr( $body_color ); ?>;
+		--rt-title-color: <?php echo esc_attr( $title_color ); ?>;
+		--rt-meta-color: <?php echo esc_attr( $meta_color ); ?>;
+		--rt-meta-light: <?php echo esc_attr( $meta_light ); ?>;
+		--rt-gray20: <?php echo esc_attr( $gray20 ); ?>;
+		--rt-gray40: <?php echo esc_attr( $gray40 ); ?>;
+		--rt-body-rgb: <?php echo esc_attr( Fns::hex2rgb( $body_color ) ); ?>;
+		--rt-title-rgb: <?php echo esc_attr( Fns::hex2rgb( $title_color ) ); ?>;
+		--rt-primary-rgb: <?php echo esc_attr( Fns::hex2rgb( $primary_color ) ); ?>;
+		--rt-secondary-rgb: <?php echo esc_attr( Fns::hex2rgb( $secondary_color ) ); ?>;
+		--rt-container-width: <?php echo esc_attr( $rt_container_width . 'px' ); ?>;
 		}
 
 		body {
-		color: <?php echo esc_html( $body_color ); ?>;
+		color: <?php echo esc_attr( $body_color ); ?>;
 		}
 
 		<?php

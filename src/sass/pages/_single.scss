@@ -97,6 +97,37 @@ body:not(.newsfit-single-1) {
 	}
 }
 
+//Common Style for all layout
+.newsfit-single-4 .single-post-container .content-top-area .wp-caption-text {
+	top: 6px !important;
+	bottom: auto !important;
+}
+.newsfit-single-4 .single-post-container .content-top-area,
+.newsfit-single-3 .single-post-container .content-top-area,
+.newsfit-single-2 .single-post-container {
+	.thumbnail-gallery {
+		.wp-caption-text {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			color: $white_color;
+			padding: 0 23px;
+			opacity: .8;
+			[class*=rticon] svg {
+				fill: $white_color
+			}
+		}
+
+		.slick-slide {
+			position: relative;
+		}
+
+		.rt-carousel, .slick-list, .slick-track, .slick-slide {
+			height: 100% !important;
+		}
+	}
+}
+
 @import "parts/_single-style-2";
 @import "parts/_single-style-3";
 @import "parts/_single-style-4";

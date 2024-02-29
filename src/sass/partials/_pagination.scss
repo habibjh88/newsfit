@@ -39,8 +39,9 @@
 
 	ul li {
 		a {
-			padding: 10px 15px;
-			line-height: 1;
+			padding: 0 15px;
+			height: 36px;
+			line-height: 36px;
 			background: $primary_color;
 			color: $white_color;
 			display: flex;

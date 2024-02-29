@@ -6,14 +6,7 @@
 	}
 
 	.newsfit-breadcrumb-wrapper {
-		padding-top: 130px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		border-bottom: 0;
-		z-index: 10;
-		background: none !important;
+		display: none;
 	}
 
 	&.admin-bar .newsfit-breadcrumb-wrapper {

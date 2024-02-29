@@ -37,6 +37,9 @@
 			transform: translateY(3px);
 		}
 
+		li .title {
+			display: inline-block;
+		}
 		li.active .title {
 			@extend .primaryColor;
 		}
@@ -148,7 +151,7 @@
 .blog,
 .home,
 .search {
-	.breadcrumb .raquo {
+	.has-bg .breadcrumb .raquo {
 		display: none
 	}
 }

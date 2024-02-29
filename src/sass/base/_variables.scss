@@ -2,7 +2,7 @@
 $columns: 12;
 $gutter: 30px;
 $spacing: 20;
-$container_width: 1240px;
+$container_width: var(--rt-container-width);
 
 //Spacing
 $paddings: ('pt': 'padding-top', 'pr': 'padding-right', 'pb': 'padding-bottom', 'pl': 'padding-left');

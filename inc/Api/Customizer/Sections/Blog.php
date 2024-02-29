@@ -54,11 +54,11 @@ class Blog extends Customizer {
 				'rt_blog_style'              => [
 					'type'        => 'select',
 					'label'       => __( 'Blog Style', 'newsfit' ),
-					'description' => __( 'This option works only for large device', 'newsfit' ),
-					'default'     => 'default',
+					'description' => __( 'It will affected on all archive page.', 'newsfit' ),
+					'default'     => 'grid',
 					'choices'     => [
-						'default' => __( 'Default From Theme', 'newsfit' ),
-						'list'    => __( 'List', 'newsfit' ),
+						'grid' => __( 'Grid', 'newsfit' ),
+						'list' => __( 'List', 'newsfit' ),
 					],
 				],
 

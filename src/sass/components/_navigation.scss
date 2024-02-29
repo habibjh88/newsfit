@@ -118,6 +118,10 @@
 		@include transition_default();
 	}
 
+	ul > li:not(.mega-menu) li:hover > ul {
+		margin-top: -10px;
+	}
+
 	ul li ul li ul {
 		left: 100%;
 		top: 0;
@@ -147,13 +151,13 @@
 		@include transition_default();
 	}
 
-	ul li ul li:first-child {
-		margin-top: $dropdown_top_bottom_margin;
-	}
+	/*	ul li ul li:first-child {
+			margin-top: $dropdown_top_bottom_margin;
+		}
 
-	ul li ul li:last-child {
-		margin-bottom: $dropdown_top_bottom_margin;
-	}
+		ul li ul li:last-child {
+			margin-bottom: $dropdown_top_bottom_margin;
+		}*/
 
 	ul li ul li:hover > a {
 		@extend .primaryColor;

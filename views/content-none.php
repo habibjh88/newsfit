@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'newsfit' ); ?></h1>
+		<h2 class="page-title"><?php esc_html_e( 'Nothing Found', 'newsfit' ); ?></h2>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -25,11 +25,11 @@
 					wp_kses(
 					/* translators: 1: link. */
 						__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'newsfit' ),
-						array(
-							'a' => array(
-								'href' => array(),
-							),
-						)
+						[
+							'a' => [
+								'href' => [],
+							],
+						]
 					),
 					esc_url( admin_url( 'post-new.php' ) )
 				);
@@ -40,7 +40,6 @@
 
 			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'newsfit' ); ?></p>
 			<?php
-			get_search_form();
 
 		else :
 			?>
